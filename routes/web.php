@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HelloController;
+use App\Http\Controllers\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,7 @@ use App\Http\Controllers\HelloController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [RoomController::class, 'rooms']);
+//Route::get('/', function () {
+    //    return view('welcome');
+//});

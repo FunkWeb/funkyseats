@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<title>Funkyseats</title>
+
+<body>
+@foreach ($rooms as $room)
+<div class='room'>
+    <h4> Room name: {{$room->name}} </h4>
+    @foreach ($room->seat as $seat)
+
+    <p>Seat type: {{ $seat->type}} </p>
+        
+    @endforeach
+    
+@endforeach
+
+</body>
