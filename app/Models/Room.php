@@ -11,12 +11,14 @@ class Room extends Model
     use HasFactory;
 
 
-    public function getRooms() {
+    public function index()
+    {
         return Room::with('seat')->get();
     }
 
 
-    public function seat(){
+    public function seat()
+    {
         return $this->HasMany(Seat::class);
     }
 }
