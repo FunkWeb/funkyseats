@@ -16,8 +16,11 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\Room::factory(1)->create();
-        //Seat seeding has hardcoded room_id = 1
-        \App\Models\Seat::factory(10)->create();
+        //Create X rooms and give them 10 seats each
+        $numberOfRooms = 2;
+        $rooms = \App\Models\Room::factory($numberOfRooms)->create();
+        for ($i = 1; $i <= $numberOfRooms; $i++) {
+            \App\Models\Seat::factory(10)->create(["room_id" => $i]);
+        }
     }
 }

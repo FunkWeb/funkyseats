@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Seat;
+use App\Models\Room;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SeatFactory extends Factory
@@ -22,8 +23,8 @@ class SeatFactory extends Factory
     public function definition()
     {
         return [
-           'type'=>$this->faker->firstName(),
-           'room_id'=> 1, 
+            'type' => $this->faker->firstName(),
+            'room_id' => Room::factory(),
         ];
     }
 }
