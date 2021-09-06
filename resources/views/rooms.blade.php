@@ -3,15 +3,15 @@
 <title>Funkyseats</title>
 
 <body>
-@foreach ($rooms as $room)
-<div class='room'>
-    <h4> Room name: {{$room->name}} </h4>
-    @foreach ($room->seat as $seat)
+    @foreach ($rooms as $room)
+        <div class='room'>
+            <h4> Room name: {{ $room->name }} </h4>
+            @foreach ($room->seat as $seat)
 
-    <p>Seat type: {{ $seat->type}} </p>
-        
+                <p>Seat type: {{ $seat->type }} , seat number: {{ $seat->seat_number }} </p>
+
+            @endforeach
+
     @endforeach
-    
-@endforeach
 
 </body>
