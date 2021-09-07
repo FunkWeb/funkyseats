@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RestrictionDescription extends Seeder
+class RestrictionDescriptionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +14,6 @@ class RestrictionDescription extends Seeder
      */
     public function run()
     {
-        //$table->String('description');
-        //$table->boolean('general');
         DB::table('restriction_descriptions')->insert([
             'created_at' => now(),
             'updated_at' => now(),
