@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Seat extends Model
+class BookingRestriction extends Model
 {
     use HasFactory;
 
-
-    public function seat()
+    public function timeRestriction()
     {
-        return $this->belongsTo(Room::class);
+        return $this->hasMany(TimeRestriction::class);
     }
 
     public function seatRestriction()
