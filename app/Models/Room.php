@@ -13,7 +13,7 @@ class Room extends Model
 
     public function index()
     {
-        return Room::with('seat')->get();
+        return Room::with('seat.seatType')->get();
     }
 
 

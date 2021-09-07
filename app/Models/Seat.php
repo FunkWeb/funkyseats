@@ -10,9 +10,14 @@ class Seat extends Model
     use HasFactory;
 
 
-    public function seat()
+    public function room()
     {
         return $this->belongsTo(Room::class);
+    }
+
+    public function seatType()
+    {
+        return $this->belongsTo(SeatType::class);
     }
 
     public function seatRestriction()

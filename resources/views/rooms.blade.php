@@ -8,7 +8,7 @@
             <h4> Room name: {{ $room->name }} </h4>
             @foreach ($room->seat as $seat)
 
-                <p>Seat type: {{ $seat->type }} , seat number: {{ $seat->seat_number }} </p>
+                <p>Seat type: {{ $seat->seatType->name }} , seat number: {{ $seat->seat_number }} </p>
 
             @endforeach
 
