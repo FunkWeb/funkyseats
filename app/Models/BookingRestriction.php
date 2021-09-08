@@ -16,6 +16,11 @@ class BookingRestriction extends Model
 
     public function seatRestriction()
     {
-        return $this->hasMany(SeatRestrictions::class);
+        return $this->belongsToMany(Seat::class, 'seat_restrictions');
+    }
+
+    public function restrictionDescription()
+    {
+        return $this->belongsTo(RestrictionDescription::class);
     }
 }

@@ -11,6 +11,6 @@ class Equipment extends Model
 
     public function seat()
     {
-        return $this->hasMany(SeatEquipment::class);
+        return $this->belongsToMany(SeatEquipment::class);
     }
 }
