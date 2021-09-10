@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Models\Room;
 
 class RoomController extends Controller
 {
     //
 
-    public function rooms()
+    public function index()
     {
-        $rooms = new \App\Models\Room();
-        return View('rooms', ['rooms' => $rooms->index()]);
+        return View('rooms', ['rooms' => Room::all()]);
     }
 }

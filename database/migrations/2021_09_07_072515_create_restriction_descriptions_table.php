@@ -17,7 +17,7 @@ class CreateRestrictionDescriptionsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->String('description');
+            $table->string('description');
             $table->boolean('general');
         });
     }

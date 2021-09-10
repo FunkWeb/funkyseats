@@ -14,7 +14,4 @@ use App\Http\Controllers\RoomController;
 |
 */
 
-Route::get('/', [RoomController::class, 'rooms']);
-//Route::get('/', function () {
-    //    return view('welcome');
-//});
+Route::get('/', [RoomController::class, 'index']);

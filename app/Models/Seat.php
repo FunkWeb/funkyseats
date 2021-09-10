@@ -22,12 +22,11 @@ class Seat extends Model
 
     public function seatRestriction()
     {
-        return $this->belongsToMany(Restrictions::class, 'seat_restrictions');
+        return $this->belongsToMany(BookingRestriction::class, 'seat_restrictions');
     }
 
     public function seatEquipment()
     {
-        //, 'seat_equipment', 'seat_id', 'equipment_id'
         return $this->belongsToMany(Equipment::class, 'seat_equipment');
     }
 }
