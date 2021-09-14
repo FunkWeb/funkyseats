@@ -18,7 +18,8 @@ class HasRole
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        if (auth()->check() && User::find(auth()->user()->id)->hasRole($role)) {
+        //hasRole might show as error depending on editor/ide, but it works
+        if (auth()->check() && auth()->user()->hasRole($role)) {
             return $next($request);
         }
 
