@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
+use App\Http\Middleware\HasRole;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,9 @@ use App\Http\Controllers\RoomController;
 */
 
 Route::get('/', [RoomController::class, 'index']);
+
+Route::group(['middleware' => 'role:admin'], function () {
+    Route::get('/admin', function () {
+        return View('admin');
+    });
+});
