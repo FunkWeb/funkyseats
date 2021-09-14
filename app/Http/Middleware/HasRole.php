@@ -19,10 +19,10 @@ class HasRole
     public function handle(Request $request, Closure $next, $role)
     {
         $test_object = User::all();
-        if ($test_object[0]->hasRole($role)) {
-            return $next($request);
-        }
+        //if ($test_object[0]->hasRole($role)) {
+        return $next($request);
+        //}
 
-        App::abort(404);
+        //App::abort(404);
     }
 }
