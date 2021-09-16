@@ -20,5 +20,5 @@ Route::get('/', [RoomController::class, 'index']);
 Route::group(['middleware' => 'role:admin'], function () {
     Route::get('/admin', function () {
         return View('admin');
-    });
+    })->name('admin');
 });

@@ -17,6 +17,6 @@ class TimeRestriction extends Model
 
     public function restrictionDescription()
     {
-        return $this->hasOne(RestrictionDescription::class);
+        return $this->belongsTo(RestrictionDescription::class);
     }
 }
