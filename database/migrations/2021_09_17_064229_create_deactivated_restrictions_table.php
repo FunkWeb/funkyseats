@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookingRestrictionsTable extends Migration
+class CreateDeactivatedRestrictionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateBookingRestrictionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('booking_restrictions', function (Blueprint $table) {
+        Schema::create('deactivated_restrictions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->dateTime('from');
+            $table->dateTime('to');
+            $table->foreignId('booking_restriction_id');
             $table->foreignId('restriction_description_id')->nullable();
-            $table->boolean(('needs_approval'));
-            //TODO: Add role restrictions if user roles become a thing 
-            // $table->foreignId('role_restrictions_id')
         });
     }
 
@@ -30,6 +30,6 @@ class CreateBookingRestrictionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('booking_restrictions');
+        Schema::dropIfExists('deactivated_restrictions');
     }
 }

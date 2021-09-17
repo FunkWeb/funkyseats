@@ -22,7 +22,6 @@ class BookingRestrictionFactory extends Factory
     public function definition()
     {
         return [
-            'is_bookable' => (bool)random_int(0, 1),
             'needs_approval' => false,
             'restriction_description_id' => \App\Models\RestrictionDescription::all()->random()->id,
         ];

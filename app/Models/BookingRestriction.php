@@ -14,9 +14,18 @@ class BookingRestriction extends Model
         return $this->hasMany(TimeRestriction::class);
     }
 
+    public function DeactivatedRestriction()
+    {
+        return $this->hasMany(DeactivatedRestriction::class);
+    }
+
     public function seatRestriction()
     {
         return $this->belongsToMany(Seat::class, 'seat_restrictions');
+    }
+    public function roleRestriction()
+    {
+        return $this->belongsToMany(Role::class, 'role_restrictions');
     }
 
     public function restrictionDescription()
