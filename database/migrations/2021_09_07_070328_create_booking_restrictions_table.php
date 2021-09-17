@@ -18,8 +18,6 @@ class CreateBookingRestrictionsTable extends Migration
             $table->timestamps();
             $table->foreignId('restriction_description_id')->nullable();
             $table->boolean(('needs_approval'));
-            //TODO: Add role restrictions if user roles become a thing 
-            // $table->foreignId('role_restrictions_id')
         });
     }
 
