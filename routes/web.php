@@ -14,7 +14,11 @@ use App\Http\Controllers\RoomController;
 |
 */
 
-Route::get('/', [RoomController::class, 'rooms']);
-//Route::get('/', function () {
-    //    return view('welcome');
-//});
+//Route::get('/', [RoomController::class, 'rooms']);
+Route::get('/', function () {
+    return view('static');
+});
+
+Route::get('/{name}', function ($name) {
+    return view('dynamic', ['name' => $name]);
+});
