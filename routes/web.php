@@ -15,10 +15,16 @@ use App\Http\Controllers\RoomController;
 */
 
 //Route::get('/', [RoomController::class, 'rooms']);
-Route::get('/', function () {
-    return view('static');
+//Route::get('/', function () {
+//    return view('static');
+//});
+//
+//Route::get('/name/{name}', function ($name) {
+//    return view('dynamic', ['name' => $name]);
+//});
+
+Route::get('/seats', function () {
+   return view('pages.seats');
 });
 
-Route::get('/{name}', function ($name) {
-    return view('dynamic', ['name' => $name]);
-});
+Route::get('/', [RoomController::Class, 'rooms']);
