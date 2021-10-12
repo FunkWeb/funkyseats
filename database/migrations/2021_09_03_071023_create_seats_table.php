@@ -18,7 +18,7 @@ class CreateSeatsTable extends Migration
             $table->timestamps();
             $table->foreignId('room_id')->constrained();
             $table->string('type');
-            $table->unsignedInteger('seat_number');
+            $table->string('seat_number');
         });
     }
 

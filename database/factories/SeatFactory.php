@@ -23,7 +23,7 @@ class SeatFactory extends Factory
     public function definition()
     {
         return [
-            'type' => $this->faker->firstName(),
+            'type' => "Workstation",
             'room_id' => Room::factory(),
             'seat_number' => mt_rand(1, 50),
         ];

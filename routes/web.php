@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\SeatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +15,10 @@ use App\Http\Controllers\RoomController;
 |
 */
 
-//Route::get('/', [RoomController::class, 'rooms']);
-//Route::get('/', function () {
-//    return view('static');
-//});
-//
-//Route::get('/name/{name}', function ($name) {
-//    return view('dynamic', ['name' => $name]);
-//});
-
 Route::get('/seats', function () {
    return view('pages.seats');
 });
 
-Route::get('/', [RoomController::Class, 'rooms']);
+Route::get('/', [RoomController::class, 'rooms']);
 
-//Route::get('/room/{id}', [SeatController::Class, 'index']);
+Route::get('/room/{id}', [SeatController::class, 'index']);

@@ -10,6 +10,6 @@ class SeatController extends Controller
     //
     public function index($id)
     {
-        return view('pages.seat', ['seats' => Seat::where('room_id', $id)->get()]);
+        return view('pages.seats', ['seats' => Seat::where('room_id', $id)->get()]);
     }
 }
