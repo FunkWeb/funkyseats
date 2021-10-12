@@ -83,17 +83,14 @@
         req.onload = function () {
           resolve(req.response)
         }
-        req.onerror =
-          req.onabort =
-          req.ontimeout =
-            function (err) {
-              if (resolve === reject) {
-                // Not using Promises
-                reject(null, err)
-              } else {
-                reject(err)
-              }
-            }
+        req.onerror = req.onabort = req.ontimeout = function (err) {
+          if (resolve === reject) {
+            // Not using Promises
+            reject(null, err)
+          } else {
+            reject(err)
+          }
+        }
         req.send(options.body)
       }
       if (global.Promise && typeof callback !== 'function') {
