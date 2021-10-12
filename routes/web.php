@@ -28,3 +28,5 @@ Route::get('/seats', function () {
 });
 
 Route::get('/', [RoomController::Class, 'rooms']);
+
+//Route::get('/room/{id}', [SeatController::Class, 'index']);
