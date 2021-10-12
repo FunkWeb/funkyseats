@@ -19,6 +19,6 @@ Route::get('/seats', function () {
    return view('pages.seats');
 });
 
-Route::get('/', [RoomController::class, 'rooms']);
+Route::get('/', [RoomController::class, 'index']);
 
 Route::get('/room/{id}', [SeatController::class, 'index']);
