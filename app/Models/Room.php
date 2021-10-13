@@ -10,6 +10,15 @@ class Room extends Model
 {
     use HasFactory;
 
+<<<<<<< HEAD
+=======
+    protected $with = [
+        'seat.seatType',
+        'seat.seatEquipment',
+        'seat.seatRestriction.restrictionDescription'
+    ];
+
+>>>>>>> feature-db
     public function seat()
     {
         return $this->HasMany(Seat::class);

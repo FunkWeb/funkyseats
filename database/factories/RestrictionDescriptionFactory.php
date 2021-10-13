@@ -2,18 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Seat;
-use App\Models\Room;
+use App\Models\RestrictionDescription;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SeatFactory extends Factory
+class RestrictionDescriptionFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Seat::class;
+    protected $model = RestrictionDescription::class;
 
     /**
      * Define the model's default state.
@@ -23,9 +22,9 @@ class SeatFactory extends Factory
     public function definition()
     {
         return [
-            'seat_type_id' => \App\Models\SeatType::all()->first()->id,
-            'room_id' => \App\Models\Room::all()->random()->id,
-            'seat_number' => mt_rand(1, 50),
+            'name' => $this->faker->name(),
+            'description' => $this->faker->sentence(),
+            'general' => false,
         ];
     }
 }

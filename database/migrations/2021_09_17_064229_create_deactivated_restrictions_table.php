@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeatsTable extends Migration
+class CreateDeactivatedRestrictionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateSeatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('seats', function (Blueprint $table) {
+        Schema::create('deactivated_restrictions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('room_id')->constrained();
-            $table->foreignId('seat_type_id');
-            $table->text('seat_number');
+            $table->dateTime('from');
+            $table->dateTime('to');
+            $table->foreignId('booking_restriction_id');
+            $table->foreignId('restriction_description_id')->nullable();
         });
     }
 
@@ -29,6 +30,6 @@ class CreateSeatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seats');
+        Schema::dropIfExists('deactivated_restrictions');
     }
 }
