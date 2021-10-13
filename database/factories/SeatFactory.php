@@ -24,7 +24,7 @@ class SeatFactory extends Factory
     {
         return [
             'seat_type_id' => \App\Models\SeatType::all()->first()->id,
-            'room_id' => \App\Models\Room::all()->random()->id,
+            'room_id' => Room::factory(),
             'seat_number' => mt_rand(1, 50),
         ];
     }

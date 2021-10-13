@@ -16,12 +16,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        $numberOfRooms = 4;
         \App\Models\User::factory(10)->create();
 
-        $rooms = \App\Models\Room::factory(2)->create();
+        $rooms = \App\Models\Room::factory($numberOfRooms)->create();
 
         $this->call(SeatTypeSeeder::class);
-        \App\Models\Seat::factory(10)->create();
+        for ($i = 1; $i <= $numberOfRooms; $i++) {
+            \App\Models\Seat::factory(10)->create(["room_id" => $i]);
+        }
 
         //Requires users and seats to not crash
         \App\Models\Booking::factory(4)->create();
