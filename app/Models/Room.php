@@ -10,12 +10,6 @@ class Room extends Model
 {
     use HasFactory;
 
-    protected $with = [
-        'seat.seatType',
-        'seat.seatEquipment',
-        'seat.seatRestriction.restrictionDescription'
-    ];
-
     public function seat()
     {
         return $this->HasMany(Seat::class);

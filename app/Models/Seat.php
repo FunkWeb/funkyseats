@@ -9,10 +9,22 @@ class Seat extends Model
 {
     use HasFactory;
 
+    protected $with = [
+        'seatType',
+        'booking',
+        //'seat.seatEquipment',
+        //'seat.seatRestriction.restrictionDescription'
+    ];
+
 
     public function room()
     {
         return $this->belongsTo(Room::class);
+    }
+
+    public function booking()
+    {
+        return $this->hasMany(Booking::class);
     }
 
     public function seatType()
