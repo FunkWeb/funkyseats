@@ -15,10 +15,6 @@ use App\Http\Controllers\SeatController;
 |
 */
 
-Route::get('/seats', function () {
-   return view('pages.seats');
-});
-
 Route::get('/', [RoomController::class, 'index']);
 
-Route::get('/room/{id}', [SeatController::class, 'index']);
+Route::get('/room/{id}', [RoomController::class, 'show']);
