@@ -11,7 +11,7 @@
 	</ol>
 	<!-- end breadcrumb -->
 	<!-- begin page-header -->
-	<h4 class="fw-600 text-center">Choose a room <!-- <small>header small text goes here...</small> --></h4>
+	<h4 class="fw-600 text-center pr-20px">Choose a room <!-- <small>header small text goes here...</small> --></h4>
 	<!-- end page-header -->
 
 	<!-- begin panel -->
@@ -31,6 +31,7 @@
 	</div>
 	-->
 	<!-- end panel -->
+
 	<div class='d-flex flex-wrap justify-content-around mt-30px'>
 	@foreach ($rooms as $room)
 	@component('includes.component.heading-panel')
