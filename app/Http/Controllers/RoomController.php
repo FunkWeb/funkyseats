@@ -16,6 +16,14 @@ class RoomController extends Controller
 
     public function show($id)
     {
-        return View('pages/seats', ['room' => Room::where('id', $id)->with('seat')->get()]);
+        return View(
+            'pages/seats',
+            ['room' => Room::where('id', $id)
+                ->with(['seat' => function ($query) {
+                    $query->orderByRaw('CHAR_LENGTH(seat_number)');
+                    $query->orderBy('seat_number', 'asc');
+                }])
+                ->get()]
+        );
     }
 }
