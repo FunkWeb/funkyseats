@@ -14,7 +14,6 @@ use App\Http\Controllers\RoomController;
 |
 */
 
-//Route::get('/', [RoomController::class, 'rooms']);
 Route::get('/', function () {
     return view('static');
 });
@@ -22,3 +21,6 @@ Route::get('/', function () {
 Route::get('/{name}', function ($name) {
     return view('dynamic', ['name' => $name]);
 });
+
+Route::get('auth/google', [GoogleController::class, 'googleRedirect']);
+Route::get('callback/google', [GoogleController::class, 'googleCallback']);
