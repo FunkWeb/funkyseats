@@ -18,23 +18,14 @@ class RoomController extends Controller
 
     public function index_withCountSeats()
     {
-        $testing =  Room::withCount(['seat' => function ($q) {
+        return view('pages/home', ['rooms' => Room::withCount(['seat' => function ($q) {
             $q
                 ->whereDoesntHave("booking", function ($query) {
                     $query
-                        ->where('from',  '<=', '2020-06-01 00:00:00')
-                        ->where('to',  '>=', date("Y-m-d h:i:s"));
+                        ->where('from',  '<=', Carbon::now())
+                        ->where('to',  '>=', Carbon::now());
                 });
-        }]);
-
-        dd($testing);
-
-
-        return View('pages/home', ['rooms' => Room::withCount(['seat' => function ($q) {
-            $q
-                ->where('from',  '<=', date("Y-m-d h:i:s"))
-                ->where('to',  '>=', date("Y-m-d h:i:s"));
-        }])]);
+        }])->get()]);
     }
 
     public function show($id)

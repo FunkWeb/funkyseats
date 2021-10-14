@@ -23,7 +23,7 @@ class BookingFactory extends Factory
     {
         return [
             'from' => now(),
-            'to' => now()->addHours(4),
+            'to' => now()->addDay(),
             'approved' => true,
             'seat_id' => \App\Models\Seat::all()->random()->id,
             'user_id' => \App\Models\User::all()->random()->id,
