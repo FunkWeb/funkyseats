@@ -33,8 +33,8 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        //TODO: Redirect url might need to be dynamic
-        'redirect' => 'localhost/callback/google',
+        //TODO: make this call localhost/callback/google
+        'redirect' => 'http://localhost',
     ],
 
 

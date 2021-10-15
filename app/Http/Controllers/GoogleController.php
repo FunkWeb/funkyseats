@@ -22,8 +22,8 @@ class GoogleController extends Controller
         if ($searchUser) {
 
             Auth::login($searchUser);
-
-            return redirect('/home');
+            //TODO: make these redirect somewhere else after services callback is fixed
+            return redirect('/auth');
         } else {
             $googleUser = User::create([
                 'name' => $user->name,
@@ -33,9 +33,10 @@ class GoogleController extends Controller
                 'password' => encrypt('my_google')
             ]);
 
+            //TODO: make these redirect somewhere else after services callback is fixed
             Auth::login($googleUser);
 
-            return redirect('/home');
+            return redirect('/auth');
         }
     }
 }
