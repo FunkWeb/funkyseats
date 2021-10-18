@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
-use App\Http\Controllers\SeatController;
 use App\Http\Middleware\HasRole;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,7 @@ Route::group(['middleware' => 'role:admin'], function () {
         return View('admin');
     })->name('admin');
 });
+Route::get('/auth/logout', [LogoutController::class, 'perform']);
+
+Route::get('/auth/google', [GoogleController::class, 'googleRedirect']);
+Route::get('/callback/google', [GoogleController::class, 'googleCallback']);
