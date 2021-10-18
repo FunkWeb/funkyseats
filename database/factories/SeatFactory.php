@@ -23,7 +23,7 @@ class SeatFactory extends Factory
     public function definition()
     {
         return [
-            'type' => "Workstation",
+            'seat_type_id' => \App\Models\SeatType::all()->first()->id,
             'room_id' => Room::factory(),
             'seat_number' => mt_rand(1, 50),
         ];
