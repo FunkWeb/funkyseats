@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class GoogleController extends Controller
 {
-    public function googleRedirect(Request $request)
+    public function googleRedirect()
     {
-        Session::put('redirect', $request->input('redirectTo'));
+        Session::put('redirect', url()->previous());
         return Socialite::driver('google')->redirect();
     }
     public function googleCallback()
@@ -26,7 +26,6 @@ class GoogleController extends Controller
         if ($searchUser) {
 
             Auth::login($searchUser);
-            //TODO: make these redirect somewhere else after services callback is fixed
             return redirect($redirectAdress);
         } else {
             $googleUser = User::create([
@@ -36,8 +35,6 @@ class GoogleController extends Controller
                 'social_type' => 'google',
                 'password' => encrypt('my_google')
             ]);
-
-            //TODO: make these redirect somewhere else after services callback is fixed
             Auth::login($googleUser);
 
             return redirect($redirectAdress);
