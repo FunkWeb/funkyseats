@@ -33,8 +33,7 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        //TODO: make this call localhost/callback/google
-        'redirect' => 'http://localhost',
+        'redirect' => 'http://localhost/callback/google',
     ],
 
 

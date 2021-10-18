@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,8 @@ class GoogleController extends Controller
     }
     public function googleCallback()
     {
+        $redirectAdress = Session::get('redirect') ?? "/";
+        Session::forget('redirect');
         $user = Socialite::driver('google')->user();
 
         $searchUser = User::where('social_id', $user->id)->first();
@@ -24,7 +27,7 @@ class GoogleController extends Controller
 
             Auth::login($searchUser);
             //TODO: make these redirect somewhere else after services callback is fixed
-            return redirect(Session::get('redirect'));
+            return redirect($redirectAdress);
         } else {
             $googleUser = User::create([
                 'name' => $user->name,
@@ -37,8 +40,7 @@ class GoogleController extends Controller
             //TODO: make these redirect somewhere else after services callback is fixed
             Auth::login($googleUser);
 
-            return redirect(Session::get('redirect'));
+            return redirect($redirectAdress);
         }
-        Session::forget('redirect');
     }
 }

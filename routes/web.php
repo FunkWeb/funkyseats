@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +17,14 @@ use App\Http\Controllers\GoogleController;
 */
 
 //todo: temporary "home" due to callback using "/" root route
-Route::get('/auth', function () {
+Route::get('/', function () {
     return view('authorized');
 });
 
 Route::get('/{name}', function ($name) {
     return view('dynamic', ['name' => $name]);
 });
+Route::get('/auth/logout', [LogoutController::class, 'perform']);
 
 Route::get('/auth/google', [GoogleController::class, 'googleRedirect']);
-//TODO: route should be /callback/google when it's updated in google site
-Route::get('/', [GoogleController::class, 'googleCallback']);
+Route::get('/callback/google', [GoogleController::class, 'googleCallback']);
