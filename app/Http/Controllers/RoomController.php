@@ -34,7 +34,11 @@ class RoomController extends Controller
             'pages/seats',
             ['room' => Room::where('id', $id)
                 ->with(['seat' => function ($query) {
-                    $query->orderByRaw('CHAR_LENGTH(seat_number)');
+                    if (env('DB_CONNECTION') == "mysql") {
+                        $query->orderByRaw('CHAR_LENGTH(seat_number)');
+                    } else {
+                        $query->orderByRaw('LENGTH(seat_number)');
+                    }
                     $query->orderBy('seat_number', 'asc');
                 }])
                 ->get()]
