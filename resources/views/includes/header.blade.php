@@ -65,12 +65,17 @@
 			@include('includes.component.header-language-bar')
 		@endisset
 
-		<div class="navbar-item navbar-user dropdown">
+		<div class="navbar-item navbar-user dropdown me-20px">
 			<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
 				<div class="image image-icon bg-gray-800 text-gray-600">
 					<i class="fa fa-user"></i>
 				</div>
-				<span>User</span>
+				<!-- { login
+				? <span class="ps-6px">User</span>
+				@include('includes.component.header-dropdown-profile')
+				: <span class="ps-6px">Log in</span>
+				} -->
+				<span class="ps-6px">User</span>
 			</a>
 			@include('includes.component.header-dropdown-profile')
 		</div>

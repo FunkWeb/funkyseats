@@ -1,46 +1,26 @@
+<link href='/assets/css/seat-style.css' rel='stylesheet'>
+<script src='/assets/js/seat-booking.js' type='text/javascript'></script>
+
 @extends('layouts.default')
 
 @section('title', 'Home Page')
 
 @section('content')
-    <!-- begin breadcrumb -->
-    <ol class="breadcrumb float-xl-right">
-        <!-- <li class="breadcrumb-item"><a href="javascript:;">Home</a></li> -->
-        <!-- <li class="breadcrumb-item"><a href="javascript:;">Library</a></li>
-                                          <li class="breadcrumb-item active"><a href="javascript:;">Data</a></li> -->
-    </ol>
-    <!-- end breadcrumb -->
-    <!-- begin page-header -->
-    <h4 class="fw-600 text-center mt-20px">Choose a seat
-        <!-- <small>header small text goes here...</small> -->
-    </h4>
-    <!-- end page-header -->
-
-    <!-- begin panel -->
-    <!-- <div class="panel panel-inverse">
-                                          <div class="panel-heading">
-                                           <h4 class="panel-title">Panel Title here</h4>
-                                           <div class="panel-heading-btn">
-                                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
-                                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-                                           </div>
-                                          </div>
-                                          <div class="panel-body">
-                                           Panel Content Here
-                                          </div>
-                                         </div>
-                                         -->
-    <!-- end panel -->
-
-    <div class='d-flex flex-wrap justify-content-around mt-30px'>
-        @foreach ($room[0]->seat as $seat)
-            @component('includes.component.seat-component')
-                @slot('seat_number')
-                    {{ $seat->seat_number }}
-                @endslot
-            @endcomponent
-        @endforeach
-    </div>
-@endsection
+    <ol class="breadcrumb float-xl-right"></ol>
+    <h3 class="fw-800 text-center mt-30px">{{ $room[0]->name }}</h3>
+    <h5 class="text-center mt-10px position-relative" style="color: #9f9e9e">
+        <a href='/'><i class="fas fa-chevron-left" style='position: absolute; left: 64px; color: #9f9e9e'></i></a>
+        choose a seat
+    </h5>
+    <div>
+        <div class='d-flex flex-wrap justify-content-around mt-20px'>
+            @foreach ($room[0]->seat as $seat)
+                @component('includes.component.seat-component')
+                    @slot('seat_number')
+                        {{ $seat->seat_number }}
+                    @endslot
+                @endcomponent
+            @endforeach
+        </div>
+        <!-- <div class='position-absolute bookingWindow'>Hei<div> -->
+    @endsection
