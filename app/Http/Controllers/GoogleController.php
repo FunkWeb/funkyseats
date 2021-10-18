@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class GoogleController extends Controller
 {
-    public function googleRedirect()
+    public function googleRedirect(Request $request)
     {
+        Session::put('redirect', $request->input('redirectTo'));
         return Socialite::driver('google')->redirect();
     }
     public function googleCallback()
@@ -23,7 +24,7 @@ class GoogleController extends Controller
 
             Auth::login($searchUser);
             //TODO: make these redirect somewhere else after services callback is fixed
-            return redirect('/auth');
+            return redirect(Session::get('redirect'));
         } else {
             $googleUser = User::create([
                 'name' => $user->name,
@@ -36,7 +37,8 @@ class GoogleController extends Controller
             //TODO: make these redirect somewhere else after services callback is fixed
             Auth::login($googleUser);
 
-            return redirect('/auth');
+            return redirect(Session::get('redirect'));
         }
+        Session::forget('redirect');
     }
 }
