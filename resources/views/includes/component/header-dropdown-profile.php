@@ -4,5 +4,5 @@
 	<a href="javascript:;" class="dropdown-item">Calendar</a>
 	<a href="javascript:;" class="dropdown-item">Setting</a>
 	<div class="dropdown-divider"></div>
-	<a href="javascript:;" class="dropdown-item">Log Out</a>
+	<a href="/auth/logout" class="dropdown-item position-relative">Log Out</a>
 </div>
