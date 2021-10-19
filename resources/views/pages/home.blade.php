@@ -33,14 +33,18 @@
                                      </div>
                                      -->
     <!-- end panel -->
+    <!-- {{ $rooms[3]->seat_count }} -->
     <div class='d-flex flex-wrap justify-content-around mt-30px'>
         @foreach ($rooms as $room)
-            @component('includes.component.heading-panel')
+            @component('includes.component.home-component')
                 @slot('id')
                     {{ $room->id }}
                 @endslot
                 @slot('name')
                     {{ $room->name }}
+                @endslot
+                @slot('seatCount')
+                 {{ $room->seat_count }}
                 @endslot
             @endcomponent
         @endforeach
