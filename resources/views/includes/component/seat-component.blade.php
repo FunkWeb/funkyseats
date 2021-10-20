@@ -5,6 +5,7 @@
                 <div class='seat-bg-color'>
                     <div class='pt-30px'>{{ $type ?? '' }}</div>
                     <div class='seat-num'><b>Seat {{ $seat_number ?? '' }}</b></div>
+                     <!-- <div class='seat-num'><b>booking {{ $booking ?? '' }}</b></div> -->
                     <form> <button class='booking-btn' type='submit'>Book a seat</button> </form>
                 </div>
 </div>

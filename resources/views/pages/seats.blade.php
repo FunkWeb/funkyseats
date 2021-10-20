@@ -16,13 +16,13 @@
         @foreach ($room[0]->seat as $seat)
             @component('includes.component.seat-component')
                 @slot('type')
-                    {{ $seat->type }}
-                @endslot
-                @slot('room_id')
-                    {{ $seat->room_id }}
+                    {{ $seat->seatType->name }}
                 @endslot
                 @slot('seat_number')
                     {{ $seat->seat_number }}
+                @endslot
+                @slot('booking')
+                  {{ $seat->Booking }}
                 @endslot
             @endcomponent
         @endforeach
