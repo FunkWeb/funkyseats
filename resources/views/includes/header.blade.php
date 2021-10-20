@@ -70,7 +70,13 @@
 				<div class="image image-icon bg-gray-800 text-gray-600">
 					<i class="fa fa-user"></i>
 				</div>
+				@if (!Auth::check())
 				<span><a href="/auth/google" style='text-decoration: none; margin-top: 18px'>Log In</a></span>
+				@else
+				<span><a href="/auth/google" style='text-decoration: none; margin-top: 18px'>
+				{{ Auth::user()->name}}
+				</a></span>
+				@endif
 			@include('includes.component.header-dropdown-profile')
 		</div>
 
