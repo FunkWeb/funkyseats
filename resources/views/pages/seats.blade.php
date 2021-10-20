@@ -22,7 +22,7 @@
                     {{ $seat->seat_number }}
                 @endslot
                 @slot('booking')
-                  {{ $seat->Booking }}
+                  {{ $seat->booking }}
                 @endslot
             @endcomponent
         @endforeach

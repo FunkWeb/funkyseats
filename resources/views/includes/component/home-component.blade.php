@@ -2,7 +2,13 @@
     <a href="/room/{{ $id ?? '' }}" style='text-decoration: none;'>
     <div  style='width: 224px; height: 160px; background-image: -webkit-linear-gradient(top, rgb(31 25 61 / 70%), rgba(217 134 10 / 40%))'>
     <div style='font-size:16px; padding-top: 62px'>{{ $name }}</div>
-    <div style='font-size:14px; padding-top: 10px; color:white; text-transform: lowercase;'> available: {{ $seatCount }} </div>
+    <div style='font-size:14px; padding-top: 10px; color:white; text-transform: lowercase;'>
+    @if ($seatCount)
+    available: {{ $seatCount }}
+    @else
+    no available seats
+    @endif
+    </div>
     </div>
     </a>
 </div>
