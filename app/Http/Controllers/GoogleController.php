@@ -24,9 +24,7 @@ class GoogleController extends Controller
         $searchUser = User::where('social_id', $user->id)->first();
 
         if ($searchUser) {
-
             Auth::login($searchUser);
-            return redirect($redirectAdress);
         } else {
             $googleUser = User::create([
                 'name' => $user->name,
@@ -36,8 +34,8 @@ class GoogleController extends Controller
                 'password' => encrypt('my_google')
             ]);
             Auth::login($googleUser);
-
-            return redirect($redirectAdress);
         }
+        Session::put('avatar', $user->getAvatar());
+        return redirect($redirectAdress);
     }
 }
