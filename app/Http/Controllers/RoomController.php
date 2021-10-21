@@ -40,6 +40,10 @@ class RoomController extends Controller
                         $query->orderByRaw('LENGTH(seat_number)');
                     }
                     $query->orderBy('seat_number', 'asc');
+                }, 'seat.booking' => function ($query) {
+                    $query
+                        ->where('from', '<=', Carbon::now())
+                        ->where('to', '>=', Carbon::now());
                 }])
                 ->get()]
         );
