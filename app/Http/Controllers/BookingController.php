@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Rules\AlreadyBookedRule;
 use Illuminate\Http\Request;
+
 use Carbon\Carbon;
 
 class BookingController extends Controller
@@ -45,12 +47,11 @@ class BookingController extends Controller
         $request->merge([
             'user_id' => auth()->user()->id,
         ]);
-        // $validatedData = $request->validate([
-        //     'title' => ['required', 'unique:posts', 'max:255'],
-        //     'body' => ['required'],
-        //     'user_id' => Rule::unique('users')->where(function ($query) use ($request) { return $query->where('company_id', $request->company_id)}),
-        // ]);
-
+        $request->validate([
+            //     'title' => ['required', 'unique:posts', 'max:255'],
+            //     'body' => ['required'],
+            'user_id' => [new AlreadyBookedRule()],
+        ]);
         $booking = new Booking;
 
         $booking->from = Carbon::today();
