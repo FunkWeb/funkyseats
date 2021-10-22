@@ -53,11 +53,12 @@
 
 	<!-- BEGIN header-nav -->
 	<div class="navbar-nav">
-		<div class="navbar-item dropdown">
-			<a href="#" data-bs-toggle="dropdown" class="navbar-link dropdown-toggle icon">
+	    <div class="navbar-item dropdown">
+			<!--<a href="#" data-bs-toggle="dropdown" class="navbar-link dropdown-toggle icon">
 				<i class="fa fa-bell"></i>
 				<span class="badge">0</span>
 			</a>
+			-->
 			@include('includes.component.header-dropdown-notification')
 		</div>
 
@@ -65,16 +66,20 @@
 			@include('includes.component.header-language-bar')
 		@endisset
 
-		<div class="navbar-item navbar-user dropdown me-20px d-flex">
+		<div class="navbar-item navbar-user dropdown me-30px d-flex">
 			<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-				<div class="image image-icon bg-gray-800 text-gray-600">
-					<i class="fa fa-user"></i>
+                @if (Auth::check())
+                <img src="{{ Auth::user()->user_thumbnail }}" style="width:30px; height:30px"/>
+                @else
+                <div class="image image-icon bg-gray-800 text-gray-600">
+                    <i class="fa fa-user"></i>
 				</div>
+                @endif
 				@if (!Auth::check())
 				<span><a href="/auth/google" style='text-decoration: none; margin-top: 18px'>Log In</a></span>
 				@else
-				<span><a href="/auth/google" style='text-decoration: none; margin-top: 18px'>
-				{{ Auth::user()->name}}
+				<span><a style='text-decoration: none; margin-top: 18px'>
+				{{ Auth::user()->name }}
 				</a></span>
 				@endif
 			@include('includes.component.header-dropdown-profile')
