@@ -3,7 +3,7 @@
     <div  style='width: 224px; height: 160px; background-image: -webkit-linear-gradient(top, rgb(31 25 61 / 70%), rgba(217 134 10 / 40%))'>
     <div style='font-size:16px; padding-top: 62px'>{{ $name }}</div>
     <div style='font-size:14px; padding-top: 10px; color:white; text-transform: lowercase;'>
-    @if ($seatCount)
+    @if ($seatCount != '1')
     available: {{ $seatCount }}
     @else
     no available seats
