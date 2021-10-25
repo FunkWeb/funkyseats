@@ -63,13 +63,6 @@ class BookingController extends Controller
         $booking->save();
 
         return back()->with('success', 'You booked the seat successfully');
-
-        //        Booking::create([
-        //            'from' => Carbon::today(),
-        //            'to' => Carbon::tomorrow(),
-        //            'seat_id' => $seat_id,
-        //            'user_id' => Auth()->user()->id,
-        //        ]);
     }
 
     /**
