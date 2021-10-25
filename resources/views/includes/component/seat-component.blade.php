@@ -1,11 +1,12 @@
 <link href='/assets/css/seat-style.css' rel='stylesheet'>
-<script src='/assets/js/seat-booking.js' type='text/javascript'></script>
 
 <div class='text-center text-light text-uppercase mt-30px seat-container' onClick='bookSeat()'>
     @if ($booking == '[]' && !Auth::check())
             <div class='available-seat'>
         @elseif ($booking == '[]' && Auth::check())
             <div class='seat-bg-color'>
+        @elseif ( (string)Auth::user()->id  ==  $booker_id )
+            <div class='booked-by-me'>
         @else
             <div class='booked-seat'>
     @endif
