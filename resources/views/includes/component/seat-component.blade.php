@@ -5,7 +5,7 @@
             <div class='available-seat'>
         @elseif ($booking == '[]' && Auth::check())
             <div class='seat-bg-color'>
-        @elseif ( (string)Auth::user()->id  ==  $booker_id )
+        @elseif ( Auth::check() && (string)Auth::user()->id ==  $booker_id ?? '')
             <div class='booked-by-me'>
         @else
             <div class='booked-seat'>

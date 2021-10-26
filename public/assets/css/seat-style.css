@@ -72,22 +72,29 @@
     transition: .6s;
 }
 
-.error-window {
-    position: relative;
-    padding: 4px;
-    top: 0;
-    left: 35px;
+.error-window, .booked-seat-successfully {
+    position: absolute;
+    padding: 40px 15px 15px;
+    top: -136px;
+    left: 282px;
     width: 224px;
-    height: 40px;
-    border: 1px solid #a61c3c;
-    font-size: 12px;
+    height: max-content;
+    color: #9f9e9e;
+    background-color: white;
+    border-bottom: 1px solid #9f9e9e;
+    font-size: 14px;
     text-align: center;
     animation-name: example;
-    animation-duration: 2s;
+    animation-duration: 5s;
 }
 
 @keyframes example {
-    0%   {background-color: transparent; left:35px; top:-30px;}
-    50%  {background-color: transparent; left:35px; top:30px;}
-    100%  {background-color: transparent; left:35px; top:0;}
+    0%   {background-color: white; right:0; top: -136px;}
+    50%  {background-color: white; left:282px; top:30px;}
+    100%  {background-color: white; left:282px; top:-136px;}
+}
+
+.error-title, .success-title {
+    padding-top: 10px;
+    color: black;
 }

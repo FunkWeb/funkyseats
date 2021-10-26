@@ -8,8 +8,17 @@
 @section('content')
     <ol class="breadcrumb float-xl-right"></ol>
     @error('user_id')
-    <div class="error-window">{{ $message }} </div>
+    <div class="error-window">
+        <p class="error-title"><b> Error </b></p>
+           {{ $message }}
+    </div>
     @enderror
+    @if (session('success'))
+    <div class="booked-seat-successfully">
+        <p class="success-title"><b> Great job! </b></p>
+        {{ session('success') }}
+    </div>
+    @endif
     <h3 class="fw-800 text-center mt-30px">{{ $room[0]->name }}</h3>
     <h5 class="text-center mt-10px position-relative" style="color: #9f9e9e">
         <a href='/'><i class="fas fa-chevron-left" style='position: absolute; left: 64px; color: #9f9e9e'></i></a>
