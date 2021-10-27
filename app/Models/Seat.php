@@ -11,7 +11,7 @@ class Seat extends Model
 
     protected $with = [
         'seatType',
-        'booking',
+        //'booking',
         //'seat.seatEquipment',
         //'seat.seatRestriction.restrictionDescription'
     ];

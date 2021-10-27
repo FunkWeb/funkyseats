@@ -16,6 +16,11 @@ class RoomController extends Controller
         return View('pages/home', ['rooms' => Room::all()]);
     }
 
+    public function edit()
+    {
+        return View('pages/admin/edit_rooms', ['rooms' => Room::all()]);
+    }
+
     public function index_withCountSeats()
     {
         return view('pages/home', ['rooms' => Room::withCount(['seat' => function ($q) {

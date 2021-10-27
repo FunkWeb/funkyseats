@@ -6,6 +6,7 @@ use App\Http\Middleware\HasRole;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\SeatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,7 @@ Route::get('/auth/google', [GoogleController::class, 'googleRedirect'])->name('l
 Route::get('/callback/google', [GoogleController::class, 'googleCallback']);
 
 Route::post('/booking/seat/{seat_id}', [BookingController::class, 'store']);
+
+
+Route::get('/rooms/edit', [RoomController::class, 'edit']);
+Route::get('/room/{id}/seats/edit', [SeatController::class, 'edit']);
