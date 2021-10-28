@@ -1,0 +1,57 @@
+.submit-changes-btn {
+    padding: 4px;
+    margin: 22px auto 0;
+    width: 100px;
+    font-size: 12px;
+    border: 1px solid white;
+    text-align: center;
+}
+
+input {
+    padding-top: 62px;
+    -webkit-appearance: none;
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+
+input, input::placeholder {
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.box-style:hover input {
+    color: black;
+}
+
+.box-style div {
+    width: 224px;
+    height: 160px;
+    background-size: cover;
+    cursor: pointer;
+    border: none;
+}
+
+.edit-box {
+    position: relative;
+}
+
+.edit-box:hover, .box-style:hover {
+    color: black;
+    background-color: white;
+    background-image: none;
+    cursor: pointer;
+}
+
+i {
+    position: absolute;
+    display: flex;
+    right: 11px;
+    top: 13px;
+}
+
+.delete-btn {
+    z-index: 100;
+}
