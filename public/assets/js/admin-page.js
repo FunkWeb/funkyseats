@@ -1,7 +1,7 @@
 function deleteRoom() {
-    let classNameElement = document.getElementsByClassName('box-style');
-    for (let i = 0; i < classNameElement.length; i++) {
-       classNameElement[i].remove()
-        break;
-    }
+    document.getElementsByClassName('box-style')[0].remove()
+}
+
+function deleteSeat() {
+    document.getElementsByClassName('admin-seat-bg-color')[0].remove()
 }

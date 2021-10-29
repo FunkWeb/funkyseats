@@ -55,3 +55,29 @@ i {
 .delete-btn {
     z-index: 100;
 }
+
+.admin-seat-bg-color {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background-color: #9f9e9e;
+    border: 3px solid #b2b2b2;
+    cursor: pointer;
+}
+
+.admin-seat-bg-color button {
+    margin-top: 14px;
+}
+
+.edit-seat-type {
+    margin-top:28px;
+    outline: none;
+    border: none;
+    color: white;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+.edit-seat-num {
+    padding-top: 16px;
+}

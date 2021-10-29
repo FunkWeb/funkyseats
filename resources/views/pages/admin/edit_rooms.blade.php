@@ -8,8 +8,8 @@
 
 @section('content')
 <ol class="breadcrumb float-xl-right"></ol>
-<h5 class="text-center mt-10px position-relative" style="color: #9f9e9e">
-    <a href='/rooms/edit'><i class="fas fa-chevron-left" style='position: absolute; left: 64px; color: #9f9e9e'></i></a>
+<h5 class="text-center mt-10px position-relative" style="color: #9f9e9e;">
+        <a href='/'><i class="fas fa-chevron-left" style='position: absolute; left: -648px; color: #9f9e9e'></i></a>
     Edit room
 </h5>
 <div>
