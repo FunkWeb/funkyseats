@@ -1,5 +1,5 @@
 <div class='text-center text-light text-uppercase mt-30px seat-container admin-seat-bg-color'
-     style="background-image: url({{ asset('images/office.jpeg') }})">
+     style="background-image: url({{ asset('images/office.jpeg')}})">
     <div>
         <i class="far fa-trash-alt" onclick="deleteSeat()"></i>
         <select class='edit-seat-type'>

@@ -2,13 +2,13 @@
 
 <div class='text-center text-light text-uppercase mt-30px seat-container' onClick='bookSeat()'>
     @if ($booking == '[]' && !Auth::check())
-            <div class='available-seat'>
+            <div class='available-seat seat-container'>
         @elseif ($booking == '[]' && Auth::check())
-            <div class='seat-bg-color'>
+            <div class='seat-bg-color seat-container'>
         @elseif ( Auth::check() && (string)Auth::user()->id ==  $booker_id ?? '')
-            <div class='booked-by-me'>
+            <div class='booked-by-me seat-container'>
         @else
-            <div class='booked-seat'>
+            <div class='booked-seat seat-container'>
     @endif
     <div class='seat-type-btn'>{{ $type ?? '' }}</div>
     <div class='seat-num'><b>Seat {{ $seat_number ?? '' }}</b></div>

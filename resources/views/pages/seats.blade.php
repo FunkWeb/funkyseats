@@ -1,5 +1,5 @@
 <link href='/assets/css/seat-style.css' rel='stylesheet'>
-<script src='/assets/js/seat-booking.js' type='text/javascript'></script>
+<script type='text/javascript' src='/assets/js/seat-booking.js'></script>
 
 @extends('layouts.default')
 
@@ -9,19 +9,19 @@
     <ol class="breadcrumb float-xl-right"></ol>
     @error('user_id')
     <div class="error-window">
-        <p class="error-title"><b> Error </b></p>
+        <p class="error-title"><b>Error</b></p>
            {{ $message }}
     </div>
     @enderror
     @if (session('success'))
     <div class="booked-seat-successfully">
-        <p class="success-title"><b> Great job! </b></p>
+        <p class="success-title"><b>Great job!</b></p>
         {{ session('success') }}
     </div>
     @endif
-    <h3 class="fw-800 text-center mt-30px">{{ $room[0]->name }}</h3>
+    <h3 class="fw-800 text-center mt-30px" style="font-size: 20px">{{ $room[0]->name }}</h3>
     <h5 class="text-center mt-10px position-relative" style="color: #9f9e9e">
-        <a href='/'><i class="fas fa-chevron-left" style='position: absolute; left: 64px; color: #9f9e9e'></i></a>
+        <a href='/'><i class="fas fa-chevron-left position-absolute" style='left: 64px; color: #9f9e9e'></i></a>
         choose a seat
     </h5>
     <div>
@@ -46,5 +46,4 @@
                     @endcomponent
                 @endforeach
         </div>
-        <!-- <div class='position-absolute bookingWindow'>Hei<div> -->
     @endsection

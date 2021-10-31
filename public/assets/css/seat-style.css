@@ -1,14 +1,12 @@
 .seat-container {
+    display: flex;
+    flex-direction: column;
     width: 224px;
     height: 160px;
     border-radius: 5%;
 }
 
 .seat-bg-color, .available-seat {
-    display: flex;
-    flex-direction: column;
-    width: 224px;
-    height: 160px;
     background-color: #9f9e9e;
     border: 3px solid #c6e5af;
 }
@@ -20,20 +18,13 @@
 }
 
 .booked-seat {
-    display: flex;
-    flex-direction: column;
-    width: 224px;
-    height: 160px;
-    background-color: #a61c3c;
-    border: 3px solid #a61c3c;
+    background-color: #F25B35;
+    border: 3px solid #F25B35;
 }
 
 .booked-by-me {
-    display: flex;
-    flex-direction: column;
-    width: 224px;
-    height: 160px;
-    background-color: #1c4ca6;
+    background-color: #352436;
+    border: 3px solid #352436;
 }
 
 .booking-btn {
@@ -85,11 +76,11 @@
     font-size: 14px;
     text-align: center;
     animation-name: example;
-    animation-duration: 5s;
+    animation-duration: 9s;
 }
 
 @keyframes example {
-    0%   {background-color: white; right:0; top: -136px;}
+    0%   {background-color: white; right:0; top: -120px;}
     50%  {background-color: white; left:282px; top:30px;}
     100%  {background-color: white; left:282px; top:-136px;}
 }
