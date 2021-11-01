@@ -33,5 +33,7 @@ class SeatController extends Controller
     public function delete($id)
     {
         Seat::destroy($id);
+
+        return back();
     }
 }
