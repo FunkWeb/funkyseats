@@ -39,6 +39,8 @@ Route::post('/booking/seat/{seat_id}', [BookingController::class, 'store']);
 
 Route::get('/rooms/edit', [RoomController::class, 'edit']);
 Route::post('/rooms/{id}/save', [RoomController::class, 'save']);
+Route::post('/rooms/{id}/delete', [RoomController::class, 'delete']);
 
 Route::get('/room/{id}/seats/edit', [SeatController::class, 'edit']);
 Route::post('/seats/{id}/save', [SeatController::class, 'save']);
+Route::post('/seats/{id}/delete', [SeatController::class, 'delete']);
