@@ -18,4 +18,20 @@ class SeatController extends Controller
     {
         return view('pages.admin.edit_seats', ['room' => Room::where('id', $id)->with('seat')->get()]);
     }
+
+    public function save($id, Request $request)
+    {
+        $seat = Seat::find($id);
+
+        $seat->seat_number = $request->seat_number;
+
+        $seat->save();
+
+        return back();
+    }
+
+    public function delete($id)
+    {
+        Seat::destroy($id);
+    }
 }

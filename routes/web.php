@@ -23,7 +23,6 @@ Route::get('/', [RoomController::class, 'index_withCountSeats']);
 
 Route::get('/room/{id}', [RoomController::class, 'show']);
 
-Route::post('/rooms/{id}/save', [RoomController::class, 'save']);
 
 Route::group(['middleware' => 'role:admin'], function () {
     Route::get('/admin', function () {
@@ -39,4 +38,7 @@ Route::post('/booking/seat/{seat_id}', [BookingController::class, 'store']);
 
 
 Route::get('/rooms/edit', [RoomController::class, 'edit']);
+Route::post('/rooms/{id}/save', [RoomController::class, 'save']);
+
 Route::get('/room/{id}/seats/edit', [SeatController::class, 'edit']);
+Route::post('/seats/{id}/save', [SeatController::class, 'save']);
