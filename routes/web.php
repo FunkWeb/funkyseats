@@ -23,6 +23,8 @@ Route::get('/', [RoomController::class, 'index_withCountSeats']);
 
 Route::get('/room/{id}', [RoomController::class, 'show']);
 
+Route::post('/room/{id}/save', [RoomController::class, 'save']);
+
 Route::group(['middleware' => 'role:admin'], function () {
     Route::get('/admin', function () {
         return View('admin');
