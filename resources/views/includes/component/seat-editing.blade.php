@@ -8,7 +8,7 @@
                 {{ $seat_types_list }}
             </select>
             <br>
-            seat number <input type="text" id="seat_numbder" name="seat_number" class='edit-seat-num'
+            seat number <input type="text" id="seat_number" name="seat_number" class='edit-seat-num'
                 value='{{ $seat_number }}'>
             <button class='submit-changes-btn' type='submit' value='submit'> Update </button>
         </form>
