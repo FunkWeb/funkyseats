@@ -4,8 +4,8 @@
         <i class="far fa-trash-alt" onclick="deleteSeat()"></i>
         <form action=/seats/{{ $seat_id ?? '' }}/save/ method="post">
             @csrf
-            <select class='edit-seat-type'>
-                <option>{{ $type }} </option>
+            <select name="seat_type" class='edit-seat-type'>
+                {{ $seat_types_list }}
             </select>
             <br>
             seat number <input type="text" id="seat_numbder" name="seat_number" class='edit-seat-num'

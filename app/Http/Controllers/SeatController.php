@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Seat;
 use App\Models\Room;
+use App\Models\SeatType;
 
 class SeatController extends Controller
 {
@@ -16,7 +17,7 @@ class SeatController extends Controller
 
     public function edit($id)
     {
-        return view('pages.admin.edit_seats', ['room' => Room::where('id', $id)->with('seat')->get()]);
+        return view('pages.admin.edit_seats', ['room' => Room::where('id', $id)->with('seat')->get(), 'types' => SeatType::all()]);
     }
 
     public function save($id, Request $request)

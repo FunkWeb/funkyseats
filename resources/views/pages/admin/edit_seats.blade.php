@@ -33,6 +33,11 @@
                     @slot('booker_id')
                         {{ $seat->booking[0]->user_id ?? '' }}
                     @endslot
+                    @slot('seat_types_list')
+                        @foreach ($types as $type)
+                            <option value={{ $type->id }}>{{ $type->name }} </option>
+                        @endforeach
+                    @endslot
                 @endcomponent
             @endforeach
         </div>
