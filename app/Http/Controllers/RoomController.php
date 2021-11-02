@@ -21,6 +21,22 @@ class RoomController extends Controller
         return View('pages/admin/edit_rooms', ['rooms' => Room::all()]);
     }
 
+    public function delete($id)
+    {
+        Room::destroy($id);
+        return back();
+    }
+
+    public function save($id, Request $request)
+    {
+        $room = Room::find($id);
+        $room->name = $request->name;
+
+        $room->save();
+
+        return back();
+    }
+
     public function index_withCountSeats()
     {
         return view('pages/home', ['rooms' => Room::withCount(['seat' => function ($q) {
