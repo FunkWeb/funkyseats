@@ -35,6 +35,7 @@ class SeatController extends Controller
     {
         Seat::destroy($id);
 
-        return back();
+
+        return back()->with('success', 'You deleted the seat successfully');
     }
 }

@@ -24,7 +24,7 @@ class RoomController extends Controller
     public function delete($id)
     {
         Room::destroy($id);
-        return back();
+        return back()->with('success', 'You deleted the room successfully');
     }
 
     public function save($id, Request $request)
