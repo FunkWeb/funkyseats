@@ -6,12 +6,22 @@
 
 @section('title', 'Home Page')
 
+<div class="overlay">
 @section('content')
 <ol class="breadcrumb float-xl-right"></ol>
 <h5 class="text-center mt-10px position-relative" style="color: #9f9e9e;">
         <a href='/'><i class="fas fa-chevron-left" style='position: absolute; left: -648px; color: #9f9e9e'></i></a>
     Edit room
 </h5>
+
+<div class="popup-container">
+        <div class="popup-title">Are you sure?</div>
+    <div class="popup-btn">
+        <button onclick="closeWindow()">Cancel</button>
+        <button href="url/route/room/{{$id ?? ''}}/delete" onclick="deleteRoom()">Yes</button>
+    </div>
+</div>
+
 <div>
     <div class='d-flex flex-wrap justify-content-around mt-30px'>
         @foreach ($rooms as $room)
@@ -29,3 +39,4 @@
         @endforeach
     </div>
     @endsection
+</div>

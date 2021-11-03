@@ -1,7 +1,7 @@
 <div class='text-center text-light text-uppercase mt-30px box-style'
     style="background-image: url({{ asset('images/office.jpeg') }})">
     <div class="edit-box">
-        <i class="far fa-trash-alt" onclick="deleteRoom()"></i>
+        <i class="far fa-trash-alt" style="cursor: pointer" onclick="showWindow()"></i>
         {{-- <a href="/room/{{ $id ?? '' }}/seats/edit" style='text-decoration: none;'> --}}
         <form action=/rooms/{{ $id ?? '' }}/save method="post">
             @csrf

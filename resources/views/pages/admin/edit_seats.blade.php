@@ -6,6 +6,7 @@
 
 @section('title', 'Home Page')
 
+<div class="overlay">
 @section('content')
     <ol class="breadcrumb float-xl-right"></ol>
     <h3 class="fw-800 text-center mt-30px">{{ $room[0]->name }}</h3>
@@ -14,6 +15,17 @@
                 style='position: absolute; left: -648px; color: #9f9e9e'></i></a>
         Edit a seat
     </h5>
+
+    <div class="popup-container">
+        <div class="popup-header">
+            <div class="popup-title">Are you sure?</div>
+        </div>
+        <div class="popup-btn">
+            <button onclick="closeWindow()">Cancel</button>
+            <button href="url/route/seat/{{$id ?? ''}}/delete" onclick="deleteSeat()">Yes</></button>
+        </div>
+    </div>
+
     <div>
         <div class='d-flex flex-wrap justify-content-around mt-20px'>
             @foreach ($room[0]->seat as $seat)
@@ -38,8 +50,9 @@
                             <option value={{ $type->id }}>{{ $type->name }} </option>
                         @endforeach
                     @endslot
+
                 @endcomponent
             @endforeach
         </div>
-        <!-- <div class='position-absolute bookingWindow'>Hei<div> -->
     @endsection
+    </div>
