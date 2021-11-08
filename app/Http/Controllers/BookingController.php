@@ -37,16 +37,9 @@ class BookingController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store($seat_id, Request $request)
+     * * @param  \Illuminate\Http\Request  $request * @return \Illuminate\Http\Response */ public function store($seat_id, Request $request)
     {
-
-        $request->merge([
-            'user_id' => auth()->user()->id,
-        ]);
+        $request->merge(['user_id' => auth()->user()->id,]);
         $request->validate([
             //     'title' => ['required', 'unique:posts', 'max:255'],
             //     'body' => ['required'],

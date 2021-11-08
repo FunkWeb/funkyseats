@@ -69,4 +69,17 @@ class RoomController extends Controller
                 ->get()]
         );
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'max:255'],
+
+        ]);
+        $room = new Room;
+        $room->name = $request->name;
+
+        $room->save();
+        return back()->with('success', 'You stored the room successfully');
+    }
 }
