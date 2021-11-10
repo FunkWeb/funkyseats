@@ -28,18 +28,19 @@ class SeatController extends Controller
 
         $seat->save();
 
-        return back();
+        return back()->with('success', 'You updated the seat successfully');
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'seat_number' => ['required', 'max:255'],
-            'seat_type' => ['required', 'exists:seat_types'],
+            'seat_type' => ['required', 'exists:seat_types,id'],
         ]);
         $seat = new Seat;
         $seat->seat_number = $request->seat_number;
-        $seat->approved = $request->seat_type;
+        $seat->seat_type_id = $request->seat_type;
+        $seat->room_id = $request->room_id;
 
         $seat->save();
         return back()->with('success', 'You stored the seat successfully');
