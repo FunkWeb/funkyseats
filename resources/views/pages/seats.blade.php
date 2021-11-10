@@ -19,7 +19,7 @@
         {{ session('success') }}
     </div>
     @endif
-    <h3 class="fw-800 text-center mt-30px" style="font-size: 20px">{{ $room[0]->name }}</h3>
+    <h4 class="fw-600 text-center mt-30px">{{ $room[0]->name }}</h4>
     <h5 class="text-center mt-10px position-relative" style="color: #9f9e9e">
         <a href='/'><i class="fas fa-chevron-left position-absolute" style='left: 64px; color: #9f9e9e'></i></a>
         choose a seat

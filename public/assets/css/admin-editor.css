@@ -15,14 +15,15 @@ input {
     border: none;
 }
 
-input, input::placeholder {
+input, input::placeholder, input.edit-seat-num::placeholder, input.edit-room-name::placeholder {
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     text-transform: uppercase;
     color: white;
+    background-color: transparent;
 }
 
-.box-style:hover input {
+.box-style:hover input, input.edit-room-name:hover::placeholder {
     color: black;
 }
 
@@ -45,7 +46,7 @@ input, input::placeholder {
     cursor: pointer;
 }
 
-i {
+i.fa-trash-alt {
     position: absolute;
     display: flex;
     right: 11px;
@@ -99,9 +100,13 @@ i {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.popup-btn {
+.popup-btn, .popup-btn form {
     display: flex;
     justify-content: space-around;
+}
+
+.popup-btn form {
+    margin: 0;
 }
 
 .popup-title {
@@ -125,4 +130,17 @@ i {
 
 .overlay.active {
     background-color: rgba(0, 0, 0, .6);
+}
+
+.page-subtitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 50px;
+    color: #9f9e9e;
+}
+
+i.fas {
+    color: #9f9e9e;
+    cursor: pointer;
 }
