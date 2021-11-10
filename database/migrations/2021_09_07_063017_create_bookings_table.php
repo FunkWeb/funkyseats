@@ -18,8 +18,9 @@ class CreateBookingsTable extends Migration
             $table->timestamps();
             $table->dateTime('from');
             $table->dateTime('to');
-            $table->foreignId('seat_id');
-            $table->foreignId('user_id');
+            $table->foreignId('seat_id')->onDelete('cascade');
+            $table->foreignId('user_id')->onDelete('cascade');
+            $table->softDeletes();
             $table->boolean('approved');
         });
     }

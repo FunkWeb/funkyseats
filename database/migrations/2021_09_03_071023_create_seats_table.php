@@ -18,6 +18,7 @@ class CreateSeatsTable extends Migration
             $table->timestamps();
             $table->foreignId('room_id')->constrained()->onDelete('cascade');
             $table->foreignId('seat_type_id');
+            $table->softDeletes();
             $table->text('seat_number');
         });
     }
