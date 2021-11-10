@@ -6,6 +6,15 @@
 
 @section('title', 'Home Page')
 
+<div id="csrfNewSeat" style="visibility: hidden">
+    @csrf
+</div>
+@error('seat_type')
+<div class="error-window">
+    <p class="error-title"><b>Error</b></p>
+    {{ $message }}
+</div>
+@enderror
 <div class="overlay">
     @section('content')
         <ol class="breadcrumb float-xl-right"></ol>

@@ -29,19 +29,20 @@ function addNewRoom() {
 
 function addNewSeat() {
     document.getElementById('addNewSeat').style.display = 'block';
+    let csrfNewSeat = document.getElementById('csrfNewSeat');
+    let seat_types = document.querySelector('.edit-seat-type');
+    console.log(seat_types);
     document.getElementById('addNewSeat').innerHTML = '' +
-        '<div class=\'text-center text-light text-uppercase mt-30px box-style\'\n' +
-        '    style=\"background-image: url(\'/images/office.jpeg\')\">\n' +
-        '    <div class=\'edit-box\' style=\'pointer-events: all\'>\n' +
-        '<form action=/seats/{{ $seat_id ?? \'\' }}/save/ method="post">\n' +
-        '            @csrf\n' +
-        '            <select name="seat_type" class=\'edit-seat-type\'>\n' +
-        '                {{ $seat_types_list }}\n' +
-        '            </select>\n' +
-        '            <br>\n' +
+        '<div class=\'text-center text-light text-uppercase mt-30px box-style\'' +
+        '    style=\"background-image: url(\'/images/office.jpeg\')\">' +
+        '    <div class=\'edit-box\' style=\'pointer-events: all\'>' +
+        '<form id=newSeat action=/seat/store method="post">' +
+        '            <br>' +
         '             <input class=\'edit-seat-num\' type="text" id="seat_number" placeholder="Seat number" name="seat_number">\n' +
-        '            <button class=\'submit-changes-btn\' type=\'submit\' value=\'submit\'>Save</button>\n' +
-        '        </form>\n' +
-        '    </div>\n' +
+        '            <button class=\'submit-changes-btn\' type=\'submit\' value=\'submit\'>Save</button>' +
+        '        </form>' +
+        '    </div>' +
         '</div>'
+    document.getElementById('newSeat').appendChild(csrfNewSeat);
+    document.getElementById('newSeat').appendChild(seat_types);
 }
