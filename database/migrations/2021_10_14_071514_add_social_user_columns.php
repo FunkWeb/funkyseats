@@ -16,6 +16,7 @@ class AddSocialUserColumns extends Migration
         Schema::table('users', function ($table) {
             $table->string('social_id')->nullable();
             $table->string('social_type')->nullable();
+            $table->string('user_thumbnail')->nullable();
         });
     }
 
@@ -29,6 +30,7 @@ class AddSocialUserColumns extends Migration
         Schema::table('users', function ($table) {
             $table->dropColumn('social_id');
             $table->dropColumn('social_type');
+            $table->dropColumn('user_thumbnail');
         });
     }
 }

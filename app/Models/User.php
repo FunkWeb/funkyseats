@@ -25,6 +25,7 @@ class User extends Authenticatable
         'password',
         'social_id',
         'social_type',
+        'user_thumbnail',
     ];
 
     /**
@@ -47,11 +48,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    protected $appends = ['user_thumbnail'];
-
-    public function getUserThumbnailAttribute()
-    {
-        return Session::get('avatar') ?? "";
-    }
 }

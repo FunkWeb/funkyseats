@@ -65,6 +65,7 @@ class RoomController extends Controller
                     $query
                         ->where('from', '<=', Carbon::now())
                         ->where('to', '>=', Carbon::now());
+                    $query->with('user');
                 }])
                 ->get()]
         );
