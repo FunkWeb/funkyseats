@@ -21,7 +21,7 @@ use App\Http\Controllers\SeatController;
 
 Route::get('/', [RoomController::class, 'index_withCountSeats']);
 
-Route::get('/room/{id}', [RoomController::class, 'show']);
+Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show']);
 
 Route::group(['middleware' => 'role:admin'], function () {
     Route::get('/admin', function () {
