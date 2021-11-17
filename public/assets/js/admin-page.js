@@ -17,32 +17,43 @@ function closeWindow() {
 
 function addNewRoom() {
     document.getElementById('addNewRoom').style.display = 'block';
+    let csrf_token = document.querySelector('[name="_token"]');
     document.getElementById('addNewRoom').innerHTML = '' +
         '<div class=\'text-center text-light text-uppercase mt-30px box-style\'\n' +
-        '    style=\"background-image: url(\'../images/office.jpeg\')\">\n' +
+        '    style=\"background-image: url(\'../images/office.jpeg\'); border-radius: 5%;\">\n' +
         '    <div class=\'edit-box\' style=\'pointer-events: all\'>\n' +
-        '        <input class=\'edit-room-name\' type="text" id="name" name="name" placeholder="Room name">\n' +
+        '    <form id=newRoom action=/room/store method="post">' +
+        '       <input class=\'edit-room-name\' type="text" id="name" name="name" placeholder="Room name">\n' +
         '       <button class=\'submit-changes-btn\' type=\'submit\' value=\'submit\'>Save</button>\n' +
+        '    </form>' +
         '    </div>\n' +
         '</div>'
+    document.getElementById('newRoom').appendChild(csrf_token);
 }
 
-function addNewSeat() {
+function addNewSeat(room_id) {
     document.getElementById('addNewSeat').style.display = 'block';
-    let csrfNewSeat = document.getElementById('csrfNewSeat');
+    let csrf_token = document.querySelector('[name="_token"]');
     let seat_types = document.querySelector('.edit-seat-type');
-    console.log(seat_types);
-    document.getElementById('addNewSeat').innerHTML = '' +
+    document.getElementById('addNewSeat').innerHTML =
         '<div class=\'text-center text-light text-uppercase mt-30px box-style\'' +
-        '    style=\"background-image: url(\'/images/office.jpeg\')\">' +
+        '    style=\"background-image: url(\'/images/office.jpeg\'); border-radius: 5%;\">' +
         '    <div class=\'edit-box\' style=\'pointer-events: all\'>' +
         '<form id=newSeat action=/seat/store method="post">' +
-        '            <br>' +
-        '             <input class=\'edit-seat-num\' type="text" id="seat_number" placeholder="Seat number" name="seat_number">\n' +
+        '<select name=seat_type class=\'edit-seat-type\'> ' +
+        seat_types.innerHTML +
+        '</select> '  +
+        '            <input name=room_id value=' +
+        room_id +
+        ' style="display:none;">\n' +
+        '            <input class=\'edit-seat-num\' type="text" id="seat_number" placeholder="Seat number" name="seat_number">\n' +
         '            <button class=\'submit-changes-btn\' type=\'submit\' value=\'submit\'>Save</button>' +
-        '        </form>' +
-        '    </div>' +
+        '  </form>' +
+        ' </div>' +
         '</div>'
-    document.getElementById('newSeat').appendChild(csrfNewSeat);
-    document.getElementById('newSeat').appendChild(seat_types);
+    document.getElementById('newSeat').appendChild(csrf_token);
 }
+
+document.getElementsByClassName('booking-btn')[0].addEventListener("click", function() {
+    alert("You clicked me");
+});

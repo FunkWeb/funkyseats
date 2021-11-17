@@ -1,5 +1,5 @@
 <div class='text-center text-light text-uppercase mt-30px box-style'
-    style="background-image: url({{ asset('images/office.jpeg') }})">
+    style="background-image: url({{ asset('images/office.jpeg') }}); border-radius: 5%;">
     @if (Auth::check())
     <div class='edit-box' style="pointer-events: all">
     @else

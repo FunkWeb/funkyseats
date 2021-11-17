@@ -6,6 +6,24 @@
 
 @section('title', 'Home Page')
 
+<div id="csrfNewRoom" style="hidden">
+    @csrf
+</div>
+
+@error('name')
+<div class="error-window">
+    <p class="error-title"><b>Error</b></p>
+    {{ $message }}
+</div>
+@enderror
+
+@if (session('success'))
+    <div class="booked-seat-successfully">
+        <p class="success-title"><b>Great job!</b></p>
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="overlay">
     @section('content')
         <ol class="breadcrumb float-xl-right"></ol>

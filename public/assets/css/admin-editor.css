@@ -23,10 +23,6 @@ input, input::placeholder, input.edit-seat-num::placeholder, input.edit-room-nam
     background-color: transparent;
 }
 
-.box-style:hover input, input.edit-room-name:hover::placeholder {
-    color: black;
-}
-
 .box-style div {
     width: 224px;
     height: 160px;
@@ -37,13 +33,6 @@ input, input::placeholder, input.edit-seat-num::placeholder, input.edit-room-nam
 
 .edit-box {
     position: relative;
-}
-
-.edit-box:hover, .box-style:hover {
-    color: black;
-    background-color: white;
-    background-image: none;
-    cursor: pointer;
 }
 
 i.fa-trash-alt {

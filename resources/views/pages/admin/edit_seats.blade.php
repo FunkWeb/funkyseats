@@ -6,15 +6,31 @@
 
 @section('title', 'Home Page')
 
-<div id="csrfNewSeat" style="visibility: hidden">
+<div id="csrfNewSeat" style="hidden">
     @csrf
 </div>
+
 @error('seat_type')
 <div class="error-window">
     <p class="error-title"><b>Error</b></p>
     {{ $message }}
 </div>
 @enderror
+
+@error('seat_number')
+<div class="error-window">
+    <p class="error-title"><b>Error</b></p>
+    {{ $message }}
+</div>
+@enderror
+
+@if (session('success'))
+    <div class="booked-seat-successfully">
+        <p class="success-title"><b>Great job!</b></p>
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="overlay">
     @section('content')
         <ol class="breadcrumb float-xl-right"></ol>
@@ -23,7 +39,7 @@
             <a href='/rooms/edit'><i class="fas fa-chevron-left"></i></a>
             edit a seat
             @if (Auth::check())
-                <a><i class="fas fa-plus" onclick="addNewSeat()"></i></a>
+                <a><i class="fas fa-plus" onclick="addNewSeat({{ $room[0]->id }})"></i></a>
             @else
                 <a><i class="fas fa-plus"></i></a>
             @endif

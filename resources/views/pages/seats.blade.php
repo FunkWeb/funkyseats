@@ -19,13 +19,13 @@
         {{ session('success') }}
     </div>
     @endif
-    <h4 class="fw-600 text-center mt-30px">{{ $room[0]->name }}</h4>
-    <h5 class="text-center mt-10px position-relative" style="color: #9f9e9e">
+    <h4 class="fw-800 text-center mt-30px">{{ $room[0]->name }}</h4>
+    <h5 class="text-center mt-10px position-relative" style="color: #20B3BE">
         <a href='/'><i class="fas fa-chevron-left position-absolute" style='left: 64px; color: #9f9e9e'></i></a>
         choose a seat
     </h5>
-    <div>
-        <div class='d-flex flex-wrap justify-content-around mt-20px'>
+    <div class="mt-20px mx-40px">
+        <div class='d-flex flex-wrap justify-content-around'>
             @foreach ($room[0]->seat as $seat)
                 @component('includes.component.seat-component')
                     @slot('type')
@@ -42,6 +42,12 @@
                     @endslot
                     @slot('booker_id')
                         {{ $seat->booking[0]->user_id ?? '' }}
+                    @endslot
+                    @slot('user_picture')
+                        {{  $seat->booking[0]->user->user_thumbnail ?? '' }}
+                    @endslot
+                    @slot('user_name')
+                         {{  $seat->booking[0]->user->name ?? '' }}
                     @endslot
                     @endcomponent
                 @endforeach
