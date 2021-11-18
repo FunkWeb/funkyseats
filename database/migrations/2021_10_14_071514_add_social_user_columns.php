@@ -17,6 +17,8 @@ class AddSocialUserColumns extends Migration
             $table->string('social_id')->nullable();
             $table->string('social_type')->nullable();
             $table->string('user_thumbnail')->nullable();
+            $table->string('given_name')->nullable();
+            $table->string('family_name')->nullable();
         });
     }
 

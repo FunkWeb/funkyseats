@@ -25,6 +25,8 @@ class User extends Authenticatable
         'password',
         'social_id',
         'social_type',
+        'given_name',
+        'family_name',
         'user_thumbnail',
     ];
 
