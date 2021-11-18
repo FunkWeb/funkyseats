@@ -20,7 +20,6 @@ class GoogleController extends Controller
         $redirectAdress = Session::get('redirect') ?? "/";
         Session::forget('redirect');
         $user = Socialite::driver('google')->user();
-        dd($user->user["family_name"]);
 
         $searchUser = User::where('social_id', $user->id)->first();
 
