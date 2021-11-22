@@ -1,5 +1,4 @@
 <link href='/assets/css/seat-style.css' rel='stylesheet'>
-<script type='text/javascript' src='/assets/js/seat-booking.js'></script>
 
 @extends('layouts.default')
 
@@ -24,7 +23,27 @@
         <a href='/'><i class="fas fa-chevron-left position-absolute" style='left: 64px; color: #9f9e9e'></i></a>
         choose a seat
     </h5>
-    <div class="mt-20px mx-40px">
+
+    <div class="book-calendar">
+    <form>
+        <div class="book-calendar">
+            <Example />
+        </div>
+        <label>
+            <input type="radio" name="book-time">
+            Before lunch
+        </label>
+        <label>
+            <input type="radio" name="book-time">
+            After lunch
+        </label>
+        <label>
+            <input type="radio" name="book-time" checked>
+            All day
+        </label>
+    </form>
+    </div>
+    <div class="mx-40px">
         <div class='d-flex flex-wrap justify-content-around'>
             @foreach ($room[0]->seat as $seat)
                 @component('includes.component.seat-component')
@@ -47,9 +66,13 @@
                         {{  $seat->booking[0]->user->user_thumbnail ?? '' }}
                     @endslot
                     @slot('user_name')
-                         {{  $seat->booking[0]->user->name ?? '' }}
+                         {{  $seat->booking[0]->user->given_name ?? '' }}
                     @endslot
                     @endcomponent
                 @endforeach
         </div>
+        <script type='text/javascript' src='/assets/js/seat-booking.js'></script>
+        <script src="{{ mix('assets/js/manifest.js') }}"></script>
+        <script src="{{ mix('assets/js/vendor.js') }}"></script>
+        <script src="{{ mix('assets/js/react_app.js') }}"></script>
     @endsection

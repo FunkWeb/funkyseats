@@ -10,6 +10,7 @@
     "production": "mix --production"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.16.0",
     "axios": "^0.21.1",
     "laravel-mix": "^6.0.25",
     "laravel-mix-dload": "^1.0.0",
@@ -94,6 +95,9 @@
     "perfect-scrollbar": "^1.5.1",
     "popper.js": "^1.16.1",
     "raphael": "^2.3.0",
+    "react": "^17.0.2",
+    "react-datepicker": "^4.3.0",
+    "react-dom": "^17.0.2",
     "select-picker": "^0.3.2",
     "select2": "^4.0.13",
     "simple-line-icons": "^2.5.5",
@@ -103,6 +107,7 @@
     "swiper": "^6.7.1",
     "switchery": "github:abpetkov/switchery",
     "tag-it": "^2.0.0",
-    "x-editable-bs4": "^1.5.4"
+    "x-editable-bs4": "^1.5.4",
+    "@babel/preset-react": "^7.16.0"
   }
 }

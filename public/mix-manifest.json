@@ -1,5 +1,8 @@
 {
+    "/assets/js/react_app.js": "/assets/js/react_app.js",
+    "/assets/js/manifest.js": "/assets/js/manifest.js",
     "/assets/css/app.min.css": "/assets/css/app.min.css",
+    "/assets/js/vendor.js": "/assets/js/vendor.js",
     "/assets/css/vendor.min.css": "/assets/css/vendor.min.css",
     "/assets/webfonts/fa-brands-400.eot": "/assets/webfonts/fa-brands-400.eot",
     "/assets/webfonts/fa-brands-400.svg": "/assets/webfonts/fa-brands-400.svg",
@@ -414,5 +417,22 @@
     "/assets/plugins/switchery/dist/switchery.css": "/assets/plugins/switchery/dist/switchery.css",
     "/assets/plugins/switchery/dist/switchery.js": "/assets/plugins/switchery/dist/switchery.js",
     "/assets/plugins/switchery/dist/switchery.min.css": "/assets/plugins/switchery/dist/switchery.min.css",
-    "/assets/plugins/switchery/dist/switchery.min.js": "/assets/plugins/switchery/dist/switchery.min.js"
+    "/assets/plugins/switchery/dist/switchery.min.js": "/assets/plugins/switchery/dist/switchery.min.js",
+    "/assets/plugins/react/LICENSE": "/assets/plugins/react/LICENSE",
+    "/assets/plugins/react/README.md": "/assets/plugins/react/README.md",
+    "/assets/plugins/react/build-info.json": "/assets/plugins/react/build-info.json",
+    "/assets/plugins/react/index.js": "/assets/plugins/react/index.js",
+    "/assets/plugins/react/jsx-dev-runtime.js": "/assets/plugins/react/jsx-dev-runtime.js",
+    "/assets/plugins/react/jsx-runtime.js": "/assets/plugins/react/jsx-runtime.js",
+    "/assets/plugins/react/package.json": "/assets/plugins/react/package.json",
+    "/assets/plugins/react-dom/LICENSE": "/assets/plugins/react-dom/LICENSE",
+    "/assets/plugins/react-dom/README.md": "/assets/plugins/react-dom/README.md",
+    "/assets/plugins/react-dom/build-info.json": "/assets/plugins/react-dom/build-info.json",
+    "/assets/plugins/react-dom/index.js": "/assets/plugins/react-dom/index.js",
+    "/assets/plugins/react-dom/package.json": "/assets/plugins/react-dom/package.json",
+    "/assets/plugins/react-dom/profiling.js": "/assets/plugins/react-dom/profiling.js",
+    "/assets/plugins/react-dom/server.browser.js": "/assets/plugins/react-dom/server.browser.js",
+    "/assets/plugins/react-dom/server.js": "/assets/plugins/react-dom/server.js",
+    "/assets/plugins/react-dom/server.node.js": "/assets/plugins/react-dom/server.node.js",
+    "/assets/plugins/react-dom/test-utils.js": "/assets/plugins/react-dom/test-utils.js"
 }

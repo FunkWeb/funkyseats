@@ -33,7 +33,7 @@ body {
 }
 
 .booked-by-me {
-    background-color: #08131E;
+    background-color: #324252;
 }
 
 .booking-btn {
@@ -65,6 +65,10 @@ body {
 
 .seat-type-btn {
     padding-top:44px;
+}
+
+.booked-seat-type-btn {
+    padding-top:12px;
 }
 
 .seat-bg-color:hover .seat-type-btn {
@@ -100,8 +104,8 @@ body {
 }
 
 .user-picture-booked-seat {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
 }
 
@@ -123,7 +127,12 @@ body {
     color: black;
 }
 
-input[type="radio"]:checked {
-    background-color: #20B3BE;
-    border-color: #20B3BE;
+.book-calendar {
+    display: flex;
+    justify-content: center;
+    margin: 14px 0;
+}
+
+.react-datepicker-wrapper {
+    display: flex;
 }

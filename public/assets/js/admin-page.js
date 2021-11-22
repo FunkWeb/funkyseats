@@ -54,6 +54,5 @@ function addNewSeat(room_id) {
     document.getElementById('newSeat').appendChild(csrf_token);
 }
 
-document.getElementsByClassName('booking-btn')[0].addEventListener("click", function() {
-    alert("You clicked me");
-});
+
+
