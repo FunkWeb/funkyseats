@@ -51,7 +51,9 @@ class RoomController extends Controller
 
     public function show($id, $datetime = null)
     {
-        $date_time = Carbon::createFromDate($datetime) ?? Carbon::now();
+        $date_time = Carbon::createFromDate($datetime)->toDateString();
+        $time_from = Carbon::createFromDate($datetime)->addHours(8);
+        $time_to = Carbon::createFromDate($date_time)->addHours(16);
 
         return View(
             'pages/seats',
@@ -63,10 +65,10 @@ class RoomController extends Controller
                         $query->orderByRaw('LENGTH(seat_number)');
                     }
                     $query->orderBy('seat_number', 'asc');
-                }, 'seat.booking' => function ($query) use ($date_time) {
+                }, 'seat.booking' => function ($query) use ($time_from, $time_to) {
                     $query
-                        ->where('from', '<=', $date_time)
-                        ->where('to', '>=', $date_time);
+                        ->whereBetween('from', [$time_from, $time_to])
+                        ->orWhereBetween('to', [$time_from, $time_to]);
                     $query->with('user');
                 }])
                 ->get(), 'date_selected' => $date_time]
