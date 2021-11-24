@@ -13,9 +13,12 @@ class AlreadyBookedRule implements Rule
      *
      * @return void
      */
-    public function __construct()
+    protected $date;
+    public function __construct($from, $to)
     {
         //
+        $this->from = Carbon::create($from);
+        $this->to = Carbon::create($to);
     }
 
     /**
@@ -28,8 +31,9 @@ class AlreadyBookedRule implements Rule
     public function passes($attribute, $value)
     {
         $bookedSeats = Booking::where('user_id', $value)
-            ->where('from', '<=', Carbon::now())
-            ->where('to', '>=', Carbon::now())->get();
+            ->whereBetween('from', [$this->from, $this->to])
+            ->orWhereBetween('to', [$this->from, $this->to])
+            ->get();
         if (!$bookedSeats->first()) {
             return true;
         }

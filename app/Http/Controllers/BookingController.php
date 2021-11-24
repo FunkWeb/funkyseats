@@ -37,18 +37,22 @@ class BookingController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * * @param  \Illuminate\Http\Request  $request * @return \Illuminate\Http\Response */ public function store($seat_id, Request $request)
+     * * @param  \Illuminate\Http\Request  $request * @return \Illuminate\Http\Response */
+    public function store($seat_id, Request $request)
     {
+        //TODO: (are) change hours based on radio button input
+        $time_from = Carbon::createFromDate($request->date_picker)->addHours(8);
+        $time_to = Carbon::createFromDate($request->date_picker)->addHours(16);
+
         $request->merge(['user_id' => auth()->user()->id,]);
         $request->validate([
-            //     'title' => ['required', 'unique:posts', 'max:255'],
-            //     'body' => ['required'],
-            'user_id' => [new AlreadyBookedRule()],
+            'date_picker' => ['after_or_equal:' . Carbon::today()],
+            'user_id' => [new AlreadyBookedRule($time_from, $time_to)],
         ]);
         $booking = new Booking;
 
-        $booking->from = Carbon::today();
-        $booking->to = Carbon::tomorrow();
+        $booking->from = Carbon::createFromDate($request->date_picker)->addHours(8);
+        $booking->to = Carbon::createFromDate($request->date_picker)->addHours(16);
         $booking->seat_id = $seat_id;
         $booking->user_id = $request->user_id;
         $booking->approved = True;
