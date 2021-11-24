@@ -27,7 +27,7 @@
     <div class="book-calendar">
     <form>
         <div class="book-calendar">
-            <Example />
+            <Example value={$selected_date} />
         </div>
         <label>
             <input type="radio" name="book-time">
@@ -72,7 +72,7 @@
                 @endforeach
         </div>
         <script type='text/javascript' src='/assets/js/seat-booking.js'></script>
-        <script src="{{ mix('assets/js/manifest.js') }}"></script>
-        <script src="{{ mix('assets/js/vendor.js') }}"></script>
-        <script src="{{ mix('assets/js/react_app.js') }}"></script>
+        <script defer src="{{ mix('assets/js/manifest.js') }}"></script>
+        <script defer src="{{ mix('assets/js/vendor.js') }}"></script>
+        <script defer src="{{ mix('assets/js/react_app.js') }}"></script>
     @endsection

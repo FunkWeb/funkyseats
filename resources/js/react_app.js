@@ -7,16 +7,22 @@ import { registerLocale, setDefaultLocale } from  "react-datepicker";
 import nb from 'date-fns/locale/nb';
 registerLocale('nb', nb)
 
-const Example = () => {
-    const [startDate, setStartDate] = useState(new Date());
+class Example extends React.Component {
+    changeDate(date) {  useState(new date())};
+
+    render() {
+        const changeDate = () => {
+            alert("hello");
+        };
     return (
-        <DatePicker selected={startDate}
-                    onChange={(date) => setStartDate(date)}
-                    local={setDefaultLocale('nb')}
-                    dateFormat="d. MMMM"
-        />
-    );
-};
+        <div>
+            <DatePicker dateFormat="dd-M-yyyy"
+                        value={this.props.value}
+                        onChange={changeDate}/>
+        </div>
+    )
+}
+}
 
 const components = [
     {
