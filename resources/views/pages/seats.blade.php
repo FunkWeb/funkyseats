@@ -7,16 +7,16 @@
 @section('content')
     <ol class="breadcrumb float-xl-right"></ol>
     @error('user_id')
-    <div class="error-window">
-        <p class="error-title"><b>Error</b></p>
-           {{ $message }}
-    </div>
+        <div class="error-window">
+            <p class="error-title"><b>Error</b></p>
+            {{ $message }}
+        </div>
     @enderror
     @if (session('success'))
-    <div class="booked-seat-successfully">
-        <p class="success-title"><b>Great job!</b></p>
-        {{ session('success') }}
-    </div>
+        <div class="booked-seat-successfully">
+            <p class="success-title"><b>Great job!</b></p>
+            {{ session('success') }}
+        </div>
     @endif
     <h4 class="fw-800 text-center mt-30px">{{ $room[0]->name }}</h4>
     <h5 class="text-center mt-10px position-relative" style="color: #20B3BE">
@@ -25,23 +25,24 @@
     </h5>
 
     <div class="book-calendar">
-    <form>
-        <div class="book-calendar">
-            <Example />
-        </div>
-        <label>
-            <input type="radio" name="book-time">
-            Before lunch
-        </label>
-        <label>
-            <input type="radio" name="book-time">
-            After lunch
-        </label>
-        <label>
-            <input type="radio" name="book-time" checked>
-            All day
-        </label>
-    </form>
+        <form name="seat_booking_form" method="POST">
+            @csrf
+            <div class="book-calendar">
+                <Example value={{ $date_selected }} />
+            </div>
+            <label>
+                <input type="radio" name="book_time" value="0">
+                Before lunch
+            </label>
+            <label>
+                <input type="radio" name="book_time" value="2">
+                After lunch
+            </label>
+            <label>
+                <input type="radio" name="book_time" value="3" checked>
+                All day
+            </label>
+        </form>
     </div>
     <div class="mx-40px">
         <div class='d-flex flex-wrap justify-content-around'>
@@ -63,16 +64,16 @@
                         {{ $seat->booking[0]->user_id ?? '' }}
                     @endslot
                     @slot('user_picture')
-                        {{  $seat->booking[0]->user->user_thumbnail ?? '' }}
+                        {{ $seat->booking[0]->user->user_thumbnail ?? '' }}
                     @endslot
                     @slot('user_name')
-                         {{  $seat->booking[0]->user->given_name ?? '' }}
+                        {{ $seat->booking[0]->user->given_name ?? '' }}
                     @endslot
-                    @endcomponent
-                @endforeach
+                @endcomponent
+            @endforeach
         </div>
         <script type='text/javascript' src='/assets/js/seat-booking.js'></script>
-        <script src="{{ mix('assets/js/manifest.js') }}"></script>
-        <script src="{{ mix('assets/js/vendor.js') }}"></script>
-        <script src="{{ mix('assets/js/react_app.js') }}"></script>
+        <script defer src="{{ mix('assets/js/manifest.js') }}"></script>
+        <script defer src="{{ mix('assets/js/vendor.js') }}"></script>
+        <script defer src="{{ mix('assets/js/react_app.js') }}"></script>
     @endsection
