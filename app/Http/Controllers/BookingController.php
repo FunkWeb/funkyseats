@@ -40,9 +40,20 @@ class BookingController extends Controller
      * * @param  \Illuminate\Http\Request  $request * @return \Illuminate\Http\Response */
     public function store($seat_id, Request $request)
     {
-        //TODO: (are) change hours based on radio button input
-        $time_from = Carbon::createFromDate($request->date_picker)->addHours(8);
-        $time_to = Carbon::createFromDate($request->date_picker)->addHours(16);
+        //Hours to book the seats is based on radio button values
+        //0 = 8->12
+        //1 = 12->16
+        //2 = 8->16
+        if ($request->book_time == 0 || $request->book_time == 3) {
+            $time_from = Carbon::createFromDate($request->date_picker)->addHours(8);
+        } else {
+            $time_from = Carbon::createFromDate($request->date_picker)->addHours(12);
+        }
+        if ($request->book_time == 0) {
+            $time_to = Carbon::createFromDate($request->date_picker)->addHours(12);
+        } else {
+            $time_to = Carbon::createFromDate($request->date_picker)->addHours(16);
+        }
 
         $request->merge(['user_id' => auth()->user()->id,]);
         $request->validate([

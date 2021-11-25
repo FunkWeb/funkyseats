@@ -52,8 +52,9 @@ class RoomController extends Controller
     public function show($id, $datetime = null)
     {
         $date_time = Carbon::createFromDate($datetime)->toDateString();
-        $time_from = Carbon::createFromDate($datetime)->addHours(8);
+        $time_from = Carbon::createFromDate($date_time)->addHours(8);
         $time_to = Carbon::createFromDate($date_time)->addHours(16);
+
 
         return View(
             'pages/seats',
