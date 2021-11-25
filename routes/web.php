@@ -19,10 +19,6 @@ use App\Http\Controllers\SeatController;
 |
 */
 
-Route::get('/', [RoomController::class, 'index_withCountSeats']);
-
-Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show']);
-
 Route::group(['middleware' => 'role:admin'], function () {
     Route::get('/admin', function () {
         return View('admin');
@@ -30,13 +26,15 @@ Route::group(['middleware' => 'role:admin'], function () {
 });
 
 Route::get('/auth/logout', [LogoutController::class, 'perform']);
-
 Route::get('/auth/google', [GoogleController::class, 'googleRedirect'])->name('login');
 Route::get('/callback/google', [GoogleController::class, 'googleCallback']);
 
 Route::post('/booking/seat/{seat_id}', [BookingController::class, 'store']);
 
 
+Route::get('/', [RoomController::class, 'index_withCountSeats']);
+Route::get('/display/{id}', [RoomController::class, 'show_display']);
+Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show']);
 Route::get('/rooms/edit', [RoomController::class, 'edit']);
 Route::post('/rooms/{id}/save', [RoomController::class, 'save']);
 Route::post('/rooms/{id}/delete', [RoomController::class, 'delete']);

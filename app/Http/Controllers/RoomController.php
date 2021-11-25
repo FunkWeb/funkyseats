@@ -75,6 +75,28 @@ class RoomController extends Controller
         );
     }
 
+    public function show_display($id)
+    {
+        return View(
+            'pages/display_screen',
+            ['room' => Room::where('id', $id)
+                ->with(['seat' => function ($query) {
+                    if (env('DB_CONNECTION') == "mysql") {
+                        $query->orderByRaw('CHAR_LENGTH(seat_number)');
+                    } else {
+                        $query->orderByRaw('LENGTH(seat_number)');
+                    }
+                    $query->orderBy('seat_number', 'asc');
+                }, 'seat.booking' => function ($query) {
+                    $query
+                        ->where('from', '>=', Carbon::today())
+                        ->where('to', '<=', Carbon::today()->addDay());
+                    $query->with('user');
+                }])
+                ->get()]
+        );
+    }
+
     public function store(Request $request)
     {
         $request->validate([
