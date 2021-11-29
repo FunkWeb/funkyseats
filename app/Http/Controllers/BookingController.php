@@ -113,8 +113,10 @@ class BookingController extends Controller
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Booking $booking)
+    public function destroy($id)
     {
-        //
+        //TODO:(are) can only delete your own booking unless you are an admin
+        Booking::destroy($id);
+        return back()->with('success', 'You unbooked your seat');
     }
 }
