@@ -18,7 +18,7 @@ class AlreadyBookedRule implements Rule
     {
         //
         $this->from = Carbon::create($from);
-        $this->to = Carbon::create($to);
+        $this->to = Carbon::create($to)->addMinutes(-1);
     }
 
     /**

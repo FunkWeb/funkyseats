@@ -54,7 +54,6 @@ class BookingController extends Controller
         } else {
             $time_to = Carbon::createFromDate($request->date_picker)->addHours(16);
         }
-
         $request->merge(['user_id' => auth()->user()->id,]);
         $request->validate([
             'date_picker' => ['after_or_equal:' . Carbon::today()],
@@ -62,8 +61,8 @@ class BookingController extends Controller
         ]);
         $booking = new Booking;
 
-        $booking->from = Carbon::createFromDate($request->date_picker)->addHours(8);
-        $booking->to = Carbon::createFromDate($request->date_picker)->addHours(16);
+        $booking->from = $time_from;
+        $booking->to = $time_to;
         $booking->seat_id = $seat_id;
         $booking->user_id = $request->user_id;
         $booking->approved = True;
