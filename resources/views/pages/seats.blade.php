@@ -1,4 +1,5 @@
 <link href='/assets/css/seat-style.css' rel='stylesheet'>
+<script src="/assets/js/seat-booking.js" defer></script>
 
 @extends('layouts.default')
 
@@ -60,15 +61,23 @@
                     @slot('seat_id')
                         {{ $seat->id }}
                     @endslot
+                        @foreach ($seat->booking as $booking)
                     @slot('booker_id')
-                        {{ $seat->booking[0]->user_id ?? '' }}
+                        {{ $booking->user->user_id ?? '' }}
                     @endslot
                     @slot('user_picture')
                         {{ $seat->booking[0]->user->user_thumbnail ?? '' }}
                     @endslot
                     @slot('user_name')
-                        {{ $seat->booking[0]->user->given_name ?? '' }}
+                        {{ $booking->user->given_name ?? '' }}
                     @endslot
+                    @slot('booked_from')
+                         {{ $booking->from ?? '' }}
+                    @endslot
+                    @slot('booked_to')
+                          {{ $booking->to ?? '' }}
+                    @endslot
+                    @endforeach
                 @endcomponent
             @endforeach
         </div>
@@ -76,4 +85,5 @@
         <script defer src="{{ mix('assets/js/manifest.js') }}"></script>
         <script defer src="{{ mix('assets/js/vendor.js') }}"></script>
         <script defer src="{{ mix('assets/js/react_app.js') }}"></script>
+
     @endsection

@@ -3150,15 +3150,21 @@ var Example = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var changeDate = function changeDate() {
-        alert("hello");
+      var _this = this;
+
+      var changeDate = function changeDate(date) {
+        var month = date.getMonth() + 1;
+        window.location.href = "/room/" + _this.props.room_id + "/" + date.getDate() + "-" + month + "-" + date.getFullYear();
       };
 
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_4___default()), {
           dateFormat: "dd-M-yyyy",
           value: this.props.value,
-          onChange: changeDate
+          onChange: function onChange(date) {
+            return changeDate(date);
+          },
+          name: "date_picker"
         })
       });
     }
