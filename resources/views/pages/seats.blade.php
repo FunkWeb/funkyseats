@@ -48,37 +48,7 @@
     <div class="mx-40px">
         <div class='d-flex flex-wrap justify-content-around'>
             @foreach ($room[0]->seat as $seat)
-                @component('includes.component.seat-component')
-                    @slot('type')
-                        {{ $seat->seatType->name }}
-                    @endslot
-                    @slot('seat_number')
-                        {{ $seat->seat_number }}
-                    @endslot
-                    @slot('booking')
-                        {{ $seat->booking }}
-                    @endslot
-                    @slot('seat_id')
-                        {{ $seat->id }}
-                    @endslot
-                        @foreach ($seat->booking as $booking)
-                    @slot('booker_id')
-                        {{ $booking->user->user_id ?? '' }}
-                    @endslot
-                    @slot('user_picture')
-                        {{ $seat->booking[0]->user->user_thumbnail ?? '' }}
-                    @endslot
-                    @slot('user_name')
-                        {{ $booking->user->given_name ?? '' }}
-                    @endslot
-                    @slot('booked_from')
-                         {{ $booking->from ?? '' }}
-                    @endslot
-                    @slot('booked_to')
-                          {{ $booking->to ?? '' }}
-                    @endslot
-                    @endforeach
-                @endcomponent
+                <x-seat_component :seat="$seat" :user="Auth::user()"></x-seat_component>
             @endforeach
         </div>
         <script type='text/javascript' src='/assets/js/seat-booking.js'></script>
