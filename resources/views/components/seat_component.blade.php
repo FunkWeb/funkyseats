@@ -24,18 +24,23 @@
                                                     @endif
                                                 </div>
                                                 <div class="name-container">
-                                                    <div class="user-name-booked-seat">{{ $booking->user->given_name }}</div>
                                                     <img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat">
+                                                    <div class="user-name-booked-seat">{{ $booking->user->given_name }}</div>
                                                 </div>
                                             </div>
-                                            <div class='booked-seat-type-btn'>{{ $seat->seatType->name ?? '' }}</div>
                                         @endforeach
+                                    @endif
+                                    @if ($seat->booking != '[]' && Auth::check())
+                                        <div class='booked-seat-type-btn'>{{ $seat->seatType->name ?? '' }}</div>
                                     @else
                                         <div class='seat-type-btn'>{{ $seat->seatType->name ?? '' }}</div>
                                     @endif
                                     <div class='seat-num'><b>Seat {{ $seat->seat_number ?? '' }}</b></div>
                                     @if ($seat->booking == '[]')
-                                        <button class='booking-btn' onclick="book_seat({{ $seat->id ?? '' }})">Book seat
+                                        <button class='booking-btn' onclick="book_seat({{ $seat->id ?? '' }})">Book a seat
+                                        </button>
+                                        @else
+                                        <button class='booking-btn' href="">Cancel booking
                                         </button>
                                     @endif
                                 </div>

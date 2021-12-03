@@ -46,7 +46,7 @@ body {
     text-align: center;
 }
 
-.seat-bg-color:hover .booking-btn{
+.seat-bg-color:hover .booking-btn, .booked-by-me:hover .booking-btn{
     display: block;
     margin-top: 14px;
     transition: .2s;
@@ -63,6 +63,11 @@ body {
     transition: .2s;
 }
 
+.booked-by-me:hover .seat-num {
+    padding-top: 0;
+    transition: .2s;
+}
+
 .seat-type-btn {
     padding-top:44px;
 }
@@ -73,6 +78,11 @@ body {
 
 .seat-bg-color:hover .seat-type-btn {
     padding-top:28px;
+    transition: .2s;
+}
+
+.booked-by-me:hover .booked-seat-type-btn {
+    padding: 6px 0 10px;
     transition: .2s;
 }
 
@@ -119,7 +129,7 @@ body {
 .user-name-booked-seat {
     font-size: 10px;
     height: min-content;
-    margin-right: 6px;
+    margin: 0 4px;
 }
 
 .booked-seat.user-name-booked-seat {

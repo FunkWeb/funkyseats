@@ -23,6 +23,7 @@
     "webpack": "^5.40.0"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.16.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@fullcalendar/bootstrap": "^5.8.0",
     "@fullcalendar/core": "^5.8.0",
@@ -63,6 +64,7 @@
     "datatables.net-rowreorder-bs4": "^1.2.8",
     "datatables.net-scroller-bs4": "^2.0.4",
     "datatables.net-select-bs4": "^1.3.3",
+    "date-fns": "^2.27.0",
     "dropzone": "^5.9.2",
     "flag-icon-css": "^3.5.0",
     "flot": "^4.2.2",
@@ -107,7 +109,6 @@
     "swiper": "^6.7.1",
     "switchery": "github:abpetkov/switchery",
     "tag-it": "^2.0.0",
-    "x-editable-bs4": "^1.5.4",
-    "@babel/preset-react": "^7.16.0"
+    "x-editable-bs4": "^1.5.4"
   }
 }
