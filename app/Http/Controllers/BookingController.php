@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Rules\AlreadyBookedRule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use Carbon\Carbon;
 
@@ -112,10 +113,16 @@ class BookingController extends Controller
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         //TODO:(are) can only delete your own booking unless you are an admin
-        Booking::destroy($id);
-        return back()->with('success', 'You unbooked your seat');
+        $booking = Booking::find($id);
+        if ($booking) {
+            if (Auth::user()->id == $booking->user_id || Auth::user()->hasRole('admin')) {
+                $booking->delete();
+                return back()->with('success', 'You unbooked your seat');
+            }
+        }
+        return back()->with('error', 'Could not delete the booking');
     }
 }
