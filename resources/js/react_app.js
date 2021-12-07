@@ -15,12 +15,12 @@ class Example extends React.Component {
             let month = date.getMonth() + 1;
             window.location.href = "/room/" + this.props.room_id + "/" + date.getDate() + "-" + month + "-" + date.getFullYear();
         };
-
         return (
             <div>
                 <DatePicker dateFormat="dd-M-yyyy"
-                    value={this.props.value}
-                    onChange={(date) => changeDate(date)}
+                            value={this.props.date_selected}
+                            minDate={new Date()}
+                            onChange={(date) => changeDate(date)}
                     name="date_picker"
                 />
             </div>
