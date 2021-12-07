@@ -29,7 +29,7 @@
         <form name="seat_booking_form" method="POST">
             @csrf
             <div class="book-calendar">
-                <Example value={{ $date_selected }} room_id={{ $room[0]->id }} />
+                <Example date_selected={{ $date_selected }} room_id={{ $room[0]->id }} />
             </div>
             <label>
                 <input type="radio" name="book_time" value="0">

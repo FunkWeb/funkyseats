@@ -9,21 +9,32 @@ body {
 .seat-container {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     width: 224px;
     height: 166px;
     border-radius: 5%;
 }
 
 .seat-bg-color, .available-seat {
+    justify-content: center;
     background-color: #fff;
     color: black;
     border: 1px solid #9f9e9e;
 }
 
 .seat-bg-color:hover {
+    justify-content: space-evenly;
     background-color: #20B3BE;
     color: #fff;
     background-image: none;
+}
+
+.seat-bg-color .seat-type-btn{
+    margin-bottom: 14px;
+}
+
+.seat-bg-color:hover .seat-type-btn{
+    margin: 0;
 }
 
 .booked-seat {
@@ -38,52 +49,26 @@ body {
 
 .booking-btn {
     display: none;
-    padding: 4px;
+    /*padding: 4px;*/
     margin: 0 auto;
     width: 100px;
+    height: 28px;
     font-size: 12px;
     border: 1px solid white;
+    border-radius: 5%;
     text-align: center;
 }
 
 .seat-bg-color:hover .booking-btn, .booked-by-me:hover .booking-btn{
     display: block;
-    margin-top: 14px;
+    /*margin-top: 14px;*/
     transition: .2s;
     cursor: pointer;
 }
 
 .seat-num {
     font-size: 16px;
-    padding-top: 20px;
-}
-
-.seat-bg-color:hover .seat-num {
-    padding-top: 16px;
-    transition: .2s;
-}
-
-.booked-by-me:hover .seat-num {
-    padding-top: 0;
-    transition: .2s;
-}
-
-.seat-type-btn {
-    padding-top:44px;
-}
-
-.booked-seat-type-btn {
-    padding-top:12px;
-}
-
-.seat-bg-color:hover .seat-type-btn {
-    padding-top:28px;
-    transition: .2s;
-}
-
-.booked-by-me:hover .booked-seat-type-btn {
-    padding: 6px 0 10px;
-    transition: .2s;
+    /*padding-top: 20px;*/
 }
 
 .error-window, .booked-seat-successfully {
@@ -114,22 +99,16 @@ body {
 }
 
 .user-picture-booked-seat {
+    position: relative;
+    margin: 0 6px;
     width: 24px;
     height: 24px;
     border-radius: 50%;
 }
 
-.user-container-booked-seat {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 14px;
-    align-items: end;
-}
 
 .user-name-booked-seat {
-    font-size: 10px;
-    height: min-content;
-    margin: 0 4px;
+    font-size: 8px;
 }
 
 .booked-seat.user-name-booked-seat {
@@ -146,8 +125,13 @@ body {
     display: flex;
 }
 
-.name-container {
+/*.name-container {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+
+.user-booking-info {
     display: flex;
     flex-direction: row;
-    align-items: self-end;
+    text-align: left;
 }

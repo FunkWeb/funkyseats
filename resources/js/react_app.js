@@ -18,7 +18,7 @@ class Example extends React.Component {
         return (
             <div>
                 <DatePicker dateFormat="dd-M-yyyy"
-                    value={this.props.value}
+                            value={this.props.date_selected}
                             minDate={new Date()}
                             onChange={(date) => changeDate(date)}
                     name="date_picker"

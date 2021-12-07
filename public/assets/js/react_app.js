@@ -3160,7 +3160,7 @@ var Example = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)((react_datepicker__WEBPACK_IMPORTED_MODULE_4___default()), {
           dateFormat: "dd-M-yyyy",
-          value: this.props.value,
+          value: this.props.date_selected,
           minDate: new Date(),
           onChange: function onChange(date) {
             return changeDate(date);
