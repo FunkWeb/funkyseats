@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Rules\AlreadyBookedRule;
+use App\Rules\SeatAlreadyTakenRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,10 +57,13 @@ class BookingController extends Controller
             $time_to = Carbon::createFromDate($request->date_picker)->addHours(16);
         }
         $request->merge(['user_id' => auth()->user()->id,]);
+        $request->merge(['seat_id' => $seat_id]);
         $request->validate([
             'date_picker' => ['after_or_equal:' . Carbon::today()],
             'user_id' => [new AlreadyBookedRule($time_from, $time_to)],
+            'seat_id' => [new SeatAlreadyTakenRule($time_from, $time_to)]
         ]);
+
         $booking = new Booking;
 
         $booking->from = $time_from;
