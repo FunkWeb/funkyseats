@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Rules\AlreadyBookedRule;
+use App\Rules\SeatAlreadyTakenRule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use Carbon\Carbon;
 
@@ -55,10 +57,13 @@ class BookingController extends Controller
             $time_to = Carbon::createFromDate($request->date_picker)->addHours(16);
         }
         $request->merge(['user_id' => auth()->user()->id,]);
+        $request->merge(['seat_id' => $seat_id]);
         $request->validate([
             'date_picker' => ['after_or_equal:' . Carbon::today()],
             'user_id' => [new AlreadyBookedRule($time_from, $time_to)],
+            'seat_id' => [new SeatAlreadyTakenRule($time_from, $time_to)]
         ]);
+
         $booking = new Booking;
 
         $booking->from = $time_from;
@@ -112,10 +117,16 @@ class BookingController extends Controller
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         //TODO:(are) can only delete your own booking unless you are an admin
-        Booking::destroy($id);
-        return back()->with('success', 'You unbooked your seat');
+        $booking = Booking::find($id);
+        if ($booking) {
+            if (Auth::user()->id == $booking->user_id || Auth::user()->hasRole('admin')) {
+                $booking->delete();
+                return back()->with('success', 'You unbooked your seat');
+            }
+        }
+        return back()->with('error', 'Could not delete the booking');
     }
 }

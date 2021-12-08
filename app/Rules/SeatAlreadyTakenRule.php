@@ -3,23 +3,22 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use App\Models\Booking;
 use Carbon\Carbon;
+use App\Models\Booking;
 
-class AlreadyBookedRule implements Rule
+class SeatAlreadyTakenRule implements Rule
 {
     /**
      * Create a new rule instance.
      *
      * @return void
      */
+
     public function __construct($from, $to)
     {
-        //
         $this->from = Carbon::create($from);
         $this->to = Carbon::create($to);
     }
-
     /**
      * Determine if the validation rule passes.
      *
@@ -29,7 +28,7 @@ class AlreadyBookedRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        $bookedSeats = Booking::where('seat_id', $value)
+        $bookedSeats = Booking::where('user_id', $value)
             ->where('from', '=', $this->from)
             ->orWhere('to', '=', $this->to)
             ->get();
@@ -38,6 +37,7 @@ class AlreadyBookedRule implements Rule
         }
     }
 
+
     /**
      * Get the validation error message.
      *
@@ -45,6 +45,6 @@ class AlreadyBookedRule implements Rule
      */
     public function message()
     {
-        return 'You already have a seat booked right now';
+        return 'The seat you tried to book is taken by somebody else';
     }
 }

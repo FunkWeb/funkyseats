@@ -43,8 +43,8 @@ class RoomController extends Controller
             $q
                 ->whereDoesntHave("booking", function ($query) {
                     $query
-                        ->where('from',  '<=', Carbon::now())
-                        ->where('to',  '>=', Carbon::now());
+                        ->where('from',  '<=', Carbon::now('Europe/Oslo'))
+                        ->where('to',  '>=', Carbon::now('Europe/Oslo'));
                 });
         }])->get()]);
     }
@@ -69,7 +69,8 @@ class RoomController extends Controller
                 }, 'seat.booking' => function ($query) use ($time_from, $time_to) {
                     $query
                         ->whereBetween('from', [$time_from, $time_to])
-                        ->orWhereBetween('to', [$time_from, $time_to]);
+                        ->orWhereBetween('to', [$time_from, $time_to])
+                        ->orderBy('from');
                     $query->with('user');
                 }])
                 ->get(), 'date_selected' => $date_time]
