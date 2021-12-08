@@ -18,9 +18,8 @@ function closeWindow() {
 function addNewRoom() {
     document.getElementById('addNewRoom').style.display = 'block';
     let csrf_token = document.querySelector('[name="_token"]');
-    document.getElementById('addNewRoom').innerHTML = '' +
-        '<div class=\'text-center text-light text-uppercase mt-30px box-style\'\n' +
-        '    style=\"background-image: url(\'../images/office.jpeg\'); border-radius: 5%;\">\n' +
+    document.getElementById('addNewRoom').innerHTML += '' +
+        '<div class=\'text-center text-light text-uppercase mt-30px room-container\'\">\n' +
         '    <div class=\'edit-box\' style=\'pointer-events: all\'>\n' +
         '    <form id=newRoom action=/room/store method="post">' +
         '       <input class=\'edit-room-name\' type="text" id="name" name="name" placeholder="Room name">\n' +
@@ -36,11 +35,10 @@ function addNewSeat(room_id) {
     let csrf_token = document.querySelector('[name="_token"]');
     let seat_types = document.querySelector('.edit-seat-type');
     document.getElementById('addNewSeat').innerHTML =
-        '<div class=\'text-center text-light text-uppercase mt-30px box-style\'' +
-        '    style=\"background-image: url(\'/images/office.jpeg\'); border-radius: 5%;\">' +
+        '<div class=\'text-center text-light text-uppercase mt-30px room-container\'>' +
         '    <div class=\'edit-box\' style=\'pointer-events: all\'>' +
         '<form id=newSeat action=/seat/store method="post">' +
-        '<select name=seat_type class=\'edit-seat-type\'> ' +
+        '<select name=seat_type class=\'edit-seat-type text-dark\'> ' +
         seat_types.innerHTML +
         '</select> '  +
         '            <input name=room_id value=' +

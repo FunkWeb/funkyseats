@@ -53,6 +53,33 @@
                                                             </div>
                                                         @endif
                                                     </div>
+                                                <div class="booked-time{{$seat->seat_number}} user-name-booked-seat">
+                                                    @if (\Carbon\Carbon::parse($booking->from)->format('H') == 8 && \Carbon\Carbon::parse($booking->to)->format('H') == 16)
+                                                        <div class="name-container">
+                                                            <div>{{ 'All day' }}</div>
+                                                            <div class="user-booking-info">
+                                                                <div> {{ $booking->user->given_name }}</div>
+                                                                <img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat">
+                                                            </div>
+                                                        </div>
+                                                    @elseif (\Carbon\Carbon::parse($booking->from)->format('H') == 8)
+                                                        <div class="name-container">
+                                                            <img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat">
+                                                            <div class="user-booking-info">
+                                                                <div> {{ $booking->user->given_name }}</div>
+                                                                <div>{{ 'Before lunch' }}</div>
+                                                            </div>
+                                                        </div>
+                                                    @elseif(\Carbon\Carbon::parse($booking->from)->format('H') == 12)
+                                                        <div class="user-booking-info">
+                                                            <div><img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat"></div>
+                                                            <div>
+                                                                <div> {{ $booking->user->given_name }}</div>
+                                                                <div>{{ 'After lunch' }}</div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                </div>
                                 </div>
                                         @endforeach
                                     @endif
