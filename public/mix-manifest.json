@@ -34,6 +34,9 @@
     "/assets/css/images/ui-icons_ffffff_256x240.png": "/assets/css/images/ui-icons_ffffff_256x240.png",
     "/assets/js/vendor.min.js": "/assets/js/vendor.min.js",
     "/assets/js/app.min.js": "/assets/js/app.min.js",
+    "/assets/js/ReactRenderer.js": "/assets/js/ReactRenderer.js",
+    "/assets/js/admin-page.js": "/assets/js/admin-page.js",
+    "/assets/js/seat-booking.js": "/assets/js/seat-booking.js",
     "/assets/plugins/pace-js/LICENSE": "/assets/plugins/pace-js/LICENSE",
     "/assets/plugins/pace-js/README.md": "/assets/plugins/pace-js/README.md",
     "/assets/plugins/pace-js/pace-theme-default.css": "/assets/plugins/pace-js/pace-theme-default.css",
@@ -434,5 +437,11 @@
     "/assets/plugins/react-dom/server.browser.js": "/assets/plugins/react-dom/server.browser.js",
     "/assets/plugins/react-dom/server.js": "/assets/plugins/react-dom/server.js",
     "/assets/plugins/react-dom/server.node.js": "/assets/plugins/react-dom/server.node.js",
-    "/assets/plugins/react-dom/test-utils.js": "/assets/plugins/react-dom/test-utils.js"
+    "/assets/plugins/react-dom/test-utils.js": "/assets/plugins/react-dom/test-utils.js",
+    "/assets/js/theme/apple.min.js": "/assets/js/theme/apple.min.js",
+    "/assets/js/theme/default.min.js": "/assets/js/theme/default.min.js",
+    "/assets/js/theme/facebook.min.js": "/assets/js/theme/facebook.min.js",
+    "/assets/js/theme/google.min.js": "/assets/js/theme/google.min.js",
+    "/assets/js/theme/material.min.js": "/assets/js/theme/material.min.js",
+    "/assets/js/theme/transparent.min.js": "/assets/js/theme/transparent.min.js"
 }

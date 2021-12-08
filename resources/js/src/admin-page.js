@@ -13,8 +13,6 @@ function closeWindow() {
     document.getElementsByClassName('overlay')[0].className += 'overlay'
 }
 
-
-
 function addNewRoom() {
     document.getElementById('addNewRoom').style.display = 'block';
     let csrf_token = document.querySelector('[name="_token"]');
@@ -51,6 +49,3 @@ function addNewSeat(room_id) {
         '</div>'
     document.getElementById('newSeat').appendChild(csrf_token);
 }
-
-
-

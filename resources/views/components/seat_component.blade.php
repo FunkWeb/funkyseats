@@ -1,5 +1,3 @@
-<link href='/assets/css/seat-style.css' rel='stylesheet'>
-
 <div class='text-center text-light text-uppercase mt-30px seat-container' onClick='bookSeat()'>
     @if ($seat->booking == '[]' && !Auth::check())
         <div class='available-seat seat-container'>

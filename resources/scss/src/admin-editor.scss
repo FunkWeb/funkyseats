@@ -10,20 +10,23 @@
 .room-container input {
     color: black;
     font-weight: 600;
+    border: none;
 }
 
 form {
-    margin: 0;
+    margin: 10px 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
+}
+
+.room-container form {
     height: 166px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .submit-changes-btn {
-    /*padding: 4px;*/
-    /*margin: 22px auto 0;*/
     width: 100px;
     height: 28px;
     font-size: 12px;
@@ -33,10 +36,9 @@ form {
 }
 
 input {
-    -webkit-appearance: none;
     outline: none;
-    background-color: transparent;
-    border: none;
+    border: 1px solid gray;
+    background-color: #ffffff;
 }
 
 input, input::placeholder, input.edit-seat-num::placeholder, input.edit-room-name::placeholder {
@@ -44,7 +46,7 @@ input, input::placeholder, input.edit-seat-num::placeholder, input.edit-room-nam
     font-size: 14px;
     text-transform: uppercase;
     color: black;
-    background-color: transparent;
+    background-color: #fff;
 }
 
 .edit-box {

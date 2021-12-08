@@ -1,5 +1,3 @@
-<link href='/assets/css/seat-style.css' rel='stylesheet'>
-<link href='/assets/css/admin-editor.css' rel='stylesheet'>
 <script src="/assets/js/admin-page.js"></script>
 
 @extends('layouts.default')

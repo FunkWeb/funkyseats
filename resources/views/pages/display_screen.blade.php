@@ -1,5 +1,3 @@
-<link href='/assets/css/seat-style.css' rel='stylesheet'>
-
 @extends('layouts.default')
 
 @section('title', 'Home Page')
