@@ -2,7 +2,6 @@
 /public/hot
 /public/storage
 /public/assets
-public/assets/
 /storage/debugbar/*
 /storage/*.key
 /storage/debugbar/*
