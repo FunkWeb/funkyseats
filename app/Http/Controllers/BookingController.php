@@ -46,7 +46,7 @@ class BookingController extends Controller
         //0 = 8->12
         //1 = 12->16
         //2 = 8->16
-        if ($request->book_time == 0 || $request->book_time == 3) {
+        if ($request->book_time == 0 || $request->book_time == 2) {
             $time_from = Carbon::createFromDate($request->date_picker)->addHours(8);
         } else {
             $time_from = Carbon::createFromDate($request->date_picker)->addHours(12);
