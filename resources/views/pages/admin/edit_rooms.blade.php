@@ -47,7 +47,7 @@
         </div>
 
         <div>
-            <div class='d-flex flex-wrap justify-content-around mt-30px'>
+            <div id="addNewRoom" class='d-flex flex-wrap justify-content-around mt-30px'>
                 @foreach ($rooms as $room)
                     @component('includes.component.room-editing')
                         @slot('id')
@@ -61,7 +61,6 @@
                         @endslot
                     @endcomponent
                 @endforeach
-                <div id="addNewRoom" style="display: none"></div>
             </div>
             @endsection
         </div>
