@@ -1,4 +1,3 @@
-<link href='/assets/css/seat-style.css' rel='stylesheet'>
 <script src="/assets/js/seat-booking.js" defer></script>
 
 @extends('layouts.default')
@@ -31,6 +30,7 @@
             <div class="book-calendar">
                 <Example date_selected={{ $date_selected }} room_id={{ $room[0]->id }} />
             </div>
+            <div>
             <label>
                 <input type="radio" name="book_time" value="0">
                 Before lunch
@@ -43,6 +43,7 @@
                 <input type="radio" name="book_time" value="2" checked>
                 All day
             </label>
+            </div>
         </form>
     </div>
     <div class="mx-40px">
@@ -51,7 +52,6 @@
                 <x-seat_component :seat="$seat" :user="Auth::user()"></x-seat_component>
             @endforeach
         </div>
-        <script type='text/javascript' src='/assets/js/seat-booking.js'></script>
         <script defer src="{{ mix('assets/js/manifest.js') }}"></script>
         <script defer src="{{ mix('assets/js/vendor.js') }}"></script>
         <script defer src="{{ mix('assets/js/react_app.js') }}"></script>

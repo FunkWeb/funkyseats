@@ -43,6 +43,7 @@ mix.combine([
 mix.combine([
 	'resources/js/app.js'
 ], 'public/assets/js/app.min.js');
+mix.copy('resources/js/src', 'public/assets/js');
 
 
 // plugins
@@ -195,3 +196,6 @@ mix.download({
 });
 
 mix.js('resources/js/react_app.js', 'public/assets/js').react().extract(['react', 'react-dom']);
+
+// themes
+mix.copy('resources/js/theme/*.min.js', 'public/assets/js/theme');

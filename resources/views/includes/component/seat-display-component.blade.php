@@ -1,5 +1,3 @@
-<link href='/assets/css/seat-style.css' rel='stylesheet'>
-
 <div class='text-center text-light text-uppercase mt-30px seat-container' style="position: relative"'>
 @if ($booking == '[]')
     <div class='available-seat seat-container'>
@@ -17,6 +15,6 @@
                         @else
                             <div class='seat-type-btn'>{{ $type ?? '' }}</div>
                         @endif
-                        <div class='seat-num'><b>Seat {{ $seat_number ?? '' }}</b></div>
+                        <div class='seat-num mt-4px'><b>Seat {{ $seat_number ?? '' }}</b></div>
                     </div>
             </div>
