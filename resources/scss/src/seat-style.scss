@@ -124,5 +124,10 @@ body {
 .user-booking-info {
     display: flex;
     flex-direction: row;
+    align-items: center;
     text-align: left;
+}
+
+a {
+text-decoration: none;
 }

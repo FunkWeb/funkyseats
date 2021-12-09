@@ -18,30 +18,31 @@
                                         <button class='booking-btn' onclick="book_seat({{ $seat->id ?? '' }})">Book a seat
                                         </button>
                                         @else
-                                        <button class='booking-btn' href="">Cancel booking
-                                        </button>
+                                        <a href={{ route('deleteBooking', ['booking_id' => $seat->booking[0]->id]) }} class="booking-btn">
+                                            <button class='booking-btn' href="">Cancel booking</button>
+                                        </a>
                                     @endif
                                     @if ($seat->booking != '[]' && Auth::check())
                                         @foreach($seat->booking as $booking)
                                             <div style="display: flex; justify-content: space-evenly;">
                                                     <div class="booked-time{{$seat->seat_number}} user-name-booked-seat">
                                                         @if (\Carbon\Carbon::parse($booking->from)->format('H') == 8 && \Carbon\Carbon::parse($booking->to)->format('H') == 16)
-                                                            <div class="name-container">
-                                                                <div>{{ 'All day' }}</div>
-                                                                <div class="user-booking-info">
-                                                                    <div> {{ $booking->user->given_name }}</div>
-                                                                    <img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat">
+                                                            <div class="user-booking-info">
+                                                                <div class="d-flex flex-row">
+                                                                    <div class="mr-6px"><img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat"></div>
+                                                                    <div class="mx-6px my-auto">{{ $booking->user->given_name }}</div>
                                                                 </div>
+                                                                <div>{{ 'All day' }}</div>
                                                             </div>
                                                         @elseif (\Carbon\Carbon::parse($booking->from)->format('H') == 8)
-                                                            <div class="name-container">
-                                                                <img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat">
-                                                                <div class="user-booking-info">
+                                                            <div class="user-booking-info">
+                                                                <div><img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat"></div>
+                                                                <div>
                                                                     <div> {{ $booking->user->given_name }}</div>
                                                                     <div>{{ 'Before lunch' }}</div>
                                                                 </div>
                                                             </div>
-                                                        @elseif(\Carbon\Carbon::parse($booking->from)->format('H') == 12)
+                                                        @elseif(\Carbon\Carbon::parse($booking->to)->format('H') == 16)
                                                             <div class="user-booking-info">
                                                                 <div><img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat"></div>
                                                                 <div>
@@ -51,33 +52,6 @@
                                                             </div>
                                                         @endif
                                                     </div>
-                                                <div class="booked-time{{$seat->seat_number}} user-name-booked-seat">
-                                                    @if (\Carbon\Carbon::parse($booking->from)->format('H') == 8 && \Carbon\Carbon::parse($booking->to)->format('H') == 16)
-                                                        <div class="name-container">
-                                                            <div>{{ 'All day' }}</div>
-                                                            <div class="user-booking-info">
-                                                                <div> {{ $booking->user->given_name }}</div>
-                                                                <img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat">
-                                                            </div>
-                                                        </div>
-                                                    @elseif (\Carbon\Carbon::parse($booking->from)->format('H') == 8)
-                                                        <div class="name-container">
-                                                            <img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat">
-                                                            <div class="user-booking-info">
-                                                                <div> {{ $booking->user->given_name }}</div>
-                                                                <div>{{ 'Before lunch' }}</div>
-                                                            </div>
-                                                        </div>
-                                                    @elseif(\Carbon\Carbon::parse($booking->from)->format('H') == 12)
-                                                        <div class="user-booking-info">
-                                                            <div><img src="{{ $booking->user->user_thumbnail ?? '' }}" class="user-picture-booked-seat"></div>
-                                                            <div>
-                                                                <div> {{ $booking->user->given_name }}</div>
-                                                                <div>{{ 'After lunch' }}</div>
-                                                            </div>
-                                                        </div>
-                                                    @endif
-                                                </div>
                                 </div>
                                         @endforeach
                                     @endif
