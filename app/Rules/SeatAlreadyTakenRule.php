@@ -28,9 +28,11 @@ class SeatAlreadyTakenRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        $bookedSeats = Booking::where('user_id', $value)
-            ->where('from', '=', $this->from)
-            ->orWhere('to', '=', $this->to)
+        $bookedSeats =  Booking::where('seat_id', $value)
+            ->where(function ($query) {
+                $query->where('from', '=', $this->from)
+                    ->orWhere('to', '=', $this->to);
+            })
             ->get();
         if (!$bookedSeats->first()) {
             return true;
