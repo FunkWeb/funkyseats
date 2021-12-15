@@ -1,4 +1,4 @@
-<div class='text-center text-light text-uppercase mt-30px seat-container' onClick='bookSeat()'>
+<div class='text-center text-light text-uppercase mt-30px' onClick='bookSeat()'>
     @if ($seat->booking == '[]' && !Auth::check())
         <div class='available-seat seat-container'>
             @elseif ($seat->booking == '[]' && Auth::check())
@@ -17,15 +17,11 @@
                                     @if ($seat->booking == '[]')
                                         <button class='booking-btn' onclick="book_seat({{ $seat->id ?? '' }})">Book a seat
                                         </button>
-                                        @else
-                                        <a href={{ route('deleteBooking', ['booking_id' => $seat->booking[0]->id]) }} class="booking-btn">
-                                            <button class='booking-btn' href="">Cancel booking</button>
-                                        </a>
                                     @endif
                                     @if ($seat->booking != '[]' && Auth::check())
                                         @foreach($seat->booking as $booking)
                                             <div style="display: flex; justify-content: space-evenly;">
-                                                    <div class="booked-time{{$seat->seat_number}} user-name-booked-seat">
+                                                    <div class="booked-time{{$seat->seat_number}} user-name-booked-seat half-day-booking">
                                                         @if (\Carbon\Carbon::parse($booking->from)->format('H') == 8 && \Carbon\Carbon::parse($booking->to)->format('H') == 16)
                                                             <div class="user-booking-info">
                                                                 <div class="d-flex flex-row">
@@ -51,6 +47,9 @@
                                                                 </div>
                                                             </div>
                                                         @endif
+                                                            <a href={{ route('deleteBooking', ['booking_id' => $seat->booking[0]->id]) }} class="cancel-booking-btn">
+                                                                <button class='cancel-booking-btn' href="">Cancel booking</button>
+                                                            </a>
                                                     </div>
                                 </div>
                                         @endforeach
