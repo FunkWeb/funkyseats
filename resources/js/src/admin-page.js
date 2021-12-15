@@ -32,7 +32,7 @@ function addNewSeat(room_id) {
     document.getElementById('addNewSeat').style.display = 'block';
     let csrf_token = document.querySelector('[name="_token"]');
     let seat_types = document.querySelector('.edit-seat-type');
-    document.getElementById('addNewSeat').innerHTML =
+    document.getElementById('addNewSeat').innerHTML +=
         '<div class=\'text-center text-light text-uppercase mt-30px room-container\'>' +
         '    <div class=\'edit-box\' style=\'pointer-events: all\'>' +
         '<form id=newSeat action=/seat/store method="post">' +
