@@ -26,17 +26,17 @@
     @section('content')
         <ol class="breadcrumb float-xl-right"></ol>
         <h5 class="text-center mt-40px page-subtitle">
-            <a href='/'><i class="fas fa-chevron-left"></i></a>
+            <a href='/'><i class="fas fa-chevron-left"></i><p class="iTexts">back</p></a>
             edit a room
             @if (Auth::check())
-                <a><i class="fas fa-plus" onclick="addNewRoom()"></i></a>
+                <a><i class="fas fa-plus" onclick="addNewRoom()"></i><p class="iTexts">add room</p></a> 
             @else
-                <a><i class="fas fa-plus"></i></a>
+                <a><i class="fas fa-plus"></i><p>add room</p class="iTexts"></a>
             @endif
         </h5>
 
         <div class="popup-container">
-            <div class="popup-title">Are you sure?</div>
+            <div class="popup-title"></div>
             <div class="popup-btn">
                 <button onclick="closeWindow()">Cancel</button>
                 <form id="confirm_delete" method="post">
@@ -64,3 +64,4 @@
             </div>
             @endsection
         </div>
+</div>

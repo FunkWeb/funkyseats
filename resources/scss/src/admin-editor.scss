@@ -1,3 +1,8 @@
+.iTexts{
+    margin: 5px 0;
+    color: #9f9e9e;
+}
+
 .room-container {
     width: 224px;
     height: 166px;
@@ -10,7 +15,6 @@
 .room-container input {
     color: black;
     font-weight: 600;
-    border: none;
 }
 
 form {
@@ -46,6 +50,12 @@ input, input::placeholder, input.edit-seat-num::placeholder, input.edit-room-nam
     text-transform: uppercase;
     color: black;
     background-color: #fff;
+}
+
+input.edit-seat-num::placeholder, input.edit-room-name::placeholder {
+    color: grey;
+    font-style: italic;
+    text-transform: none;
 }
 
 .edit-box {
@@ -98,8 +108,9 @@ i.fa-trash-alt {
 .popup-title {
     display: flex;
     justify-content: center;
-    padding: 20px 0;
+    padding: 20px 10px;
     font-size: 14px;
+    font-family: inherit;
 }
 
 .overlay {
@@ -126,7 +137,13 @@ i.fa-trash-alt {
     color: #9f9e9e;
 }
 
-i.fas {
+i.fas{
     color: #9f9e9e;
     cursor: pointer;
 }
+
+i.far{
+    cursor: pointer;
+}
+
+
