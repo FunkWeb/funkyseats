@@ -4,10 +4,10 @@
     @else
     <div class='edit-box' style="pointer-events: none">
     @endif
-        <i class="far fa-trash-alt" onclick="showWindow({{$seat_id}}, 'seats', '{{ $seat_number ?? 'untitled'}}')"></i>
+        <i class="far fa-trash-alt" onclick="showWindow({{$seat_id}}, 'seats', '{{ $seat_number ?? ''}}')"></i>
         <form action=/seats/{{ $seat_id ?? '' }}/save/ method="post">
             @csrf
-            <select name="seat_type" class='edit-seat-type text-dark'>
+            <select name="seat_type" class='edit-seat-type'>
                 {{ $seat_types_list }}
             </select>
              <input type="text" id="seat_number " name="seat_number" 

@@ -33,7 +33,7 @@ class SeatController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->seat_type);
+
         $request->validate([
             'seat_number' => ['required', 'max:255'],
             'seat_type' => ['required', 'exists:seat_types,id'],

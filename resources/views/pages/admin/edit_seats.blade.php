@@ -32,6 +32,7 @@
 <div class="overlay">
     @section('content')
         <ol class="breadcrumb float-xl-right"></ol>
+        <!------------------header and add seat ------->
         <h4 class="fw-600 text-center mt-30px">{{ $room[0]->name }}</h4>
         <h5 class="text-center mt-10px page-subtitle">
             <a href='/rooms/edit'><i class="fas fa-chevron-left"></i><p class="iTexts">back</p></a>

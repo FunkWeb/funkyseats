@@ -17,9 +17,10 @@ function closeWindow() {
 function addNewRoom() {
     document.getElementById('addNewRoom').style.display = 'block';
     let csrf_token = document.querySelector('[name="_token"]');
+    let room_id = Math.random(100000);
     document.getElementById('addNewRoom').innerHTML += `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
-               <i class="far fa-trash-alt" onclick="showWindow({{$id}}, 'rooms', '{{ $name }}')"> </i> 
+               <i class="far fa-trash-alt" onclick="showWindow(${room_id}, 'rooms', 'new room')"> </i> 
 
                 <form id="newRoom" action=/room/store method="post">
                     <input class="edit-room-name" type="text" id="name" name="name" autocomplete="off" placeholder="Write room name">
@@ -35,10 +36,11 @@ function addNewSeat(room_id) {
     document.getElementById('addNewSeat').style.display = 'block';
     let csrf_token = document.querySelector('[name="_token"]');
     let seat_types = document.querySelector('.edit-seat-type');
+    let seat_id = Math.random(100000);
     document.getElementById('addNewSeat').innerHTML +=
         `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
-           <i class="far fa-trash-alt" onclick="showWindow({{$id}}, 'rooms', '{{ $seat_number }}')"> </i> 
+           <i class="far fa-trash-alt" onclick="showWindow(${seat_id}, 'seats', 'new seat')"> </i> 
 
               <form id=newSeat action=/seat/store method="post">
                    <select name=seat_type class="edit-seat-type text-dark"> 
