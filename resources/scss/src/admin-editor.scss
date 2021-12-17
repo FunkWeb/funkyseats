@@ -1,3 +1,8 @@
+.fw-600{
+    position: relative;
+    right: 14px;
+}
+
 .iTexts{
     margin: 5px 0;
     color: #9f9e9e;
@@ -33,6 +38,8 @@ form {
     width: 100px;
     height: 28px;
     font-size: 12px;
+    font-weight: bolder;
+    letter-spacing: 2px;
     text-align: center;
     background-color: #324252;
     color: white;
@@ -72,9 +79,10 @@ i.fa-trash-alt {
 .edit-seat-type {
     outline: none;
     border: none;
-    color: white;
+    color: black;
     background-color: transparent;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .popup-container {
@@ -146,5 +154,6 @@ i.fas{
 i.far{
     cursor: pointer;
 }
+
 
 

@@ -25,7 +25,8 @@
 <div class="overlay">
     @section('content')
         <ol class="breadcrumb float-xl-right"></ol>
-        <h5 class="text-center mt-40px page-subtitle">
+        <!---------- header and add room ----->
+        <h5 class="text-center mt-50px page-subtitle" id="room_head">
             <a href='/'><i class="fas fa-chevron-left"></i><p class="iTexts">back</p></a>
             edit a room
             @if (Auth::check())
