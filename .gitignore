@@ -22,7 +22,6 @@ yarn-error.log
 /public/storage
 /public/assets/plugins
 /public/assets/webfonts
-/public/assets/js/theme
 /storage/debugbar/*
 /storage/*.key
 /storage/debugbar/*
