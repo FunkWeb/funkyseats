@@ -54,8 +54,8 @@
                 <x-seat_component :seat="$seat" :user="Auth::user()"></x-seat_component>
             @endforeach
         </div>
+    </div>
         <script defer src="{{ mix('assets/js/manifest.js') }}"></script>
         <script defer src="{{ mix('assets/js/vendor.js') }}"></script>
         <script defer src="{{ mix('assets/js/react_app.js') }}"></script>
-    </div>
 @endsection

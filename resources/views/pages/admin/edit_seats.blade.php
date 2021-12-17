@@ -4,7 +4,7 @@
 
 @section('title', 'Home Page')
 
-<div id="csrfNewSeat" style="hidden">
+<div id="csrfNewSeat" style="hidden" >
     @csrf
 </div>
 
@@ -85,3 +85,4 @@
             </div>
             @endsection
         </div>
+</div>
