@@ -22,7 +22,7 @@ function closeWindow() {
 function addNewRoom() {
     document.getElementById('addNewRoom').style.display = 'block';
     let csrf_token = document.querySelector('[name="_token"]');
-    let room_id = Math.random(100000);
+    let room_id = Math.random(100000) * -1;
     document.getElementById('addNewRoom').innerHTML += `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
                <i class="far fa-trash-alt" onclick="showWindow(${room_id}, 'rooms', 'new room')"> </i> 
@@ -33,7 +33,7 @@ function addNewRoom() {
                 </form>
             </div>
         </div> `;
-    
+
     document.getElementById('newRoom').appendChild(csrf_token);
 }
 
@@ -41,7 +41,7 @@ function addNewSeat(room_id) {
     document.getElementById('addNewSeat').style.display = 'block';
     let csrf_token = document.querySelector('[name="_token"]');
     let seat_types = document.querySelector('.edit-seat-type');
-    let seat_id = Math.random(100000);
+    let seat_id = Math.random(100000) * -1;
     document.getElementById('addNewSeat').innerHTML +=
         `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
