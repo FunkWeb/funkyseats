@@ -37,14 +37,6 @@
         </h5>
 
         <div class="popup-container">
-            <div class="popup-title"></div>
-            <div class="popup-btn">
-                <button onclick="closeWindow()">Cancel</button>
-                <form id="confirm_delete" method="post">
-                    @csrf
-                    <button type='submit' value='submit'>Yes</button>
-                </form>
-            </div>
         </div>
 
         <div>

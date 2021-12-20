@@ -19,7 +19,7 @@
 
 .room-container input {
     color: black;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 form {
@@ -29,20 +29,21 @@ form {
 }
 
 .room-container form {
+    width: 224px;
     height: 166px;
     display: flex;
     justify-content: space-evenly;
 }
 
-.submit-changes-btn {
+.submit-changes-btn, .popup-btn button {
     width: 100px;
     height: 28px;
     font-size: 12px;
-    font-weight: bolder;
-    letter-spacing: 2px;
+    letter-spacing: 0.5px;
     text-align: center;
     background-color: #324252;
     color: white;
+    border-radius: 10%;
 }
 
 input {
@@ -92,7 +93,6 @@ i.fa-trash-alt {
     transform: translate(-50%, -50%) scale(0);
     transition: 1s;
     width: 224px;
-    height: 112px;
     max-width: 70%;
     border: 1px solid black;
     border-radius: 5%;
@@ -105,21 +105,23 @@ i.fa-trash-alt {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.popup-btn, .popup-btn form {
+.popup-btn{
     display: flex;
     justify-content: space-around;
 }
 
-.popup-btn form {
-    margin: 0;
+.popup-btn button{
+    width: 72px;
+    height: 36px;
 }
+
 
 .popup-title {
     display: flex;
     justify-content: center;
     padding: 20px 10px;
     font-size: 14px;
-    font-family: inherit;
+    font-family: "Neue Plak Bold", "Urbane Demi Bold", sans-serif;
 }
 
 .overlay {
@@ -144,6 +146,10 @@ i.fa-trash-alt {
     justify-content: space-between;
     padding: 0 50px;
     color: #9f9e9e;
+}
+
+.roomText{
+    margin-top: 24px;
 }
 
 i.fas{

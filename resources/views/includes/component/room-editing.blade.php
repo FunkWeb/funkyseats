@@ -8,7 +8,7 @@
 
         <form action=/rooms/{{ $id ?? '' }}/save method="post">
             @csrf
-            <input class="text-dark" type="text" id="name" name="name" autofocus value={{ $name }}>
+            <input class="roomText" type="text" id="name" name="name" autofocus value={{ $name }}>
             <button class='submit-changes-btn' type='submit' value='submit'>Save</button>
         </form>
     </div>
