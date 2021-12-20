@@ -1,12 +1,17 @@
 function showWindow(id, type, roomOrSeatName) {
     document.getElementsByClassName('popup-container')[0].className += ' active'
     document.getElementsByClassName('overlay')[0].className += ' active'
-    let room_delete = document.getElementById('confirm_delete');
-    room_delete.setAttribute("action", "/" + type + "/" + id + "/delete");
     document.getElementsByClassName('popup-title')[0].innerHTML = `Are you sure you want to delete ${roomOrSeatName.toUpperCase()}?`;
-
-    let seat_delete = document.getElementById('confirm_delete');
-    seat_delete.setAttribute("action", "/" + type + "/" + id + "/delete");
+    if (type === 'rooms'){
+        let room_delete = document.getElementById('confirm_delete');
+        room_delete.setAttribute("action", "/" + type + "/" + id + "/delete");
+    }
+     
+    else if (type === 'seats'){
+        let seat_delete = document.getElementById('confirm_delete');
+        seat_delete.setAttribute("action", "/" + type + "/" + id + "/delete");
+    }
+    
 }
 
 function closeWindow() {
@@ -17,7 +22,7 @@ function closeWindow() {
 function addNewRoom() {
     document.getElementById('addNewRoom').style.display = 'block';
     let csrf_token = document.querySelector('[name="_token"]');
-    let room_id = Math.random(100000);
+    let room_id = Math.random(100000) * -1;
     document.getElementById('addNewRoom').innerHTML += `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
                <i class="far fa-trash-alt" onclick="showWindow(${room_id}, 'rooms', 'new room')"> </i> 
@@ -28,7 +33,7 @@ function addNewRoom() {
                 </form>
             </div>
         </div> `;
-    
+
     document.getElementById('newRoom').appendChild(csrf_token);
 }
 
@@ -36,7 +41,7 @@ function addNewSeat(room_id) {
     document.getElementById('addNewSeat').style.display = 'block';
     let csrf_token = document.querySelector('[name="_token"]');
     let seat_types = document.querySelector('.edit-seat-type');
-    let seat_id = Math.random(100000);
+    let seat_id = Math.random(100000) * -1;
     document.getElementById('addNewSeat').innerHTML +=
         `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
@@ -48,7 +53,7 @@ function addNewSeat(room_id) {
                    </select>
                    <input name=room_id  value= ${room_id}
                       style="display:none;"> 
-                    <input class="edit-seat-num" type="text" id="seat_number" placeholder="Write seat number" name="seat_number"> 
+                    <input class="edit-seat-num" type="text" id="seat_number" autocomplete="off" placeholder="Write seat number" name="seat_number"> 
                     <button class="submit-changes-btn" type="submit" value="submit">Save</button>
                </form>
            </div>
