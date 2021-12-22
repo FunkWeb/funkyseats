@@ -4,7 +4,8 @@
     @else
     <div class="edit-box" style="pointer-events: none">
     @endif
-        <i class="far fa-trash-alt" onclick="showWindow({{$id}}, 'rooms', '{{ $name }}')"></i>
+        <i class="far fa-trash-alt fa-lg" onclick="showWindow({{$id}}, 'rooms', '{{ $name }}')">
+        </i>
 
         <form action=/rooms/{{ $id ?? '' }}/save method="post">
             @csrf

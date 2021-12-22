@@ -27,12 +27,12 @@
         <ol class="breadcrumb float-xl-right"></ol>
         <!---------- header and add room ----->
         <h5 class="text-center mt-50px page-subtitle" id="room_head">
-            <a href='/'><i class="fas fa-chevron-left"></i><p class="iTexts">back</p></a>
-            edit a room
+            <a href='/'><i class="fas fa-chevron-left"><p class="iTexts">back</p></i></a>
+            <strong>edit a room</strong>
             @if (Auth::check())
-                <a><i class="fas fa-plus" onclick="addNewRoom()"></i><p class="iTexts">add room</p></a> 
+                <a><i class="fas fa-plus" onclick="addNewRoom()"><p class="iTexts">add room</p></i></a> 
             @else
-                <a><i class="fas fa-plus"></i><p>add room</p class="iTexts"></a>
+                <a><i class="fas fa-plus"><p class="iTexts">add room</p></i></a>
             @endif
         </h5>
 

@@ -44,16 +44,19 @@ function addNewRoom() {
     document.getElementById('addNewRoom').innerHTML += 
         `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
-               <i class="far fa-trash-alt" onclick="showWindow(${room_id}, 'rooms', 'new room')"> </i> 
+               <i class="far fa-trash-alt fa-lg" onclick="showWindow(${room_id}, 'rooms', 'new room')"> </i> 
 
                 <form id="newRoom" action=/room/store method="post">
-                    <input class="edit-room-name" type="text" id="name" name="name" autocomplete="off"          placeholder="Write room name">
+                    <input class="edit-room-name" type="text" id="name" name="name" autocomplete="off" autofocus placeholder="Write room name">
                     <button class="submit-changes-btn" type="submit" value="submit">Save</button>
                 </form>
             </div>
         </div> `;
 
-    document.getElementById('newRoom').appendChild(csrf_token);
+    let new_room = document.getElementById('newRoom');
+    new_room.appendChild(csrf_token);
+    new_room.focus();
+    new_room.scrollIntoView();
 }
 
 function addNewSeat(room_id) {
@@ -64,18 +67,21 @@ function addNewSeat(room_id) {
     document.getElementById('addNewSeat').innerHTML +=
         `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
-           <i class="far fa-trash-alt" onclick="showWindow(${seat_id}, 'seats', 'new seat')"> </i> 
+           <i class="far fa-trash-alt fa-lg" onclick="showWindow(${seat_id}, 'seats', 'new seat')"> </i> 
 
               <form id=newSeat action=/seat/store method="post">
-                   <select name=seat_type class="edit-seat-type text-dark"> 
+                   <select name=seat_type class="edit-seat-type"> 
                         ${seat_types.innerHTML}
                    </select>
                    <input name=room_id  value= ${room_id}
                       style="display:none;"> 
-                    <input class="edit-seat-num" type="text" id="seat_number" autocomplete="off" placeholder="Write seat number" name="seat_number"> 
+                    <input class="edit-seat-num" type="text" id="seat_number" autocomplete="off" placeholder="Write seat number" autofocus name="seat_number"> 
                     <button class="submit-changes-btn" type="submit" value="submit">Save</button>
                </form>
            </div>
         </div>`;
-    document.getElementById('newSeat').appendChild(csrf_token);
+    let new_seat = document.getElementById('newSeat');
+    new_seat.appendChild(csrf_token);
+    new_seat.focus();
+    new_seat.scrollIntoView();
 }
