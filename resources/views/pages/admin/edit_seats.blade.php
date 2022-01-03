@@ -35,26 +35,20 @@
         <!------------------header and add seat ------->
         <h4 class="fw-600 text-center mt-30px">{{ $room[0]->name }}</h4>
         <h5 class="text-center mt-10px page-subtitle">
-            <a href='/rooms/edit'><i class="fas fa-chevron-left"></i><p class="iTexts">back</p></a>
-            edit a seat
+            <a href='/rooms/edit'>
+                <i class="fas fa-chevron-left"><p class="iTexts">back</p></i>     
+            </a>            
+            <strong>edit a seat</strong>
+
             @if (Auth::check())
-                <a><i class="fas fa-plus" onclick="addNewSeat({{ $room[0]->id }})"></i> <p class="iTexts">add seat</p></a>
+                <a><i class="fas fa-plus" onclick="addNewSeat({{ $room[0]->id }})"><p class="iTexts">add seat</p></i></a>
             @else
-                <a><i class="fas fa-plus"></i><p class="iTexts">add seat</p></a>
+                <a><i class="fas fa-plus"><p class="iTexts">add seat</p></i></a>
             @endif
         </h5>
 
         <div class="popup-container">
-            <div class="popup-header">
-                <div class="popup-title"></div>
-            </div>
-            <div class="popup-btn">
-                <button onclick="closeWindow()">Cancel</button>
-                <form id="confirm_delete" method="post">
-                    @csrf
-                    <button type='submit' value='submit'>Yes</button>
-                </form>
-            </div>
+            
         </div>
 
         <div>

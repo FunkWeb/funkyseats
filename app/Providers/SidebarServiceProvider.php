@@ -31,9 +31,6 @@ class SidebarServiceProvider extends ServiceProvider
         $displayRooms = [];
         $adminRooms = [];
 
-
-
-
         foreach ($rooms as $room) {
             $tmpBooking = [[
                 'icon' => 'fa fa-th-large',

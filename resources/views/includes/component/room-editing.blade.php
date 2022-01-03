@@ -4,11 +4,12 @@
     @else
     <div class="edit-box" style="pointer-events: none">
     @endif
-        <i class="far fa-trash-alt" onclick="showWindow({{$id}}, 'rooms', '{{ $name }}')"></i>
+        <i class="far fa-trash-alt fa-lg" onclick="showWindow({{$id}}, 'rooms', '{{ $name }}')">
+        </i>
 
         <form action=/rooms/{{ $id ?? '' }}/save method="post">
             @csrf
-            <input class="text-dark" type="text" id="name" name="name" autofocus value={{ $name }}>
+            <input class="roomText" type="text" id="name" name="name" autofocus value={{ $name }}>
             <button class='submit-changes-btn' type='submit' value='submit'>Save</button>
         </form>
     </div>

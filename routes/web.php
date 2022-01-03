@@ -30,6 +30,7 @@ Route::get('/auth/google', [GoogleController::class, 'googleRedirect'])->name('l
 Route::get('/callback/google', [GoogleController::class, 'googleCallback']);
 
 Route::post('/booking/seat/{seat_id}', [BookingController::class, 'store']);
+Route::post('/booking/seat/random/{room_id}', [BookingController::class, 'randomSeat']);
 Route::get('/booking/delete/{booking_id}', [BookingController::class, 'delete'])->name('deleteBooking');
 
 
