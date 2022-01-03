@@ -199,3 +199,6 @@ mix.js('resources/js/react_app.js', 'public/assets/js').react().extract(['react'
 
 // themes
 mix.copy('resources/js/theme/*.min.js', 'public/assets/js/theme');
+
+//scss
+mix.sass('resources/scss/src/mobile-version.scss', 'public/assets/css/mobile-version.css');

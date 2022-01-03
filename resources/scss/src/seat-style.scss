@@ -21,11 +21,26 @@ body {
     background-color: #fff;
     color: black;
     border: 1px solid #9f9e9e;
+    margin-top: 30px;
 }
 
-.seat-bg-color:hover {
+.seat-bg-color:hover, .home-container:hover{
     justify-content: space-evenly;
     background-color: #20B3BE;
+    color: #fff;
+}
+
+.home-container a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 224px;
+    height: 166px;
+    color: black;
+}
+
+.home-container:hover a{
     color: #fff;
 }
 
@@ -38,13 +53,19 @@ body {
 }
 
 .booked-seat {
+    margin-top: 30px;
     background-color: #DFE3E4;
     color: black;
     border: 1px solid #9f9e9e;
 }
 
 .booked-by-me {
+    margin-top: 30px;
     background-color: #324252;
+}
+
+.blocks-container {
+    margin-top: 30px;
 }
 
 .booking-btn {
@@ -53,8 +74,9 @@ body {
     width: 100px;
     height: 28px;
     font-size: 12px;
-    border: 1px solid white;
+    border: none;
     border-radius: 5%;
+    background-color: #ffffff;
     text-align: center;
 }
 
@@ -136,6 +158,38 @@ body {
     display: flex;
 }
 
+input[type="radio"] {
+    display: grid;
+    place-content: center;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    color: #ffffff;
+    background-color: #ffffff;
+    width: 1em;
+    height: 1em;
+    border: 0.08em solid grey;
+    border-radius: 50%;
+}
+
+input[type="radio"]::before {
+    content: "";
+    width: 0.58em;
+    height: 0.58em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: #20B3BE;
+}
+
+input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+label {
+    margin: 0 10px 0 4px;
+}
+
 .user-booking-info {
     display: flex;
     flex-direction: row;
@@ -144,4 +198,16 @@ body {
 
 a {
 text-decoration: none;
+}
+
+.navbar-username {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.icon-left {
+    left: 64px;
+    color: #9f9e9e
 }

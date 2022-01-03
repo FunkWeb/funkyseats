@@ -1,6 +1,7 @@
 {
     "/assets/js/react_app.js": "/assets/js/react_app.js",
     "/assets/js/manifest.js": "/assets/js/manifest.js",
+    "/assets/css/mobile-version.css": "/assets/css/mobile-version.css",
     "/assets/css/app.min.css": "/assets/css/app.min.css",
     "/assets/js/vendor.js": "/assets/js/vendor.js",
     "/assets/css/vendor.min.css": "/assets/css/vendor.min.css",

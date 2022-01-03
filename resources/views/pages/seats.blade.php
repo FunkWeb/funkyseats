@@ -20,9 +20,9 @@
         </div>
     @endif
 
-    <h4 class="fw-800 text-center mt-30px">{{ $room[0]->name }}</h4>
+    <h4 class="fw-800 text-center mt-20px">{{ $room[0]->name }}</h4>
     <h5 class="text-center mt-10px position-relative" style="color: #20B3BE">
-        <a href='/'><i class="fas fa-chevron-left position-absolute" style='left: 64px; color: #9f9e9e'></i></a>
+        <a href='/'><i class="fas fa-chevron-left position-absolute icon-left"></i></a>
         choose a seat
     </h5>
 
@@ -32,19 +32,13 @@
             <div class="book-calendar">
                 <Example date_selected={{ $date_selected }} room_id={{ $room[0]->id }} />
             </div>
-            <div>
-                <label>
-                    <input type="radio" name="book_time" value="0">
-                    Before lunch
-                </label>
-                <label>
-                    <input type="radio" name="book_time" value="1">
-                    After lunch
-                </label>
-                <label>
-                    <input type="radio" name="book_time" value="2" checked>
-                    All day
-                </label>
+            <div class="d-flex" style="align-items: center">
+                <input type="radio" id="before_lunch" name="book_time" value="0">
+                    <label for="before_lunch">Before lunch</label>
+                <input type="radio" id="after_lunch" name="book_time" value="1">
+                    <label for="after_lunch">After lunch</label>
+                <input type="radio" id="all_day" name="book_time" value="2" checked>
+                    <label for="all_day">All day</label>
             </div>
         </form>
     </div>

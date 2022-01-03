@@ -1,4 +1,4 @@
-<div class='text-center text-light text-uppercase mt-30px' onClick='bookSeat()'>
+<div class='text-center text-light text-uppercase' onClick='bookSeat()'>
     @if ($seat->booking == '[]' && !Auth::check())
         <div class='available-seat seat-container'>
             @elseif ($seat->booking == '[]' && Auth::check())
@@ -19,7 +19,7 @@
                                         </button>
                                     @endif
                                     @if ($seat->booking != '[]' && Auth::check())
-                                        <div style="display: flex; justify-content: space-evenly; flex-direction: row; align-items: end;">
+                                        <div style="display: flex; justify-content: space-evenly; flex-direction: row; align-items: flex-end;">
                                         @if (count($seat->booking) == 1 && \Carbon\Carbon::parse($seat->booking[0]->from)->format('H') != 8)
                                                 <button class='cancel-booking-btn' onclick="book_seat({{ $seat->id ?? '' }})">Book a seat</button>
                                         @endif
