@@ -8,4 +8,10 @@ function bookSeat() {
 function book_seat(seat_id) {
     document.seat_booking_form.action="/booking/seat/" + seat_id;
     document.seat_booking_form.submit();
+    
 }
+
+function book_random_seat(room_id){
+    document.seat_booking_form.action="/booking/seat/random/" + room_id;
+    document.seat_booking_form.submit();
+ }
