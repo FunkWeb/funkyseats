@@ -8,6 +8,8 @@
     border-radius: 5%;
 }
 
+
+
 .room-container input {
     color: black;
     font-weight: 400;
@@ -64,10 +66,11 @@ input.edit-seat-num::placeholder, input.edit-room-name::placeholder {
 }
 
 
-
 .edit-box {
     position: relative;
 }
+
+
 
 i.fa-trash-alt {
     position: absolute;
@@ -155,6 +158,17 @@ i.fa-trash-alt:hover, i.fas:hover{
 
 .roomText, .edit-room-name{
     margin-top: 24px;
+}
+
+.unsaved{
+    background-color: #eceff1;
+}
+
+.unsaved .submit-changes-btn{
+    background-color: #523235;
+}
+.unsaved .submit-changes-btn:hover{
+    background-color: #767e53;
 }
 
 i.fas{
