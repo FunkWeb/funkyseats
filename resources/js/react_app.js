@@ -15,13 +15,17 @@ class Example extends React.Component {
             let month = date.getMonth() + 1;
             window.location.href = "/room/" + this.props.room_id + "/" + date.getDate() + "-" + month + "-" + date.getFullYear();
         };
+        const dateToday = new Date();
+        const maxDate = new Date().setMonth(dateToday.getMonth()+5)
+
         return (
             <div>
-                <DatePicker dateFormat="dd-M-yyyy"
-                            value={this.props.date_selected}
-                            minDate={new Date()}
+                <DatePicker dateFormat="dd-MM-yyyy"
+                            selected={Date.parse(this.props.date_selected)}
+                            minDate={dateToday}
+                            maxDate={maxDate}
                             onChange={(date) => changeDate(date)}
-                    name="date_picker"
+                            name="date_picker"
                 />
             </div>
         )
