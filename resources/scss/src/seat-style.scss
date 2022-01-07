@@ -96,6 +96,15 @@ body {
     cursor: pointer;
 }
 
+.book_any_btn{
+    display: block;
+}
+
+.book_any_btn:hover{
+    background-color: #20B3BE;
+    color: #fff;
+}
+
 .seat-num {
     font-size: 16px;
 }

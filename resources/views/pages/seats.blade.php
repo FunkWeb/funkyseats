@@ -42,6 +42,12 @@
             </div>
         </form>
     </div>
+    <div class='d-flex flex-wrap justify-content-around'>
+        @if (Auth::check())
+                <button class='booking-btn book_any_btn' onclick="book_random_seat({{ $room[0]->id ?? '' }})">Book any seat
+                </button>
+        @endif
+    </div>
     <div class="mx-40px">
         <div class='d-flex flex-wrap justify-content-around'>
             @foreach ($room[0]->seat as $seat)

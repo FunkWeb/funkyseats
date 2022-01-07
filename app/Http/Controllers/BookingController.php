@@ -99,14 +99,14 @@ class BookingController extends Controller
             'user_id' => [new AlreadyBookedRule($time_from, $time_to)],
         ]);
 
-        $seat_id = Seat::where('room_id', $room_id)
+        $free_seat = Seat::where('room_id', $room_id)
             ->whereDoesntHave("booking", function ($query) use ($time_from, $time_to) {
                 $query
                     ->where('from',  '<=', $time_from)
                     ->where('to',  '>=', $time_to);
             })->get()->first();
 
-        if (!$seat_id) {
+        if (!$free_seat) {
             return back()->with('error', 'No free seat in room at chosen time');
         }
 
@@ -115,8 +115,7 @@ class BookingController extends Controller
         $booking->from = $time_from;
         $booking->to = $time_to;
         $booking->user_id = $request->user_id;
-
-        $booking->seat_id = $seat_id;
+        $booking->seat_id = $free_seat->id;
         $booking->approved = True;
 
         $booking->save();
