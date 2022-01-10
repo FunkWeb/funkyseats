@@ -12,7 +12,7 @@
             </select>
              <input type="text" id="seat_number " name="seat_number" 
                 class='edit-seat-num' autofocus value='{{ $seat_number }}'>
-            <button class='submit-changes-btn' type='submit' value='submit'>Save</button>
+            <button class='submit-changes-btn' type='submit' value='submit'>Update</button>
         </form>
     </div>
 </div>

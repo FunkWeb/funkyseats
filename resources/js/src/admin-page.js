@@ -65,7 +65,7 @@ function addNewSeat(room_id) {
     let seat_types = document.querySelector('.edit-seat-type');
     let seat_id = Math.random(100000) * -1;
     document.getElementById('addNewSeat').innerHTML +=
-        `<div class='text-center text-uppercase mt-30px room-container unsaved'>
+        `<div class='text-center text-uppercase mt-30px room-container newseat'>
            <div class="edit-box" style="pointer-events: all">
            <i class="far fa-trash-alt fa-lg" onclick="showWindow(${seat_id}, 'seats', 'new seat')"> </i> 
 
