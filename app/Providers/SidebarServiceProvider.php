@@ -79,30 +79,36 @@ class SidebarServiceProvider extends ServiceProvider
             'sub_menu' => $displayRooms
         ];
 
-
-        $adminRoomsMenu = [
-            'icon' => 'fa fa-align-left',
-            'title' => 'Admin:',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' => [
-                [
-                    'url' => '/rooms/edit',
-                    'title' => 'Edit Rooms',
-                ],
-                [
-                    'title' => 'Edit seats in room:',
-                    'url' => 'javascript:;',
-                    'sub_menu' => $adminRooms
-                ],
-            ]
-        ];
+        if (auth()->check() && auth()->user()->hasRole('admin')) {
+            $adminRoomsMenu = [
+                'icon' => 'fa fa-align-left',
+                'title' => 'Admin:',
+                'url' => 'javascript:;',
+                'caret' => true,
+                'sub_menu' => [
+                    [
+                        'url' => '/rooms/edit',
+                        'title' => 'Edit Rooms',
+                    ],
+                    [
+                        'title' => 'Edit seats in room:',
+                        'url' => 'javascript:;',
+                        'sub_menu' => $adminRooms
+                    ],
+                ]
+            ];
+        } else {
+            $adminRoomsMenu = [];
+        }
 
         $combinedMenu = [
             $normalRoomsMenu,
             $displayRoomsMenu,
-            $adminRoomsMenu
         ];
+
+        if ($adminRoomsMenu) {
+            $combinedMenu = array_merge($combinedMenu, $adminRoomsMenu);
+        };
 
         $completeMenu = array_merge($homeMenu, $combinedMenu);
 
