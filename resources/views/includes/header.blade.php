@@ -69,7 +69,7 @@ $appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
         @endisset
 
         <div class="navbar-item navbar-user dropdown me-30px d-flex">
-            <a class="navbar-link d-flex align-items-center"">
+            <a class="navbar-link d-flex align-items-center"/>
             @if (!Auth::check())
             <div class="image image-icon bg-gray-800 text-gray-600">
                 <i class="fa fa-user"></i>
@@ -79,7 +79,7 @@ $appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
             <img src="{{ Auth::user()->user_thumbnail }}" style="width:30px; height:30px"/>
             <a href="#" class="navbar-link dropdown-toggle d-flex"
                style="position: absolute; right:0; width:72px; top:10px;" data-bs-toggle="dropdown">
-				<span class="position-relative"><a style='text-decoration: none; margin-top: 18px'>
+				<span class="position-relative"><a class="navbar-username">
 				{{ Auth::user()->name}}
                     </a></span>
             </a>

@@ -43,6 +43,7 @@ mix.combine([
 mix.combine([
 	'resources/js/app.js'
 ], 'public/assets/js/app.min.js');
+mix.copy('resources/js/src', 'public/assets/js');
 
 
 // plugins
@@ -131,6 +132,9 @@ mix.copy('node_modules/oclazyload/dist', 'public/assets/plugins/oclazyload/dist'
 mix.copy('node_modules/switchery/dist', 'public/assets/plugins/switchery/dist');
 mix.copy('node_modules/lightbox2/dist', 'public/assets/plugins/lightbox2/dist');
 mix.copy('node_modules/@highlightjs', 'public/assets/plugins/@highlightjs');
+mix.copy('node_modules/react', 'public/assets/plugins/react');
+mix.copy('node_modules/react-dom', 'public/assets/plugins/react-dom');
+
 mix.download({
 	enabled: true,
 	urls: [{
@@ -187,5 +191,11 @@ mix.download({
 	},{
 		'url': 'https://jvectormap.com/js/jquery-jvectormap-world-mill.js',
 		'dest': 'public/assets/plugins/jvectormap-next/'
+
 	}]
 });
+
+mix.js('resources/js/react_app.js', 'public/assets/js').react().extract(['react', 'react-dom']);
+
+// themes
+mix.copy('resources/js/theme/*.min.js', 'public/assets/js/theme');

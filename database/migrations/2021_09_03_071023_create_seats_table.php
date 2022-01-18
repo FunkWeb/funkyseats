@@ -16,8 +16,9 @@ class CreateSeatsTable extends Migration
         Schema::create('seats', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('room_id')->constrained();
+            $table->foreignId('room_id')->constrained()->onDelete('cascade');
             $table->foreignId('seat_type_id');
+            $table->softDeletes();
             $table->text('seat_number');
         });
     }

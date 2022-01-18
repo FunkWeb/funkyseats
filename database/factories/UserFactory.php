@@ -28,6 +28,9 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+            'user_thumbnail' => 'https://gravatar.com/avatar/b0547d2e5e79912a13d4ec9690a42caf?s=100&d=robohash&r=x',
+            'given_name' => $this->faker->firstName(),
+            'family_name' => $this->faker->lastName(),
         ];
     }
 

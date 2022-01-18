@@ -22,8 +22,8 @@ class BookingFactory extends Factory
     public function definition()
     {
         return [
-            'from' => now(),
-            'to' => now()->addDay(),
+            'from' => today()->addHours(8),
+            'to' => today()->addHours(16),
             'approved' => true,
             'seat_id' => \App\Models\Seat::all()->random()->id,
             'user_id' => \App\Models\User::all()->random()->id,

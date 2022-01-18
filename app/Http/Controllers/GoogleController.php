@@ -24,6 +24,10 @@ class GoogleController extends Controller
         $searchUser = User::where('social_id', $user->id)->first();
 
         if ($searchUser) {
+            if ($user->getAvatar() != $searchUser->user_thumbnail) {
+                $searchUser->user_thumbnail = $user->getAvatar();
+                $searchUser->save();
+            }
             Auth::login($searchUser);
         } else {
             $googleUser = User::create([
@@ -31,11 +35,13 @@ class GoogleController extends Controller
                 'email' => $user->email,
                 'social_id' => $user->id,
                 'social_type' => 'google',
-                'password' => encrypt('my_google')
+                'given_name' => $user->user["given_name"],
+                'family_name' => $user->user["family_name"],
+                'password' => encrypt('my_google'),
+                'user_thumbnail' => $user->getAvatar(),
             ]);
             Auth::login($googleUser);
         }
-        Session::put('avatar', $user->getAvatar());
         return redirect($redirectAdress);
     }
 }

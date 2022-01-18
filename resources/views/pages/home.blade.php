@@ -11,9 +11,9 @@
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
-    <h4 class="fw-600 text-center pr-20px">Choose a room
+    <h5 class="text-center">choose a room
         <!-- <small>header small text goes here...</small> -->
-    </h4>
+    </h5>
     <!-- end page-header -->
 
     <!-- begin panel -->
@@ -33,8 +33,7 @@
                                      </div>
                                      -->
     <!-- end panel -->
-    <!-- {{ $rooms[3]->seat_count }} -->
-    <div class='d-flex flex-wrap justify-content-around mt-30px'>
+    <div class='d-flex flex-wrap justify-content-around blocks-container'>
         @foreach ($rooms as $room)
             @component('includes.component.home-component')
                 @slot('id')

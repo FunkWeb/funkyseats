@@ -1,0 +1,30 @@
+@media screen and (max-width: 640px) {
+    #header {
+        display: flex;
+        align-items: center;
+    }
+
+    .app-header-fixed {
+        padding-top: 60px;
+    }
+
+    .navbar-header .navbar-brand {
+        padding: 10px 0 10px 50px;
+    }
+
+    .blocks-container {
+        margin-top: 8px;
+    }
+
+    .app-header .navbar-nav {
+        padding: 10px 0;
+    }
+
+    .app-content h5{
+        margin-top: 20px;
+    }
+
+    .icon-left {
+        left: 20px;
+    }
+}

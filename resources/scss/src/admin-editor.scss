@@ -1,0 +1,202 @@
+
+.room-container {
+    width: 224px;
+    height: 166px;
+    background-color: #fff;
+    color: black;
+    border: 1px solid #9f9e9e;
+    border-radius: 5%;
+}
+
+
+
+.room-container input {
+    color: black;
+    font-weight: 400;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.room-container form {
+    width: 224px;
+    height: 166px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.submit-changes-btn, .popup-btn button {
+    width: 100px;
+    height: 28px;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+    background-color: #324252;
+    color: white;
+    border-radius: 5%;
+    border: transparent;
+}
+
+.submit-changes-btn:hover, .popup-btn button:hover {
+    color: white;
+    background-color: #20B3BE;
+}
+
+
+input {
+    outline: none;
+    border: 1px solid gray;
+}
+
+input, input::placeholder, input.edit-seat-num::placeholder, input.edit-room-name::placeholder {
+    text-align: center;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: black;
+    background-color: #fff;
+}
+
+input.edit-seat-num::placeholder, input.edit-room-name::placeholder {
+    color: grey;
+    font-style: italic;
+    text-transform: none;
+}
+
+
+.edit-box {
+    position: relative;
+}
+
+
+
+i.fa-trash-alt {
+    position: absolute;
+    right: 11px;
+    top: 13px;
+    color: #324252;
+    cursor: pointer;
+}
+
+i.fa-trash-alt:hover, i.fas:hover{
+    color: #20B3BE;
+}
+
+.edit-seat-type {
+    outline: none;
+    border: none;
+    color: black;
+    background-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 18px;
+}
+
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 1s;
+    width: 224px;
+    max-width: 70%;
+    border: 1px solid black;
+    border-radius: 5%;
+    color: black;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.popup-container.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-btn{
+    display: flex;
+    justify-content: space-around;
+}
+
+.popup-btn button{
+    width: 72px;
+    height: 36px;
+}
+
+
+.popup-title {
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px;
+    font-size: 1rem;
+    font-family: "Neue Plak Bold", "Urbane Demi Bold", sans-serif;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 1s;
+    background-color: transparent;
+    z-index: 8;
+    pointer-events: none;
+}
+
+.overlay.active {
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.page-subtitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 50px;
+    color: #9f9e9e;
+}
+
+.roomText, .edit-room-name{
+    margin-top: 24px;
+}
+
+.unsaved{
+    background-color: #eceff1;
+}
+
+.newseat .submit-changes-btn{
+    background-color: #523235;
+}
+.newseat .submit-changes-btn:hover{
+    background-color: #767e53;
+}
+
+i.fas{
+    color: #9f9e9e;
+    cursor: pointer;
+}
+
+
+.iTexts{
+    margin: 5px 0;
+    color: #9f9e9e;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Neue Plak Bold", "Urbane Demi Bold", sans-serif;
+}
+
+strong{
+    position: relative;
+    right: -16px;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 414px) {
+    .page-subtitle{
+        padding: 0 18px;
+    }
+
+    
+}
+
