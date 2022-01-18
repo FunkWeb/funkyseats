@@ -47,3 +47,7 @@ Route::get('/room/{id}/seats/edit', [SeatController::class, 'edit']);
 Route::post('/seats/{id}/save', [SeatController::class, 'save']);
 Route::post('/seats/{id}/delete', [SeatController::class, 'delete']);
 Route::post('/seat/store', [SeatController::class, 'store']);
+
+Route::get('/admin', function () {
+    return View('pages/admin/stats');
+});

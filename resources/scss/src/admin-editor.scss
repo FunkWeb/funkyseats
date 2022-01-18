@@ -192,6 +192,26 @@ strong{
     font-weight: 500;
 }
 
+.stats{
+    width: 80%;
+    margin: 50px auto;
+}
+
+
+.flot-x-axis, .flot-y-axis{
+    fill: white;
+}
+
+#seats-chart{
+    background-color: #eceff1;
+}
+
+.bg-gray-800 {
+    padding: 18px;
+}
+
+
+
 @media screen and (max-width: 414px) {
     .page-subtitle{
         padding: 0 18px;
