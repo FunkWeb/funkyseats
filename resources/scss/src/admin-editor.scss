@@ -28,7 +28,7 @@ form {
     justify-content: space-evenly;
 }
 
-.submit-changes-btn, .popup-btn button {
+.submit-changes-btn, .popup-btn button, .stats-button {
     width: 100px;
     height: 28px;
     font-size: 1rem;
@@ -40,8 +40,16 @@ form {
     border: transparent;
 }
 
-.submit-changes-btn:hover, .popup-btn button:hover {
+.stats-button{
+    max-width: 20%;
+    min-width: 10%;
+    font-size: 0.75rem;
     color: white;
+    background-color: #606d79;
+}
+
+.submit-changes-btn:hover, .popup-btn button:hover, .stats-button:hover {
+    
     background-color: #20B3BE;
 }
 
@@ -210,13 +218,45 @@ strong{
     padding: 18px;
 }
 
+.changeTime{
+    padding: 0 1rem;
+}
 
+
+.statsCalc, .changeTime{
+    text-align: center;
+}
+
+.text-white-500{
+    text-align: center;
+    font-size: 1rem;
+}
+
+
+@media screen and (max-width: 880px) {
+    .stats-button{
+        max-width: 22%;
+}
+}
+@media screen and (max-width: 602px) {
+    .stats{
+        width: 100%;
+    }
+    .stats-button{
+        max-width: 50%;
+        margin: 2px;
+}
+}
 
 @media screen and (max-width: 414px) {
+ 
+
     .page-subtitle{
         padding: 0 18px;
     }
 
-    
+    .stats-button{
+        max-width: 80%;
+        margin: 2px;
+}    
 }
-

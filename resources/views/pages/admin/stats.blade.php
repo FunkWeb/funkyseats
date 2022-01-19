@@ -10,34 +10,45 @@
             <div class="card border-0 mb-3 bg-gray-800 text-white">
                 <div class="card-body">
                     <div class="mb-3 text-white-500">
-                        <b> SEAT STATS </b>
+                        <b> Room name </b>
                     </div>
-                    <div class="row percentage">
+                    <div class="row statsCalc">
 
-                        <div class="col-xl-3 col-4">
-                            <h3 class="mb-1">
+                        <div class="col">
+                            <h5 class="mb-1">
                                 <span data-animation="number" data-value="50" id="highCount"></span>
-                            </h3>
+                            </h5>
                             <div> Seats booked high</div>
                         </div>
 
-                        <div class="col-xl-3 col-4">
-                            <h3 class="mb-1">
+                        <div class="col">
+                            <h5 class="mb-1">
                                 <span data-animation="number" data-value="37"> </span> 
-                            </h3>
+                            </h5>
                             <div> Seats booked low </div>
                         </div>
 
-                        <div class="col-xl-3 col-4">
-                            <h3 class="mb-1">
+                        <div class="col">
+                            <h5 class="mb-1">
                                 <span data-animation="number" data-value="44"> </span>
-                            </h3>
+                            </h5>
                             <div> Seats booked average </div>
                         </div>
 
                     </div>
                 </div>
-                <div class="card-body">
+
+                <div class="row changeTime">
+                 
+                    <div class="col">
+                        <button class="stats-button">Last week </button>
+                        <button class="stats-button">This week </button>
+                        <button class="stats-button">Last month </button>
+                        <button class="stats-button">This month </button>
+                    </div>
+                </div>    
+
+                <div class="card-body chart">
                    <div class="panel-body">
                        <div id="seats-chart" class="h-250px"></div>                 
                    </div>
