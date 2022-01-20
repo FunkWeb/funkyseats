@@ -1,4 +1,8 @@
 @media screen and (max-width: 640px) {
+    .page-subtitle{
+            padding: 0 18px;
+        }
+
     #header {
         display: flex;
         align-items: center;
@@ -26,5 +30,52 @@
 
     .icon-left {
         left: 20px;
+    }
+
+    .seat-bg-color, .seat-container, .home-container{
+        justify-content: space-evenly;
+        padding: 10px 0;
+    }
+
+    .seat-bg-color:hover, .home-container:hover{
+        justify-content: space-evenly;
+        background-color: #fff;
+        color: black;
+    }
+
+    .seat-type-btn {
+        margin-bottom: 0 !important;
+    }
+
+    .cancel-booking-btn, .booking-btn {
+        display: block;
+        cursor: pointer;
+    }
+
+    .booking-btn {
+        background-color: #324252;
+        color: white;
+    }
+
+    .error-window, .booked-seat-successfully {
+         position: absolute;
+            padding: 40px 15px 10px;
+            top: -100px;
+            left: 0;
+            width: 224px;
+            color: #9f9e9e;
+            background-color: white;
+            border-bottom: 1px solid #9f9e9e;
+            font-size: 14px;
+            text-align: center;
+            animation-name: example;
+            animation-duration: 9s;
+            z-index: 10;
+    }
+
+    @keyframes example {
+        0%   {background-color: white; left:0; top: -100px;}
+        50%  {background-color: white; left:0; top: 30px;}
+        100%  {background-color: white; left:0; top: -100px;}
     }
 }

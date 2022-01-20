@@ -36,19 +36,18 @@
         <h4 class="fw-600 text-center mt-30px">{{ $room[0]->name }}</h4>
         <h5 class="text-center mt-10px page-subtitle">
             <a href='/rooms/edit'>
-                <i class="fas fa-chevron-left"><p class="iTexts">back</p></i>     
-            </a>            
+                <i class="fas fa-chevron-left"><p class="iTexts">back</p></i>
+            </a>
             <strong>edit a seat</strong>
 
             @if (Auth::check())
-                <a><i class="fas fa-plus" onclick="addNewSeat({{ $room[0]->id }})"><p class="iTexts">add seat</p></i></a>
+                <a><i class="fas fa-plus" onclick="addNewSeat({{ $room[0]->id }}, {{ $types }})"><p class="iTexts">add seat</p></i></a>
             @else
                 <a><i class="fas fa-plus"><p class="iTexts">add seat</p></i></a>
             @endif
         </h5>
 
         <div class="popup-container">
-            
         </div>
 
         <div>
@@ -72,7 +71,7 @@
                         @endslot
                         @slot('seat_types_list')
                             @foreach ($types as $type)
-                                <option value={{ $type->id }}>{{ $type->name }} </option>
+                                <option value={{ $type->id }}>{{ $type->name }}</option>
                             @endforeach
                         @endslot
                     @endcomponent
