@@ -53,17 +53,11 @@ body {
 }
 
 .booked-seat {
-    padding-top: 24px;
     margin-top: 30px;
     background-color: #DFE3E4;
     color: black;
     border: 1px solid #9f9e9e;
-    justify-content: flex-start;
-}
-
-.booked-seat .seat-num{
-    padding-top: 21px;
-    padding-bottom: 27px;
+    justify-content: center;
 }
 
 .booked-by-me {
@@ -147,12 +141,6 @@ body {
     width: 24px;
     border-radius: 50%;
     
-}
-
-
-.booked-seat .user-picture-booked-seat:hover{
-    width: 60px;  
-    bottom: 21px;
 }
 
 .user-name-booked-seat {
