@@ -91,7 +91,7 @@ body {
     text-align: center;
 }
 
-.seat-bg-color:hover .booking-btn, .booked-by-me:hover .cancel-booking-btn, .booked-by-me:hover .booking-btn{
+.seat-bg-color:hover .booking-btn, .available-seat:hover .booking-btn, .available-seat:hover .cancel-booking-btn, .booked-by-me:hover .cancel-booking-btn, .booked-by-me:hover .booking-btn{
     display: block;
     transition: .2s;
     cursor: pointer;
