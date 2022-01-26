@@ -56,11 +56,13 @@
                         </div>
                     </div>
                 @endif
+                @if ((string)Auth::user()->id == $seat->booking->user_id)
                 <a href={{ route('deleteBooking', ['booking_id' => $booking->id]) }} class="cancel-booking-btn">
                     <button class='cancel-booking-btn' href="">
                         Cancel booking
                     </button>
                 </a>
+                @endif
                 </div>
             @endforeach
             @if (count($seat->booking) == 1 && \Carbon\Carbon::parse($seat->booking[0]->to)->format('H') != 16)
