@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 @endif
-                @if ((string)Auth::user()->id == $seat->booking->user_id)
+                @if ((string)Auth::user()->id == $booking->user_id)
                 <a href={{ route('deleteBooking', ['booking_id' => $booking->id]) }} class="cancel-booking-btn">
                     <button class='cancel-booking-btn' href="">
                         Cancel booking
