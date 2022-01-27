@@ -6,6 +6,10 @@ body {
     box-shadow: none;
 }
 
+.menu-item.active > .menu-link {
+    background-color: #20B3BE !important;
+}
+
 .seat-container, .home-container {
     display: flex;
     flex-direction: column;
@@ -13,21 +17,32 @@ body {
     align-items: center;
     width: 224px;
     height: 166px;
+    border: 1px solid #9f9e9e;
     border-radius: 5%;
 }
 
-.seat-bg-color, .available-seat, .room-bg-color {
-    justify-content: center;
+.seat-bg-color, .available-seat, .room-bg-color, .unavailable-seat, .available-half-day-seat, .booked-seat {
     background-color: #fff;
     color: black;
-    border: 1px solid #9f9e9e;
     margin-top: 30px;
 }
 
-.seat-bg-color:hover, .home-container:hover{
-    justify-content: space-evenly;
+.seat-bg-color, .available-seat, .room-bg-color, .unavailable-seat {
+    justify-content: center;
+}
+
+.home-container:hover, .available-seat:hover, .available-half-day-seat:hover{
     background-color: #20B3BE;
     color: #fff;
+}
+
+.available-seat:hover {
+    justify-content: space-evenly;
+    transition: .2s;
+}
+
+.seat-bg-color .seat-type-btn {
+    margin-bottom: 0;
 }
 
 .home-container a {
@@ -44,20 +59,11 @@ body {
     color: #fff;
 }
 
-.seat-bg-color .seat-type-btn{
-    margin-bottom: 14px;
-}
-
-.seat-bg-color:hover .seat-type-btn{
-    margin: 0;
-}
-
-.booked-seat {
+.booked-seat, .unavailable-seat {
     margin-top: 30px;
     background-color: #DFE3E4;
     color: black;
     border: 1px solid #9f9e9e;
-    justify-content: center;
 }
 
 .booked-by-me {
@@ -91,7 +97,10 @@ body {
     text-align: center;
 }
 
-.seat-bg-color:hover .booking-btn, .available-seat:hover .booking-btn, .available-seat:hover .cancel-booking-btn, .booked-by-me:hover .cancel-booking-btn, .booked-by-me:hover .booking-btn{
+.available-seat:hover .booking-btn, .available-seat:hover .cancel-booking-btn,
+.booked-by-me:hover .cancel-booking-btn, .booked-by-me:hover .booking-btn,
+.booked-seat:hover .cancel-booking-btn, .booked-seat:hover .booking-btn,
+.available-half-day-seat:hover .cancel-booking-btn, .available-half-day-seat:hover .booking-btn{
     display: block;
     transition: .2s;
     cursor: pointer;

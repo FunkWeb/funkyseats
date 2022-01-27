@@ -1,14 +1,18 @@
 <div class='text-center text-light text-uppercase' onClick='bookSeat()'>
     @if ($seat->booking == '[]' && !Auth::check())
-        <div class='available-seat seat-container'>
-        @elseif ($seat->booking == '[]' && Auth::check())
-            <div class='seat-bg-color seat-container'>
-            @elseif (Auth::check() && (string) Auth::user()->id == $seat->booking[0]->user_id ?? '')
-                <div class='booked-by-me seat-container'>
-                @elseif (Auth::check() && count($seat->booking) == 1 && (\Carbon\Carbon::parse($seat->booking[0]->from)->format('H') == 12 || \Carbon\Carbon::parse($seat->booking[0]->from)->format('H') == 8))
-                    <div class='available-seat seat-container'>
-                    @else
-                        <div class='booked-seat seat-container'>
+        <div class='seat-bg-color seat-container'>
+        @elseif ($seat->booking !== '[]' && !Auth::check())
+            <div class='unavailable-seat seat-container'>
+            @elseif ($seat->booking == '[]' && Auth::check())
+                <div class='available-seat seat-container'>
+                @elseif (Auth::check() && (string) Auth::user()->id == $seat->booking[0]->user_id ?? ´´)
+                    <div class='booked-by-me seat-container'>
+                    @elseif (Auth::check() && count($seat->booking) == 2 && ((string) Auth::user()->id == $seat->booking[0]->user_id || (string) Auth::user()->id == $seat->booking[1]->user_id))
+                        <div class='booked-by-me seat-container'>
+                        @elseif (Auth::check() && count($seat->booking) == 1 && (\Carbon\Carbon::parse($seat->booking[0]->from)->format('H') == 12 || \Carbon\Carbon::parse($seat->booking[0]->from)->format('H') == 8))
+                            <div class='available-half-day-seat seat-container'>
+                            @else
+                                <div class='booked-seat seat-container'>
     @endif
     @if ($seat->booking != '[]' && Auth::check())
         <div>{{ $seat->seatType->name ?? '' }}</div>
