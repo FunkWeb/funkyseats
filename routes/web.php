@@ -7,6 +7,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\SeatController;
+use App\Http\Controllers\StatisticsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,4 @@ Route::post('/seats/{id}/save', [SeatController::class, 'save']);
 Route::post('/seats/{id}/delete', [SeatController::class, 'delete']);
 Route::post('/seat/store', [SeatController::class, 'store']);
 
-Route::get('/admin', function () {
-    return View('pages/admin/stats');
-});
+Route::get('/admin', [StatisticsController::class, 'seatBookingStatistics']);
