@@ -4,22 +4,22 @@
 
 @section('title', 'Home Page')
 
-<div id="csrfNewSeat" style="hidden" >
+<div id="csrfNewSeat" style="hidden">
     @csrf
 </div>
 
 @error('seat_type')
-<div class="error-window">
-    <p class="error-title"><b>Error</b></p>
-    {{ $message }}
-</div>
+    <div class="error-window">
+        <p class="error-title"><b>Error</b></p>
+        {{ $message }}
+    </div>
 @enderror
 
 @error('seat_number')
-<div class="error-window">
-    <p class="error-title"><b>Error</b></p>
-    {{ $message }}
-</div>
+    <div class="error-window">
+        <p class="error-title"><b>Error</b></p>
+        {{ $message }}
+    </div>
 @enderror
 
 @if (session('success'))
@@ -36,18 +36,18 @@
         <h4 class="fw-600 text-center mt-30px">{{ $room[0]->name }}</h4>
         <h5 class="text-center mt-10px page-subtitle">
             <a href='/rooms/edit'>
-                <i class="fas fa-chevron-left"><p class="iTexts">back</p></i>
+                <i class="fas fa-chevron-left">
+                    <p class="iTexts">back</p>
+                </i>
             </a>
             <strong>edit a seat</strong>
-
-            @if (Auth::check())
-                <a><i class="fas fa-plus" onclick="addNewSeat({{ $room[0]->id }}, {{ $types }})"><p class="iTexts">add seat</p></i></a>
-            @else
-                <a><i class="fas fa-plus"><p class="iTexts">add seat</p></i></a>
-            @endif
+            <a><i class="fas fa-plus" onclick="addNewSeat({{ $room[0]->id }}, {{ $types }})">
+                    <p class="iTexts">add seat</p>
+                </i></a>
         </h5>
 
         <div class="popup-container">
+
         </div>
 
         <div>
@@ -77,6 +77,6 @@
                     @endcomponent
                 @endforeach
             </div>
-            @endsection
-        </div>
+        @endsection
+    </div>
 </div>
