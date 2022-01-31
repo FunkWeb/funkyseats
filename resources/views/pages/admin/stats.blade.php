@@ -18,21 +18,27 @@
                             <h5 class="mb-1">
                                 <span data-animation="number" data-value="" id="highCount"></span>
                             </h5>
-                            <div> Seats booked high</div>
+                            <div> Highest booking</div>
                         </div>
 
                         <div class="col">
                             <h5 class="mb-1">
                                 <span data-animation="number" data-value="" id="lowCount"> </span>
                             </h5>
-                            <div> Seats booked low </div>
+                            <div> Lowest booking </div>
                         </div>
 
                         <div class="col">
                             <h5 class="mb-1">
                                 <span data-animation="number" data-value="" id="averageCount"> </span>
                             </h5>
-                            <div> Seats booked average </div>
+                            <div> Average booking </div>
+                        </div>
+                        <div class="col">
+                            <h5 class="mb-1">
+                                <span data-animation="number" data-value="" id="totalCount"> </span>
+                            </h5>
+                            <div> Total bookings </div>
                         </div>
 
                     </div>
@@ -69,19 +75,6 @@
     <script defer src="/assets/plugins/nvd3/build/nv.d3.min.js"></script>
     <script defer type='text/javascript'>
         let jsonData = JSON.parse('{!! $stats !!}');
-        let chartWeekTotal = [];
-        let chartWeekHalf = [];
-        let lastWeekTotal = [];
-        let lastWeekHalf = [];
-        let chartMonthTotal = [];
-        let chartMonthHalf = [];
-
-        chartWeekTotal = jsonData.thisweek.wholedays;
-        chartWeekHalf = jsonData.thisweek.halfdays;
-        lastWeekHalf = jsonData.lastweek.halfdays;
-        lastWeekTotal = jsonData.lastweek.wholedays;
-        chartMonthTotal = jsonData.month.wholedays;
-        chartMonthHalf = jsonData.month.halfdays;
 
         let chartLoaded = false;
         window.onload = function() {
@@ -92,30 +85,15 @@
         }
 
 
-        function highestVal(chartData) {
+        function highestVal(intervalValues) {
             const highCount = document.getElementById('highCount');
             const lowCount = document.getElementById('lowCount');
             const averageCount = document.getElementById('averageCount');
-            let maxValue = chartData[0].y;
-            let minValue = chartData[0].y;
-            let totalValue = 0;
-            for (let i = 0; i < chartData.length; i++) {
-                chartData[i].y = parseInt(chartData[i].y);
-                if (chartData[i].y > maxValue) {
-                    maxValue = chartData[i].y;
-                }
-                if (chartData[i].y < minValue) {
-                    minValue = chartData[i].y;
-                }
-                totalValue += chartData[i].y;
-            }
-            let avgValue = Math.round(totalValue / chartData.length);
-            highCount.setAttribute('data-value', `${maxValue}`);
-            lowCount.setAttribute('data-value', `${minValue}`);
-            averageCount.setAttribute('data-value', `${avgValue}`);
-            highCount.innerHTML = maxValue;
-            lowCount.innerHTML = minValue;
-            averageCount.innerHTML = avgValue;
+            const totalCount = document.getElementById('totalCount');
+            highCount.setAttribute('data-value', intervalValues['high bookings']);
+            lowCount.setAttribute('data-value', intervalValues['low booking']);
+            averageCount.setAttribute('data-value',intervalValues['average bookings']);
+            totalCount.setAttribute('data-value', intervalValues['total bookings']);
 
         }
 
@@ -138,38 +116,39 @@
                 var barChartDataLastW = [{
                     key: 'Total',
                     'color': '#20B3BE',
-                    values: lastWeekTotal
+                    values: jsonData.lastweek.wholedays
                 }, {
                     key: 'Half day',
                     color: '#324252',
-                    values: lastWeekHalf
+                    values: jsonData.lastweek.halfdays
                 }];
                 addGraph(barChartDataLastW);
-                highestVal(barChartDataLastW[0].values);
+                highestVal(jsonData.lastweek);
+
             } else if (interval === 'month' || interval === 'lastMonth') {
                 var barChartDataM = [{
                     key: 'Total',
                     'color': '#20B3BE',
-                    values: chartMonthTotal
+                    values: jsonData.month.wholedays
                 }, {
                     key: 'Half day',
                     color: '#324252',
-                    values: chartMonthHalf
+                    values: jsonData.month.halfdays
                 }];
                 addGraph(barChartDataM);
-                highestVal(barChartDataM[0].values);
+                highestVal(jsonData.month);
             } else {
                 var barChartData = [{
                     key: 'Total',
                     'color': '#20B3BE',
-                    values: chartWeekTotal
+                    values: jsonData.thisweek.wholedays
                 }, {
                     key: 'Half day',
                     color: '#324252',
-                    values: chartWeekHalf
+                    values: jsonData.thisweek.halfdays
                 }];
                 addGraph(barChartData);
-                highestVal(barChartData[0].values);
+                highestVal(jsonData.thisweek);
             }
         }
     </script>
