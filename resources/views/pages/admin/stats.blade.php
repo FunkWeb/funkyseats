@@ -14,14 +14,14 @@
                     </div>
                     <div class="row statsCalc">
 
-                        <div class="col">
+                        <div class="col highLow">
                             <h5 class="mb-1">
                                 <span data-animation="number" data-value="" id="highCount"></span>
                             </h5>
                             <div> Highest booking</div>
                         </div>
 
-                        <div class="col">
+                        <div class="col highLow">
                             <h5 class="mb-1">
                                 <span data-animation="number" data-value="" id="lowCount"> </span>
                             </h5>
@@ -45,17 +45,38 @@
                 </div>
 
                 <div class="row changeTime">
+                    <div class="col">
+                        <button class="stats-button active" onclick="createGraph('current'), toggleActive(this)">This week
+                        </button>
+                    </div>  
+
+                    <div class="col">
+                        <button class="stats-button" onclick="createGraph('month'), toggleActive(this)">This month
+                        </button>
+                    </div>  
 
                     <div class="col">
                         <button class="stats-button" onclick="createGraph('lastWeek'), toggleActive(this)">Last week
                         </button>
-                        <button class="stats-button active" onclick="createGraph('current'), toggleActive(this)">This week
-                        </button>
-                        <button class="stats-button" onclick="createGraph('lastMonth'), toggleActive(this)">Last month
-                        </button>
-                        <button class="stats-button" onclick="createGraph('month'), toggleActive(this)">This month
-                        </button>
                     </div>
+                     
+                    <div class="col">
+                        <!-- Lage en select drop-down-->
+                        <div class="drop-down">
+                            <button class="stats-button drop">Prev. months</button>
+                            <div class="dropdown-content">
+                                <button class="stats-button" onclick="createGraph('lastMonth'), toggleActive(this)">Last Month
+                                </button>
+                                <button class="stats-button" onclick="createGraph('lastMonth'), toggleActive(this)">December
+                                </button>
+                                <button class="stats-button" onclick="createGraph('lastMonth'), toggleActive(this)">November
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>   
+                      
+                       
                 </div>
 
                 <div class="card-body chart">

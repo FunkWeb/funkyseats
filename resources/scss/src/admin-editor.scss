@@ -41,8 +41,8 @@ form {
 }
 
 .stats-button{
-    max-width: 20%;
-    min-width: 10%;
+    border: 1px solid #32425294;
+    width: 150px;
     font-size: 0.75rem;
     color: white;
     background-color: #606d79;
@@ -53,6 +53,19 @@ form {
     background-color: #20B3BE;
 }
 
+.drop-down{
+position: relative;
+  display: inline-block;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+}
+
+.drop-down:hover .dropdown-content{
+    display: block;
+}
 
 input {
     outline: none;
@@ -232,21 +245,21 @@ strong{
     font-size: 1rem;
 }
 
-
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 1230px) {
+    .changeTime .col{
+        width: 50%;
+}
+}
+@media screen and (max-width: 550px) {
     .stats-button{
-        max-width: 22%;
-}
-}
-@media screen and (max-width: 602px) {
-    .stats{
-        width: 100%;
+        width: 100px;
     }
-    .stats-button{
-        max-width: 50%;
-        margin: 2px;
+
+    .highLow{
+        display: none;
+    }
 }
-}
+
 
 @media screen and (max-width: 414px) {
  
@@ -255,8 +268,4 @@ strong{
         padding: 0 18px;
     }
 
-    .stats-button{
-        max-width: 80%;
-        margin: 2px;
-}    
 }
