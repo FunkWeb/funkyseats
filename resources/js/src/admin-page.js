@@ -120,15 +120,23 @@ function searchCandidate(input){
 
 let timesClicked = 0;
 
-function showCandStats(candidate){
+function showCandStats(candidate, counter){
     timesClicked ++;
-    if(timesClicked%2==0){
+    if(timesClicked%2==0)
+    {
         candidate.children[1].innerHTML = ``;
     }
-    else{
-        candidate.children[1].innerHTML = `<div class="row-stats"> Hours this week: 9 </div>
-                                        <div class="row-stats"> Hours this month: 37 </div>
-                                        <div class="row-stats"> Mon: 3, Tue: 2, Wed: 3, Thu: 1, Fri: 2 </div>`;
+    else
+    {
+        candidate.children[1].innerHTML = `<div class="row-stats"> Hours this week: ${parsedPerson[counter].hoursWeek} </div>
+        <div class="row-stats">Hours this month: ${parsedPerson[counter].hoursMonth}</div>
+        <div class="row-stats"> 
+            
+            Mon: ${parsedPerson[counter].days['Mon']}, Tue: ${parsedPerson[counter].days['Tue']}, 
+            Wed: ${parsedPerson[counter].days['Wed']}, Thu: ${parsedPerson[counter].days['Thu']}, 
+            Fri: ${parsedPerson[counter].days['Fri']} 
+            
+        </div>`;
     }
     
 

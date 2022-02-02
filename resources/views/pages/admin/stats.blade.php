@@ -98,10 +98,7 @@
                     </div>
                    <input type="text" id="searchCand" placeholder="write name of candidate" onkeyup="searchCandidate(this)">
                     <ul id="candidates">
-                        <li value="jens"><button class="stats-button candidate" onclick="showCandStats(this.parentNode), toggleActive(this)" > Jens </button> <div> </div></li>
-                        <li value="jakob"><button class="stats-button candidate" onclick="showCandStats(this.parentNode), toggleActive(this)"> Jakob </button><div> </div></li>
-                        <li value="nils"><button class="stats-button candidate"> Nils </button></li>
-                        <li value="franz"><button class="stats-button candidate"> Franz </button></li>
+                        
                     </ul>
                 
             </div>
@@ -129,11 +126,59 @@
                     "Thu": "1",
                     "Fri": "0"
                     }
+            },
+            {
+                "name": "Jakob",
+                "hoursWeek": "15",
+                "hoursMonth": "60",
+                "days":{
+                    "Mon": "2",
+                    "Tue": "1",
+                    "Wed": "4",
+                    "Thu": "1",
+                    "Fri": "3"
+                    }
+            },
+            {
+                "name": "Silje",
+                "hoursWeek": "17",
+                "hoursMonth": "40",
+                "days":{
+                    "Mon": "2",
+                    "Tue": "1",
+                    "Wed": "2",
+                    "Thu": "1",
+                    "Fri": "0"
+                    }
+            },
+            {
+                "name": "Truls",
+                "hoursWeek": "30",
+                "hoursMonth": "100",
+                "days":{
+                    "Mon": "4",
+                    "Tue": "4",
+                    "Wed": "4",
+                    "Thu": "4",
+                    "Fri": "3"
+                    }
             }
+
         ]`
         
+        let parsedPerson = JSON.parse(personJSON);
+        const candidatesList = document.getElementById('candidates'); 
+        for (let counter = 0; counter < parsedPerson.length; counter++){
+            candidatesList.innerHTML += `
+            <li value="${parsedPerson[counter].name.toLowerCase()}">
+                <button class="stats-button candidate" onclick="showCandStats(this.parentNode, ${counter}), toggleActive(this)">
+                     ${parsedPerson[counter].name}
+                </button> 
+                <div> </div>
+            </li>`;
+        }
 
-        let parsedPerson = JSON.parse(personJSON); 
+            
 
         let jsonData = JSON.parse('{!! $stats !!}');
         let chartLoaded = false;
@@ -142,6 +187,8 @@
                 createGraph('current');
             }
             chartLoaded = true;
+
+            
         }
 
 
