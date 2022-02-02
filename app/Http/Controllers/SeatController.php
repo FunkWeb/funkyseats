@@ -24,7 +24,12 @@ class SeatController extends Controller
     {
         $seat = Seat::find($id);
 
+        $request->validate([
+            'seat_type' => ['required', 'exists:seat_types,id'],
+        ]);
+
         $seat->seat_number = $request->seat_number;
+        $seat->seat_type_id = $request->seat_type;
 
         $seat->save();
 
