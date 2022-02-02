@@ -90,13 +90,52 @@
         </div>
     </div>
 
+    <div class="row stats">
+        <div class="col">
+            <div class="card border-0 mb-3 bg-gray-800 text-white">
+                    <div class="mb-3 text-white-500">
+                        <b>  Candidate stats </b>
+                    </div>
+                   <input type="text" id="searchCand" placeholder="write name of candidate" onkeyup="searchCandidate(this)">
+                    <ul id="candidates">
+                        <li value="jens"><button class="stats-button candidate" onclick="showCandStats(this.parentNode), toggleActive(this)" > Jens </button> <div> </div></li>
+                        <li value="jakob"><button class="stats-button candidate" onclick="showCandStats(this.parentNode), toggleActive(this)"> Jakob </button><div> </div></li>
+                        <li value="nils"><button class="stats-button candidate"> Nils </button></li>
+                        <li value="franz"><button class="stats-button candidate"> Franz </button></li>
+                    </ul>
+                
+            </div>
+        </div>
+       
+
+    </div>
+
 
     <link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
     <script defer src="/assets/plugins/d3/d3.min.js"></script>
     <script defer src="/assets/plugins/nvd3/build/nv.d3.min.js"></script>
     <script defer type='text/javascript'>
-        let jsonData = JSON.parse('{!! $stats !!}');
 
+        const personJSON = `
+        [
+            {
+                "name": "Jens",
+                "hoursWeek": "14",
+                "hoursMonth": "50",
+                "days":{
+                    "Mon": "2",
+                    "Tue": "3",
+                    "Wed": "4",
+                    "Thu": "1",
+                    "Fri": "0"
+                    }
+            }
+        ]`
+        
+
+        let parsedPerson = JSON.parse(personJSON); 
+
+        let jsonData = JSON.parse('{!! $stats !!}');
         let chartLoaded = false;
         window.onload = function() {
             if (!chartLoaded) {

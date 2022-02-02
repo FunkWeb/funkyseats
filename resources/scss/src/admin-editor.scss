@@ -80,9 +80,13 @@ input, input::placeholder, input.edit-seat-num::placeholder, input.edit-room-nam
     background-color: #fff;
 }
 
-input.edit-seat-num::placeholder, input.edit-room-name::placeholder {
+input.edit-seat-num::placeholder, input.edit-room-name::placeholder, #searchCand::placeholder {
     color: grey;
     font-style: italic;
+    text-transform: none;
+}
+
+#searchCand{
     text-transform: none;
 }
 
@@ -243,6 +247,19 @@ strong{
 .text-white-500{
     text-align: center;
     font-size: 1rem;
+}
+
+#candidates li{
+    display:none;
+}
+
+#candidates{
+    text-align: center;
+}
+
+.candidate{
+    width: 150px;
+    margin: 4px auto;
 }
 
 @media screen and (max-width: 1230px) {

@@ -95,3 +95,41 @@ function toggleActive(buttonSelect){
     }   
 
 }
+
+function searchCandidate(input){
+    let filter, ul, li, i, j;
+    filter = input.value.toLowerCase();
+    ul = document.getElementById("candidates");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        if (li[i].innerText.toLowerCase().includes(filter)) 
+        {     
+            li[i].style.display="block"; 
+        }
+
+        else{
+            li[i].style.display="none";
+        }
+        if(!filter){
+            li[i].style.display="none";
+
+        }
+        
+    }
+}
+
+let timesClicked = 0;
+
+function showCandStats(candidate){
+    timesClicked ++;
+    if(timesClicked%2==0){
+        candidate.children[1].innerHTML = ``;
+    }
+    else{
+        candidate.children[1].innerHTML = `<div class="row-stats"> Hours this week: 9 </div>
+                                        <div class="row-stats"> Hours this month: 37 </div>
+                                        <div class="row-stats"> Mon: 3, Tue: 2, Wed: 3, Thu: 1, Fri: 2 </div>`;
+    }
+    
+
+}
