@@ -13,6 +13,13 @@
         </div>
     @enderror
 
+    @if (session('error'))
+        <div class="error-window">
+            <p class="error-title"><b>Error</b></p>
+            {{ session('error')}}
+        </div>
+    @endif
+
     @if (session('success'))
         <div class="booked-seat-successfully">
             <p class="success-title"><b>Great job!</b></p>
