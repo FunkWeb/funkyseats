@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
-use App\Http\Middleware\HasRole;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\BookingController;
