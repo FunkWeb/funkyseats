@@ -21,6 +21,7 @@ class Example extends React.Component {
         return (
             <div>
                 <DatePicker dateFormat="dd-MM-yyyy"
+                            locale="nb"
                             selected={Date.parse(this.props.date_selected)}
                             minDate={dateToday}
                             maxDate={maxDate}
