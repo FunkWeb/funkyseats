@@ -28,7 +28,7 @@ class GoogleController extends Controller
                 $searchUser->user_thumbnail = $user->getAvatar();
                 $searchUser->save();
             }
-            Auth::login($searchUser);
+            Auth::login($searchUser, true);
         } else {
             $googleUser = User::create([
                 'name' => $user->name,
@@ -40,7 +40,7 @@ class GoogleController extends Controller
                 'password' => encrypt('my_google'),
                 'user_thumbnail' => $user->getAvatar(),
             ]);
-            Auth::login($googleUser);
+            Auth::login($googleUser, true);
         }
         return redirect($redirectAdress);
     }
