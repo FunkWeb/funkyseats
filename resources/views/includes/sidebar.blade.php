@@ -36,10 +36,17 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                             <div class="menu-text"> History</div>
                         </a>
                     </div>
+            
                     <div class="menu-item pb-5px">
                         <a href="/auth/logout" class="menu-link">
                             <div class="menu-icon"><i class="fa fa-question-circle"></i></div>
                             <div class="menu-text">Log out</div>
+                        </a>
+                    </div>
+                    <div class="menu-item pb-5px">
+                        <a href="" class="menu-link">
+                            <div class="menu-icon"><i class="fa fa-clock"></i></div>
+                            <div class="menu-text">Check In</div>
                         </a>
                     </div>
             @endif

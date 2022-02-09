@@ -75,7 +75,7 @@ body {
     margin-top: 30px;
 }
 
-.booking-btn {
+.booking-btn,.check-in-btn {
     display: none;
     margin: 0 auto;
     width: 100px;
@@ -86,6 +86,17 @@ body {
     background-color: #ffffff;
     text-align: center;
 }
+
+.check-in-btn{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: transparent;
+    color: #324252;;
+    margin: 0 18px;
+
+} 
 
 .cancel-booking-btn {
     display: none;
@@ -113,6 +124,10 @@ body {
 .book_any_btn:hover{
     background-color: #20B3BE;
     color: #fff;
+}
+
+.check-in-btn:hover{
+    color: #20B3BE;
 }
 
 .seat-num {
@@ -230,4 +245,28 @@ text-decoration: none;
 .icon-left {
     left: 64px;
     color: #9f9e9e
+}
+
+.fa-clock{
+   font-size: 18px;
+   color: inherit;
+}
+
+@media screen and (max-width: 769px){
+    .check-in-btn{
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .check-in-btn{
+        margin: 0 18px;
+    }
+}
+
+@media screen and (max-width: 460px){
+    .check-in-btn{
+    display: none;
+    }
+   
 }
