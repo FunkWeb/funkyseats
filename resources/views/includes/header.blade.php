@@ -64,6 +64,20 @@ $appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
             @include('includes.component.header-dropdown-notification')
         </div>
 
+        <button class="check-in-btn" onclick="changeCheck(this)"><i class="fa fa-clock"></i><strong>Check In</strong></button>
+
+        <script>  function changeCheck(button_id){
+            console.log(button_id.children[1].textContent);
+            if (button_id.children[1].textContent === 'Check In'){
+                 button_id.children[1].textContent = 'Check Out';
+            }
+
+            else{
+                button_id.children[1].textContent = 'Check In';
+            }
+    
+ }      </script>
+
         @isset($appHeaderLanguageBar)
         @include('includes.component.header-language-bar')
         @endisset
