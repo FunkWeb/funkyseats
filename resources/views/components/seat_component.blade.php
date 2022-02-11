@@ -63,7 +63,7 @@
                         </div>
                     @endif
                     @if ((string) Auth::user()->id == $booking->user->id)
-                        <a href={{ route('deleteBooking', ['booking_id' => $booking->id]) }}
+                        <a href={{ route('booking.destroy', ['booking_id' => $booking->id]) }}
                             class="cancel-booking-btn">
                             <button class='cancel-booking-btn' href="">
                                 Cancel booking
