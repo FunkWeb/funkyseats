@@ -64,18 +64,12 @@ $appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
             @include('includes.component.header-dropdown-notification')
         </div>
 
+        @if (Auth::check())
         <button class="check-in-btn" onclick="changeCheck(this)"><i class="fa fa-clock"></i><strong>Check In</strong></button>
 
-        <script>  function changeCheck(button_id){
-            if (button_id.children[1].textContent === 'Check In'){
-                 button_id.children[1].textContent = 'Check Out';
-            }
-
-            else{
-                button_id.children[1].textContent = 'Check In';
-            }
-        }      
-        </script>
+        @else
+             <button class="check-in-btn disabled"><i class="fa fa-clock"></i><strong>Check In</strong></button>
+        @endif
 
         @isset($appHeaderLanguageBar)
         @include('includes.component.header-language-bar')
