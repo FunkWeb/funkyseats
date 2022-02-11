@@ -5,9 +5,16 @@ function bookSeat() {
 
 }
 
-function book_seat(seat_id) {
-    document.seat_booking_form.action="/booking/seat/" + seat_id;
-    document.seat_booking_form.submit();
+function book_seat(seat_id, timeInterval) {
+    if (!timeInterval){
+        document.seat_booking_form.action="/booking/seat/" + seat_id;
+        document.seat_booking_form.submit();
+    }
+    else{
+        timeInterval.checked = true;
+        document.seat_booking_form.action="/booking/seat/" + seat_id;
+        document.seat_booking_form.submit();
+    }
     
 }
 
@@ -15,3 +22,5 @@ function book_random_seat(room_id){
     document.seat_booking_form.action="/booking/seat/random/" + room_id;
     document.seat_booking_form.submit();
  }
+
+
