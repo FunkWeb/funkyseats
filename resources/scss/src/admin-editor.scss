@@ -262,6 +262,14 @@ strong{
     margin: 4px auto;
 }
 
+#rooms{
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    
+}
+
 @media screen and (max-width: 1230px) {
     .changeTime .col{
         width: 50%;

@@ -10,7 +10,12 @@
             <div class="card border-0 mb-3 bg-gray-800 text-white">
                 <div class="card-body">
                     <div class="mb-3 text-white-500">
-                        <b> Room name </b>
+                    <select name="rooms" id="rooms">
+                        <option value="allRooms"><b>All rooms</b></option>
+                        <option value="klasserom"><b> Klasserom </b></option>
+                        <option value="prosjektrom"><b> Prosjektrom </b></option>
+                    </select>
+                        
                     </div>
                     <div class="row statsCalc">
 
