@@ -93,10 +93,16 @@ body {
     align-content: center;
     flex-wrap: wrap;
     background-color: transparent;
-    color: #324252;;
+    color: #324252;
     margin: 0 18px;
 
-} 
+}
+
+.checkedIn{
+    color: #64be20;
+}
+
+
 
 .cancel-booking-btn {
     display: none;
@@ -128,6 +134,15 @@ body {
 
 .check-in-btn:hover{
     color: #20B3BE;
+}
+
+.disabled{
+    color:#9f9e9e6e;
+}
+
+.disabled:hover{
+    color: #9f9e9e6e;
+    cursor: default;
 }
 
 .seat-num {

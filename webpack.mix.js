@@ -41,7 +41,8 @@ mix.combine([
 
 // core js
 mix.combine([
-	'resources/js/app.js'
+	'resources/js/app.js',
+	'resources/js/checkin.js'
 ], 'public/assets/js/app.min.js');
 mix.copy('resources/js/src', 'public/assets/js');
 
