@@ -26,4 +26,5 @@ trait CanCheckIn
         $this->checkins()->create();
         return true;
     }
+
 }
