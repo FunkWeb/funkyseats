@@ -71,7 +71,11 @@
                         @endslot
                         @slot('seat_types_list')
                             @foreach ($types as $type)
-                                <option value={{ $type->id }}>{{ $type->name }}</option>
+                                @if ($type->id == $seat->seatType->id)
+                                    <option selected value={{ $type->id }}>{{ $type->name }} </option>
+                                @else
+                                    <option value={{ $type->id }}>{{ $type->name }} </option>
+                                @endif
                             @endforeach
                         @endslot
                     @endcomponent

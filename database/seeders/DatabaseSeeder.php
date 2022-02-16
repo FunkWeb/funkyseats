@@ -3,9 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use \App\Models\room;
-use App\Models\SeatType;
-use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -42,10 +39,11 @@ class DatabaseSeeder extends Seeder
         \App\Models\Equipment::factory(50)->create();
         \App\Models\SeatEquipment::factory(50)->create();
 
-        DB::table('roles')->insert([
-            'created_at' => now(),
-            'updated_at' => now(),
-            'name' => 'admin',
-        ]);
+        // DB::table('roles')->insert([
+        //    'created_at' => now(),
+        //     'updated_at' => now(),
+        //     'name' => 'admin',
+        // ]);
+        \App\Models\FAQ::factory(7)->create();
     }
 }

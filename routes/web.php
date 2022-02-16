@@ -49,6 +49,7 @@ Route::get('/', [RoomController::class, 'index_withCountSeats'])->name('home');
 Route::get('/display/{id}', [RoomController::class, 'show_display']);
 Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show']);
 
-Route::get('/admin', function (){
+Route::get('/admin', function () {
     return View('pages/admin/confirmation');
 });
+Route::get('/faq', [FaqController::class, 'index']);
