@@ -9,6 +9,6 @@ class CheckinController extends Controller
 {
     public function toggleStatus()
     {
-        return back()->with('success', Auth::user()->toggleStatus());
+        return back()->with('checkinStatus', Auth::user()->toggleStatus());
     }
 }
