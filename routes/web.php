@@ -9,6 +9,8 @@ use App\Http\Controllers\CheckinController;
 use App\Http\Controllers\SeatController;
 use App\Http\Controllers\SeatTypeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FaqController;
+
 
 /*
 |--------------------------------------------------------------------------

@@ -5,16 +5,9 @@ function bookSeat() {
 
 }
 
-function book_seat(seat_id, timeInterval) {
-    if (!timeInterval) {
-        document.seat_booking_form.action = "/booking/seat/" + seat_id;
-        document.seat_booking_form.submit();
-    }
-    else {
-        timeInterval.checked = true;
-        document.seat_booking_form.action = "/booking/seat/" + seat_id;
-        document.seat_booking_form.submit();
-    }
+function book_seat(seat_id) {
+    document.seat_booking_form.action = "/booking/seat/" + seat_id;
+    document.seat_booking_form.submit();
 
 }
 
@@ -26,19 +19,44 @@ function book_random_seat(room_id) {
 
 function displayMap() {
     let map = document.querySelector('.seats-map');
-    if(map.classList.contains('hidden')){
+    if (map.classList.contains('hidden')) {
         map.classList.remove('hidden');
+        const span = document.querySelector('.close');
+        span.onclick = function () {
+            document.querySelector('.seats-map').classList.add('hidden');
+        }
     }
-    else{
+    else {
         map.classList.add('hidden');
     }
-    
+
 }
 
-const span = document.querySelector('.close');
-span.onclick = function () {
-    document.querySelector('.seats-map').classList.add('hidden');
+function displayAnswer(button, text) {
+    if (text.classList.contains('hidden')) {
+        text.classList.remove('hidden');
+        button.className = 'fas fa-chevron-down fa-sm faq-icon';
+    }
+    else {
+        text.classList.add('hidden');
+        button.className = 'fas fa-chevron-right fa-sm faq-icon';
+    }
+
 }
+
+function displayPrevBookings(table, button) {
+    if (table.classList.contains('hidden')) {
+        table.classList.remove('hidden');
+        button.className = 'fas fa-chevron-down';
+        button.children[0].textContent = 'Hide previous bookings';
+    }
+    else {
+        table.classList.add('hidden');
+        button.className = 'fas fa-chevron-right';
+        button.children[0].textContent = 'Show previous bookings';
+    }
+}
+
 
 $(document).ready(function () {
     const radios = document.getElementsByName('book_time');
