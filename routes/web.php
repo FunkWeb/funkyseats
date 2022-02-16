@@ -6,6 +6,8 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\SeatController;
+use App\Http\Controllers\FaqController;
+
 
 /*
 |--------------------------------------------------------------------------
