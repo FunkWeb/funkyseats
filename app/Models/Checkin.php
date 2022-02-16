@@ -20,10 +20,9 @@ class Checkin extends Model
         return $this->belongsTo(User::class);
     }
 
-    private function currentStatus()
+    public static function currentStatus()
     {
-        return $this->where('user_id', auth()->id())
-            ->whereNull('checkout_at')
+        return Checkin::where('user_id', auth()->id())
             ->orderBy('created_at', 'DESC')
             ->first();
     }

@@ -5,6 +5,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CheckinController;
 use App\Http\Controllers\SeatController;
 
 /*
@@ -48,3 +49,6 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/', [RoomController::class, 'index_withCountSeats'])->name('home');
 Route::get('/display/{id}', [RoomController::class, 'show_display'])->name('display.show');
 Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show'])->name('room.show');
+
+//TODO:(are) Add middleware for IP check!
+Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checkin')->middleware(['auth']);
