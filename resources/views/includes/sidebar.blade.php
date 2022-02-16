@@ -43,12 +43,18 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                             <div class="menu-text">Log out</div>
                         </a>
                     </div>
-                    <div class="menu-item pb-5px">
-                        <a href="" class="menu-link">
-                            <div class="menu-icon"><i class="fa fa-clock"></i></div>
-                            <div class="menu-text">Check In</div>
-                        </a>
-                    </div>
+                    @if (Auth::check())
+                        <div class="menu-item pb-5px">
+                            <a href="/checkin" class="menu-link">
+                                <div class="menu-icon"><i class="fa fa-clock"></i></div>
+                                @if(Auth::user()->getCheckedInAttribute() == 1)
+                                    <div class="menu-text">Check Out</div>
+                                @else
+                                    <div class="menu-text">Check In</div>
+                                @endif
+                            </a>
+                        </div>
+                    @endif
             @endif
             <div class="menu-divider m-0"></div>
         </div>

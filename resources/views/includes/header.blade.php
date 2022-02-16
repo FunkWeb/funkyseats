@@ -64,9 +64,17 @@ $appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
             @include('includes.component.header-dropdown-notification')
         </div>
 
-        @if (Auth::check())
-        <button class="check-in-btn" onclick="changeCheck(this)"><i class="fa fa-clock"></i><strong>Check In</strong></button>
-
+        @if (Auth::check())    
+            @if (session('checkinStatus'))
+            <div class="col checkinMessage">
+                {{ session('checkinStatus') }}
+            </div>
+            @endif
+            @if(Auth::user()->getCheckedInAttribute() == 1)
+                <a href="/checkin"><button class="check-in-btn CheckedIn"><i class="fa fa-clock"></i><strong>Check Out</strong></button></a>
+                @else
+                <a href="/checkin"><button class="check-in-btn"><i class="fa fa-clock"></i><strong>Check In</strong></button></a>
+            @endif
         @else
              <button class="check-in-btn disabled"><i class="fa fa-clock"></i><strong>Check In</strong></button>
         @endif
