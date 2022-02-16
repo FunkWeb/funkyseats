@@ -48,3 +48,4 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/', [RoomController::class, 'index_withCountSeats'])->name('home');
 Route::get('/display/{id}', [RoomController::class, 'show_display']);
 Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show']);
+Route::get('/faq', [FaqController::class, 'index']);
