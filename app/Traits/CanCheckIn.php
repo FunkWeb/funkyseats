@@ -13,7 +13,14 @@ trait CanCheckIn
 
     public function getCheckedInAttribute(): bool
     {
-        return (bool)Checkin::currentStatus();
+        $result = checkin::currentStatus();
+        if (!$result) {
+            return false;
+        } elseif ($result->checkout_at != null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public function toggleStatus(): string
