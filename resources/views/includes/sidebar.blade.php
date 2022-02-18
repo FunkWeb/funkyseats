@@ -43,7 +43,7 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                             <div class="menu-text">Log out</div>
                         </a>
                     </div>
-                    @if (Auth::check())
+                    @can('checkin-ip')
                         <div class="menu-item pb-5px">
                             <a href="/checkin" class="menu-link">
                                 <div class="menu-icon"><i class="fa fa-clock"></i></div>
@@ -54,7 +54,7 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                                 @endif
                             </a>
                         </div>
-                    @endif
+                    @endcan
             @endif
             <div class="menu-divider m-0"></div>
         </div>
