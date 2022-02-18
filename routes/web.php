@@ -48,3 +48,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/', [RoomController::class, 'index_withCountSeats'])->name('home');
 Route::get('/display/{id}', [RoomController::class, 'show_display'])->name('display.show');
 Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show'])->name('room.show');
+
+
+Route::get('/roles', function () {
+    return View('pages.admin.role_assignment');
+})->name('roles');

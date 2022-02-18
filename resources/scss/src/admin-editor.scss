@@ -176,7 +176,6 @@ i.fas{
     cursor: pointer;
 }
 
-
 .iTexts{
     margin: 5px 0;
     color: #9f9e9e;
@@ -191,6 +190,23 @@ strong{
     right: -16px;
     font-weight: 500;
 }
+
+.hidden{
+    display: none;
+}
+
+.personList{
+    list-style-type: none;
+    margin-top: 18px;
+}
+
+.roles{
+    width: 120px;
+    background-color: transparent;
+    text-align: left;
+}
+
+
 
 @media screen and (max-width: 414px) {
     .page-subtitle{
