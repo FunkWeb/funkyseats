@@ -16,7 +16,7 @@ class CanCheckin
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->ip == config('checkin.checkin_ip') || $request->ip == "127.0.0.1") {
+        if (\Request::ip() == config('checkin.checkin_ip') || $request->ip == "127.0.0.1") {
             return $next($request);
         }
 
