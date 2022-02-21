@@ -264,6 +264,38 @@ text-decoration: none;
     display: none !important;
 }
 
+.seats-map {
+    margin: 0 !important;
+    position: absolute;
+    right: 64px;
+    top: 138px;
+    z-index: 10;
+}
+
+.seats-map .seats-map-title {
+    font-size: 14px !important;
+}
+
+.seats-map .seats-location {
+    display: none;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.seats-map .seats-location img {
+    margin-top: 12px !important;
+    width: 100px !important;
+}
+
+.opening-block.seats-map.active .seats-location {
+    display: block;
+}
+
+.opening-block.seats-map.active .seats-location:hover img{
+    width: 250px !important;
+    transition: .3s;
+}
+
 .fa-clock{
    font-size: 18px;
    color: inherit;
