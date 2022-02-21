@@ -41,6 +41,15 @@
                 </button>
         @endif
     </div>
+    <div class="opening-block seats-map">
+        <div class="seats-map-title">
+            <i class="fas fa-chevron-down fa-sm faq-icon"></i>
+            Seats map
+        </div>
+        <div class="seats-location">
+            <img src="{{ asset('images/klasserommet.png') }}" alt="Seats map">
+        </div>
+    </div>
     <div class="mx-40px">
         <div class='d-flex flex-wrap justify-content-around'>
             @foreach ($room[0]->seat as $seat)
