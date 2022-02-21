@@ -7,6 +7,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CheckinController;
 use App\Http\Controllers\SeatController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +53,4 @@ Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show'])->name('roo
 
 //TODO:(are) Add middleware for IP check!
 Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checkin')->middleware(['auth', 'checkin']);
-
-Route::get('/profiles', function () {
-    return View('pages/admin/profile_page');
-})->name('profiles');
+Route::get('/profiles', [UserController::class, 'index']);
