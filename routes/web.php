@@ -52,3 +52,7 @@ Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show'])->name('roo
 
 //TODO:(are) Add middleware for IP check!
 Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checkin')->middleware(['auth', 'checkin']);
+
+Route::get('/profiles', function () {
+    return View('pages/admin/profile_page');
+})->name('profiles');
