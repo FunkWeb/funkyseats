@@ -78,4 +78,14 @@
         50%  {background-color: white; left:0; top: 30px;}
         100%  {background-color: white; left:0; top: -100px;}
     }
+
+    .type-description .seat-type-description {
+        display: inline-block;
+        padding: 1px 4px;
+        top: -22px;
+        left: 75px;
+        height: 14px;
+        font-size: 9px;
+    }
+
 }

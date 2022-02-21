@@ -17,7 +17,10 @@
     @if ($seat->booking != '[]' && Auth::check())
         <div>{{ $seat->seatType->name ?? '' }}</div>
     @else
-        <div class='seat-type-btn'>{{ $seat->seatType->name ?? '' }}</div>
+        <div class="type-description">
+            <div class="seat-type-description">{{ $seat->seatType->description ?? '' }}</div>
+            <div class='seat-type-btn'>{{ $seat->seatType->name ?? '' }}</div>
+        </div>
     @endif
     <div class='seat-num'><b>Seat {{ $seat->seat_number ?? '' }}</b></div>
     @if ($seat->booking == '[]')
