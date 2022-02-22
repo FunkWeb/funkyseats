@@ -107,11 +107,13 @@ function searchCandidate(input){
     }
 }
 
-function removeRole(role, name){
-    console.log(`role_id: ${role}, name_id: ${name}`);
+function removeRole(role_id, name_id){
+    document.roles_form.action=`/${name_id}/remove/${role_id}`;
+        document.roles_form.submit();
 }
-function addRole(role, name){
-    console.log(`role_id: ${role}, name_id: ${name}`);
+function addRole(role_id, name_id){
+    document.roles_form.action=`/${name_id}/add/${role_id}`;
+    document.roles_form.submit();
 }
 
 window.onload = function (){
