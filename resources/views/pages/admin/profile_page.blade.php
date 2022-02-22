@@ -27,6 +27,16 @@
                 </tr>
                 </thead>
                 <tbody>
+                    @foreach ($users as $user)
+                        <tr>
+                            <td> {{ $user->id}} </td>
+                            <td> <img src="{{ $user->user_thumbnail}}" width="100%"> </td>
+                            <td> {{ $user->name}} </td>
+                            <td> {{ $user->email}} </td>
+                            <td> {{ $user->created_at}} </td>
+                        </tr>
+                    @endforeach
+                    
                 
                 </tbody>
             </table>
@@ -43,46 +53,26 @@
 <script defer src="../assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 <script defer src="../assets/plugins/datatables.net-select/js/dataTables.select.min.js"></script>
 <script defer src="../assets/plugins/datatables.net-select-bs4/js/select.bootstrap4.min.js"></script>
-<!-- script -->
+
     <script defer type= text/javascript>
-    let jsonTable = '{!!$users!!}';
-    const usersTable = JSON.parse(jsonTable);
-    const displayTable = document.getElementById('data-table-select');
-    const tBody = displayTable.getElementsByTagName('tbody')[0];
-    console.log(usersTable);
 
-    let loaded = false;
-    window.onload = function(){  
-        if(!loaded){
-
-            $('#data-table-select').DataTable({
-  	        select: true,
-        responsive: true
-            });
-             usersTable.forEach((item,index) => {
-    const tr = document.createElement('tr');   
-
-    const td1 = document.createElement('td');
-    const td2 = document.createElement('td');
-    const td3 = document.createElement('td');
-
-    const indexed = document.createTextNode(index);
-    const photo = document.createTextNode(item.user_thumbnail);
-    const name = document.createTextNode(item.name);
-    td1.appendChild(indexed);
-    td2.appendChild(photo);
-    td3.appendChild(name);
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-    tr.appendChild(td3);
-
-    tBody.appendChild(tr);
-    });
-     loaded = true;    
-        }
- 
+    function docReady(fn) {
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
     }
-   
+    }  
+    docReady(function() {
+       $('#data-table-select').DataTable({
+        "columnDefs": [
+        { "searchable": false, "targets": [0,1,3] }
+        ],
+  	        select: true,
+            esponsive: true
+        }); 
+    });               
+            
 </script>
 
 @endsection
