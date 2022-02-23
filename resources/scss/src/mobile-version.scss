@@ -32,12 +32,16 @@
         left: 20px;
     }
 
+    div.navbar-item.navbar-user {
+        margin-right: 18px !important;
+    }
+
     .seat-bg-color, .seat-container, .home-container{
         justify-content: space-evenly;
         padding: 10px 0;
     }
 
-    .seat-bg-color:hover, .home-container:hover{
+    .seat-bg-color:hover, .home-container:hover, .available-seat:hover, .available-half-day-seat:hover{
         justify-content: space-evenly;
         background-color: #fff;
         color: black;
