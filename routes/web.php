@@ -69,3 +69,5 @@ Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checki
 Route::get('/profile/{user}', [UserController::class, 'show'])->middleware(['middleware' => 'owner.or.admin:admin']);
 
 Route::get('/faq', [FaqController::class, 'index']);
+
+Route::get('/mybookings', [BookingController::class, 'index'] );

@@ -115,4 +115,12 @@
     .seats-map .seats-location img {
         width: 224px !important;
     }
+
+    .my-bookings-container {
+        margin: 30px 10px 0;
+
+        table, .request-list table td button {
+            font-size: 12px;
+        }
+    }
 }
