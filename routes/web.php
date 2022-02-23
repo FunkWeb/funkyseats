@@ -55,3 +55,5 @@ Route::get('/admin', function () {
     return View('pages/admin/confirmation');
 });
 Route::get('/faq', [FaqController::class, 'index']);
+
+Route::get('/mybookings', [BookingController::class, 'index'] );

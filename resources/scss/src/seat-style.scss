@@ -346,3 +346,33 @@ text-decoration: none;
     }
 
 }
+
+.my-bookings-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 10px;
+    font-size:16px;
+}
+
+.my-bookings-container {
+    margin: 30px 100px 0;
+
+    table tr {
+        height: 60px;
+        font-size: 14px;
+    }
+
+    table tr.booking-columns-description {
+        height: 42px;
+    }
+}
+
+.no-bookings-message {
+    margin-top: 50px;
+    font-size: 24px;
+    text-align: center;
+    color: #c4c4c4;
+}
+
