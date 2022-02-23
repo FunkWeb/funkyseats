@@ -25,6 +25,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('checkin-ip', function () {
+            $request = \Request::ip();
+            return $request == config('checkin.checkin_ip') || $request ==  '127.0.0.1';
+        });
     }
 }

@@ -32,7 +32,7 @@
             <div class="book-calendar">
                 <Example date_selected={{ $date_selected }} room_id={{ $room[0]->id }} />
             </div>
-            <div class="d-flex" style="align-items: center">
+            <div class="d-flex" style="align-items: center" id="checkBoxes">
                 <input type="radio" id="before_lunch" name="book_time" value="0">
                     <label for="before_lunch">Before lunch</label>
                 <input type="radio" id="after_lunch" name="book_time" value="1">

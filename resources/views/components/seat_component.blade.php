@@ -27,8 +27,8 @@
     @endif
     @if ($seat->booking != '[]' && Auth::check())
         <div style="display: flex; justify-content: space-evenly; flex-direction: row; align-items: flex-end;">
-            @if (count($seat->booking) == 1 && \Carbon\Carbon::parse($seat->booking[0]->from)->format('H') != 8)
-                <button class='cancel-booking-btn' onclick="book_seat({{ $seat->id ?? '' }})">
+            @if (count($seat->booking) == 1 && \Carbon\Carbon::parse($seat->booking[0]->from)->format('H') != 8 && (string) Auth::user()->id != $seat->booking[0]->user_id ?? ´´)
+                <button class='cancel-booking-btn' onclick="book_seat({{ $seat->id ?? '' }}, document.getElementById('checkBoxes').children[0])">
                     Book a seat
                 </button>
             @endif
@@ -63,7 +63,7 @@
                         </div>
                     @endif
                     @if ((string) Auth::user()->id == $booking->user->id)
-                        <a href={{ route('deleteBooking', ['booking_id' => $booking->id]) }}
+                        <a href={{ route('booking.destroy', ['booking_id' => $booking->id]) }}
                             class="cancel-booking-btn">
                             <button class='cancel-booking-btn' href="">
                                 Cancel booking
@@ -72,8 +72,8 @@
                     @endif
                 </div>
             @endforeach
-            @if (count($seat->booking) == 1 && \Carbon\Carbon::parse($seat->booking[0]->to)->format('H') != 16)
-                <button class='cancel-booking-btn' onclick="book_seat({{ $seat->id ?? '' }})">
+            @if (count($seat->booking) == 1 && \Carbon\Carbon::parse($seat->booking[0]->to)->format('H') != 16 && (string) Auth::user()->id != $seat->booking[0]->user_id ?? ´´)
+                <button class='cancel-booking-btn' onclick="book_seat({{ $seat->id ?? '' }}, document.getElementById('checkBoxes').children[2])">
                     Book a seat
                 </button>
             @endif
