@@ -84,7 +84,7 @@ $appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
             <div class="image image-icon bg-gray-800 text-gray-600">
                 <i class="fa fa-user"></i>
             </div>
-            <span><a href="/auth/google" style='text-decoration: none; margin-top: 18px'>Log In</a></span>
+            <span><a href="/auth/google" style='text-decoration: none; margin: auto 0;'>Log In</a></span>
             @else
             <img src="{{ Auth::user()->user_thumbnail }}" style="width:30px; height:30px"/>
             <a href="#" class="navbar-link dropdown-toggle d-flex"

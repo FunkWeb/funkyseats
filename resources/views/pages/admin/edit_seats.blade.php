@@ -34,7 +34,7 @@
                 </i>
             </a>
             <strong>edit a seat</strong>
-            <a><i class="fas fa-plus" onclick="addNewSeat({{ $room[0]->id }}, {{ $types }})">
+            <a><i class="fas fa-plus admin-page" onclick="addNewSeat({{ $room[0]->id }}, {{ $types }})">
                     <p class="iTexts">add seat</p>
                 </i></a>
         </h5>
