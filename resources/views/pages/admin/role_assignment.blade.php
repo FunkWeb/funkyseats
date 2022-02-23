@@ -6,22 +6,84 @@
 
 @section('content')
 
- <div class="row stats">
-        <div class="col">
-            <div class="card border-0 mb-3 bg-gray-800 text-white">
-                    <div class="mb-3 text-white-500">
-                        <b>  Role assignements </b>
-                    </div>
-                    <form name="roles_form" method="POST">
-                    </form>
-                   <input type="text" id="searchCand" placeholder="write name of person" onkeyup="searchCandidate(this)">
-                    <ul id="candidates">
-                    </ul>               
+ <div class="panel panel-inverse">
+        <div class="panel-heading ui-sortable handle">
+            <h4 class="panel-title"> Roles and stats</h4>
+            <div class="panel-heading-btn">
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+                <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
             </div>
         </div>
+        <div class="panel-body p-0 roles_stats">
+                <h3 > Navn navnesen</h5>
+                <div class="row">
+                    <div class="col-6">
+                        <h5> Hours this month:  </h5>
+                    </div>
+                    <div class="col-6">
+                        <h5> Hours this week: </h5>
+                    </div>
+
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <h5> Mon: </h5>
+                    </div>
+                    <div class="col">
+                        <h5> Tue: </h5>
+                    </div>
+                    <div class="col">
+                        <h5> Wed: </h5>
+                    </div>
+                    <div class="col">
+                        <h5> Thu: </h5>
+                    </div>
+                    <div class="col">
+                        <h5> Fri: </h5>
+                    </div>
+                </div>
+                    
+                </div>
+
+                <hr>
+                <div class="row roles_buttons">
+                    
+                    <div class="col"> <h5> Add Role: </h5> </div> 
+                    <div class="col">
+                            <button class="submit-changes-btn roles_btn"> Veileder </button>
+                    </div>
+                    <div class="col">
+                            <button class="submit-changes-btn roles_btn">Admin</button>
+                    </div>
+
+                    <div class="col"> <h5> Remove Role: </h5> </div> 
+                    <div class="col">
+                            <button class="submit-changes-btn roles_btn remove">Veileder </button>
+                    </div>
+                    <div class="col">
+                            <button class="submit-changes-btn roles_btn remove">Admin</button>
+                    </div>
+                </div> 
+                
+                <hr>
+                <div class="row delete_buttons">
+                    <div class="col">
+                        <button class="submit-changes-btn delMake">Delete candidate </button>
+                    </div>
+                    <div class="col">
+                        <button class="submit-changes-btn delMake">Make anonymous </button>
+                    </div>
+                </div>
+        </div> 
+        
     </div>
 
-<script defer type='text/javascript'>
+    <link href="../assets/plugins/tag-it/css/jquery.tagit.css" rel="stylesheet" />
+    <script defer src="../assets/plugins/jquery-migrate/dist/jquery-migrate.min.js"></script>
+    <script defer src="../assets/plugins/tag-it/js/tag-it.min.js"></script>
+    <script defer type='text/javascript'>
 
         const personJSON = `
         [
@@ -64,46 +126,8 @@
         ]`
         
         let parsedPerson = JSON.parse(personJSON);
-        const candidatesList = document.getElementById('candidates'); 
-        for (let counter = 0; counter < parsedPerson.length; counter++){
-                candidatesList.innerHTML += `
-            <li class="personList hidden">
-                <div class="row">     
-                    <h5>${parsedPerson[counter].name}</h5>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                            <h6> Remove role: </h6>
-                        <div class="row">
-                            <div class="col-3">
-                                <button class='submit-changes-btn roles' onclick="removeRole('${parsedPerson[counter].assigned_roles.role_id[0]}', '${parsedPerson[counter].name_id}')">
-                                ${parsedPerson[counter].assigned_roles.role_name[0]} <i class="fa fa-times"></i> 
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                            <h6>Assign new role:</h6>
-                         <div class="row">
-                                <div class="col-3">
-                                    <button class='submit-changes-btn roles assign' onclick="addRole('${parsedPerson[counter].unassigned_roles.role_id[0]}', '${parsedPerson[counter].name_id}')">
-                                        ${parsedPerson[counter].unassigned_roles.role_name[0]} <i class="fa fa-check"></i> 
-                                    </button>
-                                </div>
-                                <div class="col-3">
-                                    <button class='submit-changes-btn roles assign' onclick="addRole('${parsedPerson[counter].unassigned_roles.role_id[1]}', '${parsedPerson[counter].name_id}')">
-                                        ${parsedPerson[counter].unassigned_roles.role_name[1]} <i class="fa fa-check"></i> 
-                                    </button>
-                                </div>
-                            </div>
-                         </div>                           
-                    </div>   
-                
-                </div>
-            </li>`;
-            
-        }
+        
+        
 </script> 
 
 @endsection

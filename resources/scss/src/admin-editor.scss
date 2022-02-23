@@ -195,21 +195,40 @@ strong{
     display: none;
 }
 
-.personList{
-    list-style-type: none;
-    margin-top: 18px;
+.roles_stats .row{
+    text-align: center;
 }
 
-.roles{
-    width: 120px;
-    text-align: left;
-    background-color: #be2b20;
+.roles_stats h3{
+    text-align: center;
+    margin: 24px auto;
 }
 
-.assign{
-    background-color: #20be7a;
+
+
+.roles_btn{
+    color: white;
+    background-color: #20B3BE;
 }
 
+.roles_buttons{
+    margin: 46px 0;
+}
+
+.remove{
+    background-color: #ff5b57;
+}
+
+.delMake{
+    width: 100%;
+    margin: 8px 16px;
+}
+
+.delete_buttons{
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 48px;
+}
 
 
 @media screen and (max-width: 414px) {
