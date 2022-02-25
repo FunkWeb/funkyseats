@@ -12,4 +12,9 @@ class UserController extends Controller
     {
         return view('pages.admin.profile_page', ['users' => User::all()]);
     }
+
+    public function show($id)
+    {
+        return view('pages.admin.user_profile', ['user' => User::find($id)]);
+    }
 }

@@ -51,10 +51,6 @@ Route::get('/', [RoomController::class, 'index_withCountSeats'])->name('home');
 Route::get('/display/{id}', [RoomController::class, 'show_display'])->name('display.show');
 Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show'])->name('room.show');
 
-//TODO:(are) Add middleware for IP check!
 Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checkin')->middleware(['auth', 'checkin']);
 Route::get('/profiles', [UserController::class, 'index']);
-
-Route::get('/roles', function () {
-    return View('pages.admin.role_assignment');
-})->name('roles');
+Route::get('/profile/{id}', [UserController::class, 'show']);
