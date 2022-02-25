@@ -31,7 +31,10 @@
                         <tr>
                             <td> {{ $user->id}} </td>
                             <td> <img src="{{ $user->user_thumbnail}}" width="100%"> </td>
-                            <td> {{ $user->name}} </td>
+                            <td> {{ $user->name}}
+                            <br> 
+                            <a href="#"> <h6>Profile page <h6></a>
+                            </td>
                             <td> {{ $user->email}} </td>
                             <td> {{ $user->created_at}} </td>
                         </tr>
