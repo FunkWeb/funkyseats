@@ -176,7 +176,6 @@ i.fas{
     cursor: pointer;
 }
 
-
 .iTexts{
     margin: 5px 0;
     color: #9f9e9e;
@@ -190,6 +189,80 @@ strong{
     position: relative;
     right: -16px;
     font-weight: 500;
+}
+
+.hidden{
+    display: none;
+}
+
+.roles_stats .row{
+    text-align: center;
+}
+
+.roles_stats h3{
+    text-align: center;
+    margin: 24px auto;
+}
+
+
+
+.roles_btn{
+    color: white;
+    background-color: #189688;
+}
+
+.roles_btn:hover{
+    background-color: #fff;
+    color: #189688;
+    border: 2px solid #189688;
+}
+
+.roles_row{
+    margin: 8px;
+}
+
+.roles_row h5{
+    margin-top: 4px;
+}
+
+.roles_btn .fas, .delete_buttons .fas{
+    color: inherit;
+}
+
+.roles_buttons_row{
+    margin: 16px auto;
+}
+
+.remove{
+    background-color: #f44336;
+}
+
+.remove:hover{
+    background-color: #fff;
+    color: #f44336;
+    border: 2px solid #f44336;
+}
+
+.delMake_btn{
+    width: 100%;
+    margin: 8px 16px;
+}
+
+.delMake_btn:hover{
+    background-color: #189688;
+}
+
+.delete_buttons{
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 48px;
+}
+
+
+@media screen and (min-width: 960px){
+    .delMake_btn{
+        width: 140px;
+    }
 }
 
 @media screen and (max-width: 414px) {
