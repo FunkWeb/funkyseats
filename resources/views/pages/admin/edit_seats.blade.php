@@ -22,13 +22,6 @@
     </div>
 @enderror
 
-@if (session('success'))
-    <div class="booked-seat-successfully">
-        <p class="success-title"><b>Great job!</b></p>
-        {{ session('success') }}
-    </div>
-@endif
-
 <div class="overlay">
     @section('content')
         <ol class="breadcrumb float-xl-right"></ol>

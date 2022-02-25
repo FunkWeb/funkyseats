@@ -13,13 +13,6 @@
         </div>
     @enderror
 
-    @if (session('success'))
-        <div class="booked-seat-successfully">
-            <p class="success-title"><b>Great job!</b></p>
-            {{ session('success') }}
-        </div>
-    @endif
-
     <h4 class="fw-800 text-center mt-20px">{{ $room[0]->name }}</h4>
     <h5 class="text-center mt-10px position-relative" style="color: #20B3BE">
         <a href='/'><i class="fas fa-chevron-left position-absolute icon-left"></i></a>
