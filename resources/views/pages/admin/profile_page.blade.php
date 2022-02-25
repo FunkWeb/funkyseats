@@ -33,7 +33,7 @@
                             <td> <img src="{{ $user->user_thumbnail}}" width="100%"> </td>
                             <td> {{ $user->name}}
                             <br> 
-                            <a href="#"> <h6>Profile page <h6></a>
+                            <a href="/profile/{{$user->id}}"> <h6>Profile page <h6></a>
                             </td>
                             <td> {{ $user->email}} </td>
                             <td> {{ $user->created_at}} </td>
@@ -71,8 +71,7 @@
         "columnDefs": [
         { "searchable": false, "targets": [0,1,3] }
         ],
-  	        select: true,
-            esponsive: true
+            responsive: true
         }); 
     });               
             
