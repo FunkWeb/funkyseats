@@ -207,7 +207,6 @@ strong{
 
 
 .roles_btn{
-    width: 100%;
     color: white;
     background-color: #189688;
 }
@@ -219,11 +218,19 @@ strong{
 }
 
 .roles_row{
-    margin: 46px 8px;
+    margin: 8px;
+}
+
+.roles_row h5{
+    margin-top: 4px;
 }
 
 .roles_btn .fas, .delete_buttons .fas{
     color: inherit;
+}
+
+.roles_buttons_row{
+    margin: 16px auto;
 }
 
 .remove{
@@ -241,12 +248,22 @@ strong{
     margin: 8px 16px;
 }
 
+.delMake_btn:hover{
+    background-color: #189688;
+}
+
 .delete_buttons{
     width: 50%;
     margin: 0 auto;
     margin-bottom: 48px;
 }
 
+
+@media screen and (min-width: 960px){
+    .delMake_btn{
+        width: 140px;
+    }
+}
 
 @media screen and (max-width: 414px) {
     .page-subtitle{

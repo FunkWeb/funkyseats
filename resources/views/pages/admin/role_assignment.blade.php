@@ -8,16 +8,14 @@
 
  <div class="panel panel-inverse">
         <div class="panel-heading ui-sortable handle">
-            <h4 class="panel-title"> Roles and stats</h4>
+            <h3 class="panel-title"> Roles and stats</h3>
             <div class="panel-heading-btn">
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
-                <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
-                <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
             </div>
         </div>
         <div class="panel-body p-0 roles_stats">
-                <h3 > Navn Navnesen</h5>
+                <h3 > Navn Navnesen</h3>
                 <div class="row">
                     <div class="col-6">
                         <h5> Hours this month: 70</h5>
@@ -25,6 +23,7 @@
                     <div class="col-6">
                         <h5> Hours this week: 20</h5>
                     </div>
+                </div>
 
                 <hr>
                 <div class="row">
@@ -49,21 +48,23 @@
 
                 <hr>
                 <div class="row roles_row">
-                    
-                    <div class="col-4 col-md-2"> <h5> Add Role: </h5> </div> 
-                    <div class="col-4 col-md-2">
-                            <button class="submit-changes-btn roles_btn"> Veileder <i class="fas fa-plus"></i></button>
+                    <div class="row roles_buttons_row">
+                        <div class="col-4"> <h5> Add Role: </h5> </div> 
+                        <div class="col">
+                                <button class="submit-changes-btn roles_btn"> Veileder <i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="col">
+                                <button class="submit-changes-btn roles_btn">Admin <i class="fas fa-plus"></i></button>
+                        </div>
                     </div>
-                    <div class="col-4 col-md-2">
-                            <button class="submit-changes-btn roles_btn">Admin <i class="fas fa-plus"></i></button>
-                    </div>
-
-                    <div class="col-4 col-md-2"> <h5> Remove Role: </h5> </div> 
-                    <div class="col-4 col-md-2">
-                            <button class="submit-changes-btn roles_btn remove">Veileder <i class="fas fa-minus"></i> </button>
-                    </div>
-                    <div class="col-4 col-md-2">
-                            <button class="submit-changes-btn roles_btn remove">Admin <i class="fas fa-minus"></i></button>
+                    <div class="row roles_buttons_row">
+                        <div class="col-4"> <h5> Remove Role: </h5> </div> 
+                        <div class="col">
+                                <button class="submit-changes-btn roles_btn remove">Veileder <i class="fas fa-minus"></i> </button>
+                        </div>
+                        <div class="col">
+                                <button class="submit-changes-btn roles_btn remove">Admin <i class="fas fa-minus"></i></button>
+                        </div>
                     </div>
                 </div> 
                 
