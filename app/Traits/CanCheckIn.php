@@ -33,7 +33,7 @@ trait CanCheckIn
             return "Checked in";
         } elseif ($row->created_at >= now()->addMinutes(-5)) {
             $row->delete();
-            return "Checkin to short, removed entry";
+            return "Checkin too short, removed entry";
         } elseif ($row->checkout_at == null) {
             $row->checkout_at = now();
             $row->save();
