@@ -95,93 +95,12 @@
         </div>
     </div>
 
-    <div class="row stats">
-        <div class="col">
-            <div class="card border-0 mb-3 bg-gray-800 text-white">
-                    <div class="mb-3 text-white-500">
-                        <b>  Candidate stats </b>
-                    </div>
-                   <input type="text" id="searchCand" placeholder="write name of candidate" onkeyup="searchCandidate(this)">
-                    <ul id="candidates">
-                        
-                    </ul>
-                
-            </div>
-        </div>
-       
-
-    </div>
 
 
     <link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
     <script defer src="/assets/plugins/d3/d3.min.js"></script>
     <script defer src="/assets/plugins/nvd3/build/nv.d3.min.js"></script>
     <script defer type='text/javascript'>
-
-        const personJSON = `
-        [
-            {
-                "name": "Jens",
-                "hoursWeek": "14",
-                "hoursMonth": "50",
-                "days":{
-                    "Mon": "2",
-                    "Tue": "3",
-                    "Wed": "4",
-                    "Thu": "1",
-                    "Fri": "0"
-                    }
-            },
-            {
-                "name": "Jakob",
-                "hoursWeek": "15",
-                "hoursMonth": "60",
-                "days":{
-                    "Mon": "2",
-                    "Tue": "1",
-                    "Wed": "4",
-                    "Thu": "1",
-                    "Fri": "3"
-                    }
-            },
-            {
-                "name": "Silje",
-                "hoursWeek": "17",
-                "hoursMonth": "40",
-                "days":{
-                    "Mon": "2",
-                    "Tue": "1",
-                    "Wed": "2",
-                    "Thu": "1",
-                    "Fri": "0"
-                    }
-            },
-            {
-                "name": "Truls",
-                "hoursWeek": "30",
-                "hoursMonth": "100",
-                "days":{
-                    "Mon": "4",
-                    "Tue": "4",
-                    "Wed": "4",
-                    "Thu": "4",
-                    "Fri": "3"
-                    }
-            }
-
-        ]`
-        
-        let parsedPerson = JSON.parse(personJSON);
-        const candidatesList = document.getElementById('candidates'); 
-        for (let counter = 0; counter < parsedPerson.length; counter++){
-            candidatesList.innerHTML += `
-            <li value="${parsedPerson[counter].name.toLowerCase()}">
-                <button class="stats-button candidate" onclick="showCandStats(this.parentNode, ${counter}), toggleActive(this)">
-                     ${parsedPerson[counter].name}
-                </button> 
-                <div> </div>
-            </li>`;
-        }
 
             
 
