@@ -192,6 +192,28 @@ strong{
     font-weight: 500;
 }
 
+.edit_seat_type_btns_row{
+    width: 50%;
+    margin: 16px auto;
+}
+
+.seat_types_form{
+    border-bottom: 1px solid grey;
+}
+
+.show_desc{
+    width: 100%;
+    border-radius: 0%;
+}
+
+textarea{
+    height: 35.5px;
+}
+
+
+.hidden{
+    display: none;
+}
 @media screen and (max-width: 414px) {
     .page-subtitle{
         padding: 0 18px;
