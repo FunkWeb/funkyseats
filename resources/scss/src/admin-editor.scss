@@ -195,20 +195,21 @@ strong{
     display: none;
 }
 
-.roles_stats .row{
+.roles_stats, .roles_row{
     text-align: center;
 }
 
 .roles_stats h3{
-    text-align: center;
-    margin: 24px auto;
+    margin: 24px 8px auto;
 }
 
 
 
 .roles_btn{
+    width: 140px;
     color: white;
     background-color: #189688;
+    margin: 0 8px;
 }
 
 .roles_btn:hover{
@@ -230,7 +231,11 @@ strong{
 }
 
 .roles_buttons_row{
-    margin: 16px auto;
+    margin: 16px 0;
+}
+
+.roles_buttons_row .col-2{
+    min-width: 150px;
 }
 
 .remove{
@@ -244,7 +249,7 @@ strong{
 }
 
 .delMake_btn{
-    width: 100%;
+    width: 140px;
     margin: 8px 16px;
 }
 
@@ -253,17 +258,13 @@ strong{
 }
 
 .delete_buttons{
-    width: 50%;
-    margin: 0 auto;
-    margin-bottom: 48px;
+    margin: 24px auto;
 }
 
-
-@media screen and (min-width: 960px){
-    .delMake_btn{
-        width: 140px;
-    }
+.role_header{
+    margin-left: 26px;
 }
+
 
 @media screen and (max-width: 414px) {
     .page-subtitle{

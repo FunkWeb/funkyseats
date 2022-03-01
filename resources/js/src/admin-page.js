@@ -85,36 +85,6 @@ function addNewSeat(room_id, types) {
     new_seat.scrollIntoView();
 }
 
-function searchCandidate(input){
-    let filter, ul, li, i ;
-    filter = input.value.toLowerCase();
-    ul = document.getElementById("candidates");
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++) {
-        if (li[i].innerText.toLowerCase().includes(filter)) 
-        {     
-            li[i].classList.remove('hidden'); 
-        }
-
-        else{
-            li[i].classList.add('hidden');
-        }
-        if(!filter){
-            li[i].classList.add('hidden');
-
-        }
-        
-    }
-}
-
-function removeRole(role_id, name_id){
-    document.roles_form.action=`/${name_id}/remove/${role_id}`;
-        document.roles_form.submit();
-}
-function addRole(role_id, name_id){
-    document.roles_form.action=`/${name_id}/add/${role_id}`;
-    document.roles_form.submit();
-}
 
 window.onload = function (){
     $('#main_checkbox').click(function (){
