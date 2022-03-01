@@ -199,7 +199,10 @@ strong{
 .seat_types_form{
     border-bottom: 1px solid grey;
 }
-
+.seat_types_form form{
+    display: inherit;
+    align-items: inherit;
+}
 .show_desc{
     width: 100%;
     border-radius: 0%;
@@ -216,6 +219,7 @@ textarea{
 .trash_icon i{
     position: static;
     font-size: 18px;
+    color: #324252;
 }
 
 .seat_type_btn{
@@ -225,6 +229,12 @@ textarea{
 .hidden{
     display: none;
 }
+
+.plus_icon{
+    text-align: left;
+}
+
+
 @media screen and (max-width: 414px) {
     .page-subtitle{
         padding: 0 18px;
