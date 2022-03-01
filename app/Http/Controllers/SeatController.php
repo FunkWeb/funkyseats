@@ -19,7 +19,14 @@ class SeatController extends Controller
 
     public function edit($id)
     {
-        return view('pages.admin.edit_seats', ['room' => Room::where('id', $id)->with('seat')->get(), 'types' => SeatType::all()]);
+        return view('pages.admin.edit_seats', ['room' => Room::where('id', $id)->with(['seat' => function ($query) {
+            if (env('DB_CONNECTION') == "mysql") {
+                $query->orderByRaw('CHAR_LENGTH(seat_number)');
+            } else {
+                $query->orderByRaw('LENGTH(seat_number)');
+            }
+            $query->orderBy('seat_number', 'asc');
+        }])->get(), 'types' => SeatType::all()]);
     }
 
     public function save($id, Request $request)
