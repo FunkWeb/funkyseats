@@ -22,15 +22,15 @@ class UserController extends Controller
             ->with(["checkin" => function ($query) {
                 $query->select(
                     DB::raw('SUM(TIMESTAMPDIFF(MINUTE,created_at,checkout_at)) as total'),
-                    // DB::raw('SUM(case when YEARWEEK(`created_at`, 1) = YEARWEEK(CURDATE(), 1) 
-                    //  then TIMESTAMPDIFF(MINUTE,created_at,checkout_at) 
-                    //  else 0 end) as week'),
-                    // DB::raw('SUM(forced_checkout) as forced'),
-                    // DB::raw('SUM(case when WEEKDAY(created_at)=0 then 1 else 0 end) as Monday'),
-                    // DB::raw('SUM(case when WEEKDAY(created_at)=1 then 1 else 0 end) as Tuesday'),
-                    // DB::raw('SUM(case when WEEKDAY(created_at)=2 then 1 else 0 end) as Wednesday'),
-                    // DB::raw('SUM(case when WEEKDAY(created_at)=3 then 1 else 0 end) as Thursday'),
-                    // DB::raw('SUM(case when WEEKDAY(created_at)=4 then 1 else 0 end) as Friday')
+                    DB::raw('SUM(case when YEARWEEK(`created_at`, 1) = YEARWEEK(CURDATE(), 1) 
+                      then TIMESTAMPDIFF(MINUTE,created_at,checkout_at) 
+                      else 0 end) as week'),
+                    DB::raw('SUM(forced_checkout) as forced'),
+                    DB::raw('SUM(case when WEEKDAY(created_at)=0 then 1 else 0 end) as Monday'),
+                    DB::raw('SUM(case when WEEKDAY(created_at)=1 then 1 else 0 end) as Tuesday'),
+                    DB::raw('SUM(case when WEEKDAY(created_at)=2 then 1 else 0 end) as Wednesday'),
+                    DB::raw('SUM(case when WEEKDAY(created_at)=3 then 1 else 0 end) as Thursday'),
+                    DB::raw('SUM(case when WEEKDAY(created_at)=4 then 1 else 0 end) as Friday')
                 );
             }])
             ->with('role')->get();
@@ -49,5 +49,17 @@ class UserController extends Controller
         )->get();
 
         return view('pages.admin.user_profile', ['user' => $user, 'checkins' => $checkins, 'roles' => Role::all()]);
+    }
+
+    public function toggleRole(User $user, $role)
+    {
+
+        if ($user->hasRole($role)) {
+            $user->removeRole($role);
+        } else {
+            $user->assignRole($role);
+        }
+
+        return back()->with('success', 'Role status updated');
     }
 }

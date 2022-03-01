@@ -54,3 +54,4 @@ Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show'])->name('roo
 Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checkin')->middleware(['auth', 'checkin']);
 Route::get('/profiles', [UserController::class, 'index']);
 Route::get('/profile/{id}', [UserController::class, 'show']);
+Route::get('/profile/{user}/toggle/{role}', [UserController::class, 'toggleRole']);
