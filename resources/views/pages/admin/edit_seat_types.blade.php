@@ -5,6 +5,7 @@
 @section('title', 'Home Page')
 
     @section('content')
+    {{$types}}
         <div class='panel panel-inverse'>
             <div class="panel-heading ui-sortable-handle">
                 <h4 class="panel-title">Edit seat-types</h4>
@@ -12,30 +13,29 @@
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
                 </div>
             </div>
+            
             <div class="panel-body">
-                <div class="form-group seat_types_form">
+            @foreach($types as $type)
+                <form action=/admin/edit_seat_types/edit/{{ $type->id }} method="post" class="form-group seat_types_form">
+                @csrf
+                    <div class="row trash_icon"><i class="far fa-trash-alt fa-lg" onclick="showWindow()"></i> </div>
                     <div class="row">
                         <div class="col-4">
                             <label for ="seat-type-name">Seat-name</label>
-                            <i class="far fa-trash-alt fa-lg seat_types_remove" onclick="showWindow()"></i>
-                            <input type="text" class="form-control" id="seat-type-name" placeholder="Arbeidsplass">
+                            <input type="text" class="form-control" id="seat-type-name" name="{{$type->name}}" value="{{$type->name}}">
                         </div>
                                     
                         <div class="col">    
                             <label for="seat_description">Seat description</label>
-                            <textarea class="form-control" id="seat_description" placeholder="Write seat description"></textarea>
-                        </div>    
+                            <textarea class="form-control" id="seat_description" name="description" placeholder="Write seat description">{{$type->description}}</textarea>
+                        </div>  
                     </div>
                                         
                         <div class="row edit_seat_type_btns_row">
-                            <div class="col">
-                                <button class='submit-changes-btn' type='submit' value='submit'>Update</button>
-                            </div>
-                            <div class="col">
-                                <button class='submit-changes-btn' type='submit' value='submit'>Remove</button>
-                            </div>
+                                <button class='submit-changes-btn seat_type_btn' type='submit' value='submit'>Update</button>
                         </div>  
-                </div>
+                </form>
+            @endforeach   
             </div>
         </div>    
     @endsection

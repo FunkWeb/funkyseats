@@ -54,6 +54,6 @@ Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show'])->name('roo
 Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checkin')->middleware(['auth', 'checkin']);
 
 Route::get('/admin/edit_seat_types', [SeatTypeController::class, 'edit'])->name('seatType.edit');
-Route::post('/admin/edit_seat_types/edit/{id}', [SeatTypeController::class, 'save'])->name('seatType.update');
+Route::post('/admin/edit_seat_types/edit/{id}', [SeatTypeController::class, 'update'])->name('seatType.update');
 Route::post('/admin/edit_seat_types/delete/{id}', [SeatTypeController::class, 'delete'])->name('seatType.destroy');
 Route::post('/admin/edit_seat_types/store', [SeatTypeController::class, 'store'])->name('seatType.store');
