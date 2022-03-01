@@ -7,6 +7,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CheckinController;
 use App\Http\Controllers\SeatController;
+use App\Http\Controllers\SeatTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,9 +51,9 @@ Route::get('/', [RoomController::class, 'index_withCountSeats'])->name('home');
 Route::get('/display/{id}', [RoomController::class, 'show_display'])->name('display.show');
 Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show'])->name('room.show');
 
-//TODO:(are) Add middleware for IP check!
 Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checkin')->middleware(['auth', 'checkin']);
 
-Route::get('/admin/seat_types', function () {
-    return View('pages/admin/edit_seat_types');
-})->name('seat_types');
+Route::get('/admin/edit_seat_types', [SeatTypeController::class, 'edit'])->name('seatType.edit');
+Route::post('/admin/edit_seat_types/edit/{id}', [SeatTypeController::class, 'save'])->name('seatType.update');
+Route::post('/admin/edit_seat_types/delete/{id}', [SeatTypeController::class, 'delete'])->name('seatType.destroy');
+Route::post('/admin/edit_seat_types/store', [SeatTypeController::class, 'store'])->name('seatType.store');
