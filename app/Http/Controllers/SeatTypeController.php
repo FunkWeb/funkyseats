@@ -99,7 +99,9 @@ class SeatTypeController extends Controller
      */
     public function destroy(SeatType $seatType)
     {
-        $seatType->delete();
+        if ($seatType) {
+            $seatType->delete();
+        }
 
         return back()->with('success', 'You deleted the seat type successfully');
     }
