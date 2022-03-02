@@ -47,6 +47,19 @@
 
 	</div>
 
+	@if (session('success') or session('checkinStatus'))
+            @component('includes.component.information-box')
+				@if(session('success'))
+                	@slot('message')
+                	{{ session('success') }}
+				@else
+                	@slot('message')
+                	{{ session('checkinStatus') }}
+				@endif
+                @endslot
+            @endcomponent
+    @endif
+
 	@yield('outside-content')
 
 	@include('includes.page-js')

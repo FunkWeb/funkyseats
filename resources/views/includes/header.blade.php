@@ -64,13 +64,8 @@ $appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
             @include('includes.component.header-dropdown-notification')
         </div>
         @can('checkin-ip')   
-            @if (session('checkinStatus'))
-            <div class="col checkinMessage">
-                {{ session('checkinStatus') }}
-            </div>
-            @endif
             @if(Auth::user()->getCheckedInAttribute() == 1)
-                <a href="/checkin"><button class="check-in-btn CheckedIn"><i class="fa fa-clock"></i><strong>Check Out</strong></button></a>
+                <a href="/checkin"><button class="check-in-btn checkedIn"><i class="fa fa-clock"></i><strong>Check Out</strong></button></a>
                 @else
                 <a href="/checkin"><button class="check-in-btn"><i class="fa fa-clock"></i><strong>Check In</strong></button></a>
             @endif
