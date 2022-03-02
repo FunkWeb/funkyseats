@@ -35,6 +35,7 @@ class UserController extends Controller
         //->load('checkins');
 
 
+        //Wheremonth can be changed later if they want spesific month
         $checkins = Checkin::select(
             DB::raw('SUM(TIMESTAMPDIFF(MINUTE,created_at,checkout_at)) as total'),
             DB::raw('SUM(case when YEARWEEK(`created_at`, 1) = YEARWEEK(CURDATE(), 1) 
@@ -46,7 +47,7 @@ class UserController extends Controller
             DB::raw('SUM(case when WEEKDAY(created_at)=2 then 1 else 0 end) as Wednesday'),
             DB::raw('SUM(case when WEEKDAY(created_at)=3 then 1 else 0 end) as Thursday'),
             DB::raw('SUM(case when WEEKDAY(created_at)=4 then 1 else 0 end) as Friday')
-        )->where('user_id', $id->id)->get()->first();
+        )->where('user_id', $user->id)->whereMonth('created_at', date('m'))->get()->first();
 
         $checkins->total =  intdiv($checkins->total, 60) . ':' . ($checkins->total % 60);
         $checkins->week =  intdiv($checkins->week, 60) . ':' . ($checkins->week % 60);
