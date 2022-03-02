@@ -10,7 +10,7 @@
             <div class="card border-0 mb-3 bg-gray-800 text-white">
                 <div class="card-body">
                     <div class="mb-3 text-white-500">
-                    <select name="rooms" id="rooms">
+                    <select name="rooms" id="rooms" onchange="getRoomData(this.value)">
                         <option value="allRooms"><b>All rooms</b></option>
                         <option value="klasserom"><b> Klasserom </b></option>
                         <option value="prosjektrom"><b> Prosjektrom </b></option>
@@ -102,21 +102,36 @@
     <script defer src="/assets/plugins/nvd3/build/nv.d3.min.js"></script>
     <script defer type='text/javascript'>
 
-            
+        const klasseromData = `{"thisweek":{"total bookings":2,"low booking":1,"high bookings":2,"average bookings":2,"halfdays":[{"x":"3.jan","y":1},{"x":"4.jan","y":1},{"x":"5.jan","y":1},{"x":"6.jan","y":25},{"x":"7.jan","y":27}],"wholedays":[{"x":"3.jan","y":32},{"x":"4.jan","y":36},{"x":"5.jan","y":36},{"x":"6.jan","y":33},{"x":"7.jan","y":34}]},"lastweek":{"total bookings":111,"low booking":213,"high bookings":4,"average bookings":31,"halfdays":[{"x":"3.jan","y":20},{"x":"4.jan","y":22},{"x":"5.jan","y":21},{"x":"6.jan","y":25},{"x":"7.jan","y":26}],"wholedays":[{"x":"3.jan","y":32},{"x":"4.jan","y":36},{"x":"5.jan","y":36},{"x":"6.jan","y":33},{"x":"7.jan","y":34}]},"month":{"total bookings":12,"low booking":232,"high bookings":410,"average bookings":323,"halfdays":[{"x":"3.jan","y":20},{"x":"4.jan","y":22},{"x":"5.jan","y":21},{"x":"6.jan","y":25},{"x":"10.jan","y":26},{"x":"11.jan","y":20},{"x":"12.jan","y":20},{"x":"13.jan","y":20},{"x":"14.jan","y":22},{"x":"15.jan","y":21},{"x":"17.jan","y":25},{"x":"18.jan","y":26},{"x":"19.jan","y":22},{"x":"20.jan","y":21},{"x":"21.jan","y":25},{"x":"24.jan","y":26},{"x":"25.jan","y":22},{"x":"26.jan","y":21},{"x":"27.jan","y":25},{"x":"28.jan","y":26}],"wholedays":[{"x":"3.jan","y":30},{"x":"4.jan","y":32},{"x":"5.jan","y":31},{"x":"6.jan","y":35},{"x":"10.jan","y":36},{"x":"11.jan","y":30},{"x":"12.jan","y":30},{"x":"13.jan","y":30},{"x":"14.jan","y":32},{"x":"15.jan","y":31},{"x":"17.jan","y":35},{"x":"18.jan","y":36},{"x":"19.jan","y":32},{"x":"20.jan","y":31},{"x":"21.jan","y":35},{"x":"24.jan","y":36},{"x":"25.jan","y":32},{"x":"26.jan","y":31},{"x":"27.jan","y":35},{"x":"28.jan","y":36}]}} `;           
 
-        let jsonData = JSON.parse('{!! $stats !!}');
+        
         let chartLoaded = false;
+        let jsonData;
+        let choosenInterval;
         window.onload = function() {
             if (!chartLoaded) {
-                createGraph('current');
+                getRoomData(); 
             }
             chartLoaded = true;
-
             
         }
 
+          function getRoomData(room){
+            if (room == 'klasserom'){
+                jsonData = JSON.parse(klasseromData);
+                createGraph(choosenInterval);      
+            }
+            else if(room == 'prosjektrom'){
+                console.log('prosjektrom');
+            }
+            else{
+                jsonData = JSON.parse('{!! $stats !!}');
+                createGraph(choosenInterval);
+                
+            }
+        }
 
-        function highestVal(intervalValues) {
+        function calculateValues(intervalValues) {
             const highCount = document.getElementById('highCount');
             const lowCount = document.getElementById('lowCount');
             const averageCount = document.getElementById('averageCount');
@@ -125,7 +140,6 @@
             lowCount.setAttribute('data-value', intervalValues['low booking']);
             averageCount.setAttribute('data-value',intervalValues['average bookings']);
             totalCount.setAttribute('data-value', intervalValues['total bookings']);
-
         }
 
         function createGraph(interval) {
@@ -144,6 +158,7 @@
                 });
             }
             if (interval === 'lastWeek') {
+                choosenInterval = 'lastweek';
                 var barChartDataLastW = [{
                     key: 'Total',
                     'color': '#20B3BE',
@@ -154,9 +169,10 @@
                     values: jsonData.lastweek.halfdays
                 }];
                 addGraph(barChartDataLastW);
-                highestVal(jsonData.lastweek);
+                calculateValues(jsonData.lastweek);
 
             } else if (interval === 'month' || interval === 'lastMonth') {
+                choosenInterval = 'month';
                 var barChartDataM = [{
                     key: 'Total',
                     'color': '#20B3BE',
@@ -167,8 +183,9 @@
                     values: jsonData.month.halfdays
                 }];
                 addGraph(barChartDataM);
-                highestVal(jsonData.month);
+                calculateValues(jsonData.month);
             } else {
+                choosenInterval = 'current';
                 var barChartData = [{
                     key: 'Total',
                     'color': '#20B3BE',
@@ -179,7 +196,7 @@
                     values: jsonData.thisweek.halfdays
                 }];
                 addGraph(barChartData);
-                highestVal(jsonData.thisweek);
+                calculateValues(jsonData.thisweek);
             }
         }
     </script>
