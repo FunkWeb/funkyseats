@@ -56,11 +56,16 @@ class UserController extends Controller
 
     public function toggleRole(User $user, $role)
     {
+        $exists = Role::where('name', $role)->first();
 
-        if ($user->hasRole($role)) {
-            $user->removeRole($role);
+        if ($exists) {
+            if ($user->hasRole($role)) {
+                $user->removeRole($role);
+            } else {
+                $user->assignRole($role);
+            }
         } else {
-            $user->assignRole($role);
+            return back()->with('error', 'could not find role with that name');
         }
 
         return back()->with('success', 'Role status updated');
@@ -70,10 +75,10 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return back()->with('success', 'You deleted the user successfully');
+        return view('pages.admin.profile_page')->with('success', 'You deleted the user successfully');
     }
     public function anonymize(User $user)
     {
-        return view('pages.admin.profile_page')->with('success', 'Functionality not impemented yet');
+        return back()->with('success', 'Functionality not impemented yet');
     }
 }
