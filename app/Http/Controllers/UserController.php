@@ -64,4 +64,15 @@ class UserController extends Controller
 
         return back()->with('success', 'Role status updated');
     }
+
+    public function delete(User $user)
+    {
+        $user->delete();
+
+        return back()->with('success', 'You deleted the seat successfully');
+    }
+    public function anonymize(User $user)
+    {
+        return back()->with('success', 'Functionality not impemented yet');
+    }
 }
