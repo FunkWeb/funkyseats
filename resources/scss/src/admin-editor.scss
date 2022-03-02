@@ -195,11 +195,12 @@ strong{
 }
 
 .edit_seat_type_btns_row{
-    margin: 16px 0;
+    margin: 8px 0;
 }
 
 .seat_types_form{
     border-bottom: 1px solid grey;
+    margin-bottom: 18px;
 }
 .seat_types_form form{
     display: inherit;
@@ -214,14 +215,16 @@ textarea{
     height: 35.5px;
 }
 
-.trash_icon{
-    margin: 18px 0;
-    text-align: right;
-}
-.trash_icon i{
+.trash_icon i, .plus_icon i{
     position: static;
     font-size: 18px;
     color: #324252;
+    text-align: right;
+}
+
+.plus_icon a{
+    margin-bottom: 18px;
+    text-align: right;
 }
 
 .seat_type_btn{
@@ -236,9 +239,6 @@ textarea{
     display: none;
 }
 
-.plus_icon{
-    text-align: left;
-}
 
 
 @media screen and (max-width: 414px) {
