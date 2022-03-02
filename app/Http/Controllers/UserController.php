@@ -17,9 +17,10 @@ class UserController extends Controller
         return view('pages.admin.profile_page', ['users' => User::all()]);
     }
 
-    public function show(User $id)
+    public function show(User $user)
     {
-        $userData = $id
+        //Using route model binding locks into load() if we want one object with all data
+        $userData = $user
             //->checkins()->select(DB::raw('SUM(TIMESTAMPDIFF(MINUTE,created_at,checkout_at)) as total'),
             // DB::raw('SUM(case when YEARWEEK(`created_at`, 1) = YEARWEEK(CURDATE(), 1) 
             //   then TIMESTAMPDIFF(MINUTE,created_at,checkout_at) 
@@ -69,7 +70,7 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return back()->with('success', 'You deleted the seat successfully');
+        return back()->with('success', 'You deleted the user successfully');
     }
     public function anonymize(User $user)
     {
