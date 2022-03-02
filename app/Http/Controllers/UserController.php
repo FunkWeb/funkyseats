@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Checkin;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -16,24 +17,22 @@ class UserController extends Controller
         return view('pages.admin.profile_page', ['users' => User::all()]);
     }
 
-    public function show($id)
+    public function show(User $id)
     {
-        $user = User::where('id', $id)
-            ->with(["checkin" => function ($query) {
-                $query->select(
-                    DB::raw('SUM(TIMESTAMPDIFF(MINUTE,created_at,checkout_at)) as total'),
-                    DB::raw('SUM(case when YEARWEEK(`created_at`, 1) = YEARWEEK(CURDATE(), 1) 
-                      then TIMESTAMPDIFF(MINUTE,created_at,checkout_at) 
-                      else 0 end) as week'),
-                    DB::raw('SUM(forced_checkout) as forced'),
-                    DB::raw('SUM(case when WEEKDAY(created_at)=0 then 1 else 0 end) as Monday'),
-                    DB::raw('SUM(case when WEEKDAY(created_at)=1 then 1 else 0 end) as Tuesday'),
-                    DB::raw('SUM(case when WEEKDAY(created_at)=2 then 1 else 0 end) as Wednesday'),
-                    DB::raw('SUM(case when WEEKDAY(created_at)=3 then 1 else 0 end) as Thursday'),
-                    DB::raw('SUM(case when WEEKDAY(created_at)=4 then 1 else 0 end) as Friday')
-                );
-            }])
-            ->with('role')->get();
+        $userData = $id
+            //->checkins()->select(DB::raw('SUM(TIMESTAMPDIFF(MINUTE,created_at,checkout_at)) as total'),
+            // DB::raw('SUM(case when YEARWEEK(`created_at`, 1) = YEARWEEK(CURDATE(), 1) 
+            //   then TIMESTAMPDIFF(MINUTE,created_at,checkout_at) 
+            //   else 0 end) as week'),
+            // DB::raw('SUM(forced_checkout) as forced'),
+            // DB::raw('SUM(case when WEEKDAY(created_at)=0 then 1 else 0 end) as Monday'),
+            // DB::raw('SUM(case when WEEKDAY(created_at)=1 then 1 else 0 end) as Tuesday'),
+            // DB::raw('SUM(case when WEEKDAY(created_at)=2 then 1 else 0 end) as Wednesday'),
+            // DB::raw('SUM(case when WEEKDAY(created_at)=3 then 1 else 0 end) as Thursday'),
+            // DB::raw('SUM(case when WEEKDAY(created_at)=4 then 1 else 0 end) as Friday'))
+            ->load('roles'); // or ->roles() <- this gives no user model data only the roles
+        //->load('checkins');
+
 
         $checkins = Checkin::select(
             DB::raw('SUM(TIMESTAMPDIFF(MINUTE,created_at,checkout_at)) as total'),
@@ -46,9 +45,12 @@ class UserController extends Controller
             DB::raw('SUM(case when WEEKDAY(created_at)=2 then 1 else 0 end) as Wednesday'),
             DB::raw('SUM(case when WEEKDAY(created_at)=3 then 1 else 0 end) as Thursday'),
             DB::raw('SUM(case when WEEKDAY(created_at)=4 then 1 else 0 end) as Friday')
-        )->get();
+        )->where('user_id', $id->id)->get();
 
-        return view('pages.admin.user_profile', ['user' => $user, 'checkins' => $checkins, 'roles' => Role::all()]);
+        $checkins[0]->total =  intdiv($checkins[0]->total, 60) . ':' . ($checkins[0]->total % 60);
+        $checkins[0]->week =  intdiv($checkins[0]->week, 60) . ':' . ($checkins[0]->week % 60);
+
+        return view('pages.admin.user_profile', ['user' => $userData, 'checkins' => $checkins, 'roles' => Role::all()]);
     }
 
     public function toggleRole(User $user, $role)

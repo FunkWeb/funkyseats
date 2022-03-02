@@ -51,14 +51,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function checkin()
-    {
-        return $this->hasMany(Checkin::class);
-    }
-
-    public function role()
-    {
-        return $this->belongsToMany(Role::class)->withTimestamps();
-    }
 }
