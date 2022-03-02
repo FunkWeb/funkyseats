@@ -17,7 +17,6 @@ class Checkin extends Model
     protected $attributes = [
         'forced_checkout' => false,
     ];
-
     public function user()
     {
         return $this->belongsTo(User::class);

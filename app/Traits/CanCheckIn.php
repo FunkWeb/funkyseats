@@ -27,9 +27,7 @@ trait CanCheckIn
     {
         $row = Checkin::currentStatus();
         if (!$row) {
-            $new_checkin = new Checkin;
-            $new_checkin->user_id = auth()->user()->id;
-            $new_checkin->save();
+            $this->checkins()->create();
             return "Checked in";
         } elseif ($row->created_at >= now()->addMinutes(-5)) {
             $row->delete();
@@ -43,9 +41,7 @@ trait CanCheckIn
             $row->save();
             return "Resumed earlier checkin";
         } else {
-            $new_checkin = new Checkin;
-            $new_checkin->user_id = auth()->user()->id;
-            $new_checkin->save();
+            $this->checkins()->create();
             return "Checked in";
         }
     }
