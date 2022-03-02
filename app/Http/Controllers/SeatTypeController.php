@@ -97,11 +97,9 @@ class SeatTypeController extends Controller
      * @param  \App\Models\SeatType  $seatType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SeatType $seatType)
+    public function destroy($id)
     {
-        if ($seatType) {
-            $seatType->delete();
-        }
+        SeatType::destroy($id);
 
         return back()->with('success', 'You deleted the seat type successfully');
     }

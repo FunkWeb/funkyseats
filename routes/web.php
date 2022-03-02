@@ -55,5 +55,5 @@ Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checki
 
 Route::get('/admin/edit_seat_types', [SeatTypeController::class, 'edit'])->name('seatType.edit');
 Route::post('/admin/edit_seat_types/edit/{seatType}', [SeatTypeController::class, 'update'])->name('seatType.update');
-Route::post('/admin/edit_seat_types/delete/{seatType}', [SeatTypeController::class, 'destroy'])->name('seatType.destroy');
+Route::post('/admin/edit_seat_types/delete/{id}', [SeatTypeController::class, 'destroy'])->name('seatType.destroy');
 Route::post('/admin/edit_seat_types/store', [SeatTypeController::class, 'store'])->name('seatType.store');
