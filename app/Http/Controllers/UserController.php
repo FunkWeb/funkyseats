@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Checkin;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -75,6 +74,6 @@ class UserController extends Controller
     }
     public function anonymize(User $user)
     {
-        return back()->with('success', 'Functionality not impemented yet');
+        return view('pages.admin.profile_page')->with('success', 'Functionality not impemented yet');
     }
 }
