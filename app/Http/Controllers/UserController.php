@@ -45,10 +45,10 @@ class UserController extends Controller
             DB::raw('SUM(case when WEEKDAY(created_at)=2 then 1 else 0 end) as Wednesday'),
             DB::raw('SUM(case when WEEKDAY(created_at)=3 then 1 else 0 end) as Thursday'),
             DB::raw('SUM(case when WEEKDAY(created_at)=4 then 1 else 0 end) as Friday')
-        )->where('user_id', $id->id)->get();
+        )->where('user_id', $id->id)->get()->first();
 
-        $checkins[0]->total =  intdiv($checkins[0]->total, 60) . ':' . ($checkins[0]->total % 60);
-        $checkins[0]->week =  intdiv($checkins[0]->week, 60) . ':' . ($checkins[0]->week % 60);
+        $checkins->total =  intdiv($checkins->total, 60) . ':' . ($checkins->total % 60);
+        $checkins->week =  intdiv($checkins->week, 60) . ':' . ($checkins->week % 60);
 
         return view('pages.admin.user_profile', ['user' => $userData, 'checkins' => $checkins, 'roles' => Role::all()]);
     }
