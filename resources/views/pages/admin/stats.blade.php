@@ -110,19 +110,21 @@
         let choosenInterval;
         window.onload = function() {
             if (!chartLoaded) {
+                choosenInterval = 'current';
                 getRoomData(); 
             }
             chartLoaded = true;
             
         }
-
+        
           function getRoomData(room){
             if (room == 'klasserom'){
                 jsonData = JSON.parse(klasseromData);
                 createGraph(choosenInterval);      
             }
             else if(room == 'prosjektrom'){
-                console.log('prosjektrom');
+                jsonData = JSON.parse(klasseromData);
+                createGraph(choosenInterval);    
             }
             else{
                 jsonData = JSON.parse('{!! $stats !!}');
@@ -140,10 +142,16 @@
             lowCount.setAttribute('data-value', intervalValues['low booking']);
             averageCount.setAttribute('data-value',intervalValues['average bookings']);
             totalCount.setAttribute('data-value', intervalValues['total bookings']);
+           
+            highCount.innerHTML =  highCount.dataset.value;
+            lowCount.innerHTML = lowCount.dataset.value;
+            averageCount.innerHTML = averageCount.dataset.value;
+            totalCount.innerHTML = totalCount.dataset.value;
+            
         }
 
         function createGraph(interval) {
-
+            choosenInterval = interval;
             function addGraph(data) {
                 d3.select(".nvd3-svg").remove();
                 nv.addGraph({
@@ -158,7 +166,6 @@
                 });
             }
             if (interval === 'lastWeek') {
-                choosenInterval = 'lastweek';
                 var barChartDataLastW = [{
                     key: 'Total',
                     'color': '#20B3BE',
@@ -172,7 +179,6 @@
                 calculateValues(jsonData.lastweek);
 
             } else if (interval === 'month' || interval === 'lastMonth') {
-                choosenInterval = 'month';
                 var barChartDataM = [{
                     key: 'Total',
                     'color': '#20B3BE',
