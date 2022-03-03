@@ -33,6 +33,7 @@ class UserController extends Controller
             ->load('roles'); // or ->roles() <- this gives no user model data only the roles
         //->load('checkins');
 
+        $other_roles = Role::whereDoesntHave('user')->get(); //->get();
 
         //Wheremonth can be changed later if they want spesific month
         $checkins = Checkin::select(
@@ -51,7 +52,7 @@ class UserController extends Controller
         $checkins->total =  intdiv($checkins->total, 60) . ':' . ($checkins->total % 60);
         $checkins->week =  intdiv($checkins->week, 60) . ':' . ($checkins->week % 60);
 
-        return view('pages.admin.user_profile', ['user' => $userData, 'checkins' => $checkins, 'roles' => Role::all()]);
+        return view('pages.admin.user_profile', ['user' => $userData, 'checkins' => $checkins, 'roles' => $other_roles]);
     }
 
     public function toggleRole(User $user, $role)
