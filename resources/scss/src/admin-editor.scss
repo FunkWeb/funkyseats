@@ -91,6 +91,7 @@ i.fa-trash-alt:hover, i.fas:hover{
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-top: 18px;
+    text-align: center;
 }
 
 .popup-container {
@@ -163,11 +164,11 @@ i.fa-trash-alt:hover, i.fas:hover{
     background-color: #eceff1;
 }
 
-.newseat .submit-changes-btn{
-    background-color: #523235;
+.newSeatRoom{
+    background-color: #ff5b57;
 }
-.newseat .submit-changes-btn:hover{
-    background-color: #767e53;
+.notSaved{
+    background-color: #f59c1a;
 }
 
 i.fas{
