@@ -38,7 +38,7 @@ class ForceCheckout extends Command
      */
     public function handle()
     {
-        $checkins = Checkin::whereNull('checkout_at');
+        $checkins = Checkin::whereNull('checkout_at')->get();
         foreach ($checkins as $checkin) {
             $checkin->checkout_at = now();
             $checkin->forced_checkout = true;
