@@ -33,7 +33,10 @@ class UserController extends Controller
             ->load('roles'); // or ->roles() <- this gives no user model data only the roles
         //->load('checkins');
 
-        $other_roles = Role::whereDoesntHave('user')->get(); //->get();
+        $other_roles = Role::whereDoesntHave('user', function ($q) use ($user) {
+            $q
+                ->where('id', $user->id);
+        })->get();
 
         //Wheremonth can be changed later if they want spesific month
         $checkins = Checkin::select(
