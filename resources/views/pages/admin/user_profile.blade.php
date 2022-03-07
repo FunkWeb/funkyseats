@@ -84,13 +84,17 @@
                 <hr>
                 <div class="row delete_buttons">
                     <div class="col">
-                        <button class="submit-changes-btn delMake_btn"><a href="/profile/{{$user->id}}/delete'">Delete <i class="fas fa-trash"></i></a>
+                        <a href="/profile/{{$user->id}}/delete'">
+                        <button class="submit-changes-btn delMake_btn">Delete <i class="fas fa-trash"></i>
                         </button>
+                        </a>
                     </div>
                     <div class="col">
+                    <a href="/profile/{{$user->id}}/anonymize">
                         <button class="submit-changes-btn delMake_btn">
-                        <a href="/profile/{{$user->id}}/anonymize">Anonymize <i class="fas fa-user-secret"></i></a>
+                        Anonymize <i class="fas fa-user-secret"></i>
                         </button>
+                    </a>
                     </div>
                 </div>
         </div> 
