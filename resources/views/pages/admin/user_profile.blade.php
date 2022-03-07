@@ -57,9 +57,12 @@
                         <div class="col-3"> <h5 class="role_header"> Add Role: </h5> </div>
                         @foreach ($roles as $role) 
                         <div class="col-2">
+                        <a href="/profile/{{$user->id}}/toggle/{{$role->name}}">
                                <button class="submit-changes-btn roles_btn"> 
-                               <a href="/profile/{{$user->id}}/toggle/{{$role->name}}"> {{Str::title ($role->name)}} <i class="fas fa-plus"></i></a>
+                                {{Str::title ($role->name)}} 
+                                <i class="fas fa-plus"></i>
                                </button>
+                        </a>
                         </div>
                         @endforeach
 
@@ -68,9 +71,11 @@
                         <div class="col-3"> <h5 class="role_header"> Remove Role: </h5> </div>
                         @foreach ($user->roles as $role)
                         <div class="col-2">
+                            <a href="/profile/{{$user->id}}/toggle/{{$role->name}}">
                                 <button class="submit-changes-btn roles_btn remove"> {{Str::title ($role->name)}}
-                                <a href="/profile/{{$user->id}}/toggle/{{$role->name}}"><i class="fas fa-minus"></i></a>
+                                    <i class="fas fa-minus"></i>
                                 </button>
+                            </a>
                         </div>
                         @endforeach
                     </div>
