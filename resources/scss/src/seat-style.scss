@@ -277,36 +277,28 @@ text-decoration: none;
 }
 
 .seats-map {
-    margin: 0 !important;
-    position: absolute;
-    right: 64px;
-    top: 138px;
-    z-index: 10;
+    margin: 18px 0;
+    text-align: center;
 }
 
-.seats-map .seats-map-title {
-    font-size: 14px !important;
+.seats-map img{
+    width: 250px;
 }
 
-.seats-map .seats-location {
-    display: none;
-    margin: 0 !important;
-    padding: 0 !important;
-}
 
-.seats-map .seats-location img {
-    margin-top: 12px !important;
-    width: 100px !important;
-}
-
-.opening-block.seats-map.active .seats-location {
-    display: block;
-}
-
-.opening-block.seats-map.active .seats-location:hover img{
-    width: 250px !important;
-    transition: .3s;
-}
+.close {
+    color: #324252;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #20B3BE;
+    text-decoration: none;
+    cursor: pointer;
+  }
 
 .fa-clock{
    font-size: 18px;
@@ -333,4 +325,17 @@ text-decoration: none;
 }
 .pace-progress {
     display: none !important;
+}
+
+.mapButton{
+    display: block;
+}
+
+.mapAnyRow{
+    display: flex;
+    width: 40%;
+    margin: 0 auto;
+}
+.hidden{
+    display: none;
 }

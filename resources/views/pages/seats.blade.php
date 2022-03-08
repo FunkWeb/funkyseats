@@ -34,22 +34,25 @@
                     <label for="all_day">All day</label>
             </div>
         </form>
+
+        
     </div>
-    <div class='d-flex flex-wrap justify-content-around'>
+    <div class="mapAnyRow">
         @if (Auth::check())
                 <button class='booking-btn book_any_btn' onclick="book_random_seat({{ $room[0]->id ?? '' }})">Book any seat
                 </button>
+                <button class="booking-btn book_any_btn" onclick="displayMap()">
+                     Seats map
+                </button>    
         @endif
     </div>
-    <div class="opening-block seats-map">
-        <div class="seats-map-title">
-            <i class="fas fa-chevron-down fa-sm faq-icon"></i>
-            Seats map
-        </div>
-        <div class="seats-location">
+    
+        
+        <div class="seats-map hidden">
+            <div class="row"><span class="close">&times;</span></div>
             <img src="{{ asset('images/klasserommet.png') }}" alt="Seats map">
         </div>
-    </div>
+   
     <div class="mx-40px">
         <div class='d-flex flex-wrap justify-content-around'>
             @foreach ($room[0]->seat as $seat)

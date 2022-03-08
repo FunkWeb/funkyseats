@@ -23,6 +23,17 @@ function book_random_seat(room_id) {
     document.seat_booking_form.submit();
 }
 
+
+function displayMap() {
+    let map = document.querySelector('.seats-map');
+    map.classList.remove('hidden');
+}
+
+const span = document.querySelector('.close');
+span.onclick = function () {
+    document.querySelector('.seats-map').classList.add('hidden');
+}
+
 $(document).ready(function () {
     const radios = document.getElementsByName('book_time');
     const val = localStorage.getItem('funkyseats_booking_time');

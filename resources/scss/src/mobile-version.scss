@@ -96,6 +96,15 @@
         text-align: center;
     }
 
+    .mapAnyRow{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .mapAnyRow button{
+        margin: 8px auto;
+    }
+
     .seats-map .seats-location img {
         width: 224px !important;
     }
