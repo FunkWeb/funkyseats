@@ -111,10 +111,7 @@ class SeatTypeController extends Controller
             $temp = $newDefault;
         }
 
-        $seatsWithType = Seat::where('seat_type_id', $id)->update(['seat_type_id' => $temp->id]);
-        //foreach ($seatsWithType as $seat) {
-        //$seat->update(['seat_type_id' => $temp->id]);
-        //}
+        Seat::where('seat_type_id', $id)->update(['seat_type_id' => $temp->id]);
 
         SeatType::destroy($id);
 
