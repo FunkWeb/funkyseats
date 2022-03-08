@@ -16,12 +16,16 @@ function book_random_seat(room_id){
     document.seat_booking_form.submit();
  }
 
-const openingBlock = document.querySelectorAll('.opening-block');
-openingBlock.forEach((el) => {
-    el.addEventListener('click', () => {
-        el.classList.toggle('active')
-    })
-})
+
+function displayMap(){
+    let map = document.querySelector('.seats-map');
+    map.classList.remove('hidden');
+}
+
+const span = document.querySelector('.close');
+span.onclick = function() {
+    document.querySelector('.seats-map').classList.add('hidden');
+  }
 
 $(document).ready(function(){
     const radios = document.getElementsByName('book_time');
