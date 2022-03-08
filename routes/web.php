@@ -47,8 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/', [RoomController::class, 'index_withCountSeats'])->name('home');
-Route::get('/display/{id}', [RoomController::class, 'show_display'])->name('display.show');
+Route::get('/display/{id}', [RoomController::class, 'show_display'])->middleware('officeoradmin')->name('display.show');
 Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show'])->name('room.show');
 
-//TODO:(are) Add middleware for IP check!
 Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checkin')->middleware(['auth', 'checkin']);
