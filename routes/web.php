@@ -53,7 +53,7 @@ Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show'])->name('roo
 
 Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checkin')->middleware(['auth', 'checkin']);
 Route::get('/profiles', [UserController::class, 'index']);
-Route::get('/profile/{user}', [UserController::class, 'show']);
+Route::get('/profile/{user}', [UserController::class, 'show'])->middleware(['middleware' => 'owner.or.admin:admin']);
 Route::get('/profile/{user}/toggle/{role}', [UserController::class, 'toggleRole']);
 Route::get('/profile/{user}/delete', [UserController::class, 'delete']);
 Route::get('/profile/{user}/anonymize', [UserController::class, 'anonymize']);
