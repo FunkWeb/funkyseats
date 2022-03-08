@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SeatType;
 use Illuminate\Http\Request;
+use App\Models\Seat;
 
 class SeatTypeController extends Controller
 {
@@ -99,6 +100,22 @@ class SeatTypeController extends Controller
      */
     public function destroy($id)
     {
+
+        $temp = SeatType::where('name', 'unknown')->get()->first();
+
+        if (!$temp) {
+            $newDefault = new SeatType;
+            $newDefault->name = 'unknown';
+            $newDefault->description = 'system generated type';
+            $newDefault->save();
+            $temp = $newDefault;
+        }
+
+        $seatsWithType = Seat::where('seat_type_id', $id)->update(['seat_type_id' => $temp->id]);
+        //foreach ($seatsWithType as $seat) {
+        //$seat->update(['seat_type_id' => $temp->id]);
+        //}
+
         SeatType::destroy($id);
 
         return back()->with('success', 'You deleted the seat type successfully');
