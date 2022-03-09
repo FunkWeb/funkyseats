@@ -64,7 +64,7 @@
         
         <div class="seats-map hidden">
             <div class="row"><span class="close">&times;</span></div>
-            <img src="{{ asset('images/klasserommet.png') }}" alt="Seats map">
+            <img src="{{ asset('images/klasserommet.png') }}" alt="No seat map available">
         </div>
    
     <div class="mx-40px">

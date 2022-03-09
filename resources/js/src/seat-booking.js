@@ -19,7 +19,13 @@ function book_random_seat(room_id){
 
 function displayMap(){
     let map = document.querySelector('.seats-map');
-    map.classList.remove('hidden');
+    if(map.classList.contains('hidden')){
+        map.classList.remove('hidden');
+    }
+    else{
+        map.classList.add('hidden');
+    }
+    
 }
 
 const span = document.querySelector('.close');
