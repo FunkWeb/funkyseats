@@ -96,6 +96,10 @@ class SidebarServiceProvider extends ServiceProvider
                             'url' => 'javascript:;',
                             'sub_menu' => $adminRooms
                         ],
+                        [
+                            'url' => '/admin/edit_seat_types',
+                            'title' => 'Edit seat types',
+                        ],
                     ]
                 ];
             } else {

@@ -24,6 +24,11 @@ function showWindow(id, type, roomOrSeatName) {
         let seat_delete = document.getElementById('confirm_delete');
         seat_delete.setAttribute("action", "/" + type + "/" + id + "/delete");
     }
+
+    else if(type === 'types'){
+        let seatTypeDelete = document.getElementById('confirm_delete');
+        seatTypeDelete.setAttribute("action", `/admin/edit_seat_types/delete/${id}`);
+    }
 }
 
 function closeWindow() {
@@ -83,6 +88,42 @@ function addNewSeat(room_id, types) {
     new_seat.appendChild(csrf_token);
     new_seat.focus();
     new_seat.scrollIntoView();
+}
+
+function addNewSeatType(){
+    const seats = document.getElementById('addNewSeatType');
+    let csrf_token = document.querySelector('[name="_token"]');
+    let type_id = Math.random(100000) * -1;
+    seats.innerHTML += `<div class="form-group seat_types_form">
+    <form id="new_seat_type" action=/admin/edit_seat_types/store method="post">
+        <div class="row new-seat-type-row">
+            <div class="col-3">
+                <label for ="seat-type-name">Seat-name</label>
+                <input type="text" class="form-control" id="seat-type-name" name="name" placeholder="Write seat name">
+            </div>
+                        
+            <div class="col-8">    
+                <label for="seat_description">Seat description</label>
+                <textarea class="form-control" id="seat_description" name="description" placeholder="Write seat description"></textarea>
+            </div>
+            <div class="col">
+                <div class="row plus_icon">
+                        <a><i class="fas fa-plus" onclick="addNewSeatType()"></i></a>
+                </div> 
+                <div class="row trash_icon">  
+                    <i class="far fa-trash-alt fa-lg" onclick="showWindow(${type_id}, 'types', 'new seat type')"></i> 
+                </div>
+            </div>   
+        </div>
+                            
+            <div class="row edit_seat_type_btns_row">
+                    <button class='submit-changes-btn seat_type_btn newseat' type='submit' value='submit'>Save</button>
+            </div> 
+    </form>
+</div> `
+
+    let newSeatType = document.getElementById('new_seat_type');
+    newSeatType.appendChild(csrf_token);
 }
 
 window.onload = function (){

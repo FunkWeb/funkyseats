@@ -58,17 +58,19 @@ input, input::placeholder, input.edit-seat-num::placeholder, input.edit-room-nam
     background-color: #fff;
 }
 
-input.edit-seat-num::placeholder, input.edit-room-name::placeholder {
+input.edit-seat-num::placeholder, input.edit-room-name::placeholder, .new-seat-type-row input::placeholder {
     color: grey;
     font-style: italic;
     text-transform: none;
 }
 
+.new-seat-type-row input::placeholder{
+    font-size: 0.8125rem;
+}
 
 .edit-box {
     position: relative;
 }
-
 
 
 i.fa-trash-alt {
@@ -164,8 +166,8 @@ i.fa-trash-alt:hover, i.fas:hover{
     background-color: #eceff1;
 }
 
-.newSeatRoom{
-    background-color: #ff5b57;
+.newseat .submit-changes-btn, .newseat{
+    background-color: #523235;
 }
 .notSaved{
     background-color: #f59c1a;
@@ -191,6 +193,53 @@ strong{
     right: -16px;
     font-weight: 500;
 }
+
+.edit_seat_type_btns_row{
+    margin: 8px 0;
+}
+
+.seat_types_form{
+    border-bottom: 1px solid grey;
+    margin-bottom: 18px;
+}
+.seat_types_form form{
+    display: inherit;
+    align-items: inherit;
+}
+.show_desc{
+    width: 100%;
+    border-radius: 0%;
+}
+
+textarea{
+    height: 35.5px;
+}
+
+.trash_icon i, .plus_icon i{
+    position: static;
+    font-size: 18px;
+    color: #324252;
+    text-align: right;
+}
+
+.plus_icon a{
+    margin-bottom: 18px;
+    text-align: right;
+}
+
+.seat_type_btn{
+    margin: 0 auto;
+}
+
+.newseat .submit-changes-btn, .newseat{
+    background-color: #523235;
+}
+
+.hidden{
+    display: none;
+}
+
+
 
 @media screen and (max-width: 414px) {
     .page-subtitle{

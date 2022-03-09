@@ -7,6 +7,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CheckinController;
 use App\Http\Controllers\SeatController;
+use App\Http\Controllers\SeatTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,11 @@ Route::group(['middleware' => 'role:admin'], function () {
     Route::post('/seats/{id}/save', [SeatController::class, 'save'])->name('seat.update');
     Route::post('/seats/{id}/delete', [SeatController::class, 'delete'])->name('seat.destroy');
     Route::post('/seat/store', [SeatController::class, 'store'])->name('seat.store');
+
+    Route::get('/admin/edit_seat_types', [SeatTypeController::class, 'edit'])->name('seatType.edit');
+    Route::post('/admin/edit_seat_types/edit/{seatType}', [SeatTypeController::class, 'update'])->name('seatType.update');
+    Route::post('/admin/edit_seat_types/delete/{id}', [SeatTypeController::class, 'destroy'])->name('seatType.destroy');
+    Route::post('/admin/edit_seat_types/store', [SeatTypeController::class, 'store'])->name('seatType.store');
 });
 
 //Login routes
