@@ -3,12 +3,12 @@
     @csrf 
         <div class="row">
             <div class="col-3">
-                <label for ="seat-type-name">Seat-name</label>
+                <label for ="seat-type-name">Seat type name</label>
                 <input type="text" class="form-control" id="seat-type-name" name="name" value="{{$name}}">
             </div>
                         
             <div class="col-8">    
-                <label for="seat_description">Seat description</label>
+                <label for="seat_description">Seat type description</label>
                 <textarea class="form-control" id="seat_description" name="description" placeholder="Write seat description">{{$description}}</textarea>
             </div>
             <div class="col">
