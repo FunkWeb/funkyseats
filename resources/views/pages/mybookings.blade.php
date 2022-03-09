@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="my-bookings-title">
-        my bookings
+        My bookings
     </div>
     @if (count($bookings) == 0)
         <div class="no-bookings-message">You have no bookings</div>
@@ -41,7 +41,7 @@
                             <td>
                                 @if ((string) Auth::user()->id == $booking->user->id)
                                     <a href={{ route('deleteBooking', ['booking_id' => $booking->id]) }}>
-                                        <button class="reject-btn">Cancel</button>
+                                        <button class="booking-btn display-block">Cancel</button>
                                     </a>
                                 @endif
                             </td>
