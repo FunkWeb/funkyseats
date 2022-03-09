@@ -40,12 +40,12 @@ class SidebarServiceProvider extends ServiceProvider
                 ]];
                 $bookingRooms = array_merge($bookingRooms, $tmpBooking);
 
-                $tmpDisplay = [[
-                    'icon' => 'fa fa-th-large',
-                    'title' => $room->name,
-                    'url' => '/display/' . $room->id,
-                ]];
-                $displayRooms = array_merge($displayRooms, $tmpDisplay);
+                //   $tmpDisplay = [[
+                //       'icon' => 'fa fa-th-large',
+                //       'title' => $room->name,
+                //       'url' => '/display/' . $room->id,
+                //   ]];
+                //   $displayRooms = array_merge($displayRooms, $tmpDisplay);
 
                 $tmpAdmin = [[
                     'icon' => 'fa fa-th-large',
@@ -72,13 +72,13 @@ class SidebarServiceProvider extends ServiceProvider
                 'sub_menu' => $bookingRooms
             ];
 
-            $displayRoomsMenu = [
-                'icon' => 'fa fa-align-left',
-                'title' => 'Display room:',
-                'url' => 'javascript:;',
-                'caret' => true,
-                'sub_menu' => $displayRooms
-            ];
+            // $displayRoomsMenu = [
+            //     'icon' => 'fa fa-align-left',
+            //     'title' => 'Display room:',
+            //     'url' => 'javascript:;',
+            //     'caret' => true,
+            //     'sub_menu' => $displayRooms
+            // ];
 
             if (auth()->check() && auth()->user()->hasRole('admin')) {
                 $adminRoomsMenu = [
@@ -104,13 +104,11 @@ class SidebarServiceProvider extends ServiceProvider
             if ($adminRoomsMenu) {
                 $combinedMenu = [
                     $normalRoomsMenu,
-                    $displayRoomsMenu,
                     $adminRoomsMenu
                 ];
             } else {
                 $combinedMenu = [
                     $normalRoomsMenu,
-                    $displayRoomsMenu,
                 ];
             }
 

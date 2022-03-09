@@ -14,6 +14,9 @@ class Checkin extends Model
     protected $casts = [
         'checkeout_at' => 'datetime',
     ];
+    protected $attributes = [
+        'forced_checkout' => false,
+    ];
 
     public function user()
     {

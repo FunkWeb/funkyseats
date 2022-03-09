@@ -45,7 +45,7 @@ function addNewRoom() {
 
                 <form id="newRoom" action=/room/store method="post">
                     <input class="edit-room-name" type="text" id="name" name="name" autocomplete="off" autofocus placeholder="Write room name">
-                    <button class="submit-changes-btn" type="submit" value="submit">Save</button>
+                    <button class="submit-changes-btn newSeatRoom" type="submit" value="submit">Save</button>
                 </form>
             </div>
         </div> `;
@@ -65,7 +65,7 @@ function addNewSeat(room_id, types) {
         type_options += `<option value=${types[i]['id']}>${types[i]['name']}</option>`
     }
     document.getElementById('addNewSeat').innerHTML +=
-        `<div class='text-center text-uppercase mt-30px room-container newseat'>
+        `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
            <i class="far fa-trash-alt fa-lg" onclick="showWindow(${seat_id}, 'seats', 'new seat')"> </i>
               <form id=newSeat action=/seat/store method="post">
@@ -75,7 +75,7 @@ function addNewSeat(room_id, types) {
                    <input name=room_id  value= ${room_id}
                       style="display:none;">
                     <input class="edit-seat-num" type="text" id="seat_number" autocomplete="off" placeholder="Write seat number" autofocus name="seat_number">
-                    <button class="submit-changes-btn" type="submit" value="submit">Save</button>
+                    <button class="submit-changes-btn newSeatRoom" type="submit" value="submit">Save</button>
                </form>
            </div>
         </div>`;

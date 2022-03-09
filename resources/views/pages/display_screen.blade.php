@@ -1,43 +1,69 @@
-@extends('layouts.default')
+@component('includes.head')
+@endcomponent
 
-@section('title', 'Home Page')
+<script>
+    function refreshPage(refreshRate){
+        setTimeout("location.reload(true);", refreshRate);
+    }
 
-@section('content')
-    <h4 class="fw-800 text-center mt-30px">{{ $room[0]->name }}</h4>
-    <h5 class="text-center mt-10px position-relative" style="color: #20B3BE">
-        <a href='/'><i class="fas fa-chevron-left position-absolute" style='left: 64px; color: #9f9e9e'></i></a>
-    </h5>
-    <div class="mx-40px mt-40px d-flex flex-wrap justify-content-around">
-        @foreach ($room[0]->seat as $seat)
-            @component('includes.component.seat-display-component')
-                @slot('type')
-                    {{ $seat->seatType->name }}
-                @endslot
-                @slot('seat_number')
-                    {{ $seat->seat_number }}
-                @endslot
-                @slot('booking')
-                    {{ $seat->booking }}
-                @endslot
-                @slot('seat_id')
-                    {{ $seat->id }}
-                @endslot
-                @slot('booker_id')
-                    {{ $seat->booking[0]->user_id ?? '' }}
-                @endslot
-                @slot('user_picture')
-                    {{ $seat->booking[0]->user->user_thumbnail ?? '' }}
-                @endslot
-                @slot('user_name')
-                    {{ $seat->booking[0]->user->given_name ?? '' }}
-                @endslot
-                @slot('booked_from')
-                    {{ $seat->booking[0]->from ?? '' }}
-                @endslot
-                @slot('booked_to')
-                    {{ $seat->booking[0]->to ?? '' }}
-                @endslot
-            @endcomponent
-        @endforeach
+    window.onload = refreshPage(5000 * 60);
+
+</script>
+
+<div class="panel panel-inverse" data-sortable-id="table-basic-1">
+
+    <div class="panel-heading ui-sortable-handle" style="justify-content:center;">
+    <h4>{{$room[0]->name}}</h4>
     </div>
-@endsection
+    
+    <div class="panel-body">
+    
+    <div class="table-responsive">
+    <table class="table mb-0">
+        <thead>
+            <tr>
+                <th>Seat</th>
+                <th>Booked before lunch</th>
+                <th>Booked after lunch</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($room[0]->seat as $seat)
+        <tr>
+            <td>{{ $seat->seat_number }}</td>
+            @if($seat->booking == '[]')
+                <td></td>
+                <td></td>
+            @else
+                @foreach($seat->booking as $booking)
+                    @if (\Carbon\Carbon::parse($booking->from)->format('H') == 8 
+                    && \Carbon\Carbon::parse($booking->to)->format('H') == 16)
+                    <td>{{$booking->user->given_name ?? ''}}</td>
+                    <td>{{$booking->user->given_name ?? ''}}</td>
+                    
+                    @elseif(\Carbon\Carbon::parse($booking->from)->format('H') == 8 )
+                        @if (\Carbon\Carbon::parse($booking->from)->format('H') == 12 )
+                            <td>{{$booking->user->given_name ?? ''}}</td>
+                            <td>{{$booking->user->given_name ?? ''}}</td>
+                        @else
+                            <td>{{$booking->user->given_name ?? ''}}</td>
+                            <td></td>
+                        @endif
+                    @elseif (\Carbon\Carbon::parse($booking->from)->format('H') == 12 )
+                            <td></td>
+                            <td>{{$booking->user->given_name ?? ''}}</td>
+                            
+                    @endif
+                @endforeach
+            @endif
+                
+        </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+    
+
+
+       
