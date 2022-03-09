@@ -199,11 +199,14 @@ strong{
     select, button {
         margin-right: 10px;
         padding: 0 12px;
-        height: 26px;
         outline:none;
         border: 1px solid grey;
-        border-radius: 4px;
+        border-radius: 5px;
         background-color: #ffffff;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+        width: 100px;
+        height: 28px;
     }
 }
 
@@ -223,8 +226,9 @@ strong{
     }
 
     table th {
-        color: #20B3BE;
+        color: #ffff;
         font-weight: bold;
+        background-color: #07141e;
     }
 
     table td {
@@ -241,9 +245,27 @@ strong{
     }
 
     .accept-btn {
-        background-color: #2cac2c;
+        background-color: #20B3BE;
         color: #ffffff;
-        border: 1px solid grey;
+        border: 2px solid #20B3BE;
+        font-size: 1rem;
+        
+    }
+
+    .accept-btn:hover{
+        background-color: #fff;
+        color: #20B3BE;
+    }
+
+    .reject-btn{
+        background-color: #ff5b57;
+        border: 2px solid #ff5b57;
+        font-size: 1rem;
+
+    }
+    .reject-btn:hover{
+        color: #ff5b57;
+        background-color: #ffffff;
     }
 
     .checkbox_td {
@@ -256,7 +278,7 @@ strong{
     }
 
     input {
-        accent-color: #07141e;
+        accent-color: #ffff;
         cursor: pointer;
     }
 }

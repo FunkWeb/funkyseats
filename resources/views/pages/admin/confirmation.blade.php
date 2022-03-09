@@ -41,39 +41,58 @@
                         <div>Room #1</div>
                         <div>Seat 67</div>
                     </td>
-                    <td>22.01, before lunch</td>
-                    <td>22.02, after lunch</td>
+                    <td>
+                        <div>22.01 </div> 
+                        <div>Before lunch</div>
+                    </td>
+                    <td>
+                        <div>22.02 </div> 
+                        <div>After lunch</div>
+                    </td>
                     <td>Name Surname</td>
-                    <td><button class="accept-btn">Accept</button></td>
-                    <td><button class="reject-btn">Reject</button></td>
+                    <td><button class="booking-btn display-block accept-btn">Accept</button></td>
+                    <td><button class="booking-btn display-block reject-btn">Reject</button></td>
                     </td>
                 </tr>
                 <tr>
                     <td class="checkbox_td"><input class="request-for-booking" type="checkbox"></td>
                     <td>
-                        <div>Room #1</div>
+                        <div>Room #2</div>
                         <div>Seat 67</div>
                     </td>
-                    <td>22.01, before lunch</td>
-                    <td>22.02, after lunch</td>
+                    <td>
+                        <div>22.01 </div> 
+                        <div>Before lunch</div>
+                    </td>
+                    <td>
+                        <div>22.02 </div> 
+                        <div>After lunch</div>
+                    </td>
                     <td>Name Surname</td>
-                    <td><button class="accept-btn">Accept</button></td>
-                    <td><button class="reject-btn">Reject</button></td>
+                    <td><button class="booking-btn display-block accept-btn">Accept</button></td>
+                    <td><button class="booking-btn display-block reject-btn">Reject</button></td>
                     </td>
                 </tr>
                 <tr>
                     <td class="checkbox_td"><input class="request-for-booking" type="checkbox"></td>
                     <td>
-                        <div>Room #1</div>
-                        <div>Seat 67</div>
+                        <div>Room #2</div>
+                        <div>Seat 22</div>
                     </td>
-                    <td>22.01, before lunch</td>
-                    <td>22.02, after lunch</td>
+                    <td>
+                        <div>22.01 </div> 
+                        <div>Before lunch</div>
+                    </td>
+                    <td>
+                        <div>22.02 </div> 
+                        <div>After lunch</div>
+                    </td>
                     <td>Name Surname</td>
-                    <td><button class="accept-btn">Accept</button></td>
-                    <td><button class="reject-btn">Reject</button></td>
+                    <td><button class="booking-btn display-block accept-btn">Accept</button></td>
+                    <td><button class="booking-btn display-block reject-btn">Reject</button></td>
                     </td>
                 </tr>
+                
             </table>
         </div>
 
