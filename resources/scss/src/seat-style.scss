@@ -102,6 +102,9 @@ body {
 
 }
 
+.checkedIn{
+    color: #64be20;
+}
 
 .cancel-booking-btn {
     display: none;
@@ -126,7 +129,7 @@ body {
     display: block;
 }
 
-.book_any_btn:hover{
+.book_any_btn:hover, .request-list table td button:hover{
     background-color: #20B3BE;
     color: #fff;
 }
@@ -189,7 +192,6 @@ body {
     position: relative;
     width: 24px;
     border-radius: 50%;
-    
 }
 
 .user-name-booked-seat {
@@ -322,14 +324,45 @@ text-decoration: none;
     display: none;
     }
    
+.type-description {
+    position: relative;
+    cursor: pointer;
+}
+
+.type-description .seat-type-description {
+    display: none;
+    position: absolute;
+    margin: auto 0;
+    padding: 0 4px;
+    top: -20px;
+    left: 60px;
+    height: 16px;
+    width: -webkit-max-content;
+    border-radius: 5px;
+
+    font-size: 10px;
+    color: #FFFFFF;
+    background-color: #6f808f;
+    z-index: 100;
+}
+
+.type-description:hover .seat-type-description {
+    display: inline-block;
+}
+
+.my-bookings-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 10px;
+    font-size: 1.25rem;
+    font-weight: 100;
 }
 .pace-progress {
     display: none !important;
 }
 
-.mapButton{
-    display: block;
-}
 
 .mapAnyRow{
     display: flex;
@@ -338,4 +371,21 @@ text-decoration: none;
 }
 .hidden{
     display: none;
+}
+
+.display-block{
+    display: block;
+}
+
+.request-list table td button{
+    background-color: #324252;
+    color: #fff;
+    border: none;
+
+}
+
+@media screen and (max-width: 769px){
+    .check-in-btn{
+        margin: 0;
+    }
 }
