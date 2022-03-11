@@ -51,7 +51,7 @@
                 </div>
 
                 <hr>
-                @if(Auth::user->hasRole('admin'))
+                @if(Auth::user()->hasRole('admin'))
                     <div class="row roles_row">
                         <div class="row roles_buttons_row">
                             <div class="col-3"> <h5 class="role_header"> Add Role: </h5> </div>
