@@ -5,7 +5,6 @@
 @section('title', 'Home Page')
 
 @section('content')
-
  <div class="panel panel-inverse">
         <div class="panel-heading ui-sortable handle">
             <h3 class="panel-title"> Roles and stats</h3>
@@ -52,51 +51,53 @@
                 </div>
 
                 <hr>
-                <div class="row roles_row">
-                    <div class="row roles_buttons_row">
-                        <div class="col-3"> <h5 class="role_header"> Add Role: </h5> </div>
-                        @foreach ($roles as $role) 
-                        <div class="col-2">
-                        <a href="/profile/{{$user->id}}/toggle/{{$role->name}}">
-                               <button class="submit-changes-btn roles_btn"> 
-                                {{Str::title ($role->name)}} 
-                                <i class="fas fa-plus"></i>
-                               </button>
-                        </a>
-                        </div>
-                        @endforeach
-
-                    </div>
-                    <div class="row roles_buttons_row">
-                        <div class="col-3"> <h5 class="role_header"> Remove Role: </h5> </div>
-                        @foreach ($user->roles as $role)
-                        <div class="col-2">
+                @if(Auth::user->hasRole('admin'))
+                    <div class="row roles_row">
+                        <div class="row roles_buttons_row">
+                            <div class="col-3"> <h5 class="role_header"> Add Role: </h5> </div>
+                            @foreach ($roles as $role) 
+                            <div class="col-2">
                             <a href="/profile/{{$user->id}}/toggle/{{$role->name}}">
-                                <button class="submit-changes-btn roles_btn remove"> {{Str::title ($role->name)}}
-                                    <i class="fas fa-minus"></i>
+                                <button class="submit-changes-btn roles_btn"> 
+                                    {{Str::title ($role->name)}} 
+                                    <i class="fas fa-plus"></i>
                                 </button>
                             </a>
+                            </div>
+                            @endforeach
+
                         </div>
-                        @endforeach
-                    </div>
-                </div> 
-                
-                <hr>
-                <div class="row delete_buttons">
-                    <div class="col">
-                        <a href="/profile/{{$user->id}}/delete'">
-                        <button class="submit-changes-btn delMake_btn">Delete <i class="fas fa-trash"></i>
-                        </button>
+                        <div class="row roles_buttons_row">
+                            <div class="col-3"> <h5 class="role_header"> Remove Role: </h5> </div>
+                            @foreach ($user->roles as $role)
+                            <div class="col-2">
+                                <a href="/profile/{{$user->id}}/toggle/{{$role->name}}">
+                                    <button class="submit-changes-btn roles_btn remove"> {{Str::title ($role->name)}}
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </a>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div> 
+                    
+                    <hr>
+                    <div class="row delete_buttons">
+                        <div class="col">
+                            <a href="/profile/{{$user->id}}/delete'">
+                            <button class="submit-changes-btn delMake_btn">Delete <i class="fas fa-trash"></i>
+                            </button>
+                            </a>
+                        </div>
+                        <div class="col">
+                        <a href="/profile/{{$user->id}}/anonymize">
+                            <button class="submit-changes-btn delMake_btn">
+                            Anonymize <i class="fas fa-user-secret"></i>
+                            </button>
                         </a>
+                        </div>
                     </div>
-                    <div class="col">
-                    <a href="/profile/{{$user->id}}/anonymize">
-                        <button class="submit-changes-btn delMake_btn">
-                        Anonymize <i class="fas fa-user-secret"></i>
-                        </button>
-                    </a>
-                    </div>
-                </div>
+                @endif
         </div> 
         
     </div>
