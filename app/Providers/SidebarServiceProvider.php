@@ -99,6 +99,9 @@ class SidebarServiceProvider extends ServiceProvider
                         [
                             'url' => '/admin/edit_seat_types',
                             'title' => 'Edit seat types',
+                        ],                        [
+                            'url' => '/profiles',
+                            'title' => 'User profiles',
                         ],
                     ]
                 ];
