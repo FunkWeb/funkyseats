@@ -31,9 +31,9 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                 </div>
                 <div id="appSidebarProfileMenu" class="collapse">
                     <div class="menu-item pt-5px">
-                        <a href="javascript:;" class="menu-link">
-                            <div class="menu-icon"><i class="fa fa-cog"></i></div>
-                            <div class="menu-text"> History</div>
+                        <a href="/profile/{{Auth::user()->id}}" class="menu-link">
+                            <div class="menu-icon"><i class="fa fa-user"></i></div>
+                            <div class="menu-text"> My profile</div>
                         </a>
                     </div>
 
