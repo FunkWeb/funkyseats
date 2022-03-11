@@ -25,7 +25,7 @@ function showWindow(id, type, roomOrSeatName) {
         seat_delete.setAttribute("action", "/" + type + "/" + id + "/delete");
     }
 
-    else if(type === 'types'){
+    else if (type === 'types') {
         let seatTypeDelete = document.getElementById('confirm_delete');
         seatTypeDelete.setAttribute("action", `/admin/edit_seat_types/delete/${id}`);
     }
@@ -90,7 +90,7 @@ function addNewSeat(room_id, types) {
     new_seat.scrollIntoView();
 }
 
-function addNewSeatType(){
+function addNewSeatType() {
     const seats = document.getElementById('addNewSeatType');
     let csrf_token = document.querySelector('[name="_token"]');
     let type_id = Math.random(100000) * -1;
@@ -126,14 +126,14 @@ function addNewSeatType(){
     newSeatType.appendChild(csrf_token);
 }
 
-window.onload = function (){
-    $('#main_checkbox').click(function (){
-        if(this.checked) {
-            $(':checkbox').each(function() {
+window.onload = function () {
+    $('#main_checkbox').click(function () {
+        if (this.checked) {
+            $(':checkbox').each(function () {
                 this.checked = true;
             });
         } else {
-            $(':checkbox').each(function() {
+            $(':checkbox').each(function () {
                 this.checked = false;
             });
         }

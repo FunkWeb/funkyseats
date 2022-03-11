@@ -178,7 +178,6 @@ i.fas{
     cursor: pointer;
 }
 
-
 .iTexts{
     margin: 5px 0;
     color: #9f9e9e;
@@ -239,6 +238,83 @@ textarea{
     display: none;
 }
 
+.hidden{
+    display: none;
+}
+
+.roles_stats, .roles_row{
+    text-align: center;
+}
+
+.roles_stats h3{
+    margin: 24px 8px auto;
+}
+
+.roles_stats a{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+
+.roles_btn{
+    width: 140px;
+    color: white;
+    background-color: #189688;
+    margin: 0 8px;
+}
+
+.roles_btn:hover{
+    background-color: #fff;
+    color: #189688;
+    border: 2px solid #189688;
+}
+
+.roles_row{
+    margin: 8px;
+}
+
+.roles_row h5{
+    margin-top: 4px;
+}
+
+.roles_btn .fas, .delete_buttons .fas{
+    color: inherit;
+}
+
+.roles_buttons_row{
+    margin: 16px 0;
+}
+
+.roles_buttons_row .col-2{
+    min-width: 150px;
+}
+
+.remove{
+    background-color: #f44336;
+}
+
+.remove:hover{
+    background-color: #fff;
+    color: #f44336;
+    border: 2px solid #f44336;
+}
+
+.delMake_btn{
+    width: 140px;
+    margin: 8px 16px;
+}
+
+.delMake_btn:hover{
+    background-color: #189688;
+}
+
+.delete_buttons{
+    margin: 24px auto;
+}
+
+.role_header{
+    margin-left: 26px;
+}
 
 
 @media screen and (max-width: 414px) {

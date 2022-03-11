@@ -166,7 +166,6 @@ class BookingController extends Controller
      */
     public function delete($id)
     {
-        //TODO:(are) can only delete your own booking unless you are an admin
         $booking = Booking::find($id);
         if ($booking) {
             if (Auth::user()->id == $booking->user_id || Auth::user()->hasRole('admin')) {

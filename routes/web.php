@@ -8,6 +8,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CheckinController;
 use App\Http\Controllers\SeatController;
 use App\Http\Controllers\SeatTypeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,11 @@ Route::group(['middleware' => 'role:admin'], function () {
     Route::post('/admin/edit_seat_types/edit/{seatType}', [SeatTypeController::class, 'update'])->name('seatType.update');
     Route::post('/admin/edit_seat_types/delete/{id}', [SeatTypeController::class, 'destroy'])->name('seatType.destroy');
     Route::post('/admin/edit_seat_types/store', [SeatTypeController::class, 'store'])->name('seatType.store');
+
+    Route::get('/profiles', [UserController::class, 'index']);
+    Route::get('/profile/{user}/toggle/{role}', [UserController::class, 'toggleRole']);
+    Route::get('/profile/{user}/delete', [UserController::class, 'delete']);
+    Route::get('/profile/{user}/anonymize', [UserController::class, 'anonymize']);
 });
 
 //Login routes
@@ -57,3 +63,5 @@ Route::get('/display/{id}', [RoomController::class, 'show_display'])->middleware
 Route::get('/room/{id}/{datetime?}', [RoomController::class, 'show'])->name('room.show');
 
 Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checkin')->middleware(['auth', 'checkin']);
+
+Route::get('/profile/{user}', [UserController::class, 'show'])->middleware(['middleware' => 'owner.or.admin:admin']);
