@@ -276,6 +276,7 @@ text-decoration: none;
     color: #9f9e9e
 }
 
+
 .pace-progress {
     display: none !important;
 }
@@ -303,6 +304,11 @@ text-decoration: none;
     text-decoration: none;
     cursor: pointer;
   }
+
+.expand{
+    margin-top: 18px;
+    text-align: center;
+}
 
 .fa-clock{
    font-size: 18px;
@@ -386,6 +392,7 @@ text-decoration: none;
     border: none;
 
 }
+
 
 @media screen and (max-width: 769px){
     .check-in-btn{
