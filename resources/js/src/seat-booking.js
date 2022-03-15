@@ -21,6 +21,10 @@ function displayMap(){
     let map = document.querySelector('.seats-map');
     if(map.classList.contains('hidden')){
         map.classList.remove('hidden');
+        const span = document.querySelector('.close');
+        span.onclick = function() {
+            document.querySelector('.seats-map').classList.add('hidden');
+        }
     }
     else{
         map.classList.add('hidden');
@@ -28,10 +32,19 @@ function displayMap(){
     
 }
 
-const span = document.querySelector('.close');
-span.onclick = function() {
-    document.querySelector('.seats-map').classList.add('hidden');
-  }
+function displayPrevBookings(table, button){
+    if(table.classList.contains('hidden')){
+        table.classList.remove('hidden');
+        button.className = 'fas fa-chevron-down';
+        button.children[0].textContent ='Hide previous bookings';
+    }
+    else{
+        table.classList.add('hidden');
+        button.className = 'fas fa-chevron-right';
+        button.children[0].textContent ='Show previous bookings'
+    }
+}
+
 
 $(document).ready(function(){
     const radios = document.getElementsByName('book_time');

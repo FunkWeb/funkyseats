@@ -262,6 +262,7 @@ text-decoration: none;
     color: #9f9e9e
 }
 
+
 .pace-progress {
     display: none !important;
 }
@@ -290,9 +291,24 @@ text-decoration: none;
     cursor: pointer;
   }
 
+.expand{
+    margin-top: 18px;
+    text-align: center;
+}
+
 .fa-clock{
    font-size: 18px;
    color: inherit;
+}
+
+.fa-chevron-right, .fa-chevron-down{
+    font-size: 14px;
+    cursor: pointer;
+    color: #324252;
+
+    strong{
+        font-family: "Neue Plak Bold", "Urbane Demi Bold", sans-serif;
+    }
 }
 
 .type-description {
@@ -342,7 +358,12 @@ text-decoration: none;
     table tr.booking-columns-description {
         height: 42px;
     }
+
+    .previous th{
+        background-color: #6f808f;
+    }
 }
+
 
 .no-bookings-message {
     margin-top: 50px;
@@ -371,6 +392,7 @@ text-decoration: none;
     border: none;
 
 }
+
 
 @media screen and (max-width: 769px){
     .check-in-btn{
