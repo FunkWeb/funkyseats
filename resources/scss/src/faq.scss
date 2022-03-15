@@ -41,12 +41,8 @@
     font-size: 14px;
 }
 
-.opening-block .faq-answer {
+.hidden{
     display: none;
-}
-
-.opening-block.active .faq-answer {
-    display: block;
 }
 
 .faq-section.active .faq-icon {

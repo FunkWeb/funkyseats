@@ -32,6 +32,18 @@ function displayMap(){
     
 }
 
+function displayAnswer(button, text){
+        if(text.classList.contains('hidden')){
+            text.classList.remove('hidden');
+            button.className = 'fas fa-chevron-down fa-sm faq-icon';
+        }
+        else{
+            text.classList.add('hidden');
+            button.className = 'fas fa-chevron-right fa-sm faq-icon';
+        }
+
+    }
+
 function displayPrevBookings(table, button){
     if(table.classList.contains('hidden')){
         table.classList.remove('hidden');
@@ -41,7 +53,7 @@ function displayPrevBookings(table, button){
     else{
         table.classList.add('hidden');
         button.className = 'fas fa-chevron-right';
-        button.children[0].textContent ='Show previous bookings'
+        button.children[0].textContent ='Show previous bookings';
     }
 }
 
