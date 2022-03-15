@@ -9,12 +9,15 @@
         <div class="faq-title">Frequently asked questions (FAQ)</div>
         <div class="faq-content">
             @foreach ($faqs as $faq)
-                @component('includes.component.faq')
+                @component('includes.component.faq-component')
                     @slot('question')
                         {{ $faq->question }}
                     @endslot
                     @slot('answer')
                         {{ $faq->answer }}
+                    @endslot
+                    @slot('id')
+                        {{ $faq->id}}
                     @endslot
                 @endcomponent
             @endforeach
