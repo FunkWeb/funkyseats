@@ -30,7 +30,7 @@
                                 Seat #{{$booking->seat->seat_number}}
                             </td>
                             <td>
-                                <div>{{\Carbon\Carbon::parse($booking->from)->format('d-m-Y')}}</div>
+                                <div>{{\Carbon\Carbon::parse($booking->from)->isoFormat('Do MMM Y')}}</div>
                                 @if (\Carbon\Carbon::parse($booking->from)->format('H') == 8 && \Carbon\Carbon::parse($booking->to)->format('H') == 16)
                                     <div>all day</div>
                                 @elseif (\Carbon\Carbon::parse($booking->from)->format('H') == 8)
@@ -78,7 +78,7 @@
                                 Seat #{{$booking->seat->seat_number}}
                             </td>
                             <td>
-                                <div>{{\Carbon\Carbon::parse($booking->from)->format('d-m-Y')}}</div>
+                                <div>{{\Carbon\Carbon::parse($booking->from)->isoFormat('Do MMM Y')}}</div>
                                 @if (\Carbon\Carbon::parse($booking->from)->format('H') == 8 && \Carbon\Carbon::parse($booking->to)->format('H') == 16)
                                     <div>all day</div>
                                 @elseif (\Carbon\Carbon::parse($booking->from)->format('H') == 8)
