@@ -28,7 +28,7 @@
         <!------------------header and add seat ------->
         <h4 class="fw-600 text-center mt-30px">{{ $room[0]->name }}</h4>
         <h5 class="text-center mt-10px page-subtitle">
-            <a href='/rooms/edit'>
+            <a href='/rooms/edit' class="back-arrow">
                 <i class="fas fa-chevron-left">
                     <p class="iTexts">back</p>
                 </i>
