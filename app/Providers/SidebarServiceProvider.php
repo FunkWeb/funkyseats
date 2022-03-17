@@ -61,6 +61,12 @@ class SidebarServiceProvider extends ServiceProvider
                     'title' => 'Home',
                     'url' => '/',
                     'route-name' => 'home'
+                ],
+                [
+                    //'icon' => 'fa fa-th-large',
+                    'icon' => 'fa fa-question',
+                    'title' => 'FAQ',
+                    'url' => '/faq',
                 ]
             ];
 
