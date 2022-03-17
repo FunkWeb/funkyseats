@@ -13,7 +13,7 @@
 <div class="panel panel-inverse" data-sortable-id="table-basic-1">
 
     <div class="panel-heading ui-sortable-handle" style="justify-content:center;">
-    <h4>{{$room[0]->name}}</h4>
+    <h4>{{$room[0]->name}} - {{\Carbon\Carbon::now()->isoFormat('Do MMM Y')}}</h4>
     </div>
     
     <div class="panel-body">
