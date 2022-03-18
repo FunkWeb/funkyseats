@@ -25,7 +25,7 @@ class RoomController extends Controller
     public function delete($id)
     {
         Room::destroy($id);
-        return back()->with('success', 'You deleted the room successfully');
+        return back()->with('success', 'Vellykket sletting av rom');
     }
 
     public function save($id, Request $request)
@@ -110,6 +110,6 @@ class RoomController extends Controller
         $room->name = $request->name;
 
         $room->save();
-        return back()->with('success', 'You stored the room successfully');
+        return back()->with('success', 'Vellykket lagring av nytt rom');
     }
 }

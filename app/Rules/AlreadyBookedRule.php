@@ -48,6 +48,6 @@ class AlreadyBookedRule implements Rule
      */
     public function message()
     {
-        return 'You already have a seat booked right now';
+        return 'Du har allerede booket et sete i denne perioden';
     }
 }

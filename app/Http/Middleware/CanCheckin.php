@@ -20,6 +20,6 @@ class CanCheckin
             return $next($request);
         }
 
-        abort(403, 'Sorry, you must be logged onto the office WiFi to perform this action');
+        abort(403, 'Beklager, Du må være logget inn på funkwebs nett for å sjekke inn');
     }
 }

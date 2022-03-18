@@ -69,20 +69,20 @@ class UserController extends Controller
                 $user->assignRole($role);
             }
         } else {
-            return back()->with('error', 'could not find role with that name');
+            return back()->with('error', 'Klarte ikke å finne en rolle med det navnet');
         }
 
-        return back()->with('success', 'Role status updated');
+        return back()->with('success', 'Rollen ble lagt til brukeren');
     }
 
     public function delete(User $user)
     {
         $user->delete();
 
-        return view('pages.admin.profile_page')->with('success', 'You deleted the user successfully');
+        return view('pages.admin.profile_page')->with('success', 'Vellykket sletting av brukeren');
     }
     public function anonymize(User $user)
     {
-        return back()->with('success', 'Functionality not impemented yet');
+        return back()->with('success', 'Denne funksjonaliteten er ikke lagt til enda');
     }
 }

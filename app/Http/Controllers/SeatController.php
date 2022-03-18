@@ -35,7 +35,7 @@ class SeatController extends Controller
 
         $seat->save();
 
-        return back()->with('success', 'You updated the seat successfully');
+        return back()->with('success', 'Sete ble oppdatert');
     }
 
     public function store(Request $request)
@@ -52,7 +52,7 @@ class SeatController extends Controller
         $seat->room_id = $request->room_id;
 
         $seat->save();
-        return back()->with('success', 'You stored the seat successfully');
+        return back()->with('success', 'Velykket lagring av nytt sete');
     }
 
     public function delete($id)
@@ -60,6 +60,6 @@ class SeatController extends Controller
         Seat::destroy($id);
 
 
-        return back()->with('success', 'You deleted the seat successfully');
+        return back()->with('success', 'Vellykket sletting av sete');
     }
 }

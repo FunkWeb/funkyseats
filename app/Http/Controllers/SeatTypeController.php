@@ -45,7 +45,7 @@ class SeatTypeController extends Controller
         $seatType->description = $request->description;
 
         $seatType->save();
-        return back()->with('success', 'You stored the seat type successfully');
+        return back()->with('success', 'Vellykket lagring av ny setetype');
     }
 
     /**
@@ -89,7 +89,7 @@ class SeatTypeController extends Controller
 
         $seatType->save();
 
-        return back()->with('success', 'You updated the seat typ successfully');
+        return back()->with('success', 'Vellykket oppdatering av setetype');
     }
 
     /**
@@ -105,8 +105,8 @@ class SeatTypeController extends Controller
 
         if (!$temp) {
             $newDefault = new SeatType;
-            $newDefault->name = 'unknown';
-            $newDefault->description = 'system generated type';
+            $newDefault->name = 'ukjent';
+            $newDefault->description = 'Typen er generert av systemet';
             $newDefault->save();
             $temp = $newDefault;
         }
@@ -115,6 +115,6 @@ class SeatTypeController extends Controller
 
         SeatType::destroy($id);
 
-        return back()->with('success', 'You deleted the seat type successfully');
+        return back()->with('success', 'Sletting av setetypen var vellykket');
     }
 }

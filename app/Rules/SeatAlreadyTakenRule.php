@@ -47,6 +47,6 @@ class SeatAlreadyTakenRule implements Rule
      */
     public function message()
     {
-        return 'The seat you tried to book is taken by somebody else';
+        return 'Sete du prøver å booke er opptatt';
     }
 }

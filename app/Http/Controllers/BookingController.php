@@ -77,7 +77,7 @@ class BookingController extends Controller
 
         $booking->save();
 
-        return back()->with('success', 'You booked the seat successfully');
+        return back()->with('success', 'Sete booking vellykket');
     }
     public function randomSeat($room_id, Request $request)
     {
@@ -109,7 +109,7 @@ class BookingController extends Controller
             })->get()->first();
 
         if (!$free_seat) {
-            return back()->with('error', 'No free seat in room at chosen time');
+            return back()->with('error', 'Ingen ledige seter på valgt tid');
         }
 
         $booking = new Booking;
@@ -122,7 +122,7 @@ class BookingController extends Controller
 
         $booking->save();
 
-        return back()->with('success', 'You booked the seat successfully');
+        return back()->with('success', 'Sete booking vellykket');
     }
     /**
      * Display the specified resource.
@@ -170,9 +170,9 @@ class BookingController extends Controller
         if ($booking) {
             if (Auth::user()->id == $booking->user_id || Auth::user()->hasRole('admin')) {
                 $booking->delete();
-                return back()->with('success', 'You unbooked your seat');
+                return back()->with('success', 'Avbestilt booking');
             }
         }
-        return back()->with('error', 'Could not delete the booking');
+        return back()->with('error', 'Kunne ikke fjerne booking på sete');
     }
 }

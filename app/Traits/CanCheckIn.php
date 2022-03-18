@@ -28,21 +28,21 @@ trait CanCheckIn
         $latest_checkin = Checkin::currentStatus();
         if (!$latest_checkin) {
             $this->checkins()->create();
-            return "Checked in";
+            return "Sjekket inn";
         } elseif ($latest_checkin->created_at >= now()->addMinutes(-5)) {
             $latest_checkin->delete();
-            return "Checkin too short, removed entry";
+            return "Insjekkingen var for kort, den blir ikke logget";
         } elseif ($latest_checkin->checkout_at == null) {
             $latest_checkin->checkout_at = now();
             $latest_checkin->save();
-            return "Checked out";
+            return "Sjekket ut";
         } elseif ($latest_checkin->checkout_at >= now()->addMinutes(-5)) {
             $latest_checkin->checkout_at = null;
             $latest_checkin->save();
-            return "Resumed earlier checkin";
+            return "Fortsetter tidligere insjekking";
         } else {
             $this->checkins()->create();
-            return "Checked in";
+            return "Sjekket inn";
         }
     }
 }
