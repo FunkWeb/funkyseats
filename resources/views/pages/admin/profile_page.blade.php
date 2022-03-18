@@ -68,6 +68,9 @@
     }  
     docReady(function() {
        $('#data-table-select').DataTable({
+           language: {
+                url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/no-NB.json'
+            },
         "columnDefs": [
         { "searchable": false, "targets": [0,1,3] }
         ],
