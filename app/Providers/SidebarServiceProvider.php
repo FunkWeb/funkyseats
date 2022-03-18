@@ -58,21 +58,21 @@ class SidebarServiceProvider extends ServiceProvider
             $homeMenu = [
                 [
                     'icon' => 'fa fa-th-large',
-                    'title' => 'Home',
+                    'title' => 'Hjem',
                     'url' => '/',
                     'route-name' => 'home'
                 ],
                 [
                     //'icon' => 'fa fa-th-large',
                     'icon' => 'fa fa-question',
-                    'title' => 'FAQ',
+                    'title' => 'Hjelp',
                     'url' => '/faq',
                 ]
             ];
 
             $normalRoomsMenu = [
                 'icon' => 'fa fa-align-left',
-                'title' => 'Book seat in room:',
+                'title' => 'Book sete i rom:',
                 'url' => 'javascript:;',
                 'caret' => true,
                 'sub_menu' => $bookingRooms
@@ -95,19 +95,19 @@ class SidebarServiceProvider extends ServiceProvider
                     'sub_menu' => [
                         [
                             'url' => '/rooms/edit',
-                            'title' => 'Edit Rooms',
+                            'title' => 'Rediger rom',
                         ],
                         [
-                            'title' => 'Edit seats in room:',
+                            'title' => 'Rediger seter i rom:',
                             'url' => 'javascript:;',
                             'sub_menu' => $adminRooms
                         ],
                         [
                             'url' => '/admin/edit_seat_types',
-                            'title' => 'Edit seat types',
+                            'title' => 'Rediger setetyper',
                         ],                        [
                             'url' => '/profiles',
-                            'title' => 'User profiles',
+                            'title' => 'Bruker profiler',
                         ],
                     ]
                 ];
