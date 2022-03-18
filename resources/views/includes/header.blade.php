@@ -65,13 +65,13 @@ $appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
         </div>
         @can('checkin-ip')   
             @if(Auth::user()->getCheckedInAttribute() == 1)
-                <a href="/checkin"><button class="check-in-btn checkedIn"><i class="fa fa-clock"></i><strong>Check Out</strong></button></a>
+                <a href="/checkin"><button class="check-in-btn checkedIn"><i class="fa fa-clock"></i><strong>Sjekk ut</strong></button></a>
                 @else
-                <a href="/checkin"><button class="check-in-btn"><i class="fa fa-clock"></i><strong>Check In</strong></button></a>
+                <a href="/checkin"><button class="check-in-btn"><i class="fa fa-clock"></i><strong>Sjekk inn</strong></button></a>
             @endif
         @endcan
         @cannot('checkin-ip')
-             <button class="check-in-btn disabled"><i class="fa fa-clock"></i><strong>Check In</strong></button>
+             <button class="check-in-btn disabled"><i class="fa fa-clock"></i><strong>Sjekk inn</strong></button>
         @endcannot
 
         @isset($appHeaderLanguageBar)
@@ -86,7 +86,7 @@ $appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
                     <i class="fa fa-user"></i>
                 </div>
                 <span>
-                    <a href="/auth/google" style='text-decoration: none; margin: auto 0;'>Log In</a>
+                    <a href="/auth/google" style='text-decoration: none; margin: auto 0;'>Logg inn</a>
                 </span>
             </a>
             @else

@@ -8,7 +8,7 @@
     <ol class="breadcrumb float-xl-right"></ol>
     @error('user_id')
         <div class="error-window">
-            <p class="error-title"><b>Error</b></p>
+            <p class="error-title"><b>Feilmelding</b></p>
             {{ $message }}
         </div>
     @enderror
@@ -16,7 +16,7 @@
     <h4 class="fw-800 text-center mt-20px">{{ $room[0]->name }}</h4>
     <h5 class="text-center mt-10px position-relative" style="color: #20B3BE">
         <a href='/'><i class="fas fa-chevron-left position-absolute icon-left"></i></a>
-        choose a seat
+        velg et sete
     </h5>
 
     <div class="book-calendar">
@@ -27,11 +27,11 @@
             </div>
             <div class="d-flex" style="align-items: center" id="checkBoxes">
                 <input type="radio" id="before_lunch" name="book_time" value="0">
-                <label for="before_lunch">Before lunch</label>
+                <label for="before_lunch">Før lunsj</label>
                 <input type="radio" id="after_lunch" name="book_time" value="1">
-                <label for="after_lunch">After lunch</label>
+                <label for="after_lunch">Etter lunsj</label>
                 <input type="radio" id="all_day" name="book_time" value="2" checked>
-                <label for="all_day">All day</label>
+                <label for="all_day">Hele dagen</label>
             </div>
         </form>
 
@@ -39,10 +39,10 @@
     </div>
     <div class="mapAnyRow">
         @if (Auth::check())
-            <button class='booking-btn book_any_btn' onclick="book_random_seat({{ $room[0]->id ?? '' }})">Book any seat
+            <button class='booking-btn book_any_btn' onclick="book_random_seat({{ $room[0]->id ?? '' }})">Book tilfeldig sete
             </button>
             <button class="booking-btn book_any_btn" onclick="displayMap()">
-                Seats map
+                Setekart
             </button>
         @endif
     </div>
@@ -50,7 +50,7 @@
 
     <div class="seats-map hidden">
         <div class="row"><span class="close">&times;</span></div>
-        <img src="{{ asset('images/seatMaps/' . $room[0]->id . '.png') }}" alt="No seat map available">
+        <img src="{{ asset('images/seatMaps/' . $room[0]->id . '.png') }}" alt="Setekart utilgjengelig">
     </div>
 
     <div class="mx-40px">

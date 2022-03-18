@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="faq-container">
-        <div class="faq-title">Frequently asked questions (FAQ)</div>
+        <div class="faq-title">Ofte stilte spørsmål (OSS)</div>
         <div class="faq-content">
             @foreach ($faqs as $faq)
                 @component('includes.component.faq-component')

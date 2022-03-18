@@ -33,7 +33,7 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                     <div class="menu-item pt-5px">
                         <a href="/profile/{{Auth::user()->id}}" class="menu-link">
                             <div class="menu-icon"><i class="fa fa-user"></i></div>
-                            <div class="menu-text"> My profile</div>
+                            <div class="menu-text"> Min profil</div>
                         </a>
                     </div>
 
@@ -42,9 +42,9 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                             <a href="/checkin" class="menu-link">
                                 <div class="menu-icon"><i class="fa fa-clock"></i></div>
                                 @if(Auth::user()->getCheckedInAttribute() == 1)
-                                    <div class="menu-text">Check Out</div>
+                                    <div class="menu-text">Sjekk ut</div>
                                 @else
-                                    <div class="menu-text">Check In</div>
+                                    <div class="menu-text">Sjekk inn</div>
                                 @endif
                             </a>
                         </div>
@@ -53,7 +53,7 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                     <div class="menu-item pb-5px">
                         <a href="/auth/logout" class="menu-link">
                             <div class="menu-icon"><i class="fa fa-question-circle"></i></div>
-                            <div class="menu-text">Log out</div>
+                            <div class="menu-text">Logg ut</div>
                         </a>
                     </div>
                     
@@ -69,7 +69,7 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
             </div>
         @endif
 
-        <div class="menu-header">Navigation</div>
+        <div class="menu-header">Navigasjon</div>
 
         @php
             $currentUrl = Request::path() != '/' ? '/' . Request::path() : '/';

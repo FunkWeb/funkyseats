@@ -11,7 +11,7 @@
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
-    <h5 class="text-center">choose a room
+    <h5 class="text-center">Velg rom
         <!-- <small>header small text goes here...</small> -->
     </h5>
     <!-- end page-header -->

@@ -3,13 +3,13 @@
     @csrf 
         <div class="row">
             <div class="col-3">
-                <label for ="seat-type-name">Seat type name</label>
+                <label for ="seat-type-name">Navn på setetype</label>
                 <input type="text" class="form-control" id="seat-type-name" name="name" value="{{$name}}">
             </div>
                         
             <div class="col-8">    
-                <label for="seat_description">Seat type description</label>
-                <textarea class="form-control" id="seat_description" name="description" placeholder="Write seat description">{{$description}}</textarea>
+                <label for="seat_description">Beskrivelse av setetype</label>
+                <textarea class="form-control" id="seat_description" name="description" placeholder="Skriv setebeskrivelse">{{$description}}</textarea>
             </div>
             <div class="col">
                 <div class="row plus_icon">
@@ -22,7 +22,7 @@
         </div>
                             
             <div class="row edit_seat_type_btns_row">
-                    <button class='submit-changes-btn seat_type_btn' type='submit' value='submit'>Update</button>
+                    <button class='submit-changes-btn seat_type_btn' type='submit' value='submit'>Oppdater</button>
             </div> 
     </form>
 </div> 

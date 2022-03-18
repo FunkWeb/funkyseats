@@ -3,9 +3,9 @@
         <div style='font-size:16px; font-weight: 600; text-transform: uppercase'>{{ $name }}</div>
         <div class="mt-4px" style='font-size:14px; text-transform: lowercase;'>
             @if ($seatCount != '0')
-                available: {{ $seatCount }}
+                tilgjengelige: {{ $seatCount }}
             @else
-                no available seats
+                ingen tilgjengelige seter
             @endif
         </div>
     </a>

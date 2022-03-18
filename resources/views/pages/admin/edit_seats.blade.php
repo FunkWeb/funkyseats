@@ -10,14 +10,14 @@
 
 @error('seat_type')
     <div class="error-window">
-        <p class="error-title"><b>Error</b></p>
+        <p class="error-title"><b>Feilmelding</b></p>
         {{ $message }}
     </div>
 @enderror
 
 @error('seat_number')
     <div class="error-window">
-        <p class="error-title"><b>Error</b></p>
+        <p class="error-title"><b>Feilmelding</b></p>
         {{ $message }}
     </div>
 @enderror
@@ -30,12 +30,12 @@
         <h5 class="text-center mt-10px page-subtitle">
             <a href='/rooms/edit' class="back-arrow">
                 <i class="fas fa-chevron-left">
-                    <p class="iTexts">back</p>
+                    <p class="iTexts">tilbake</p>
                 </i>
             </a>
-            <strong>edit a seat</strong>
+            <strong class="edit_seat_header">rediger seter</strong>
             <a><i class="fas fa-plus admin-page" onclick="addNewSeat({{ $room[0]->id }}, {{ $types }})">
-                    <p class="iTexts">add seat</p>
+                    <p class="iTexts">legg til et sete</p>
                 </i></a>
         </h5>
 

@@ -5,13 +5,13 @@ function showWindow(id, type, roomOrSeatName) {
     document.getElementsByClassName('overlay')[0].className += ' active';
     popUpWindow[0].innerHTML +=
         `<div class="popup-header">
-            <div class="popup-title"> Are you sure you want to delete ${roomOrSeatName.toUpperCase()}? </div>
+            <div class="popup-title"> Er du sikker på at du vil slette ${roomOrSeatName.toUpperCase()}? </div>
         </div>
 
         <div class="popup-btn">
-            <button onclick="closeWindow()">Cancel</button>
+            <button onclick="closeWindow()">Avbryt</button>
             <form id="confirm_delete" method="post">
-                <button type='submit' value='submit'>Yes</button>
+                <button type='submit' value='submit'>Ja</button>
             </form>
         </div>`;
 
@@ -46,11 +46,11 @@ function addNewRoom() {
     document.getElementById('addNewRoom').innerHTML +=
         `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
-               <i class="far fa-trash-alt fa-lg" onclick="showWindow(${room_id}, 'rooms', 'new room')"> </i>
+               <i class="far fa-trash-alt fa-lg" onclick="showWindow(${room_id}, 'rooms', 'nytt rom')"> </i>
 
                 <form id="newRoom" action=/room/store method="post">
-                    <input class="edit-room-name" type="text" id="name" name="name" autocomplete="off" autofocus placeholder="Write room name">
-                    <button class="submit-changes-btn newSeatRoom" type="submit" value="submit">Save</button>
+                    <input class="edit-room-name" type="text" id="name" name="name" autocomplete="off" autofocus placeholder="Skriv romnavn">
+                    <button class="submit-changes-btn newSeat" type="submit" value="submit">Lagre</button>
                 </form>
             </div>
         </div> `;
@@ -72,15 +72,15 @@ function addNewSeat(room_id, types) {
     document.getElementById('addNewSeat').innerHTML +=
         `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
-           <i class="far fa-trash-alt fa-lg" onclick="showWindow(${seat_id}, 'seats', 'new seat')"> </i>
+           <i class="far fa-trash-alt fa-lg" onclick="showWindow(${seat_id}, 'seats', 'nytt sete')"> </i>
               <form id=newSeat action=/seat/store method="post">
                    <select name=seat_type class="edit-seat-type">
                         ${type_options}
                    </select>
                    <input name=room_id  value= ${room_id}
                       style="display:none;">
-                    <input class="edit-seat-num" type="text" id="seat_number" autocomplete="off" placeholder="Write seat number" autofocus name="seat_number">
-                    <button class="submit-changes-btn newSeatRoom" type="submit" value="submit">Save</button>
+                    <input class="edit-seat-num" type="text" id="seat_number" autocomplete="off" placeholder="Skriv setenummer" autofocus name="seat_number">
+                    <button class="submit-changes-btn newSeat" type="submit" value="submit">Lagre</button>
                </form>
            </div>
         </div>`;
@@ -98,26 +98,26 @@ function addNewSeatType() {
     <form id="new_seat_type" action=/admin/edit_seat_types/store method="post">
         <div class="row new-seat-type-row">
             <div class="col-3">
-                <label for ="seat-type-name">Seat type name</label>
-                <input type="text" class="form-control" id="seat-type-name" name="name" placeholder="Write seat type name">
+                <label for ="seat-type-name">Navn på setetype</label>
+                <input type="text" class="form-control" id="seat-type-name" name="name" placeholder="Skriv navn på setetype">
             </div>
                         
             <div class="col-8">    
-                <label for="seat_description">Seat type description</label>
-                <textarea class="form-control" id="seat_description" name="description" placeholder="Write seat type description"></textarea>
+                <label for="seat_description">Beskrivelse av setetype</label>
+                <textarea class="form-control" id="seat_description" name="description" placeholder="Skriv beskrivelse av setetype"></textarea>
             </div>
             <div class="col">
                 <div class="row plus_icon">
                         <a><i class="fas fa-plus" onclick="addNewSeatType()"></i></a>
                 </div> 
                 <div class="row trash_icon">  
-                    <i class="far fa-trash-alt fa-lg" onclick="showWindow(${type_id}, 'types', 'new seat type')"></i> 
+                    <i class="far fa-trash-alt fa-lg" onclick="showWindow(${type_id}, 'types', 'ny setetype')"></i> 
                 </div>
             </div>   
         </div>
                             
             <div class="row edit_seat_type_btns_row">
-                    <button class='submit-changes-btn seat_type_btn newseat' type='submit' value='submit'>Save</button>
+                    <button class='submit-changes-btn seat_type_btn newseat' type='submit' value='submit'>Lagre</button>
             </div> 
     </form>
 </div> `

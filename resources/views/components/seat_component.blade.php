@@ -22,14 +22,14 @@
     <div class='seat-num'><b>Seat {{ $seat->seat_number ?? '' }}</b></div>
     @if ($seat->booking == '[]')
         <button class='booking-btn book_seat_btn' onclick="book_seat({{ $seat->id ?? '' }})">
-            Book a seat
+            Book sete
         </button>
     @endif
     @if ($seat->booking != '[]' && Auth::check())
         <div style="display: flex; justify-content: space-evenly; flex-direction: row; align-items: flex-end;">
             @if (count($seat->booking) == 1 && \Carbon\Carbon::parse($seat->booking[0]->from)->format('H') != 8 && (string) Auth::user()->id != $seat->booking[0]->user_id ?? ´´)
                 <button class='cancel-booking-btn' onclick="book_seat({{ $seat->id ?? '' }}, document.getElementById('checkBoxes').children[0])">
-                    Book a seat
+                    Book sete
                 </button>
             @endif
             @foreach ($seat->booking as $booking)
@@ -41,7 +41,7 @@
                                         class="user-picture-booked-seat"></div>
                                 <div class="mx-6px my-auto">{{ $booking->user->given_name }}</div>
                             </div>
-                            <div>{{ 'All day' }}</div>
+                            <div>Hele dagen</div>
                         </div>
                     @elseif (\Carbon\Carbon::parse($booking->from)->format('H') == 8)
                         <div class="user-booking-info mb-4px">
@@ -49,7 +49,7 @@
                                     class="user-picture-booked-seat"></div>
                             <div>
                                 <div>{{ $booking->user->given_name }}</div>
-                                <div>{{ 'Before lunch' }}</div>
+                                <div>Før lunsj</div>
                             </div>
                         </div>
                     @elseif(\Carbon\Carbon::parse($booking->to)->format('H') == 16)
@@ -58,7 +58,7 @@
                                     class="user-picture-booked-seat"></div>
                             <div>
                                 <div>{{ $booking->user->given_name }}</div>
-                                <div>{{ 'After lunch' }}</div>
+                                <div>Etter lunsj</div>
                             </div>
                         </div>
                     @endif
@@ -66,7 +66,7 @@
                         <a href={{ route('booking.destroy', ['booking_id' => $booking->id]) }}
                             class="cancel-booking-btn">
                             <button class='cancel-booking-btn' href="">
-                                Cancel booking
+                                Kanseller booking
                             </button>
                         </a>
                     @endif
@@ -74,7 +74,7 @@
             @endforeach
             @if (count($seat->booking) == 1 && \Carbon\Carbon::parse($seat->booking[0]->to)->format('H') != 16 && (string) Auth::user()->id != $seat->booking[0]->user_id ?? ´´)
                 <button class='cancel-booking-btn' onclick="book_seat({{ $seat->id ?? '' }}, document.getElementById('checkBoxes').children[2])">
-                    Book a seat
+                    Book sete
                 </button>
             @endif
         </div>

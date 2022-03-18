@@ -7,7 +7,7 @@
     @section('content')
         <div class='panel panel-inverse'>
             <div class="panel-heading ui-sortable-handle">
-                <h4 class="panel-title">Edit seat-types</h4>
+                <h4 class="panel-title">Rediger setetyper</h4>
                 <div class="panel-heading-btn">
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
                 </div>

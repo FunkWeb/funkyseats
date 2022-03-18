@@ -7,7 +7,7 @@
     <div class="col-xl-10-ui-sortable">
         <div class="panel panel-inverse">
             <div class="panel-heading ui-sortable-handle">
-                <h4 class="panel-title">User Profiles</h4>
+                <h4 class="panel-title">Profiler</h4>
                 <div class="panel-heading-btn">
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
@@ -20,10 +20,10 @@
                 <thead>
                 <tr>
                     <th width="1%"> #</th>
-                    <th width="1%" data-orderable="false"> Photo </th>
-                    <th class="text-nowrap sorting"> Name </th>
-                    <th class="text-nowrap sorting"> E-mail </th>
-                    <th class="text-nowrap sorting"> Created </th>
+                    <th width="1%" data-orderable="false"> Bilde </th>
+                    <th class="text-nowrap sorting"> Navn </th>
+                    <th class="text-nowrap sorting"> E-post </th>
+                    <th class="text-nowrap sorting"> Laget </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,7 +33,7 @@
                             <td> <img src="{{ $user->user_thumbnail}}" width="100%"> </td>
                             <td> {{ $user->name}}
                             <br> 
-                            <a href="/profile/{{$user->id}}"> <h6>Profile page <h6></a>
+                            <a href="/profile/{{$user->id}}"> <h6>Profilside <h6></a>
                             </td>
                             <td> {{ $user->email}} </td>
                             <td> {{ $user->created_at}} </td>

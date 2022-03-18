@@ -22,9 +22,9 @@
     <table class="table mb-0">
         <thead>
             <tr>
-                <th>Seat</th>
-                <th>Booked before lunch</th>
-                <th>Booked after lunch</th>
+                <th>Sete</th>
+                <th>Booket før lunsj</th>
+                <th>Booket etter lunsj</th>
             </tr>
         </thead>
         <tbody>

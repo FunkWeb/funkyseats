@@ -166,9 +166,6 @@ i.fa-trash-alt:hover, i.fas:hover{
     background-color: #eceff1;
 }
 
-.newseat .submit-changes-btn, .newseat{
-    background-color: #523235;
-}
 .notSaved{
     background-color: #f59c1a;
 }
@@ -191,6 +188,10 @@ strong{
     position: relative;
     right: -16px;
     font-weight: 500;
+}
+
+.edit_seat_header{
+    right: -27px;
 }
 
 .edit_seat_type_btns_row{
