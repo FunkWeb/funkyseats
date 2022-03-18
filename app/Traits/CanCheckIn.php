@@ -39,7 +39,7 @@ trait CanCheckIn
         } elseif ($latest_checkin->checkout_at >= now()->addMinutes(-5)) {
             $latest_checkin->checkout_at = null;
             $latest_checkin->save();
-            return "Fortsetter tidligere insjekking";
+            return "Fortsetter tidligere innsjekking";
         } else {
             $this->checkins()->create();
             return "Sjekket inn";

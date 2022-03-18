@@ -45,7 +45,7 @@ class SeatTypeController extends Controller
         $seatType->description = $request->description;
 
         $seatType->save();
-        return back()->with('success', 'Vellykket lagring av ny setetype');
+        return back()->with('success', 'Setetypen ble lagret');
     }
 
     /**
@@ -89,7 +89,7 @@ class SeatTypeController extends Controller
 
         $seatType->save();
 
-        return back()->with('success', 'Vellykket oppdatering av setetype');
+        return back()->with('success', 'Setetypen ble oppdatert');
     }
 
     /**
@@ -101,7 +101,7 @@ class SeatTypeController extends Controller
     public function destroy($id)
     {
 
-        $temp = SeatType::where('name', 'unknown')->get()->first();
+        $temp = SeatType::where('name', 'ukjent')->get()->first();
 
         if (!$temp) {
             $newDefault = new SeatType;
@@ -115,6 +115,6 @@ class SeatTypeController extends Controller
 
         SeatType::destroy($id);
 
-        return back()->with('success', 'Sletting av setetypen var vellykket');
+        return back()->with('success', 'Setetypen ble slettet');
     }
 }

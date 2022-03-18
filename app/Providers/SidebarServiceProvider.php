@@ -98,7 +98,7 @@ class SidebarServiceProvider extends ServiceProvider
                             'title' => 'Rediger rom',
                         ],
                         [
-                            'title' => 'Rediger seter i rom:',
+                            'title' => 'Rediger seter:',
                             'url' => 'javascript:;',
                             'sub_menu' => $adminRooms
                         ],
@@ -107,7 +107,7 @@ class SidebarServiceProvider extends ServiceProvider
                             'title' => 'Rediger setetyper',
                         ],                        [
                             'url' => '/profiles',
-                            'title' => 'Bruker profiler',
+                            'title' => 'Brukerprofiler',
                         ],
                     ]
                 ];

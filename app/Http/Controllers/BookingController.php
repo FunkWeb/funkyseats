@@ -77,7 +77,7 @@ class BookingController extends Controller
 
         $booking->save();
 
-        return back()->with('success', 'Sete booking vellykket');
+        return back()->with('success', 'Setebooking vellykket');
     }
     public function randomSeat($room_id, Request $request)
     {
@@ -122,7 +122,7 @@ class BookingController extends Controller
 
         $booking->save();
 
-        return back()->with('success', 'Sete booking vellykket');
+        return back()->with('success', 'Setebooking vellykket');
     }
     /**
      * Display the specified resource.
@@ -173,6 +173,6 @@ class BookingController extends Controller
                 return back()->with('success', 'Avbestilt booking');
             }
         }
-        return back()->with('error', 'Kunne ikke fjerne booking på sete');
+        return back()->with('error', 'Klarte ikke å avbestille booking');
     }
 }

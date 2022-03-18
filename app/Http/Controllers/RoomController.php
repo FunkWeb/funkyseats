@@ -25,7 +25,7 @@ class RoomController extends Controller
     public function delete($id)
     {
         Room::destroy($id);
-        return back()->with('success', 'Vellykket sletting av rom');
+        return back()->with('success', 'Rommet ble slettet');
     }
 
     public function save($id, Request $request)
@@ -35,7 +35,7 @@ class RoomController extends Controller
 
         $room->save();
 
-        return back();
+        return back()->with('success', 'Rommet ble oppdatert');
     }
 
     public function index_withCountSeats()
@@ -110,6 +110,6 @@ class RoomController extends Controller
         $room->name = $request->name;
 
         $room->save();
-        return back()->with('success', 'Vellykket lagring av nytt rom');
+        return back()->with('success', 'Rommet ble lagret');
     }
 }
