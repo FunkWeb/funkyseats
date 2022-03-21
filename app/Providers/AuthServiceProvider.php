@@ -30,8 +30,5 @@ class AuthServiceProvider extends ServiceProvider
             $request = \Request::ip();
             return $request == config('checkin.checkin_ip') || $request ==  '127.0.0.1';
         });
-
-        Gate::define('canDeleteBooking', function ($booking) {
-        });
     }
 }
