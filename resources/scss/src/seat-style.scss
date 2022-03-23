@@ -102,8 +102,6 @@ body {
 
 }
 
-
-
 .checkedIn{
     color: #64be20;
 }
@@ -276,7 +274,6 @@ text-decoration: none;
     color: #9f9e9e
 }
 
-
 .pace-progress {
     display: none !important;
 }
@@ -313,6 +310,16 @@ text-decoration: none;
 .fa-clock{
    font-size: 18px;
    color: inherit;
+}
+
+.fa-chevron-right, .fa-chevron-down{
+    font-size: 14px;
+    cursor: pointer;
+    color: #324252;
+
+    strong{
+        font-family: "Neue Plak Bold", "Urbane Demi Bold", sans-serif;
+    }
 }
 
 @media screen and (max-width: 769px){
@@ -368,10 +375,31 @@ text-decoration: none;
     font-size: 1.25rem;
     font-weight: 100;
 }
-.pace-progress {
-    display: none !important;
+
+.my-bookings-container {
+    margin: 30px 100px 0;
+
+    table tr {
+        height: 60px;
+        font-size: 14px;
+    }
+
+    table tr.booking-columns-description {
+        height: 42px;
+    }
+
+    .previous th{
+        background-color: #6f808f;
+    }
 }
 
+
+.no-bookings-message {
+    margin-top: 50px;
+    font-size: 24px;
+    text-align: center;
+    color: #c4c4c4;
+}
 
 .mapAnyRow{
     display: flex;
@@ -392,7 +420,6 @@ text-decoration: none;
     border: none;
 
 }
-
 
 @media screen and (max-width: 769px){
     .check-in-btn{
