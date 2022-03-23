@@ -86,13 +86,4 @@ function addNewSeat(room_id) {
     new_seat.scrollIntoView();
 }
 
-function toggleActive(buttonSelect){
-    var buttons = document.getElementsByClassName("stats-button");
-    for (let i=0; i < buttons.length; i++){
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        buttonSelect.className+= " active"
-    }   
-
-}
 

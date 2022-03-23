@@ -10,11 +10,11 @@
             <div class="card border-0 mb-3 bg-gray-800 text-white">
                 <div class="card-body">
                     <div class="mb-3 text-white-500">
-                    <select name="rooms" id="rooms" onchange="getRoomData(this.value)">
-                        <option value="allRooms"><b>All rooms</b></option>
-                        @foreach($rooms as $room)
+                    <select name="rooms" id="rooms" onchange="createCookie(this.id, this.value, 0), getRoomData(this.value)">
+                        <option value="all"><b>All rooms</b></option>
+                        {{-- @foreach($rooms as $room)
                         <option value="{{$room->id}}"><b>{{$room->name}}</b></option>
-                        @endforeach
+                        @endforeach --}}
                     </select>
                         
                     </div>
@@ -53,19 +53,19 @@
                 <div class="row changeTime" id="interval">
                     <div class="col">
                         <button class="stats-button active" id='thisweek' 
-                                onclick="createGraph('thisweek'), toggleActive(this)">This week
+                                onclick="createCookie(this.parentElement.parentElement.id, this.id, 0), createGraph(), toggleActive() ">This week
                         </button>
                     </div> 
 
                     <div class="col">
                         <button class="stats-button" id='lastweek'
-                                onclick="createGraph('lastWeek'), toggleActive(this)">Last week
+                                onclick="createCookie(this.parentElement.parentElement.id, this.id, 0),createGraph(), toggleActive()">Last week
                         </button>
                     </div>
 
                     <div class="col">
                         <button class="stats-button" id='month' 
-                            onclick="createGraph('month'), toggleActive(this)">This month
+                            onclick="createCookie(this.parentElement.parentElement.id, this.id, 0),createGraph(), toggleActive()">This month
                         </button>
                     </div>  
                      
@@ -104,27 +104,57 @@
     <link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
     <script defer src="/assets/plugins/d3/d3.min.js"></script>
     <script defer src="/assets/plugins/nvd3/build/nv.d3.min.js"></script>
-    <script defer type='text/javascript'>        
+    <script defer type='text/javascript'>
+
+        function createCookie(name,value,days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime()+(days*24*60*60*1000));
+            var expires = "; expires="+date.toGMTString();
+        }
+        else var expires = "";
+        document.cookie = name+"="+value+expires+"; path=/";
+        }
+
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+
+        function eraseCookie(name) {
+        createCookie(name,"",-1);
+        }        
 
         const jsonData = JSON.parse('{!! $stats !!}');
    
         let chartLoaded = false;
-        let choosenInterval;
+        let choosenInterval = readCookie('interval') ? readCookie('interval') : 'thisweek';
         window.onload = function() {
             if (!chartLoaded) {  
-                choosenInterval = 'thisweek';
                 createGraph(jsonData);
+                selectOption(readCookie('rooms'));
+                toggleActive();
             }
             chartLoaded = true;   
         }
         
           function getRoomData(room){
-            if (room){
-                window.location.href = `/admin/${room}`; 
-            }
-            else{
+            if (room === "all"){
                 window.location.href = `/admin`; 
             }
+            else{
+                 window.location.href = `/admin/${room}`; 
+            }
+        }
+
+        function selectOption(room){
+            console.log(room);
         }
 
         function calculateValues(intervalValues) {
@@ -144,8 +174,8 @@
             
         }
 
-        function createGraph(interval) {
-            choosenInterval = interval;
+        function createGraph() {
+            choosenInterval = readCookie('interval');
             function addGraph(data, dataValues) {
                 d3.select(".nvd3-svg").remove();
                 nv.addGraph({
@@ -160,7 +190,7 @@
                     }
                 });
             }
-            if (interval === 'lastWeek') {
+            if (choosenInterval === 'lastWeek') {
                 var barChartDataLastW = [{
                     key: 'Total',
                     'color': '#20B3BE',
@@ -173,7 +203,7 @@
                 addGraph(barChartDataLastW);
                 calculateValues(jsonData.lastweek);
 
-            } else if (interval === 'month' || interval === 'lastMonth') {
+            } else if (choosenInterval === 'month' || choosenInterval === 'lastMonth') {
                 var barChartDataM = [{
                     key: 'Total',
                     'color': '#20B3BE',
@@ -185,8 +215,7 @@
                 }];
                 addGraph(barChartDataM);
                 calculateValues(jsonData.month);
-            } else {
-                choosenInterval = 'thisweek';
+            } else if(choosenInterval = 'thisweek'){
                 var barChartData = [{
                     key: 'Total',
                     'color': '#20B3BE',
@@ -200,7 +229,18 @@
                 calculateValues(jsonData.thisweek);
             }
         }
-    </script>
+
+    function toggleActive(){
+        const buttons = document.getElementsByClassName("stats-button");
+        let interval = readCookie('interval');
+        let buttonSelect = document.getElementById(interval);
+        for (let i=0; i < buttons.length; i++){
+            const current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            buttonSelect.className+= " active";
+        }   
+    }
+</script>
 
 
 @endsection
