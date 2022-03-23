@@ -89,17 +89,18 @@ body {
 }
 
 .check-in-btn{
+    border-radius: 5%;
     display: flex;
     flex-direction: row;
     align-content: center;
     flex-wrap: wrap;
-    background-color: transparent;
+    border: 1px solid #324252;
     color: #324252;
     margin: 0 18px;
+    width: 110px;
+    height: 34px;
 
 }
-
-
 
 .checkedIn{
     color: #64be20;
@@ -134,7 +135,18 @@ body {
 }
 
 .check-in-btn:hover{
+    border: 1px solid #20B3BE;
     color: #20B3BE;
+}
+
+.checkedIn{
+    border: 1px solid #20B3BE;
+    color: #20B3BE;
+}
+
+.checkedIn:hover{
+    border: 1px solid #324252;
+   color: #324252;
 }
 
 .disabled{
@@ -262,7 +274,6 @@ text-decoration: none;
     color: #9f9e9e
 }
 
-
 .pace-progress {
     display: none !important;
 }
@@ -311,6 +322,24 @@ text-decoration: none;
     }
 }
 
+@media screen and (max-width: 769px){
+    .check-in-btn{
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .check-in-btn{
+        margin: 0 18px;
+    }
+}
+
+@media screen and (max-width: 460px){
+    .check-in-btn{
+    display: none;
+    }
+}
+   
 .type-description {
     position: relative;
     cursor: pointer;
@@ -372,7 +401,6 @@ text-decoration: none;
     color: #c4c4c4;
 }
 
-
 .mapAnyRow{
     display: flex;
     width: 40%;
@@ -393,11 +421,8 @@ text-decoration: none;
 
 }
 
-
 @media screen and (max-width: 769px){
     .check-in-btn{
         margin: 0;
     }
 }
-
-

@@ -30,9 +30,9 @@ class BookingController extends Controller
     {
         return view('pages/mybookings', [
             'bookings' =>
-            Booking::where('user_id', auth()->user()->id)->where('from', '>', now()->startOfDay())->with('seat.room')->get(),
+            Booking::where('user_id', auth()->user()->id)->where('from', '>', now()->startOfDay())->with('seat.room')->orderBy('from', 'desc')->get(),
             'bookings_old' =>
-            Booking::where('user_id', auth()->user()->id)->where('from', '<', now()->startOfDay())->with('seat.room')->get()
+            Booking::where('user_id', auth()->user()->id)->where('from', '<', now()->startOfDay())->with('seat.room')->orderBy('from', 'desc')->get()
         ]);
     }
 
@@ -172,7 +172,6 @@ class BookingController extends Controller
      */
     public function delete($id)
     {
-        //TODO:(are) can only delete your own booking unless you are an admin
         $booking = Booking::find($id);
         if ($booking) {
             if (Auth::user()->id == $booking->user_id || Auth::user()->hasRole('admin')) {

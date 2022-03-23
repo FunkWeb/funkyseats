@@ -24,6 +24,11 @@ function showWindow(id, type, roomOrSeatName) {
         let seat_delete = document.getElementById('confirm_delete');
         seat_delete.setAttribute("action", "/" + type + "/" + id + "/delete");
     }
+
+    else if (type === 'types') {
+        let seatTypeDelete = document.getElementById('confirm_delete');
+        seatTypeDelete.setAttribute("action", `/admin/edit_seat_types/delete/${id}`);
+    }
 }
 
 function closeWindow() {
@@ -45,7 +50,7 @@ function addNewRoom() {
 
                 <form id="newRoom" action=/room/store method="post">
                     <input class="edit-room-name" type="text" id="name" name="name" autocomplete="off" autofocus placeholder="Write room name">
-                    <button class="submit-changes-btn" type="submit" value="submit">Save</button>
+                    <button class="submit-changes-btn newSeatRoom" type="submit" value="submit">Save</button>
                 </form>
             </div>
         </div> `;
@@ -65,7 +70,7 @@ function addNewSeat(room_id, types) {
         type_options += `<option value=${types[i]['id']}>${types[i]['name']}</option>`
     }
     document.getElementById('addNewSeat').innerHTML +=
-        `<div class='text-center text-uppercase mt-30px room-container newseat'>
+        `<div class='text-center text-uppercase mt-30px room-container'>
            <div class="edit-box" style="pointer-events: all">
            <i class="far fa-trash-alt fa-lg" onclick="showWindow(${seat_id}, 'seats', 'new seat')"> </i>
               <form id=newSeat action=/seat/store method="post">
@@ -75,7 +80,7 @@ function addNewSeat(room_id, types) {
                    <input name=room_id  value= ${room_id}
                       style="display:none;">
                     <input class="edit-seat-num" type="text" id="seat_number" autocomplete="off" placeholder="Write seat number" autofocus name="seat_number">
-                    <button class="submit-changes-btn" type="submit" value="submit">Save</button>
+                    <button class="submit-changes-btn newSeatRoom" type="submit" value="submit">Save</button>
                </form>
            </div>
         </div>`;
@@ -85,14 +90,50 @@ function addNewSeat(room_id, types) {
     new_seat.scrollIntoView();
 }
 
-window.onload = function (){
-    $('#main_checkbox').click(function (){
-        if(this.checked) {
-            $(':checkbox').each(function() {
+function addNewSeatType() {
+    const seats = document.getElementById('addNewSeatType');
+    let csrf_token = document.querySelector('[name="_token"]');
+    let type_id = Math.random(100000) * -1;
+    seats.innerHTML += `<div class="form-group seat_types_form">
+    <form id="new_seat_type" action=/admin/edit_seat_types/store method="post">
+        <div class="row new-seat-type-row">
+            <div class="col-3">
+                <label for ="seat-type-name">Seat type name</label>
+                <input type="text" class="form-control" id="seat-type-name" name="name" placeholder="Write seat type name">
+            </div>
+                        
+            <div class="col-8">    
+                <label for="seat_description">Seat type description</label>
+                <textarea class="form-control" id="seat_description" name="description" placeholder="Write seat type description"></textarea>
+            </div>
+            <div class="col">
+                <div class="row plus_icon">
+                        <a><i class="fas fa-plus" onclick="addNewSeatType()"></i></a>
+                </div> 
+                <div class="row trash_icon">  
+                    <i class="far fa-trash-alt fa-lg" onclick="showWindow(${type_id}, 'types', 'new seat type')"></i> 
+                </div>
+            </div>   
+        </div>
+                            
+            <div class="row edit_seat_type_btns_row">
+                    <button class='submit-changes-btn seat_type_btn newseat' type='submit' value='submit'>Save</button>
+            </div> 
+    </form>
+</div> `
+
+    let newSeatType = document.getElementById('new_seat_type');
+    newSeatType.appendChild(csrf_token);
+}
+
+window.onload = function () {
+    $('#main_checkbox').click(function () {
+        if (this.checked) {
+            $(':checkbox').each(function () {
                 this.checked = true;
             });
         } else {
-            $(':checkbox').each(function() {
+            $(':checkbox').each(function () {
                 this.checked = false;
             });
         }

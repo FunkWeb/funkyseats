@@ -22,20 +22,13 @@
     </div>
 @enderror
 
-@if (session('success'))
-    <div class="booked-seat-successfully">
-        <p class="success-title"><b>Great job!</b></p>
-        {{ session('success') }}
-    </div>
-@endif
-
 <div class="overlay">
     @section('content')
         <ol class="breadcrumb float-xl-right"></ol>
         <!------------------header and add seat ------->
         <h4 class="fw-600 text-center mt-30px">{{ $room[0]->name }}</h4>
         <h5 class="text-center mt-10px page-subtitle">
-            <a href='/rooms/edit'>
+            <a href='/rooms/edit' class="back-arrow">
                 <i class="fas fa-chevron-left">
                     <p class="iTexts">back</p>
                 </i>

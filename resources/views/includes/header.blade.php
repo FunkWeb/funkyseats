@@ -1,8 +1,8 @@
 @php
-$appHeaderClass = (!empty($appHeaderInverse)) ? 'app-header-inverse ' : '';
-$appHeaderMenu = (!empty($appHeaderMenu)) ? $appHeaderMenu : '';
-$appHeaderMegaMenu = (!empty($appHeaderMegaMenu)) ? $appHeaderMegaMenu : '';
-$appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
+$appHeaderClass = !empty($appHeaderInverse) ? 'app-header-inverse ' : '';
+$appHeaderMenu = !empty($appHeaderMenu) ? $appHeaderMenu : '';
+$appHeaderMegaMenu = !empty($appHeaderMegaMenu) ? $appHeaderMegaMenu : '';
+$appHeaderTopMenu = !empty($appHeaderTopMenu) ? $appHeaderTopMenu : '';
 @endphp
 
 <!-- BEGIN #header -->
@@ -10,44 +10,44 @@ $appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
     <!-- BEGIN navbar-header -->
     <div class="navbar-header">
         @if ($appSidebarTwo)
-        <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-end-mobile">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
+            <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-end-mobile">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         @endif
-        <a href="/" class="navbar-brand"><span class="navbar-logo"><img src="{{ asset('images/funkweb_logo.png')}}"
-                                                                        style="height: 25px"></span>
+        <a href="/" class="navbar-brand"><span class="navbar-logo"><img
+                    src="{{ asset('images/funkweb_logo.png') }}" style="height: 25px"></span>
             <!-- <b class='ms-2 fs-5'>Funkweb</b> --></a>
         @if ($appHeaderMegaMenu && !$appSidebarTwo)
-        <button type="button" class="navbar-mobile-toggler" data-bs-toggle="collapse" data-bs-target="#top-navbar">
-			<span class="fa-stack fa-lg">
-				<i class="far fa-square fa-stack-2x"></i>
-				<i class="fa fa-cog fa-stack-1x mt-1px"></i>
-			</span>
-        </button>
+            <button type="button" class="navbar-mobile-toggler" data-bs-toggle="collapse" data-bs-target="#top-navbar">
+                <span class="fa-stack fa-lg">
+                    <i class="far fa-square fa-stack-2x"></i>
+                    <i class="fa fa-cog fa-stack-1x mt-1px"></i>
+                </span>
+            </button>
         @endif
-        @if($appTopMenu && !$appSidebarHide && !$appSidebarTwo)
-        <button type="button" class="navbar-mobile-toggler" data-toggle="app-top-menu-mobile">
-			<span class="fa-stack fa-lg">
-				<i class="far fa-square fa-stack-2x"></i>
-				<i class="fa fa-cog fa-stack-1x mt-1px"></i>
-			</span>
-        </button>
+        @if ($appTopMenu && !$appSidebarHide && !$appSidebarTwo)
+            <button type="button" class="navbar-mobile-toggler" data-toggle="app-top-menu-mobile">
+                <span class="fa-stack fa-lg">
+                    <i class="far fa-square fa-stack-2x"></i>
+                    <i class="fa fa-cog fa-stack-1x mt-1px"></i>
+                </span>
+            </button>
         @endif
-        @if($appTopMenu && $appSidebarHide && !$appSidebarTwo)
-        <button type="button" class="navbar-mobile-toggler" data-toggle="app-top-menu-mobile">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
+        @if ($appTopMenu && $appSidebarHide && !$appSidebarTwo)
+            <button type="button" class="navbar-mobile-toggler" data-toggle="app-top-menu-mobile">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         @endif
         @if (!$appSidebarHide)
-        <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
+            <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         @endif
     </div>
 
@@ -61,46 +61,59 @@ $appHeaderTopMenu = (!empty($appHeaderTopMenu)) ? $appHeaderTopMenu : '';
                 <span class="badge">0</span>
             </a>
             -->
-            @include('includes.component.header-dropdown-notification')
+            @include(
+                'includes.component.header-dropdown-notification'
+            )
         </div>
+        @can('checkin-ip')
+            @if (Auth::user()->getCheckedInAttribute() == 1)
+                <a href="/checkin"><button class="check-in-btn checkedIn"><i class="fa fa-clock"></i><strong>Check
+                            Out</strong></button></a>
+            @else
+                <a href="/checkin"><button class="check-in-btn"><i class="fa fa-clock"></i><strong>Check
+                            In</strong></button></a>
+            @endif
+        @endcan
+        @cannot('checkin-ip')
+            <button class="check-in-btn disabled"><i class="fa fa-clock"></i><strong>Check In</strong></button>
+        @endcannot
 
-        @if (Auth::check())
-        <button class="check-in-btn" onclick="changeCheck(this)"><i class="fa fa-clock"></i><strong>Check In</strong></button>
-
-        @else
-             <button class="check-in-btn disabled"><i class="fa fa-clock"></i><strong>Check In</strong></button>
-        @endif
 
         @isset($appHeaderLanguageBar)
-        @include('includes.component.header-language-bar')
+            @include('includes.component.header-language-bar')
         @endisset
 
         <div class="navbar-item navbar-user dropdown me-30px d-flex">
-            <a class="navbar-link d-flex align-items-center"/>
+
             @if (!Auth::check())
-            <div class="image image-icon bg-gray-800 text-gray-600">
-                <i class="fa fa-user"></i>
-            </div>
-            <span><a href="/auth/google" style='text-decoration: none; margin: auto 0;'>Log In</a></span>
+                <a class="navbar-link d-flex align-items-center">
+                    <div class="image image-icon bg-gray-800 text-gray-600">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <span>
+                        <a href="/auth/google" style='text-decoration: none; margin: auto 0;'>Log In</a>
+                    </span>
+                </a>
             @else
-            <img src="{{ Auth::user()->user_thumbnail }}" style="width:30px; height:30px"/>
-            <a href="#" class="navbar-link dropdown-toggle d-flex"
-               style="position: absolute; right:0; width:72px; top:10px;" data-bs-toggle="dropdown">
-				<span class="position-relative"><a class="navbar-username">
-				{{ Auth::user()->name}}
-                    </a></span>
-            </a>
+                <a href="#" class="navbar-link dropdown-toggle d-flex" style="top:2px; position:relative;"
+                    data-bs-toggle="dropdown">
+                    <img src="{{ Auth::user()->user_thumbnail }}" style="width:30px; height:30px" />
+                    <span class="navbar-username" style="margin-left: 8px;">
+                        {{ Auth::user()->name }}
+                    </span>
+                </a>
+                @include('includes.component.header-dropdown-profile')
             @endif
-            @include('includes.component.header-dropdown-profile')
+
         </div>
 
-        @if($appSidebarTwo)
-        <div class="navbar-divider d-none d-md-block"></div>
-        <div class="navbar-item d-none d-md-block">
-            <a href="javascript:;" data-toggle="app-sidebar-end" class="navbar-link icon">
-                <i class="fa fa-th"></i>
-            </a>
-        </div>
+        @if ($appSidebarTwo)
+            <div class="navbar-divider d-none d-md-block"></div>
+            <div class="navbar-item d-none d-md-block">
+                <a href="javascript:;" data-toggle="app-sidebar-end" class="navbar-link icon">
+                    <i class="fa fa-th"></i>
+                </a>
+            </div>
         @endif
     </div>
     <!-- END header-nav -->
