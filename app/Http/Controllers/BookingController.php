@@ -30,9 +30,9 @@ class BookingController extends Controller
     {
         return view('pages/mybookings', [
             'bookings' =>
-            Booking::where('user_id', auth()->user()->id)->where('from', '>', now()->startOfDay())->with('seat.room')->get(),
+            Booking::where('user_id', auth()->user()->id)->where('from', '>', now()->startOfDay())->with('seat.room')->orderBy('from', 'desc')->get(),
             'bookings_old' =>
-            Booking::where('user_id', auth()->user()->id)->where('from', '<', now()->startOfDay())->with('seat.room')->get()
+            Booking::where('user_id', auth()->user()->id)->where('from', '<', now()->startOfDay())->with('seat.room')->orderBy('from', 'desc')->get()
         ]);
     }
 
