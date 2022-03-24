@@ -20,11 +20,6 @@ use App\Http\Controllers\StatisticsController;
 |
 */
 
-Route::group(['middleware' => 'role:admin'], function () {
-    Route::get('/admin', function () {
-        return View('admin');
-    })->name('admin');
-});
 
 Route::get('/auth/logout', [LogoutController::class, 'perform']);
 Route::get('/auth/google', [GoogleController::class, 'googleRedirect'])->name('login');
@@ -49,4 +44,4 @@ Route::post('/seats/{id}/save', [SeatController::class, 'save']);
 Route::post('/seats/{id}/delete', [SeatController::class, 'delete']);
 Route::post('/seat/store', [SeatController::class, 'store']);
 
-Route::get('/admin', [StatisticsController::class, 'seatBookingStatistics']);
+Route::get('/admin/{id?}', [StatisticsController::class, 'seatBookingStatistics']);
