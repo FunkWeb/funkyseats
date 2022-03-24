@@ -95,149 +95,126 @@
 
                 </div>
             </div>
-
         </div>
     </div>
 
 
 
-    <link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
-    <script defer src="/assets/plugins/d3/d3.min.js"></script>
-    <script defer src="/assets/plugins/nvd3/build/nv.d3.min.js"></script>
-    <script defer type='text/javascript'>
+<link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+<script defer src="/assets/plugins/d3/d3.min.js"></script>
+<script defer src="/assets/plugins/nvd3/build/nv.d3.min.js"></script>
+<script defer type='text/javascript'>
 
-        function createCookie(name,value,days) {
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime()+(days*24*60*60*1000));
-            var expires = "; expires="+date.toGMTString();
-        }
-        else var expires = "";
-        document.cookie = name+"="+value+expires+"; path=/";
-        }
+    function createCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+    }
 
-        function readCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for(var i=0;i < ca.length;i++) {
-                var c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+    createCookie(name,"",-1);
+    }
+
+    const jsonData = JSON.parse('{!! $stats !!}');
+    let chartLoaded = false;
+    window.onload = function() {
+        if (!chartLoaded) {  
+            createGraph();
+            selectOption();
+            toggleActive();
+        }
+        chartLoaded = true;   
+    }
+    
+    function getRoomData(room){
+        if (room === "all"){
+            window.location.href = `/admin`; 
+        }
+        else{
+            window.location.href = `/admin/${room}`; 
+        }
+    }
+
+    function selectOption(){
+        let room = readCookie('rooms') ? readCookie('rooms') : 'all';
+        const rooms = document.getElementById('rooms');
+        for (let i = 0; i < rooms.length; i++){
+            if(rooms[i].value === room){
+                rooms[i].selected = 'selected';
             }
-            return null;
-        }
+        }      
+    }
 
-        function eraseCookie(name) {
-        createCookie(name,"",-1);
-        }        
+    function calculateValues(intervalValues) {
+        const highCount = document.getElementById('highCount');
+        const lowCount = document.getElementById('lowCount');
+        const averageCount = document.getElementById('averageCount');
+        const totalCount = document.getElementById('totalCount');
 
-        const jsonData = JSON.parse('{!! $stats !!}');
-   
-        let chartLoaded = false;
-        let choosenInterval = readCookie('interval') ? readCookie('interval') : 'thisweek';
-        window.onload = function() {
-            if (!chartLoaded) {  
-                createGraph(jsonData);
-                selectOption(readCookie('rooms'));
-                toggleActive();
-            }
-            chartLoaded = true;   
-        }
+        highCount.innerHTML =  highCount.dataset.value ;
+        lowCount.innerHTML = lowCount.dataset.value;
+        averageCount.innerHTML = averageCount.dataset.value;
+        totalCount.innerHTML = totalCount.dataset.value;
+        highCount.setAttribute('data-value', intervalValues['high bookings']);
+        lowCount.setAttribute('data-value', intervalValues['low booking']);
+        averageCount.setAttribute('data-value',intervalValues['average bookings']);
+        totalCount.setAttribute('data-value', intervalValues['total bookings']);  
         
-          function getRoomData(room){
-            if (room === "all"){
-                window.location.href = `/admin`; 
+    }
+
+    function addGraph(data, dataValues) {
+        d3.select(".nvd3-svg").remove();
+        nv.addGraph({
+            generate: function() {
+                var BarChart = nv.models.multiBarChart()
+                    .forceY([0,jsonData.seatcount])
+                    .stacked(false)
+                    .showControls(false)
+                var svg = d3.select('#seats-chart').append('svg').datum(data);
+                svg.transition().duration(0).call(BarChart);
+                return BarChart;
             }
-            else{
-                 window.location.href = `/admin/${room}`; 
-            }
-        }
+        });
+    }
 
-        function selectOption(room){
-            console.log(room);
-        }
-
-        function calculateValues(intervalValues) {
-            const highCount = document.getElementById('highCount');
-            const lowCount = document.getElementById('lowCount');
-            const averageCount = document.getElementById('averageCount');
-            const totalCount = document.getElementById('totalCount');
-
-            highCount.innerHTML =  highCount.dataset.value ;
-            lowCount.innerHTML = lowCount.dataset.value;
-            averageCount.innerHTML = averageCount.dataset.value;
-            totalCount.innerHTML = totalCount.dataset.value;
-            highCount.setAttribute('data-value', intervalValues['high bookings']);
-            lowCount.setAttribute('data-value', intervalValues['low booking']);
-            averageCount.setAttribute('data-value',intervalValues['average bookings']);
-            totalCount.setAttribute('data-value', intervalValues['total bookings']);  
-            
-        }
-
-        function createGraph() {
-            choosenInterval = readCookie('interval');
-            function addGraph(data, dataValues) {
-                d3.select(".nvd3-svg").remove();
-                nv.addGraph({
-                    generate: function() {
-                        var BarChart = nv.models.multiBarChart()
-                            .forceY([0,jsonData.seatcount])
-                            .stacked(false)
-                            .showControls(false)
-                        var svg = d3.select('#seats-chart').append('svg').datum(data);
-                        svg.transition().duration(0).call(BarChart);
-                        return BarChart;
-                    }
-                });
-            }
-            if (choosenInterval === 'lastWeek') {
-                var barChartDataLastW = [{
-                    key: 'Total',
-                    'color': '#20B3BE',
-                    values: jsonData.lastweek.wholedays
-                }, {
-                    key: 'Half day',
-                    color: '#324252',
-                    values: jsonData.lastweek.halfdays
-                }];
-                addGraph(barChartDataLastW);
-                calculateValues(jsonData.lastweek);
-
-            } else if (choosenInterval === 'month' || choosenInterval === 'lastMonth') {
-                var barChartDataM = [{
-                    key: 'Total',
-                    'color': '#20B3BE',
-                    values: jsonData.month.wholedays
-                }, {
-                    key: 'Half day',
-                    color: '#324252',
-                    values: jsonData.month.halfdays
-                }];
-                addGraph(barChartDataM);
-                calculateValues(jsonData.month);
-            } else if(choosenInterval = 'thisweek'){
-                var barChartData = [{
-                    key: 'Total',
-                    'color': '#20B3BE',
-                    values: jsonData.thisweek.wholedays
-                }, {
-                    key: 'Half day',
-                    color: '#324252',
-                    values: jsonData.thisweek.halfdays
-                }];
-                addGraph(barChartData);
-                calculateValues(jsonData.thisweek);
-            }
-        }
+    function createGraph() {
+        let choosenInterval = readCookie('interval') ? readCookie('interval') : 'thisweek';
+        let barChartData = [{
+            key: 'Total',
+            'color': '#20B3BE',
+            values: jsonData[choosenInterval].wholedays
+        }, {
+            key: 'Half day',
+            color: '#324252',
+            values: jsonData[choosenInterval].halfdays
+        }];
+        addGraph(barChartData);
+        calculateValues(jsonData[choosenInterval]);
+    }
 
     function toggleActive(){
-        const buttons = document.getElementsByClassName("stats-button");
-        let interval = readCookie('interval');
-        let buttonSelect = document.getElementById(interval);
-        for (let i=0; i < buttons.length; i++){
-            const current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            buttonSelect.className+= " active";
+        const intervals = document.getElementsByClassName("stats-button");
+        let interval = readCookie('interval') ? readCookie('interval') : 'thisweek';
+        let intervalSelect = document.getElementById(interval);
+        for (let i=0; i < intervals.length; i++){
+            const selected = document.getElementsByClassName("active");
+            selected[0].className = selected[0].className.replace(" active", "");
+            intervalSelect.className+= " active";
         }   
     }
 </script>
