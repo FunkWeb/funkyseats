@@ -121,9 +121,9 @@ class StatisticsController extends Controller
         }
 
         //making sure not to divide by 0
-        $countThisWeek = $countThisWeek == 0 ? 1 : $countThisWeek;
-        $countLastWeek = $countLastWeek == 0 ? 1 : $countLastWeek;
-        $countMonth = $countMonth == 0 ? 1 : $countMonth;
+        (int) $countThisWeek = $countThisWeek == 0 ? 1 : $countThisWeek;
+        (int) $countLastWeek = $countLastWeek == 0 ? 1 : $countLastWeek;
+        (int) $countMonth = $countMonth == 0 ? 1 : $countMonth;
 
         $thisWeek['low booking'] = $thisWeek['low booking'] == PHP_INT_MAX ? 0 : $thisWeek['low booking'];
         $lastWeek['low booking'] = $lastWeek['low booking'] == PHP_INT_MAX ? 0 : $lastWeek['low booking'];
