@@ -15,9 +15,11 @@
                             <option value="all"><b>All rooms</b></option>
                             @foreach ($rooms as $room)
                                 @if ($selectedRoom == $room->id)
-                                    <option value="{{ $room->id }}" selected><b>{{ $room->name }}</b></option>
+                                    <option value="{{ $room->id }}" selected>
+                                        <b>{{ ucfirst(strtolower($room->name)) }}</b></option>
                                 @else
-                                    <option value="{{ $room->id }}"><b>{{ $room->name }}</b></option>
+                                    <option value="{{ $room->id }}"><b>{{ ucfirst(strtolower($room->name)) }}</b>
+                                    </option>
                                 @endif
                             @endforeach
                         </select>
