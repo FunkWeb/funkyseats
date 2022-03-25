@@ -89,6 +89,7 @@ class StatisticsController extends Controller
                 }
                 $month['halfdays'] = array_merge($month['halfdays'], [['x' => Carbon::parse($row['date'])->isoFormat('D.MMM'), 'y' => $row['half']]]);
                 $month['wholedays'] = array_merge($month['wholedays'], [['x' => Carbon::parse($row['date'])->isoFormat('D.MMM'), 'y' => $row['whole']]]);
+                $countMonth += 1;
 
                 //current week data
                 if (Carbon::parse($row['date']) < now()->endOfWeek() && Carbon::parse($row['date']) > now()->startOfWeek()) {
@@ -122,7 +123,7 @@ class StatisticsController extends Controller
         //making sure not to divide by 0
         $countThisWeek = $countThisWeek == 0 ? 1 : $countThisWeek;
         $countLastWeek = $countLastWeek == 0 ? 1 : $countLastWeek;
-        $countMonth = count($dbRows) == 0 ? 1 : count($dbRows);
+        $countMonth = $countMonth == 0 ? 1 : $countMonth;
 
         $thisWeek['low booking'] = $thisWeek['low booking'] == PHP_INT_MAX ? 0 : $thisWeek['low booking'];
         $lastWeek['low booking'] = $lastWeek['low booking'] == PHP_INT_MAX ? 0 : $lastWeek['low booking'];
