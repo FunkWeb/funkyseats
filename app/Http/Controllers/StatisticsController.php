@@ -121,17 +121,17 @@ class StatisticsController extends Controller
         }
 
         //making sure not to divide by 0
-        (int) $countThisWeek = $countThisWeek == 0 ? 1 : $countThisWeek;
-        (int) $countLastWeek = $countLastWeek == 0 ? 1 : $countLastWeek;
-        (int) $countMonth = $countMonth == 0 ? 1 : $countMonth;
+        $countThisWeek = $countThisWeek == 0 ? 1 : $countThisWeek;
+        $countLastWeek = $countLastWeek == 0 ? 1 : $countLastWeek;
+        $countMonth = $countMonth == 0 ? 1 : $countMonth;
 
-        (int) $thisWeek['low booking'] = $thisWeek['low booking'] == PHP_INT_MAX ? 0 : $thisWeek['low booking'];
-        (int) $lastWeek['low booking'] = $lastWeek['low booking'] == PHP_INT_MAX ? 0 : $lastWeek['low booking'];
-        (int) $month['low booking'] = $month['low booking'] == PHP_INT_MAX ? 0 : $month['low booking'];
+        $thisWeek['low booking'] = $thisWeek['low booking'] == PHP_INT_MAX ? 0 : $thisWeek['low booking'];
+        $lastWeek['low booking'] = $lastWeek['low booking'] == PHP_INT_MAX ? 0 : $lastWeek['low booking'];
+        $month['low booking'] = $month['low booking'] == PHP_INT_MAX ? 0 : $month['low booking'];
 
-        (int) $thisWeek['average bookings'] = $thisWeek['total bookings'] / $countThisWeek;
-        (int) $lastWeek['average bookings'] = $lastWeek['total bookings'] / $countLastWeek;
-        (int) $month['average bookings'] = $month['total bookings'] / $countMonth;
+        $thisWeek['average bookings'] = $thisWeek['total bookings'] / $countThisWeek;
+        $lastWeek['average bookings'] = $lastWeek['total bookings'] / $countLastWeek;
+        $month['average bookings'] = (int) $month['total bookings'] / $countMonth;
 
         $jsonStats = [
             "thisweek" => $thisWeek,
