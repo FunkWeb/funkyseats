@@ -47,7 +47,7 @@ Route::group(['middleware' => 'role:admin'], function () {
     Route::get('/profile/{user}/delete', [UserController::class, 'delete']);
     Route::get('/profile/{user}/anonymize', [UserController::class, 'anonymize']);
 
-    Route::get('/admin/{id?}', [StatisticsController::class, 'seatBookingStatistics']);
+    Route::get('/admin/stats/{id?}', [StatisticsController::class, 'seatBookingStatistics']);
 });
 
 //Login routes
