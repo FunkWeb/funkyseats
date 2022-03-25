@@ -1,6 +1,7 @@
 <div class="dropdown-menu dropdown-menu-end">
 	{{-- <a href="javascript:" class="dropdown-item">Edit Profile</a> --}}
 	<a href="/profile/{{Auth::user()->id}}" class="dropdown-item">My profile</a>
+	<a href="/mybookings" class="dropdown-item">My bookings </a>
 	@can('checkin-ip')
 		@if(Auth::user()->getCheckedInAttribute() == 1)
 			<a href="/checkin" class="dropdown-item">Check Out</a>
