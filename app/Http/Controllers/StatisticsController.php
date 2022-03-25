@@ -131,7 +131,9 @@ class StatisticsController extends Controller
 
         $thisWeek['average bookings'] = $thisWeek['total bookings'] / $countThisWeek;
         $lastWeek['average bookings'] = $lastWeek['total bookings'] / $countLastWeek;
-        $month['average bookings'] = (int) $month['total bookings'] / $countMonth;
+        $month['average bookings'] =  $month['total bookings'] / $countMonth;
+
+        $month['average bookings'] = number_format($month['average bookings']);
 
         $jsonStats = [
             "thisweek" => $thisWeek,
