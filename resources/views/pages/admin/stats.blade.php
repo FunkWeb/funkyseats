@@ -135,7 +135,6 @@
     window.onload = function() {
         if (!chartLoaded) {  
             createGraph();
-            selectOption();
             toggleActive();
         }
         chartLoaded = true;   
@@ -150,15 +149,6 @@
         }
     }
 
-    function selectOption(){
-        let room = readCookie('rooms') ? readCookie('rooms') : 'all';
-        const rooms = document.getElementById('rooms');
-        for (let i = 0; i < rooms.length; i++){
-            if(rooms[i].value === room){
-                rooms[i].selected = 'selected';
-            }
-        }      
-    }
 
     function calculateValues(intervalValues) {
         const highCount = document.getElementById('highCount');
