@@ -151,9 +151,9 @@
 
         function getRoomData(room) {
             if (room === "all") {
-                window.location.href = `/admin`;
+                window.location.href = `/admin/stats`;
             } else {
-                window.location.href = `/admin/${room}`;
+                window.location.href = `/admin/stats/${room}`;
             }
         }
 
