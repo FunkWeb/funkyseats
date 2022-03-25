@@ -10,9 +10,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BookingController extends Controller
 {
+    use SoftDeletes;
 
     public function __construct()
     {
@@ -26,6 +28,12 @@ class BookingController extends Controller
      */
     public function index()
     {
+        return view('pages/mybookings', [
+            'bookings' =>
+            Booking::where('user_id', auth()->user()->id)->where('from', '>', now()->startOfDay())->with('seat.room')->orderBy('from', 'desc')->get(),
+            'bookings_old' =>
+            Booking::where('user_id', auth()->user()->id)->where('from', '<', now()->startOfDay())->with('seat.room')->orderBy('from', 'desc')->get()
+        ]);
     }
 
     /**
@@ -102,8 +110,8 @@ class BookingController extends Controller
         $free_seat = Seat::where('room_id', $room_id)
             ->whereDoesntHave("booking", function ($query) use ($time_from, $time_to) {
                 $query
-                    ->where('from',  '<=', $time_from)
-                    ->where('to',  '>=', $time_to);
+                    ->where('from',  '=', $time_from)
+                    ->orwhere('to',  '=', $time_to);
             })->get()->first();
 
         if (!$free_seat) {
@@ -164,7 +172,6 @@ class BookingController extends Controller
      */
     public function delete($id)
     {
-        //TODO:(are) can only delete your own booking unless you are an admin
         $booking = Booking::find($id);
         if ($booking) {
             if (Auth::user()->id == $booking->user_id || Auth::user()->hasRole('admin')) {

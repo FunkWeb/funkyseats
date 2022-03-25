@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use Carbon\Carbon;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RoomController extends Controller
 {
     //
+    use SoftDeletes;
 
     public function index()
     {

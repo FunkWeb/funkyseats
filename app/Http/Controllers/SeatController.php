@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Seat;
 use App\Models\Room;
 use App\Models\SeatType;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SeatController extends Controller
 {
+    use SoftDeletes;
     //TODO: (Are) remove the index for seats? We never list all seats, only in the context of belonging to a room
     public function index()
     {
@@ -24,7 +26,12 @@ class SeatController extends Controller
     {
         $seat = Seat::find($id);
 
+        $request->validate([
+            'seat_type' => ['required', 'exists:seat_types,id'],
+        ]);
+
         $seat->seat_number = $request->seat_number;
+        $seat->seat_type_id = $request->seat_type;
 
         $seat->save();
 

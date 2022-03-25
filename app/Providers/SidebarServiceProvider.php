@@ -25,89 +25,107 @@ class SidebarServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $rooms = Room::orderBy('name')->get();
+        View::composer('includes.sidebar', function ($view) {
+            $rooms = Room::orderBy('name')->get();
 
-        $bookingRooms = [];
-        $displayRooms = [];
-        $adminRooms = [];
+            $bookingRooms = [];
+            $displayRooms = [];
+            $adminRooms = [];
 
-        foreach ($rooms as $room) {
-            $tmpBooking = [[
-                'icon' => 'fa fa-th-large',
-                'title' => $room->name,
-                'url' => '/room/' . $room->id,
-            ]];
-            $bookingRooms = array_merge($bookingRooms, $tmpBooking);
+            foreach ($rooms as $room) {
+                $tmpBooking = [[
+                    'icon' => 'fa fa-th-large',
+                    'title' => $room->name,
+                    'url' => '/room/' . $room->id,
+                ]];
+                $bookingRooms = array_merge($bookingRooms, $tmpBooking);
 
-            $tmpDisplay = [[
-                'icon' => 'fa fa-th-large',
-                'title' => $room->name,
-                'url' => '/display/' . $room->id,
-            ]];
-            $displayRooms = array_merge($displayRooms, $tmpDisplay);
+                //   $tmpDisplay = [[
+                //       'icon' => 'fa fa-th-large',
+                //       'title' => $room->name,
+                //       'url' => '/display/' . $room->id,
+                //   ]];
+                //   $displayRooms = array_merge($displayRooms, $tmpDisplay);
 
-            $tmpAdmin = [[
-                'icon' => 'fa fa-th-large',
-                'title' => $room->name,
-                'url' => '/room/' . $room->id . '/seats/edit',
-            ]];
-            $adminRooms = array_merge($adminRooms, $tmpAdmin);
-        }
+                $tmpAdmin = [[
+                    'icon' => 'fa fa-th-large',
+                    'title' => $room->name,
+                    'url' => '/room/' . $room->id . '/seats/edit',
+                ]];
+                $adminRooms = array_merge($adminRooms, $tmpAdmin);
+            }
 
-        $homeMenu = [
-            [
-                'icon' => 'fa fa-th-large',
-                'title' => 'Home',
-                'url' => '/',
-                'route-name' => 'home'
-            ]
-        ];
-
-        $normalRoomsMenu = [
-            'icon' => 'fa fa-align-left',
-            'title' => 'Book seat in room:',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' => $bookingRooms
-        ];
-
-        $displayRoomsMenu = [
-            'icon' => 'fa fa-align-left',
-            'title' => 'Display room:',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' => $displayRooms
-        ];
-
-
-        $adminRoomsMenu = [
-            'icon' => 'fa fa-align-left',
-            'title' => 'Admin:',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' => [
+            $homeMenu = [
                 [
-                    'url' => '/rooms/edit',
-                    'title' => 'Edit Rooms',
+                    'icon' => 'fa fa-th-large',
+                    'title' => 'Home',
+                    'url' => '/',
+                    'route-name' => 'home'
                 ],
                 [
-                    'title' => 'Edit seats in room:',
+                    //'icon' => 'fa fa-th-large',
+                    'icon' => 'fa fa-question',
+                    'title' => 'FAQ',
+                    'url' => '/faq',
+                ]
+            ];
+
+            $normalRoomsMenu = [
+                'icon' => 'fa fa-align-left',
+                'title' => 'Book seat in room:',
+                'url' => 'javascript:;',
+                'caret' => true,
+                'sub_menu' => $bookingRooms
+            ];
+
+            // $displayRoomsMenu = [
+            //     'icon' => 'fa fa-align-left',
+            //     'title' => 'Display room:',
+            //     'url' => 'javascript:;',
+            //     'caret' => true,
+            //     'sub_menu' => $displayRooms
+            // ];
+
+            if (auth()->check() && auth()->user()->hasRole('admin')) {
+                $adminRoomsMenu = [
+                    'icon' => 'fa fa-align-left',
+                    'title' => 'Admin:',
                     'url' => 'javascript:;',
-                    'sub_menu' => $adminRooms
-                ],
-            ]
-        ];
+                    'caret' => true,
+                    'sub_menu' => [
+                        [
+                            'url' => '/rooms/edit',
+                            'title' => 'Edit Rooms',
+                        ],
+                        [
+                            'title' => 'Edit seats in room:',
+                            'url' => 'javascript:;',
+                            'sub_menu' => $adminRooms
+                        ],
+                        [
+                            'url' => '/admin/edit_seat_types',
+                            'title' => 'Edit seat types',
+                        ],                        [
+                            'url' => '/profiles',
+                            'title' => 'User profiles',
+                        ],
+                    ]
+                ];
+            } else {
+                $adminRoomsMenu = [];
+            }
+            if ($adminRoomsMenu) {
+                $combinedMenu = [
+                    $normalRoomsMenu,
+                    $adminRoomsMenu
+                ];
+            } else {
+                $combinedMenu = [
+                    $normalRoomsMenu,
+                ];
+            }
 
-        $combinedMenu = [
-            $normalRoomsMenu,
-            $displayRoomsMenu,
-            $adminRoomsMenu
-        ];
-
-        $completeMenu = array_merge($homeMenu, $combinedMenu);
-
-
-        View::composer('includes.sidebar', function ($view) use ($completeMenu) {
+            $completeMenu = array_merge($homeMenu, $combinedMenu);
             $view->with('menuProvider', $completeMenu);
         });
     }

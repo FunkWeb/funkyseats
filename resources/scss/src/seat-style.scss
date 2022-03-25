@@ -6,6 +6,10 @@ body {
     box-shadow: none;
 }
 
+.menu-item.active > .menu-link {
+    background-color: #20B3BE !important;
+}
+
 .seat-container, .home-container {
     display: flex;
     flex-direction: column;
@@ -13,21 +17,33 @@ body {
     align-items: center;
     width: 224px;
     height: 166px;
+    border: 1px solid #9f9e9e;
     border-radius: 5%;
 }
 
-.seat-bg-color, .available-seat, .room-bg-color {
-    justify-content: center;
+.seat-bg-color, .available-seat, .room-bg-color, .unavailable-seat, .available-half-day-seat, .booked-seat {
     background-color: #fff;
     color: black;
-    border: 1px solid #9f9e9e;
     margin-top: 30px;
 }
 
-.seat-bg-color:hover, .home-container:hover{
-    justify-content: space-evenly;
+.seat-bg-color, .available-seat, .room-bg-color, .unavailable-seat {
+    justify-content: center;
+}
+
+.home-container:hover, .available-seat:hover, .available-half-day-seat:hover{
+    padding: 14px 0;
     background-color: #20B3BE;
     color: #fff;
+}
+
+.available-seat:hover {
+    justify-content: space-evenly;
+    transition: .2s;
+}
+
+.seat-bg-color .seat-type-btn {
+    margin-bottom: 0;
 }
 
 .home-container a {
@@ -44,26 +60,11 @@ body {
     color: #fff;
 }
 
-.seat-bg-color .seat-type-btn{
-    margin-bottom: 14px;
-}
-
-.seat-bg-color:hover .seat-type-btn{
-    margin: 0;
-}
-
-.booked-seat {
-    padding-top: 24px;
+.booked-seat, .unavailable-seat {
     margin-top: 30px;
     background-color: #DFE3E4;
     color: black;
     border: 1px solid #9f9e9e;
-    justify-content: flex-start;
-}
-
-.booked-seat .seat-num{
-    padding-top: 21px;
-    padding-bottom: 27px;
 }
 
 .booked-by-me {
@@ -75,7 +76,7 @@ body {
     margin-top: 30px;
 }
 
-.booking-btn {
+.booking-btn,.check-in-btn {
     display: none;
     margin: 0 auto;
     width: 100px;
@@ -85,6 +86,24 @@ body {
     border-radius: 5%;
     background-color: #ffffff;
     text-align: center;
+}
+
+.check-in-btn{
+    border-radius: 5%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    border: 1px solid #324252;
+    color: #324252;
+    margin: 0 18px;
+    width: 110px;
+    height: 34px;
+
+}
+
+.checkedIn{
+    color: #64be20;
 }
 
 .cancel-booking-btn {
@@ -97,7 +116,10 @@ body {
     text-align: center;
 }
 
-.seat-bg-color:hover .booking-btn, .booked-by-me:hover .cancel-booking-btn, .booked-by-me:hover .booking-btn{
+.available-seat:hover .booking-btn, .available-seat:hover .cancel-booking-btn,
+.booked-by-me:hover .cancel-booking-btn, .booked-by-me:hover .booking-btn,
+.booked-seat:hover .cancel-booking-btn, .booked-seat:hover .booking-btn,
+.available-half-day-seat:hover .cancel-booking-btn, .available-half-day-seat:hover .booking-btn{
     display: block;
     transition: .2s;
     cursor: pointer;
@@ -107,9 +129,33 @@ body {
     display: block;
 }
 
-.book_any_btn:hover{
+.book_any_btn:hover, .request-list table td button:hover{
     background-color: #20B3BE;
     color: #fff;
+}
+
+.check-in-btn:hover{
+    border: 1px solid #20B3BE;
+    color: #20B3BE;
+}
+
+.checkedIn{
+    border: 1px solid #20B3BE;
+    color: #20B3BE;
+}
+
+.checkedIn:hover{
+    border: 1px solid #324252;
+   color: #324252;
+}
+
+.disabled{
+    color:#9f9e9e6e;
+}
+
+.disabled:hover{
+    color: #9f9e9e6e;
+    cursor: default;
 }
 
 .seat-num {
@@ -146,13 +192,6 @@ body {
     position: relative;
     width: 24px;
     border-radius: 50%;
-    
-}
-
-
-.booked-seat .user-picture-booked-seat:hover{
-    width: 60px;  
-    bottom: 21px;
 }
 
 .user-name-booked-seat {
@@ -173,7 +212,7 @@ body {
 .book-calendar {
     display: flex;
     justify-content: center;
-    margin: 14px 0;
+    margin: 10px 0;
 }
 
 .react-datepicker-wrapper {
@@ -233,4 +272,157 @@ text-decoration: none;
 .icon-left {
     left: 64px;
     color: #9f9e9e
+}
+
+.pace-progress {
+    display: none !important;
+}
+
+.seats-map {
+    margin: 18px 0;
+    text-align: center;
+}
+
+.seats-map img{
+    width: 250px;
+}
+
+
+.close {
+    color: #324252;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #20B3BE;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.expand{
+    margin-top: 18px;
+    text-align: center;
+}
+
+.fa-clock{
+   font-size: 18px;
+   color: inherit;
+}
+
+.fa-chevron-right, .fa-chevron-down{
+    font-size: 14px;
+    cursor: pointer;
+    color: #324252;
+
+    strong{
+        font-family: "Neue Plak Bold", "Urbane Demi Bold", sans-serif;
+    }
+}
+
+@media screen and (max-width: 769px){
+    .check-in-btn{
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .check-in-btn{
+        margin: 0 18px;
+    }
+}
+
+@media screen and (max-width: 460px){
+    .check-in-btn{
+    display: none;
+    }
+}
+   
+.type-description {
+    position: relative;
+    cursor: pointer;
+}
+
+.type-description .seat-type-description {
+    display: none;
+    position: absolute;
+    margin: auto 0;
+    padding: 0 4px;
+    top: -20px;
+    left: 60px;
+    height: 16px;
+    width: -webkit-max-content;
+    border-radius: 5px;
+
+    font-size: 10px;
+    color: #FFFFFF;
+    background-color: #6f808f;
+    z-index: 100;
+}
+
+.type-description:hover .seat-type-description {
+    display: inline-block;
+}
+
+.my-bookings-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 10px;
+    font-size: 1.25rem;
+    font-weight: 100;
+}
+
+.my-bookings-container {
+    margin: 30px 100px 0;
+
+    table tr {
+        height: 60px;
+        font-size: 14px;
+    }
+
+    table tr.booking-columns-description {
+        height: 42px;
+    }
+
+    .previous th{
+        background-color: #6f808f;
+    }
+}
+
+
+.no-bookings-message {
+    margin-top: 50px;
+    font-size: 24px;
+    text-align: center;
+    color: #c4c4c4;
+}
+
+.mapAnyRow{
+    display: flex;
+    width: 40%;
+    margin: 0 auto;
+}
+.hidden{
+    display: none;
+}
+
+.display-block{
+    display: block;
+}
+
+.request-list table td button{
+    background-color: #324252;
+    color: #fff;
+    border: none;
+
+}
+
+@media screen and (max-width: 769px){
+    .check-in-btn{
+        margin: 0;
+    }
 }
