@@ -13,22 +13,10 @@ class StatisticsController extends Controller
 {
     public function seatBookingStatistics(Request $request, $id = null)
     {
-
         //Hard coded current month
         $thisMonth = now()->month;
 
-        $dbRows = Booking::select(
-            DB::raw("DATE(STR_TO_DATE(`from`, '%Y-%m-%d %H:%i:%s')) as date"),
-            DB::raw("count(*) as total"),
-            DB::raw("SUM(case when HOUR(STR_TO_DATE(`from`, '%Y-%m-%d %H:%i:%s'))=8 AND HOUR(STR_TO_DATE(`to`, '%Y-%m-%d %H:%i:%s'))=16 then 1 else 0 end) as whole"),
-            DB::raw("SUM(case when 
-                (HOUR(STR_TO_DATE(`from`, '%Y-%m-%d %H:%i:%s'))=8 AND HOUR(STR_TO_DATE(`to`, '%Y-%m-%d %H:%i:%s'))=12) 
-                OR
-                (HOUR(STR_TO_DATE(`from`, '%Y-%m-%d %H:%i:%s'))=12 AND HOUR(STR_TO_DATE(`to`, '%Y-%m-%d %H:%i:%s'))=16) 
-                then 1 else 0 end) as half")
-        )
-            ->groupBy(DB::raw("DATE(STR_TO_DATE(`from`, '%Y-%m-%d %H:%i:%s'))"))
-            ->whereRaw("MONTH(STR_TO_DATE(`from`, '%Y-%m-%d %H:%i:%s')) = ?", [$thisMonth]);
+        $dbRows = Booking::bookingStats($thisMonth);
 
         //Needs to check against incoming variable for room 
         if ($id) {
@@ -61,7 +49,6 @@ class StatisticsController extends Controller
             "halfdays" => [],
             "wholedays" => []
         ];
-
         $countLastWeek = 0;
 
         $month = [
@@ -72,7 +59,6 @@ class StatisticsController extends Controller
             "halfdays" => [],
             "wholedays" => []
         ];
-
         $countMonth = 0;
 
         $dbRows = $dbRows->get();
