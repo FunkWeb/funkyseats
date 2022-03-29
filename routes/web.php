@@ -33,8 +33,8 @@ Route::group(['middleware' => 'role:admin'], function () {
 
     //Seat admin routes
     Route::get('/room/{id}/seats/edit', [SeatController::class, 'edit'])->name('seat.edit');
-    Route::post('/seats/{id}/save', [SeatController::class, 'save'])->name('seat.update');
-    Route::post('/seats/{id}/delete', [SeatController::class, 'delete'])->name('seat.destroy');
+    Route::post('/seats/{seat}/save', [SeatController::class, 'update'])->name('seat.update');
+    Route::post('/seats/{seat}/delete', [SeatController::class, 'delete'])->name('seat.destroy');
     Route::post('/seat/store', [SeatController::class, 'store'])->name('seat.store');
 
     Route::get('/admin/edit_seat_types', [SeatTypeController::class, 'edit'])->name('seatType.edit');
