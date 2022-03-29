@@ -27,8 +27,8 @@ use App\Http\Controllers\FaqController;
 Route::group(['middleware' => 'role:admin'], function () {
     //Room admin routes
     Route::get('/rooms/edit', [RoomController::class, 'edit'])->name('room.edit');
-    Route::post('/rooms/{id}/save', [RoomController::class, 'save'])->name('room.update');
-    Route::post('/rooms/{id}/delete', [RoomController::class, 'delete'])->name('room.destroy');
+    Route::post('/rooms/{room}/save', [RoomController::class, 'update'])->name('room.update');
+    Route::post('/rooms/{room}/delete', [RoomController::class, 'delete'])->name('room.destroy');
     Route::post('/room/store', [RoomController::class, 'store'])->name('room.store');
 
     //Seat admin routes
