@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Booking routes
     Route::post('/booking/seat/{seat_id}', [BookingController::class, 'store'])->name('booking.store');
     Route::post('/booking/seat/random/{room_id}', [BookingController::class, 'randomSeat'])->name('booking.random');
-    Route::get('/booking/delete/{booking_id}', [BookingController::class, 'delete'])->name('booking.destroy');
+    Route::get('/booking/delete/{booking}', [BookingController::class, 'delete'])->name('booking.destroy');
 });
 
 Route::get('/', [RoomController::class, 'index_withCountSeats'])->name('home');

@@ -16,11 +16,6 @@ class BookingController extends Controller
 {
     use SoftDeletes;
 
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -28,22 +23,12 @@ class BookingController extends Controller
      */
     public function index()
     {
+        $currentAndFuture = Booking::where('user_id', auth()->user()->id)->where('from', '>', now()->startOfDay())->with('seat.room')->orderBy('from', 'desc')->get();
+        $past = Booking::where('user_id', auth()->user()->id)->where('from', '<', now()->startOfDay())->with('seat.room')->orderBy('from', 'desc')->get();
         return view('pages/mybookings', [
-            'bookings' =>
-            Booking::where('user_id', auth()->user()->id)->where('from', '>', now()->startOfDay())->with('seat.room')->orderBy('from', 'desc')->get(),
-            'bookings_old' =>
-            Booking::where('user_id', auth()->user()->id)->where('from', '<', now()->startOfDay())->with('seat.room')->orderBy('from', 'desc')->get()
+            'bookings' => $currentAndFuture,
+            'bookings_old' => $past,
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -55,16 +40,9 @@ class BookingController extends Controller
         //0 = 8->12
         //1 = 12->16
         //2 = 8->16
-        if ($request->book_time == 0 || $request->book_time == 2) {
-            $time_from = Carbon::createFromDate($request->date_picker)->addHours(8);
-        } else {
-            $time_from = Carbon::createFromDate($request->date_picker)->addHours(12);
-        }
-        if ($request->book_time == 0) {
-            $time_to = Carbon::createFromDate($request->date_picker)->addHours(12);
-        } else {
-            $time_to = Carbon::createFromDate($request->date_picker)->addHours(16);
-        }
+        $time_from = BookingController::bookingStartTime($request->book_time, $request->date_picker);
+        $time_to = BookingController::bookingEndTime($request->book_time, $request->date_picker);
+
         $request->merge(['user_id' => auth()->user()->id,]);
         $request->merge(['seat_id' => $seat_id]);
         $request->validate([
@@ -73,15 +51,13 @@ class BookingController extends Controller
             'seat_id' => [new SeatAlreadyTakenRule($time_from, $time_to)]
         ]);
 
-        $booking = new Booking;
-
-        $booking->from = $time_from;
-        $booking->to = $time_to;
-        $booking->seat_id = $seat_id;
-        $booking->user_id = $request->user_id;
-        $booking->approved = True;
-
-        $booking->save();
+        Booking::create([
+            'from' => $time_from,
+            'to' => $time_to,
+            'user_id' => $request->user_id,
+            'seat_id' => $request->seat_id,
+            'approved' => true,
+        ]);
 
         return back()->with('success', 'You booked the seat successfully');
     }
@@ -91,16 +67,9 @@ class BookingController extends Controller
         //0 = 8->12
         //1 = 12->16
         //2 = 8->16
-        if ($request->book_time == 0 || $request->book_time == 2) {
-            $time_from = Carbon::createFromDate($request->date_picker)->addHours(8);
-        } else {
-            $time_from = Carbon::createFromDate($request->date_picker)->addHours(12);
-        }
-        if ($request->book_time == 0) {
-            $time_to = Carbon::createFromDate($request->date_picker)->addHours(12);
-        } else {
-            $time_to = Carbon::createFromDate($request->date_picker)->addHours(16);
-        }
+        $time_from = BookingController::bookingStartTime($request->book_time, $request->date_picker);
+        $time_to = BookingController::bookingEndTime($request->book_time, $request->date_picker);
+
         $request->merge(['user_id' => auth()->user()->id,]);
         $request->validate([
             'date_picker' => ['after_or_equal:' . Carbon::today()],
@@ -118,67 +87,45 @@ class BookingController extends Controller
             return back()->with('error', 'No free seat in room at chosen time');
         }
 
-        $booking = new Booking;
-
-        $booking->from = $time_from;
-        $booking->to = $time_to;
-        $booking->user_id = $request->user_id;
-        $booking->seat_id = $free_seat->id;
-        $booking->approved = True;
-
-        $booking->save();
+        Booking::create([
+            'from' => $time_from,
+            'to' => $time_to,
+            'user_id' => $request->user_id,
+            'seat_id' => $free_seat->id,
+            'approved' => true,
+        ]);
 
         return back()->with('success', 'You booked the seat successfully');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Booking $booking)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Booking $booking)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Booking  $booking
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Booking $booking)
-    {
-        //
-    }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete(Booking $booking)
     {
-        $booking = Booking::find($id);
-        if ($booking) {
-            if (Auth::user()->id == $booking->user_id || Auth::user()->hasRole('admin')) {
-                $booking->delete();
-                return back()->with('success', 'You unbooked your seat');
-            }
+        $this->authorize('delete', $booking);
+        $booking->delete();
+
+        return back()->with('error', 'You unbooked your seat');
+    }
+
+    static private function bookingStartTime($selectValue, $date)
+    {
+        if ($selectValue == 0) {
+            return Carbon::createFromDate($date)->addHours(12);
+        } else {
+            return Carbon::createFromDate($date)->addHours(16);
         }
-        return back()->with('error', 'Could not delete the booking');
+    }
+
+    static private function bookingEndTime($selectValue, $date)
+    {
+        if ($selectValue == 0 || $selectValue == 2) {
+            return Carbon::createFromDate($date)->addHours(8);
+        } else {
+            return Carbon::createFromDate($date)->addHours(12);
+        }
     }
 }
