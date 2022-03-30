@@ -38,19 +38,9 @@ class UserController extends Controller
 
     public function toggleRole(User $user, $role)
     {
-        $exists = Role::where('name', $role)->first();
+        list($type, $message) = $user->toggleRole($role);
 
-        if ($exists) {
-            if ($user->hasRole($role)) {
-                $user->removeRole($role);
-            } else {
-                $user->assignRole($role);
-            }
-        } else {
-            return back()->with('error', 'could not find role with that name');
-        }
-
-        return back()->with('success', 'Role status updated');
+        return back()->with($type, $message);
     }
 
     public function delete(User $user)
