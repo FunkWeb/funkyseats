@@ -111,7 +111,7 @@ class BookingController extends Controller
         return back()->with('error', 'You unbooked your seat');
     }
 
-    static private function bookingStartTime($selectValue, $date)
+    static private function bookingEndTime($selectValue, $date)
     {
         if ($selectValue == 0) {
             return Carbon::createFromDate($date)->addHours(12);
@@ -120,7 +120,7 @@ class BookingController extends Controller
         }
     }
 
-    static private function bookingEndTime($selectValue, $date)
+    static private function bookingStartTime($selectValue, $date)
     {
         if ($selectValue == 0 || $selectValue == 2) {
             return Carbon::createFromDate($date)->addHours(8);
