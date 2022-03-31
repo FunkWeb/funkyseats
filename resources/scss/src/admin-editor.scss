@@ -251,6 +251,15 @@ strong{
     color: white;
     border: none;
     font-size: 1rem;
+
+    option{
+        background-color: #374750;
+        color: white;
+    }
+
+    option:hover{
+        background-color: #20B3BE; 
+    }
     
 }
 
