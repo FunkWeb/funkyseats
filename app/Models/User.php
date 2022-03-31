@@ -51,4 +51,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function  hasActiveBooking(): bool
+    {
+        $exists = Booking::where('user_id', $this->id)->where('from', '<=', now())->where('to', '>=', now())->first();
+        return !is_null($exists);
+    }
 }
