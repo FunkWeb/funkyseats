@@ -21,6 +21,7 @@ class SeatController extends Controller
     {
         $request->validate([
             'seat_type' => ['required', 'exists:seat_types,id'],
+            'seat_number' => ['required', 'max:255'],
         ]);
 
         $seat->update([
