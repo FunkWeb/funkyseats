@@ -151,10 +151,12 @@ body {
 
 .disabled{
     color:#9f9e9e6e;
+    border: 1px solid #9f9e9e6e;
 }
 
 .disabled:hover{
     color: #9f9e9e6e;
+    border: 1px solid #9f9e9e6e;
     cursor: default;
 }
 
@@ -419,6 +421,13 @@ text-decoration: none;
     color: #fff;
     border: none;
 
+}
+
+.cannot-check-in-text{
+    color: #ff5b57;
+    margin: 0 auto;
+    position: relative;
+    left: 8px;
 }
 
 @media screen and (max-width: 769px){
