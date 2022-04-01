@@ -54,7 +54,7 @@ class User extends Authenticatable
 
     public function  hasActiveBooking(): bool
     {
-        $exists = Booking::where('user_id', $this->id)->where('from', '<=', now())->where('to', '>=', now())->first();
+        $exists = Booking::where('user_id', $this->id)->where('from', '<=', now('Europe/Oslo'))->where('to', '>=', now('Europe/Oslo'))->first();
         return !is_null($exists);
     }
 }
