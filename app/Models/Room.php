@@ -42,8 +42,15 @@ class Room extends Model
                 $query->orderBy('seat_number', 'asc');
             }, 'seat.booking' => function ($query) {
                 $query
+                    ->select('*', 'bookings.user_id', 'checkins.created_at as checkin')
                     ->where('from', '>=', Carbon::today())
-                    ->where('to', '<=', Carbon::today()->addDay());
+                    ->where('to', '<=', Carbon::today()->addDay())
+                    ->leftJoin('checkins', function ($leftjoin) {
+                        $leftjoin->on('bookings.user_id', '=', 'checkins.user_id');
+                        $leftjoin
+                            ->where('checkins.created_at', '<=', now('Europe/oslo'))
+                            ->where('checkins.checkout_at', '=', null);
+                    });
                 $query->with('user');
             }])
             ->get();
