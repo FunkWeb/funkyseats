@@ -42,12 +42,12 @@ Route::group(['middleware' => 'role:admin'], function () {
     Route::post('/admin/edit_seat_types/delete/{id}', [SeatTypeController::class, 'destroy'])->name('seatType.destroy');
     Route::post('/admin/edit_seat_types/store', [SeatTypeController::class, 'store'])->name('seatType.store');
 
-    Route::get('/profiles', [UserController::class, 'index']);
-    Route::get('/profile/{user}/toggle/{role}', [UserController::class, 'toggleRole']);
-    Route::get('/profile/{user}/delete', [UserController::class, 'delete']);
-    Route::get('/profile/{user}/anonymize', [UserController::class, 'anonymize']);
+    Route::get('/profiles', [UserController::class, 'index'])->name('user.index');
+    Route::get('/profile/{user}/toggle/{role}', [UserController::class, 'toggleRole'])->name('user.toggleRole');
+    Route::get('/profile/{user}/delete', [UserController::class, 'delete'])->name('user.delete');
+    Route::get('/profile/{user}/anonymize', [UserController::class, 'anonymize'])->name('user.anonymize');
 
-    Route::get('/admin/stats/{id?}', [StatisticsController::class, 'seatBookingStatistics']);
+    Route::get('/admin/stats/{id?}', [StatisticsController::class, 'seatBookingStatistics'])->name('statistics.bookings');
 });
 
 //Login routes
@@ -71,6 +71,6 @@ Route::get('/checkin', [CheckinController::class, 'togglestatus'])->name('checki
 
 Route::get('/profile/{user}', [UserController::class, 'show'])->middleware(['middleware' => 'owner.or.admin:admin']);
 
-Route::get('/faq', [FaqController::class, 'index']);
+Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 
-Route::get('/mybookings', [BookingController::class, 'index']);
+Route::get('/mybookings', [BookingController::class, 'index'])->name('booking.mybookings');
