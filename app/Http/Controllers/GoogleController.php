@@ -27,6 +27,15 @@ class GoogleController extends Controller
             if ($user->getAvatar() != $searchUser->user_thumbnail) {
                 $searchUser->user_thumbnail = $user->getAvatar();
                 $searchUser->save();
+            };
+            if ($searchUser->anonymized) {
+                $searchUser->update([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'given_name' => $user->user['given_name'],
+                    'family_name' => $user->user['family_name'],
+                    'anonymized' => false,
+                ]);
             }
             Auth::login($searchUser, true);
         } else {
