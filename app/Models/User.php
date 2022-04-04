@@ -29,6 +29,8 @@ class User extends Authenticatable
         'given_name',
         'family_name',
         'user_thumbnail',
+        'anonymized',
+        'last_active'
     ];
 
     /**
@@ -56,5 +58,21 @@ class User extends Authenticatable
     {
         $exists = Booking::where('user_id', $this->id)->where('from', '<=', now('Europe/Oslo'))->where('to', '>=', now('Europe/Oslo'))->first();
         return !is_null($exists);
+    }
+
+    public function anonymize()
+    {
+        do {
+            $code = random_int(1, 999999);
+        } while (User::where("email", "=", 'anonymized@' . $code . '.gone')->first());
+
+        $this->update([
+            'name' => 'anonymized',
+            'email' => 'anonymized@' . $code . '.gone',
+            'given_name' => 'anonymized',
+            'family_name' => 'anonymized',
+            'user_thumbnail' => 'removed.png',
+            'anonymized' => true,
+        ]);
     }
 }

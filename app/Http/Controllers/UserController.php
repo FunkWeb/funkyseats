@@ -51,6 +51,7 @@ class UserController extends Controller
     }
     public function anonymize(User $user)
     {
-        return back()->with('success', 'Functionality not impemented yet');
+        $user->anonymize();
+        return back()->with('success', 'User anonymized');
     }
 }
