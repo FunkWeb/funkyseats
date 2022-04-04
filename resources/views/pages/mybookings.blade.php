@@ -39,7 +39,6 @@
                                     <div>after lunch</div>
                                 @endif
                             </td>
-
                             @if ((string) Auth::user()->id == $booking->user->id)
                                 <td>
                                     <a
@@ -48,7 +47,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href={{ route('booking.destroy', ['booking_id' => $booking->id]) }}>
+                                    <a href={{ route('booking.destroy', ['booking' => $booking->id]) }}>
                                         <button class="booking-btn display-block">Cancel</button>
                                     </a>
                                 </td>
