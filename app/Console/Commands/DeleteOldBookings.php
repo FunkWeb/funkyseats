@@ -38,7 +38,7 @@ class DeleteOldBookings extends Command
      */
     public function handle()
     {
-        $bookings = Booking::where('from', '<=', now()->subYear(1));
+        $bookings = Booking::where('from', '<=', now()->subYear(1))->get();
         foreach ($bookings as $booking) {
             $booking->delete();
         }
