@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'checkin' => \App\Http\Middleware\CanCheckin::class,
         'officeoradmin' => \App\Http\Middleware\OfficeOrAdmin::class,
         'owner.or.admin' => \App\Http\Middleware\OwnerOrAdmin::class,
+        'last.active' => \App\Http\Middleware\TrackLastActive::class,
     ];
 }

@@ -30,7 +30,7 @@ class User extends Authenticatable
         'family_name',
         'user_thumbnail',
         'anonymized',
-        'last_active'
+        'last_active_at'
     ];
 
     /**
