@@ -11,54 +11,47 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class SeatController extends Controller
 {
     use SoftDeletes;
-    //TODO: (Are) remove the index for seats? We never list all seats, only in the context of belonging to a room
-    public function index()
-    {
-        return view('pages.seats', ['seats' => Seat::all()]);
-    }
 
     public function edit($id)
     {
         return view('pages.admin.edit_seats', ['room' => Room::where('id', $id)->with('seat')->get(), 'types' => SeatType::all()]);
     }
 
-    public function save($id, Request $request)
+    public function update(Seat $seat, Request $request)
     {
-        $seat = Seat::find($id);
-
         $request->validate([
             'seat_type' => ['required', 'exists:seat_types,id'],
+            'seat_number' => ['required', 'max:255'],
         ]);
 
-        $seat->seat_number = $request->seat_number;
-        $seat->seat_type_id = $request->seat_type;
-
-        $seat->save();
+        $seat->update([
+            'seat_number' => $request->seat_number,
+            'seat_type_id' => $request->seat_type,
+        ]);
 
         return back()->with('success', 'You updated the seat successfully');
     }
 
     public function store(Request $request)
     {
-
         $request->validate([
             'seat_number' => ['required', 'max:255'],
             'seat_type' => ['required', 'exists:seat_types,id'],
             'room_id' => ['exists:rooms,id'],
         ]);
-        $seat = new Seat;
-        $seat->seat_number = $request->seat_number;
-        $seat->seat_type_id = $request->seat_type;
-        $seat->room_id = $request->room_id;
 
-        $seat->save();
+        Seat::create([
+            'seat_number' => $request->seat_number,
+            'seat_type_id' => $request->seat_type_id,
+            'room_id' => $request->room_id,
+        ]);
+
         return back()->with('success', 'You stored the seat successfully');
     }
 
-    public function delete($id)
+    public function delete(Seat $seat)
     {
-        Seat::destroy($id);
-
+        $seat->delete();
 
         return back()->with('success', 'You deleted the seat successfully');
     }

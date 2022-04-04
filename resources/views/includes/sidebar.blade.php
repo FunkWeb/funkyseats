@@ -36,6 +36,12 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                             <div class="menu-text"> My profile</div>
                         </a>
                     </div>
+                    <div class="menu-item pt-5px">
+                        <a href="/mybookings" class="menu-link">
+                            <div class="menu-icon"><i class="fa fa-desktop"></i></div>
+                            <div class="menu-text"> My bookings</div>
+                        </a>
+                    </div>
 
                     @can('checkin-ip')
                         <div class="menu-item pb-5px">

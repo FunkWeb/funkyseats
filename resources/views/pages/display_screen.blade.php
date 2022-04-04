@@ -25,6 +25,7 @@
                 <th>Seat</th>
                 <th>Booked before lunch</th>
                 <th>Booked after lunch</th>
+                <th>Check in status</th>
             </tr>
         </thead>
         <tbody>
@@ -34,25 +35,44 @@
             @if($seat->booking == '[]')
                 <td></td>
                 <td></td>
+                <td></td>
             @else
                 @foreach($seat->booking as $booking)
                     @if (\Carbon\Carbon::parse($booking->from)->format('H') == 8 
                     && \Carbon\Carbon::parse($booking->to)->format('H') == 16)
                     <td>{{$booking->user->given_name ?? ''}}</td>
                     <td>{{$booking->user->given_name ?? ''}}</td>
-                    
+                        @if( $booking->user->checkin)
+                            <td> Checked in </td>
+                        @else
+                            <td> Not checked in </td>
+                        @endif
                     @elseif(\Carbon\Carbon::parse($booking->from)->format('H') == 8 )
                         @if (\Carbon\Carbon::parse($booking->from)->format('H') == 12 )
                             <td>{{$booking->user->given_name ?? ''}}</td>
                             <td>{{$booking->user->given_name ?? ''}}</td>
+                            @if( $booking->user->checkin)
+                                <td> Checked in </td>
+                            @else
+                                <td> Not checked in </td>
+                            @endif
                         @else
                             <td>{{$booking->user->given_name ?? ''}}</td>
                             <td></td>
+                            @if( $booking->user->checkin)
+                                <td> Checked in </td>
+                            @else
+                                <td> Not checked in </td>
+                            @endif
                         @endif
                     @elseif (\Carbon\Carbon::parse($booking->from)->format('H') == 12 )
                             <td></td>
                             <td>{{$booking->user->given_name ?? ''}}</td>
-                            
+                            @if( $booking->user->checkin)
+                                <td> Checked in </td>
+                            @else
+                                <td> Not checked in </td>
+                            @endif
                     @endif
                 @endforeach
             @endif

@@ -9,26 +9,6 @@ use App\Models\Seat;
 class SeatTypeController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -40,23 +20,12 @@ class SeatTypeController extends Controller
             'name' => ['required', 'max:255'],
             'description' => ['required'],
         ]);
-        $seatType = new SeatType;
-        $seatType->name = $request->name;
-        $seatType->description = $request->description;
+        SeatType::create([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
 
-        $seatType->save();
         return back()->with('success', 'You stored the seat type successfully');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SeatType  $seatType
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SeatType $seatType)
-    {
-        //
     }
 
     /**
@@ -84,10 +53,10 @@ class SeatTypeController extends Controller
             'description' => ['required',],
         ]);
 
-        $seatType->name = $request->name;
-        $seatType->description = $request->description;
-
-        $seatType->save();
+        $seatType->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
 
         return back()->with('success', 'You updated the seat typ successfully');
     }
@@ -100,14 +69,13 @@ class SeatTypeController extends Controller
      */
     public function destroy($id)
     {
-
         $temp = SeatType::where('name', 'unknown')->get()->first();
 
         if (!$temp) {
-            $newDefault = new SeatType;
-            $newDefault->name = 'unknown';
-            $newDefault->description = 'system generated type';
-            $newDefault->save();
+            $newDefault = SeatType::create([
+                'name' => 'unknown',
+                'description' => 'system generated type',
+            ]);
             $temp = $newDefault;
         }
 

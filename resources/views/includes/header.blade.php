@@ -75,6 +75,7 @@ $appHeaderTopMenu = !empty($appHeaderTopMenu) ? $appHeaderTopMenu : '';
             @endif
         @endcan
         @cannot('checkin-ip')
+            <h6 class="cannot-check-in-text">Book a seat and be at the Funkweb offices to check in </h6>
             <button class="check-in-btn disabled"><i class="fa fa-clock"></i><strong>Check In</strong></button>
         @endcannot
 
