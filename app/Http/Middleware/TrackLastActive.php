@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Carbon\carbon;
 
 class TrackLastActive
 {
@@ -20,7 +21,7 @@ class TrackLastActive
             return $next($request);
         }
 
-        if (!$request->user()->last_active_at || $request->user()->last_active_at->isPast()) {
+        if (!$request->user()->last_active_at || Carbon::createFromTimeString($request->user()->last_active_at)->isPast()) {
             $request->user()->update([
                 'last_active_at' => now(),
             ]);
