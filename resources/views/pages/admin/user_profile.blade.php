@@ -93,13 +93,6 @@
                             </button>
                             </a>
                         </div>
-                        <div class="col">
-                        <a href="/profile/{{$user->id}}/anonymize">
-                            <button class="submit-changes-btn delMake_btn">
-                            Anonymize <i class="fas fa-user-secret"></i>
-                            </button>
-                        </a>
-                        </div>
                     </div>
                 @endif
         </div> 
