@@ -15,6 +15,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //
         Commands\ForceCheckout::class,
+        Commands\AnonymizeInactiveUsers::class,
+        Commands\DeleteOldBookings::class,
     ];
 
     /**
@@ -26,8 +28,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('checkout:force')->dailyAt('19:00');
-        // $schedule->command('inspire')->hourly();
-
+        $schedule->command('User:anonymize')->weekly();
+        $schedule->command('Bookings:DeleteOld')->weekly();
     }
 
     /**

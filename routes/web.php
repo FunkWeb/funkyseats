@@ -48,6 +48,8 @@ Route::group(['middleware' => 'last.active'], function () {
         Route::get('/profile/{user}/delete', [UserController::class, 'delete'])->name('user.delete');
         Route::get('/profile/{user}/anonymize', [UserController::class, 'anonymize'])->name('user.anonymize');
 
+        Route::get('/profile/{user}/csv', [CheckinController::class, 'downloadCheckinData'])->name('user.download.csv');
+
         Route::get('/admin/stats/{id?}', [StatisticsController::class, 'seatBookingStatistics'])->name('statistics.bookings');
     });
 
