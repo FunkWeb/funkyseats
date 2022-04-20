@@ -32,6 +32,7 @@ body {
 }
 
 .home-container:hover, .available-seat:hover, .available-half-day-seat:hover{
+    padding: 14px 0;
     background-color: #20B3BE;
     color: #fff;
 }
@@ -101,6 +102,9 @@ body {
 
 }
 
+.checkedIn{
+    color: #64be20;
+}
 
 .cancel-booking-btn {
     display: none;
@@ -125,7 +129,7 @@ body {
     display: block;
 }
 
-.book_any_btn:hover{
+.book_any_btn:hover, .request-list table td button:hover{
     background-color: #20B3BE;
     color: #fff;
 }
@@ -147,10 +151,12 @@ body {
 
 .disabled{
     color:#9f9e9e6e;
+    border: 1px solid #9f9e9e6e;
 }
 
 .disabled:hover{
     color: #9f9e9e6e;
+    border: 1px solid #9f9e9e6e;
     cursor: default;
 }
 
@@ -188,7 +194,6 @@ body {
     position: relative;
     width: 24px;
     border-radius: 50%;
-    
 }
 
 .user-name-booked-seat {
@@ -209,7 +214,7 @@ body {
 .book-calendar {
     display: flex;
     justify-content: center;
-    margin: 14px 0;
+    margin: 10px 0;
 }
 
 .react-datepicker-wrapper {
@@ -271,9 +276,52 @@ text-decoration: none;
     color: #9f9e9e
 }
 
+.pace-progress {
+    display: none !important;
+}
+
+.seats-map {
+    margin: 18px 0;
+    text-align: center;
+}
+
+.seats-map img{
+    width: 250px;
+}
+
+
+.close {
+    color: #324252;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #20B3BE;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.expand{
+    margin-top: 18px;
+    text-align: center;
+}
+
 .fa-clock{
    font-size: 18px;
    color: inherit;
+}
+
+.fa-chevron-right, .fa-chevron-down{
+    font-size: 14px;
+    cursor: pointer;
+    color: #324252;
+
+    strong{
+        font-family: "Neue Plak Bold", "Urbane Demi Bold", sans-serif;
+    }
 }
 
 @media screen and (max-width: 769px){
@@ -292,8 +340,98 @@ text-decoration: none;
     .check-in-btn{
     display: none;
     }
-   
 }
-.pace-progress {
-    display: none !important;
+   
+.type-description {
+    position: relative;
+    cursor: pointer;
+}
+
+.type-description .seat-type-description {
+    display: none;
+    position: absolute;
+    margin: auto 0;
+    padding: 0 4px;
+    top: -20px;
+    left: 60px;
+    height: 16px;
+    width: -webkit-max-content;
+    border-radius: 5px;
+
+    font-size: 10px;
+    color: #FFFFFF;
+    background-color: #6f808f;
+    z-index: 100;
+}
+
+.type-description:hover .seat-type-description {
+    display: inline-block;
+}
+
+.my-bookings-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 10px;
+    font-size: 1.25rem;
+    font-weight: 100;
+}
+
+.my-bookings-container {
+    margin: 30px 100px 0;
+
+    table tr {
+        height: 60px;
+        font-size: 14px;
+    }
+
+    table tr.booking-columns-description {
+        height: 42px;
+    }
+
+    .previous th{
+        background-color: #6f808f;
+    }
+}
+
+
+.no-bookings-message {
+    margin-top: 50px;
+    font-size: 24px;
+    text-align: center;
+    color: #c4c4c4;
+}
+
+.mapAnyRow{
+    display: flex;
+    width: 40%;
+    margin: 0 auto;
+}
+.hidden{
+    display: none;
+}
+
+.display-block{
+    display: block;
+}
+
+.request-list table td button{
+    background-color: #324252;
+    color: #fff;
+    border: none;
+
+}
+
+.cannot-check-in-text{
+    color: #ff5b57;
+    margin: 0 auto;
+    position: relative;
+    left: 8px;
+}
+
+@media screen and (max-width: 769px){
+    .check-in-btn{
+        margin: 0;
+    }
 }

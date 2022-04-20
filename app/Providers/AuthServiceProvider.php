@@ -14,6 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        'App\Models\Booking' => 'App\Policies\BookingPolicy',
     ];
 
     /**
@@ -26,8 +27,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('checkin-ip', function () {
-            $request = \Request::ip();
-            return $request == config('checkin.checkin_ip') || $request ==  '127.0.0.1';
+            $canCheckin = (\Request::ip() == config('checkin.checkin_ip') || \Request::ip() ==  '127.0.0.1') && auth()->user()->hasActiveBooking();
+            return $canCheckin;
         });
     }
 }

@@ -9,6 +9,8 @@ class SeatType extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function seat()
     {
         return $this->hasMany(Seat::class);

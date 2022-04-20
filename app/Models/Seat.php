@@ -16,6 +16,8 @@ class Seat extends Model
         //'seat.seatRestriction.restrictionDescription'
     ];
 
+    protected $guarded = [];
+
 
     public function room()
     {

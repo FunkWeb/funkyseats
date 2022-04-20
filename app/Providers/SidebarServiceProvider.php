@@ -29,7 +29,6 @@ class SidebarServiceProvider extends ServiceProvider
             $rooms = Room::orderBy('name')->get();
 
             $bookingRooms = [];
-            $displayRooms = [];
             $adminRooms = [];
 
             foreach ($rooms as $room) {
@@ -39,13 +38,6 @@ class SidebarServiceProvider extends ServiceProvider
                     'url' => '/room/' . $room->id,
                 ]];
                 $bookingRooms = array_merge($bookingRooms, $tmpBooking);
-
-                //   $tmpDisplay = [[
-                //       'icon' => 'fa fa-th-large',
-                //       'title' => $room->name,
-                //       'url' => '/display/' . $room->id,
-                //   ]];
-                //   $displayRooms = array_merge($displayRooms, $tmpDisplay);
 
                 $tmpAdmin = [[
                     'icon' => 'fa fa-th-large',
@@ -61,6 +53,11 @@ class SidebarServiceProvider extends ServiceProvider
                     'title' => 'Home',
                     'url' => '/',
                     'route-name' => 'home'
+                ],
+                [
+                    'icon' => 'fa fa-question',
+                    'title' => 'FAQ',
+                    'url' => '/faq',
                 ]
             ];
 
@@ -71,14 +68,6 @@ class SidebarServiceProvider extends ServiceProvider
                 'caret' => true,
                 'sub_menu' => $bookingRooms
             ];
-
-            // $displayRoomsMenu = [
-            //     'icon' => 'fa fa-align-left',
-            //     'title' => 'Display room:',
-            //     'url' => 'javascript:;',
-            //     'caret' => true,
-            //     'sub_menu' => $displayRooms
-            // ];
 
             if (auth()->check() && auth()->user()->hasRole('admin')) {
                 $adminRoomsMenu = [
@@ -95,6 +84,18 @@ class SidebarServiceProvider extends ServiceProvider
                             'title' => 'Edit seats in room:',
                             'url' => 'javascript:;',
                             'sub_menu' => $adminRooms
+                        ],
+                        [
+                            'url' => '/admin/edit_seat_types',
+                            'title' => 'Edit seat types',
+                        ],
+                        [
+                            'url' => '/profiles',
+                            'title' => 'User profiles',
+                        ],
+                        [
+                            'url' => '/admin/stats',
+                            'title' => 'Booking statistics',
                         ],
                     ]
                 ];

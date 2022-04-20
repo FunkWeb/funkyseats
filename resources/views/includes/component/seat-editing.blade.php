@@ -10,7 +10,7 @@
             <select name="seat_type" class='edit-seat-type'>
                 {{ $seat_types_list }}
             </select>
-             <input type="text" id="seat_number " name="seat_number" 
+             <input type="text" id="seat_number " name="seat_number"
                 class='edit-seat-num' autofocus value='{{ $seat_number }}'>
             <button class='submit-changes-btn' type='submit' value='submit'>Update</button>
         </form>

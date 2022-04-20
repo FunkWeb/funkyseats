@@ -55,4 +55,21 @@ trait HasRoles
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
+
+    public function toggleRole($role)
+    {
+        $exists = Role::where('name', $role)->first();
+
+        if ($exists) {
+            if ($this->hasRole($role)) {
+                $this->removeRole($role);
+            } else {
+                $this->assignRole($role);
+            }
+        } else {
+            return ['error', 'could not find role with that name'];
+        }
+
+        return ['success', 'Role status updated'];
+    }
 }

@@ -9,6 +9,8 @@ class FAQ extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $attributes = [
         'question_order' => 0,
     ];

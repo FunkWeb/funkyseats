@@ -1,4 +1,3 @@
-
 .room-container {
     width: 224px;
     height: 166px;
@@ -7,8 +6,6 @@
     border: 1px solid #9f9e9e;
     border-radius: 5%;
 }
-
-
 
 .room-container input {
     color: black;
@@ -28,7 +25,9 @@ form {
     justify-content: space-evenly;
 }
 
-.submit-changes-btn, .popup-btn button {
+.submit-changes-btn,
+.popup-btn button,
+.stats-button {
     width: 100px;
     height: 28px;
     font-size: 1rem;
@@ -40,36 +39,70 @@ form {
     border: transparent;
 }
 
-.submit-changes-btn:hover, .popup-btn button:hover {
+.stats-button {
+    border: 1px solid #32425294;
+    width: 150px;
+    font-size: 0.75rem;
     color: white;
+    background-color: #606d79;
+}
+
+
+.submit-changes-btn:hover,
+.popup-btn button:hover,
+.stats-button:hover,
+.stats-button.active {
     background-color: #20B3BE;
 }
 
+.drop-down {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+}
+
+.drop-down:hover .dropdown-content {
+    display: block;
+}
 
 input {
     outline: none;
     border: 1px solid gray;
 }
 
-input, input::placeholder, input.edit-seat-num::placeholder, input.edit-room-name::placeholder {
+input,
+input::placeholder,
+input.edit-seat-num::placeholder,
+input.edit-room-name::placeholder {
     text-align: center;
     font-size: 1rem;
     color: black;
     background-color: #fff;
 }
 
-input.edit-seat-num::placeholder, input.edit-room-name::placeholder {
+input.edit-seat-num::placeholder,
+input.edit-room-name::placeholder,
+.new-seat-type-row input::placeholder {
     color: grey;
     font-style: italic;
     text-transform: none;
 }
 
+#searchCand {
+    text-transform: none;
+}
+
+.new-seat-type-row input::placeholder {
+    font-size: 0.8125rem;
+}
 
 .edit-box {
     position: relative;
 }
-
-
 
 i.fa-trash-alt {
     position: absolute;
@@ -79,7 +112,8 @@ i.fa-trash-alt {
     cursor: pointer;
 }
 
-i.fa-trash-alt:hover, i.fas:hover{
+i.fa-trash-alt:hover,
+i.fas:hover {
     color: #20B3BE;
 }
 
@@ -113,16 +147,15 @@ i.fa-trash-alt:hover, i.fas:hover{
     transform: translate(-50%, -50%) scale(1);
 }
 
-.popup-btn{
+.popup-btn {
     display: flex;
     justify-content: space-around;
 }
 
-.popup-btn button{
+.popup-btn button {
     width: 72px;
     height: 36px;
 }
-
 
 .popup-title {
     display: flex;
@@ -156,28 +189,30 @@ i.fa-trash-alt:hover, i.fas:hover{
     color: #9f9e9e;
 }
 
-.roomText, .edit-room-name{
+.roomText,
+.edit-room-name {
     margin-top: 24px;
 }
 
-.unsaved{
+.unsaved {
     background-color: #eceff1;
 }
 
-.newSeatRoom{
-    background-color: #ff5b57;
+.newseat .submit-changes-btn,
+.newseat {
+    background-color: #523235;
 }
-.notSaved{
+
+.notSaved {
     background-color: #f59c1a;
 }
 
-i.fas{
+.admin-page i.fas {
     color: #9f9e9e;
     cursor: pointer;
 }
 
-
-.iTexts{
+.iTexts {
     margin: 5px 0;
     color: #9f9e9e;
     cursor: pointer;
@@ -186,17 +221,319 @@ i.fas{
     font-family: "Neue Plak Bold", "Urbane Demi Bold", sans-serif;
 }
 
-strong{
+strong {
     position: relative;
     right: -16px;
     font-weight: 500;
 }
 
+.stats {
+    width: 80%;
+    margin: 50px auto;
+}
+
+
+.flot-x-axis,
+.flot-y-axis {
+    fill: white;
+}
+
+#seats-chart {
+    background-color: #eceff1;
+}
+
+.bg-gray-800 {
+    padding: 18px;
+}
+
+.changeTime {
+    padding: 0 1rem;
+}
+
+
+.statsCalc,
+.changeTime {
+    text-align: center;
+}
+
+.text-white-500 {
+    text-align: center;
+    font-size: 1rem;
+}
+
+
+#rooms {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 1rem;
+
+    option {
+        background-color: #374750;
+        color: white;
+    }
+
+    option:hover {
+        background-color: #20B3BE;
+    }
+
+}
+
+@media screen and (max-width: 1230px) {
+    .changeTime .col {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .stats-button {
+        width: 100px;
+    }
+
+    .highLow {
+        display: none;
+    }
+}
+
+.action-count {
+    margin: 0 4px 0 6px;
+    color: #20B3BE;
+    cursor: pointer;
+}
+
+.action-count-active {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+.action-btn {
+
+    select,
+    button {
+        margin-right: 10px;
+        padding: 0 12px;
+        outline: none;
+        border: 1px solid grey;
+        border-radius: 5px;
+        background-color: #ffffff;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+        width: 100px;
+        height: 28px;
+    }
+}
+
+.request-list {
+    table {
+        margin-top: 10px;
+        width: 100%;
+        font-size: 16px;
+        text-align: center;
+        background-color: #ffffff;
+    }
+}
+
+.edit_seat_type_btns_row {
+    margin: 8px 0;
+}
+
+.seat_types_form {
+    border-bottom: 1px solid grey;
+    margin-bottom: 18px;
+}
+
+.seat_types_form form {
+    display: inherit;
+    align-items: inherit;
+}
+
+.show_desc {
+    width: 100%;
+    border-radius: 0%;
+}
+
+textarea {
+    height: 35.5px;
+}
+
+.trash_icon i,
+.plus_icon i {
+    position: static;
+    font-size: 18px;
+    color: #324252;
+    text-align: right;
+}
+
+.plus_icon a {
+    margin-bottom: 18px;
+    text-align: right;
+}
+
+.seat_type_btn {
+    margin: 0 auto;
+}
+
+.newseat .submit-changes-btn,
+.newseat {
+    background-color: #523235;
+}
+
+.hidden {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.roles_stats,
+.roles_row {
+    text-align: center;
+}
+
+.roles_stats h3 {
+    margin: 24px 8px auto;
+}
+
+.roles_stats a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+
+.roles_btn {
+    width: 140px;
+    color: white;
+    background-color: #189688;
+    margin: 0 8px;
+}
+
+.roles_btn:hover {
+    background-color: #fff;
+    color: #189688;
+    border: 2px solid #189688;
+}
+
+.roles_row {
+    margin: 8px;
+}
+
+.roles_row h5 {
+    margin-top: 4px;
+}
+
+.roles_btn .fas,
+.delete_buttons .fas {
+    color: inherit;
+}
+
+.roles_buttons_row {
+    margin: 16px 0;
+}
+
+.roles_buttons_row .col-2 {
+    min-width: 150px;
+}
+
+.remove {
+    background-color: #f44336;
+}
+
+.remove:hover {
+    background-color: #fff;
+    color: #f44336;
+    border: 2px solid #f44336;
+}
+
+.delMake_btn {
+    width: 140px;
+    margin: 8px 16px;
+}
+
+.delMake_btn:hover {
+    background-color: #189688;
+}
+
+.delete_buttons {
+    margin: 24px auto;
+}
+
+.role_header {
+    margin-left: 26px;
+}
+
+.back-arrow {
+    color: #9f9e9e;
+}
+
+
 @media screen and (max-width: 414px) {
-    .page-subtitle{
+    .page-subtitle {
         padding: 0 18px;
     }
 
-    
-}
+    table tr {
+        height: 64px;
+        border: .5px solid #dadada;
+        border-radius: 5%;
+    }
 
+    table th {
+        color: #ffff;
+        font-weight: bold;
+        background-color: #07141e;
+    }
+
+    table td {
+        padding: 10px 0;
+        width: calc(100%/7);
+    }
+
+    table td button {
+        font-size: 14px;
+        border: 1px solid #07141e;
+        border-radius: 5px;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .accept-btn {
+        background-color: #20B3BE;
+        color: #ffffff;
+        border: 2px solid #20B3BE;
+        font-size: 1rem;
+
+    }
+
+    .accept-btn:hover {
+        background-color: #fff;
+        color: #20B3BE;
+    }
+
+    .reject-btn {
+        background-color: #ff5b57;
+        border: 2px solid #ff5b57;
+        font-size: 1rem;
+
+    }
+
+    .reject-btn:hover {
+        color: #ff5b57;
+        background-color: #ffffff;
+    }
+
+    .checkbox_td {
+        width: 6% !important;
+    }
+
+    select {
+        outline: none;
+        border: none;
+    }
+
+    input {
+        accent-color: #ffff;
+        cursor: pointer;
+    }
+}

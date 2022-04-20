@@ -31,9 +31,15 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                 </div>
                 <div id="appSidebarProfileMenu" class="collapse">
                     <div class="menu-item pt-5px">
-                        <a href="javascript:;" class="menu-link">
-                            <div class="menu-icon"><i class="fa fa-cog"></i></div>
-                            <div class="menu-text"> History</div>
+                        <a href="/profile/{{ Auth::user()->id }}" class="menu-link">
+                            <div class="menu-icon"><i class="fa fa-user"></i></div>
+                            <div class="menu-text"> My profile</div>
+                        </a>
+                    </div>
+                    <div class="menu-item pt-5px">
+                        <a href="/mybookings" class="menu-link">
+                            <div class="menu-icon"><i class="fa fa-desktop"></i></div>
+                            <div class="menu-text"> My bookings</div>
                         </a>
                     </div>
 
@@ -41,7 +47,7 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                         <div class="menu-item pb-5px">
                             <a href="/checkin" class="menu-link">
                                 <div class="menu-icon"><i class="fa fa-clock"></i></div>
-                                @if(Auth::user()->getCheckedInAttribute() == 1)
+                                @if (Auth::user()->getCheckedInAttribute() == 1)
                                     <div class="menu-text">Check Out</div>
                                 @else
                                     <div class="menu-text">Check In</div>
@@ -49,14 +55,14 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                             </a>
                         </div>
                     @endcan
-            
+
                     <div class="menu-item pb-5px">
                         <a href="/auth/logout" class="menu-link">
                             <div class="menu-icon"><i class="fa fa-question-circle"></i></div>
                             <div class="menu-text">Log out</div>
                         </a>
                     </div>
-                    
+
             @endif
             <div class="menu-divider m-0"></div>
         </div>
@@ -122,8 +128,8 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                         '
                                                             <div class="menu-item '. $hasSub .' '. $active .'">
                                                                 <a href="' .
-                        $menu['url'] .
-                        '" class="menu-link">' .
+            $menu['url'] .
+            '" class="menu-link">' .
                         $hasTitle .
                         $hasCaret .
                         '</a>
@@ -152,8 +158,8 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                 $hasImg = !empty($menu['img'])
                     ? '
                                                             <div class="menu-icon-img"><img src="' .
-                        $menu['img'] .
-                        '"/></div>
+            $menu['img'] .
+            '"/></div>
                                                             '
                     : '';
                 $hasLabel = !empty($menu['label']) ? '<span class="menu-label">' . $menu['label'] . '</span>' : '';
@@ -189,8 +195,8 @@ $appSidebarClass = !empty($appSidebarTransparent) ? 'app-sidebar-transparent' : 
                 echo '
                                                             <div class="menu-item '. $hasSub .' '. $active .'">
                                                                 <a href="' .
-                    $menu['url'] .
-                    '" class="menu-link">
+        $menu['url'] .
+        '" class="menu-link">
                                                                     ' .
                     $hasImg .
                     '
