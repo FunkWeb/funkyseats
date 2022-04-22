@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\SeatType;
 use Illuminate\Http\Request;
 use App\Models\Seat;
+use App\Models\BookingRestriction;
+use App\Models\RestrictionDescription;
 
 class SeatTypeController extends Controller
 {
@@ -58,7 +60,7 @@ class SeatTypeController extends Controller
             'description' => $request->description,
         ]);
 
-        return back()->with('success', 'You updated the seat typ successfully');
+        return back()->with('success', 'You updated the seat type successfully');
     }
 
     /**
@@ -84,5 +86,30 @@ class SeatTypeController extends Controller
         SeatType::destroy($id);
 
         return back()->with('success', 'You deleted the seat type successfully');
+    }
+
+    public function addApprovalRestriction()
+    {
+
+        $restrictionDescription = RestrictionDescription::firstOrCreate([
+            'name' => 'Approval',
+            'description' => 'Needs admin approval to be considered active',
+            'global' => false,
+        ]);
+
+        $bookingRestriction =  $restrictionDescription->BookingRestriction()->firstOrCreate(['restriction_description_id' => $restrictionDescription->id], [
+            'needs_approval' => true,
+        ]);
+
+        $this->BookingRestrictions()->sync($bookingRestriction, false);
+    }
+
+    public function removeApprovalRestriction()
+    {
+        $Restriction = RestrictionDescription::whereName('Approval')->bookingRestriction()->first();
+
+        if ($Restriction) {
+            $this->BookingRestriction()->detach($Restriction->id);
+        }
     }
 }

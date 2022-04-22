@@ -32,4 +32,9 @@ class BookingRestriction extends Model
     {
         return $this->belongsTo(RestrictionDescription::class);
     }
+
+    public function seatTypeRestriction()
+    {
+        return $this->belongsToMany(SeatType::class, 'seat_restrictions');
+    }
 }
