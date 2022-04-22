@@ -63,7 +63,7 @@ class User extends Authenticatable
     public function anonymize()
     {
         do {
-            $code = random_int(1, 999999);
+            $code = uniqid();
         } while (User::where("email", "=", 'anonymized@' . $code . '.gone')->first());
 
         $this->update([
