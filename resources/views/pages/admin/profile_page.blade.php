@@ -4,6 +4,8 @@
 @section('title', 'Home Page')
 
 @section('content')
+
+
     <div class="col-xl-10-ui-sortable">
         <div class="panel panel-inverse">
             <div class="panel-heading ui-sortable-handle">
@@ -22,6 +24,7 @@
                     <th width="1%"> #</th>
                     <th width="1%" data-orderable="false"> Photo </th>
                     <th class="text-nowrap sorting"> Name </th>
+                    <th class="text-nowrap sorting"> Status </th>
                     <th class="text-nowrap sorting"> E-mail </th>
                     <th class="text-nowrap sorting"> Created </th>
                 </tr>
@@ -34,6 +37,10 @@
                             <td> {{ $user->name}}
                             <br> 
                             <a href="/profile/{{$user->id}}"> <h6>Profile page <h6></a>
+                            </td>
+                            
+                            <td>
+                            {{ $user->checked_in ? 'Checked in': 'Not checked in'}}
                             </td>
                             <td> {{ $user->email}} </td>
                             <td> {{ $user->created_at}} </td>
@@ -69,7 +76,7 @@
     docReady(function() {
        $('#data-table-select').DataTable({
         "columnDefs": [
-        { "searchable": false, "targets": [0,1,3] }
+        { "searchable": false, "targets": [0,1,3,4] }
         ],
             responsive: true
         }); 

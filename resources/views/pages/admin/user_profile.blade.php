@@ -20,7 +20,8 @@
         <div class="panel-body p-0 roles_stats">
                 <h3>{{$user->name}}</h3>
                 <br>
-                <h6> {{$user->email}} </h6> 
+                <h6> {{$user->email}} </h6>
+                <h6> {{ $user->checked_in ? 'Checked in': 'Not checked in'}} </h6> 
                 <div class="row roles_stats">
                     <div class="col-6">
                         <h5> Hours this month: {{$checkins->total}}</h5>
