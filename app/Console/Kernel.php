@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('checkout:force')->dailyAt('19:00');
+        $schedule->command('checkout:force')->dailyAt('16:00');
         $schedule->command('User:anonymize')->weekly();
         $schedule->command('Bookings:DeleteOld')->weekly();
     }
