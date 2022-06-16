@@ -33,26 +33,28 @@ class Room extends Model
     public static function withTodayBookings($id)
     {
         return Room::where('id', $id)
-            ->with(['seat' => function ($query) {
-                if (env('DB_CONNECTION') == "mysql") {
-                    $query->orderByRaw('CHAR_LENGTH(seat_number)');
-                } else {
-                    $query->orderByRaw('LENGTH(seat_number)');
+            ->with([
+                'seat' => function ($query) {
+                    if (env('DB_CONNECTION') == "mysql") {
+                        $query->orderByRaw('CHAR_LENGTH(seat_number)');
+                    } else {
+                        $query->orderByRaw('LENGTH(seat_number)');
+                    }
+                    $query->orderBy('seat_number', 'asc');
+                }, 'seat.booking' => function ($query) {
+                    $query
+                        ->select('*', 'bookings.user_id', 'checkins.created_at as checkin')
+                        ->where('from', '>=', Carbon::today())
+                        ->where('to', '<=', Carbon::today()->addDay())
+                        ->leftJoin('checkins', function ($leftjoin) {
+                            $leftjoin->on('bookings.user_id', '=', 'checkins.user_id');
+                            $leftjoin
+                                ->where('checkins.created_at', '<=', now('Europe/oslo'))
+                                ->where('checkins.checkout_at', '=', null);
+                        });
+                    $query->with('user');
                 }
-                $query->orderBy('seat_number', 'asc');
-            }, 'seat.booking' => function ($query) {
-                $query
-                    ->select('*', 'bookings.user_id', 'checkins.created_at as checkin')
-                    ->where('from', '>=', Carbon::today())
-                    ->where('to', '<=', Carbon::today()->addDay())
-                    ->leftJoin('checkins', function ($leftjoin) {
-                        $leftjoin->on('bookings.user_id', '=', 'checkins.user_id');
-                        $leftjoin
-                            ->where('checkins.created_at', '<=', now('Europe/oslo'))
-                            ->where('checkins.checkout_at', '=', null);
-                    });
-                $query->with('user');
-            }])
+            ])
             ->get();
     }
 
@@ -68,7 +70,13 @@ class Room extends Model
                 } else {
                     $query->orderByRaw('LENGTH(seat_number)');
                 }
-                $query->orderBy('seat_number', 'asc');
+                $query->orderBy('seat_number', 'asc')
+                    ->leftJoin('seat_restrictions', function ($leftjoin) {
+                        $leftjoin->on('seats.id', '=', 'seat_restrictions.seat_id');
+                    })
+                    ->leftJoin('booking_restrictions', function ($leftjoin) {
+                        $leftjoin->on('booking_restriction_id', '=', 'booking_restrictions.id');
+                    });
             }, 'seat.booking' => function ($query) use ($time_from, $time_to) {
                 $query
                     ->whereBetween('from', [$time_from, $time_to])

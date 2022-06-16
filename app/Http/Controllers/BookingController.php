@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\BookingRestriction;
 use App\Models\Seat;
+use App\Models\SeatRestriction;
 use App\Rules\AlreadyBookedRule;
 use App\Rules\SeatAlreadyTakenRule;
 use Illuminate\Http\Request;
@@ -42,6 +44,8 @@ class BookingController extends Controller
         //2 = 8->16
         $time_from = BookingController::bookingStartTime($request->book_time, $request->date_picker);
         $time_to = BookingController::bookingEndTime($request->book_time, $request->date_picker);
+        $restricted = BookingController::needsApproval($seat_id);
+
 
         $request->merge(['user_id' => auth()->user()->id,]);
         $request->merge(['seat_id' => $seat_id]);
@@ -56,7 +60,7 @@ class BookingController extends Controller
             'to' => $time_to,
             'user_id' => $request->user_id,
             'seat_id' => $request->seat_id,
-            'approved' => true,
+            'approved' => $restricted,
         ]);
 
         return back()->with('success', 'You booked the seat successfully');
@@ -81,7 +85,11 @@ class BookingController extends Controller
                 $query
                     ->where('from',  '=', $time_from)
                     ->orwhere('to',  '=', $time_to);
-            })->get()->first();
+            })
+            ->whereDoesntHave("seatRestriction", function ($query) {
+                $query->where('booking_restriction_id', '>', '0');
+            })
+            ->get()->first();
 
         if (!$free_seat) {
             return back()->with('error', 'No free seat in room at chosen time');
@@ -109,6 +117,19 @@ class BookingController extends Controller
         $booking->delete();
 
         return back()->with('error', 'You unbooked your seat');
+    }
+
+    static private function needsApproval($seat_id)
+    {
+        $restriction = SeatRestriction::where('seat_id', $seat_id)->get();
+        for ($i = 0; $i < $restriction->count(); $i++) {
+            $booking_restriction_id = $restriction[$i]->booking_restriction_id;
+            $bookres = BookingRestriction::where('id', $booking_restriction_id)->get();
+            $truth = $bookres[0]->needs_approval;
+            if ($truth) return true;
+        }
+
+        return false;
     }
 
     static private function bookingEndTime($selectValue, $date)
