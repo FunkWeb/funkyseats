@@ -7,38 +7,63 @@
 @section('content')
  <div class="panel panel-inverse">
         <div class="panel-heading ui-sortable handle">
-        @if(Auth::user()->hasRole('admin'))
+        {{-- @if(Auth::user()->hasRole('admin')) --}}
             <h3 class="panel-title"> Roles and stats</h3>
-        @else
+        {{-- @else
             <h3 class="panel-title"> Stats</h3>
-        @endif
+        @endif --}}
             <div class="panel-heading-btn">
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
                 <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
             </div>
         </div>
         <div class="panel-body p-0 roles_stats">
-                <h3>{{$user->name}}</h3>
+                <div class="profile-week-change-buttons-row">
+                    <a>
+                        <button class="submit-changes-btn changeWeek_btn">
+                          <i class="fas fa-chevron-left" style="color:inherit; margin-right:8px;"></i>Previous week 
+                        </button>
+                    </a>
+                    <a>
+                        <button class="submit-changes-btn changeWeek_btn">
+                                Next week <i class="fas fa-chevron-right" style="color:inherit; margin-left:8px;"></i>
+                        </button>
+                    </a>
+                </div> 
+                <h3>{{$user->name ?? 'Navn Navnesen'}}</h3>
                 <br>
-                <h6> {{$user->email}} </h6>
-                <h6> {{ $user->checked_in ? 'Checked in': 'Not checked in'}} </h6> 
+                <h6> {{$user->email ?? 'didididi@gmail.com'}} </h6>
+                       
+                {{-- <h6> {{ $user->checked_in ? 'Checked in': 'Not checked in'}} </h6>  --}}
+                <h6> Checked in </h6> 
                 <div class="row roles_stats">
                     <div class="col-6">
-                        <h5> Hours this month: {{$checkins->total}}</h5>
+                        <h5> Hours this month: {{$checkins->total ?? '5'}}</h5>
                     </div>
                     <div class="col-6">
-                        <h5> Hours this week: {{$checkins->week}}</h5>
+                        <h5> Hours this week: {{$checkins->week ?? '5'}}</h5>
                     </div>
                 </div>
 
                 <hr>
+
                 <div class="row">
+                <h4> Mon: </h4>
                     <div class="col">
+                        <h6>Checked in: </h6>
+                    </div>
+                    <div class="col">
+                         <h6>Checked Out: </h6>
+                    </div>
+                    <div class="col">
+                        <h6> Time checked in: {{$checkins->Monday ?? '4'}}</h5>
+                    </div>
+                </div>
+
+                    {{-- <div class="col">
                         <h5> Forced: {{$checkins->forced}}</h5>
-                    </div>
-                    <div class="col">
-                        <h5> Mon: {{$checkins->Monday}}</h5>
-                    </div>
+                    </div> --}}
+{{--                     
                     <div class="col">
                         <h5> Tue: {{$checkins->Tuesday}}</h5>
                     </div>
@@ -53,10 +78,10 @@
                     </div>
                 </div>
                     
-                </div>
+                </div> --}}
 
-                <hr>
-                @if(Auth::user()->hasRole('admin'))
+                {{-- <hr> --}}
+                {{-- @if(Auth::user()->hasRole('admin'))
                     <div class="row roles_row">
                         <div class="row roles_buttons_row">
                             <div class="col-3"> <h5 class="role_header"> Add Role: </h5> </div>
@@ -102,7 +127,7 @@
                         </a>
                         </div>
                     </div>
-                @endif
+                @endif --}}
         </div> 
         
     </div>
