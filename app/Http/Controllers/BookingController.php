@@ -176,7 +176,7 @@ class BookingController extends Controller
         ddd($json_bookins);
 
         // return $bookins_and_checkins;
-        return view('pages.admin.display_screen', ['stats' => $jsonStats]);
+        return view('pages.admin.display_screen', ['bookings' => $json_bookins]);
     }
 
     static private function bookingEndTime($selectValue, $date)
