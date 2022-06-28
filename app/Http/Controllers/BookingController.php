@@ -6,6 +6,8 @@ use App\Models\Booking;
 use App\Models\BookingRestriction;
 use App\Models\Seat;
 use App\Models\SeatRestriction;
+use App\Models\Checkin;
+
 use App\Rules\AlreadyBookedRule;
 use App\Rules\SeatAlreadyTakenRule;
 use Illuminate\Http\Request;
@@ -44,8 +46,6 @@ class BookingController extends Controller
         //2 = 8->16
         $time_from = BookingController::bookingStartTime($request->book_time, $request->date_picker);
         $time_to = BookingController::bookingEndTime($request->book_time, $request->date_picker);
-        $restricted = BookingController::needsApproval($seat_id);
-
 
         $request->merge(['user_id' => auth()->user()->id,]);
         $request->merge(['seat_id' => $seat_id]);
@@ -60,7 +60,7 @@ class BookingController extends Controller
             'to' => $time_to,
             'user_id' => $request->user_id,
             'seat_id' => $request->seat_id,
-            'approved' => $restricted,
+            'approved' => BookingController::needsApproval($seat_id),
         ]);
 
         return back()->with('success', 'You booked the seat successfully');
@@ -130,6 +130,53 @@ class BookingController extends Controller
         }
 
         return false;
+    }
+
+    public function currentlyBooked()
+    {
+        $arr = array();
+
+        // $booked = Booking::select('*')->whereRaw('NOW() between `from` and `to`')
+        //     ->leftjoin('users', 'users.id', '=', 'bookings.user_id')
+        //     ->select('name', 'from', 'to')
+        //     ->get();
+
+        $bookins_and_checkins = array();
+        $booked = Booking::select('*')
+            ->whereRaw('NOW() between `from` and `to`')
+            ->leftjoin('users', 'users.id', '=', 'bookings.user_id')
+            ->select('name', 'from', 'to', 'seat_id')
+            ->get()
+            ->toArray();
+
+        $checked_in = Checkin::select('*')
+            ->whereNull('checkout_at')
+            ->leftjoin('bookings', 'bookings.user_id', '=', 'checkins.user_id')
+            ->select('bookings.user_id', 'from', 'to')
+            ->whereRaw('`checkins`.`created_at` between `from` and `to`')
+            ->leftjoin('users', 'users.id', '=', 'checkins.user_id')
+            ->select('name')
+            ->get()
+            ->toArray();
+
+
+        for ($i = 0; $i < count($booked); $i++) {
+            for ($j = 0; $j < count($checked_in); $j++) {
+                if (in_array($booked[$i]['name'], $checked_in[$j])) {
+                    $booked[$i]['checked_in'] = true;
+                    break;
+                } else {
+                    $booked[$i]['checked_in'] = false;
+                }
+            }
+            array_push($bookins_and_checkins, $booked[$i]);
+        }
+
+        $json_bookins = json_encode($bookins_and_checkins);
+        ddd($json_bookins);
+
+        // return $bookins_and_checkins;
+        return view('pages.admin.display_screen', ['stats' => $jsonStats]);
     }
 
     static private function bookingEndTime($selectValue, $date)
