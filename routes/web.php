@@ -50,6 +50,8 @@ Route::group(['middleware' => 'last.active'], function () {
 
         Route::get('/profile/{user}/csv', [CheckinController::class, 'downloadCheckinData'])->name('user.download.csv');
 
+        Route::get('/admin/bookings', [BookingController::class, 'currentlyBooked'])->name('checkedin.bookings');
+
         Route::get('/admin/stats/{id?}', [StatisticsController::class, 'seatBookingStatistics'])->name('statistics.bookings');
     });
 
@@ -64,6 +66,7 @@ Route::group(['middleware' => 'last.active'], function () {
         Route::post('/booking/seat/{seat_id}', [BookingController::class, 'store'])->name('booking.store');
         Route::post('/booking/seat/random/{room_id}', [BookingController::class, 'randomSeat'])->name('booking.random');
         Route::get('/booking/delete/{booking}', [BookingController::class, 'delete'])->name('booking.destroy');
+        Route::get('/booking/current', [BookingController::class, 'currentlyBooked'])->name('currentlyBooked');
     });
 
     Route::get('/', [RoomController::class, 'index_withCountSeats'])->name('home');

@@ -20,3 +20,7 @@ yarn-error.log
 /public/assets/plugins
 /public/assets/webfonts
 .DS_Store
+resources/css/app.css
+resources/js/bootstrap.js
+resources/views/welcome.blade.php
+tests/Unit/ExampleTest.php
