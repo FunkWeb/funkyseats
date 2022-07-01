@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\BookingRestriction::factory(20)->create();
         \App\Models\TimeRestriction::factory(3)->create();
+        \App\Models\Checkin::factory(5)->create();
 
         \App\Models\SeatRestriction::factory(10)->create();
 

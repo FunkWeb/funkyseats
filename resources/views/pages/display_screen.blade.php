@@ -9,6 +9,7 @@
     window.onload = refreshPage(5000 * 60);
 </script>
 
+{{-- {{ ddd($room[0]->seat[0]->booking[0]->user) }} --}}
 <div class="panel panel-inverse" data-sortable-id="table-basic-1">
 
     <div class="panel-heading ui-sortable-handle" style="justify-content:center;">
@@ -31,11 +32,12 @@
                     @foreach ($room[0]->seat as $seat)
                         <tr>
                             <td>{{ $seat->seat_number }}</td>
-                            @if ($seat->booking == '[]')
+                            @if (count($seat->booking) == 0)
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             @else
+                                {{-- {{ ddd($seat->booking[0]) }} --}}
                                 @foreach ($seat->booking as $booking)
                                     @if (\Carbon\Carbon::parse($booking->from)->format('H') == 8 && \Carbon\Carbon::parse($booking->to)->format('H') == 16)
                                         <td>{{ $booking->user->given_name ?? '' }}</td>

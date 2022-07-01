@@ -134,13 +134,6 @@ class BookingController extends Controller
 
     public function currentlyBooked()
     {
-        $arr = array();
-
-        // $booked = Booking::select('*')->whereRaw('NOW() between `from` and `to`')
-        //     ->leftjoin('users', 'users.id', '=', 'bookings.user_id')
-        //     ->select('name', 'from', 'to')
-        //     ->get();
-
         $bookins_and_checkins = array();
         $booked = Booking::select('*')
             ->whereRaw('NOW() between `from` and `to`')
@@ -159,7 +152,6 @@ class BookingController extends Controller
             ->get()
             ->toArray();
 
-
         for ($i = 0; $i < count($booked); $i++) {
             for ($j = 0; $j < count($checked_in); $j++) {
                 if (in_array($booked[$i]['name'], $checked_in[$j])) {
@@ -173,7 +165,6 @@ class BookingController extends Controller
         }
 
         $json_bookins = json_encode($bookins_and_checkins);
-        ddd($json_bookins);
 
         // return $bookins_and_checkins;
         return view('pages.admin.display_screen', ['bookings' => $json_bookins]);
