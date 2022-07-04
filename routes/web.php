@@ -79,4 +79,9 @@ Route::group(['middleware' => 'last.active'], function () {
     Route::get('/admin', function () {
         return View('pages/admin/confirmation');
     });
+
+
+    Route::get('/user_profile', function () {
+        return View('pages/admin/user_profile');
+    });
 });

@@ -460,6 +460,7 @@ textarea {
     color: #324252;
     background-color: white;
     font-size: 14px;
+    font-weight: 300;
 }
 
 .changeWeek_btn:hover{
@@ -485,6 +486,16 @@ textarea {
 
 .approvalSwitch{
     margin-top: 25px;
+}
+
+.checkinData--day, .userProfile--name{
+    font-weight: 700;
+
+}
+
+.checkinData p{
+    font-weight: 300;
+    font-size: 16px;
 }
 
 
