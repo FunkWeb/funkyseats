@@ -35,7 +35,6 @@
 </script>
 
 <body class="py-4 px-20 bg-indigo-50" onload="startTime()">
-    {{-- {{ddd($room[0]->seat)}} --}}
 <div class="flex justify-between py-12 text-4xl font-bold text-center text-gray-700">
     <div>{{$room[0]->name}}</div>
     <div id="time"></div>
@@ -58,24 +57,33 @@
                 </th>
                  @if(count($seat->booking) !== 0)
                     @foreach($seat->booking as $booking)
-                        @if(\Carbon\Carbon::parse ($booking->from)->format('H') < \Carbon\Carbon::now()->format('H') 
-                            && \Carbon\Carbon::parse ($booking->to)->format('H') > \Carbon\Carbon::now()->format('H'))
-                        <td class="px-6 py-2">
-                            {{ $booking->user->given_name }}
-                        </td>
-                        <td class="px-6 py-2 font-bold">
+                        @if(\Carbon\Carbon::parse ($booking->from)->format('H') <= \Carbon\Carbon::now('Europe/Oslo')->format('H') 
+                            and \Carbon\Carbon::parse ($booking->to)->format('H') > \Carbon\Carbon::now('Europe/Oslo')->format('H'))
+
+                            <td class="px-6 py-2">
+                                {{ $booking->user->given_name }}
+                            </td>
+
+                            <td class="px-6 py-2 font-bold">
                             @if($booking->checkin)
-                            <span class="text-emerald-400">Sjekket inn</span>
+                                <span class="text-emerald-400">Sjekket inn</span>
                             @else
-                            <span class="text-rose-600">Ikke tilstede</span>
+                                <span class="text-rose-600">Ikke tilstede</span>
                             @endif
-                        </td>
+                            </td>
+
+                        @else
+                            <td class="px-6 py-2 text-gray-300">Ledig </td>
+                            <td class="px-6 py-2">
+                            </td>
                         @endif
+                        
                     @endforeach    
                 @else
+                    <td class="px-6 py-2 text-gray-300">Ledig </td>
                     <td class="px-6 py-2">
                     </td>
-                    <td class="px-6 py-2 font-bold">Ledig </td>
+                    
                  @endif
                
             </tr>
